@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PRMOVIL2CARWASH.Facturacion"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImage="fondo.jpg">
+    <ContentPage.Content>
+        <StackLayout
+                Margin="10,40" >
+
+            <!-- TARJETA COLOR BLANCO -->
+            <Frame
+                    BackgroundColor="#F5F5F5F5"
+                    CornerRadius="15"
+                    HasShadow="True"
+                    HeightRequest="580"
+                    Margin="10,20"
+                    HorizontalOptions="FillAndExpand">
+
+                <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
+                <StackLayout>
+
+                    <!-- TITULOS DE LA TARJETA -->
+                    <StackLayout
+                            HorizontalOptions="Center">
+
+                        <Label 
+                                Text="Factura"
+                                TextColor="Black"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                FontSize="30"
+                                FontFamily="Racing"/>
+
+                        <!--<Label  
+                                Text="Carwash Catracho" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center" 
+                                FontSize="25" 
+                                FontFamily="Racing"/>-->
+                    </StackLayout>
+
+                    <!-- CONTENEDORES DE LOS ENTRY -->
+
+                    <ScrollView>
+                        <StackLayout
+                            Margin="5,5">
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                       Text="Número de factura: " 
+                                       TextColor="Black" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       FontSize="20"
+                                       FontFamily="Questrial"/>
+                            </StackLayout>
+                            <!--LABEL DE FACTURA -->
+
+                            <!-- ESTILOS DEL ENTRY FACTURACION -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY FACTURA -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE USUARIO -->
+                                    <Image 
+                                        Source="user.png" />
+
+                                    <!-- ENTRY FACTURA -->
+                                    <Entry 
+                                        Placeholder="Ingrese # factura" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        PlaceholderColor="Gray" 
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <!--LABEL DE SERVICIO -->
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                Text="Servicio a facturar: " 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"  
+                                FontSize="20"
+                                FontFamily="Questrial"/>
+                            </StackLayout>
+
+                            <!-- ESTILOS DEL ENTRY SERVICIO -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY SERVICIO -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE USUARIO -->
+                                    <Image 
+                                        Source="user.png" />
+
+                                    <!-- ENTRY SERVICIO -->
+
+                                    <Picker x:Name="pckServicio" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"
+                                        SelectedIndexChanged="pckServicio_SelectedIndexChanged"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <!--LABEL DE FECHA -->
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                Text="Fecha:" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                FontSize="20"
+                                FontFamily="Questrial"/>
+                            </StackLayout>
+
+                            <!-- ESTILOS DEL ENTRY FECHA -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY FECHA -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE USUARIO -->
+                                    <Image 
+                                        Source="user.png" />
+
+                                    <!-- ENTRY FECHA -->
+
+                                    <DatePicker x:Name="pckFecha" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <!--LABEL DE VEHICULO -->
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                Text="Su vehículo: " 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                FontSize="20"
+                                FontFamily="Questrial"/>
+                            </StackLayout>
+
+                            <!-- ESTILOS DEL ENTRY VEHICULO -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY VEHICULO -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE USUARIO -->
+                                    <Image 
+                                        Source="user.png" />
+
+                                    <!-- ENTRY VEHICULO -->
+                                    <Entry 
+                                        Placeholder="Ingrese su vehículo" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        PlaceholderColor="Gray" 
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <!-- LABEL DE CANTIDAD -->
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                Text="Cantidad: " 
+                                Margin="0,10,0,0"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                FontSize="20"
+                                FontFamily="Questrial"/>
+                            </StackLayout>
+
+                            <!-- ESTILOS DEL ENTRY CANTIDAD -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY CANTIDAD -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE PASSWORD -->
+                                    <Image 
+                                        Source="candado.png" />
+
+                                    <!-- ENTRY CANTIDAD -->
+                                    <Entry 
+                                        Placeholder="Cantidad" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        IsEnabled="False"
+                                        PlaceholderColor="Gray" 
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
+                                </StackLayout>
+
+                            </Frame>
+                            <!-- LABEL DE IMPUESTO -->
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                Text="Impuesto: " 
+                                Margin="0,10,0,0"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                FontSize="20"
+                                FontFamily="Questrial"/>
+                            </StackLayout>
+
+                            <!-- ESTILOS DEL ENTRY IMPUESTO -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY IMPUESTO -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE PASSWORD -->
+                                    <Image 
+                                        Source="candado.png" />
+
+                                    <!-- ENTRY IMPUESTO -->
+                                    <Entry 
+                                        Placeholder="Impuesto" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        IsEnabled="False"
+                                        PlaceholderColor="Gray" 
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
+                                </StackLayout>
+
+                            </Frame>
+                            <!-- LABEL DE SUBTOTAL -->
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                Text="SubTotal: " 
+                                Margin="0,10,0,0"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                FontSize="20"
+                                FontFamily="Questrial"/>
+                            </StackLayout>
+
+                            <!-- ESTILOS DEL ENTRY SUBTOTAL -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY SUBTOTAL -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE PASSWORD -->
+                                    <Image 
+                                        Source="candado.png" />
+
+                                    <!-- ENTRY SUBTOTAL -->
+                                    <Entry 
+                                        Placeholder="SubTotal" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        IsEnabled="False"
+                                        PlaceholderColor="Gray" 
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <!-- LABEL DE TOTAL -->
+                            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Text="*"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+                                <Label  
+                                Text="Total a pagar:" 
+                                Margin="0,10,0,0"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                FontSize="20"
+                                FontFamily="Questrial"/>
+                            </StackLayout>
+
+                            <!-- ESTILOS DEL ENTRY TOTAL -->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black" 
+                                Padding="0" 
+                                Margin="0" 
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                HorizontalOptions="FillAndExpand">
+
+                                <!-- CONTENEDOR ENTRY TOTAL -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
+
+                                    <!-- IMAGEN DE PASSWORD -->
+                                    <Image 
+                                        Source="candado.png" />
+
+                                    <!-- ENTRY TOTAL -->
+                                    <Entry 
+                                        Placeholder="Total factura" 
+                                        FontFamily="Questrial"
+                                        FontSize="20"
+                                        IsEnabled="False"
+                                        PlaceholderColor="Gray" 
+                                        TextColor="black" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </Frame>
+                            <Button 
+                                    Text="Realizar" 
+                                    x:Name="btnRealizar"
+                                    BackgroundColor="#01ADBA"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    CornerRadius="50"
+                                    BorderWidth="2"
+                                    Margin="25,5"/>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

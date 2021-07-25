@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRMOVIL2CARWASH.RegistrarAutos"
+             BackgroundImage="fondo.png">
+    <ContentPage.Content>
+        <!-- Margenes Tarjeta Blanca-->
+        <StackLayout Margin="2,5">
+
+
+            <!-- TARJETA COLOR BLANCO -->
+            <Frame
+                BackgroundColor="#F5F5F5F5"
+                CornerRadius="15"
+                HasShadow="True"
+                HeightRequest="800"
+                Margin="10,15">
+
+                <StackLayout
+                      Margin="5,15">
+
+                    <!--Titulo -->
+                    <Label 
+                            Text="Registrar Automóviles"
+                            HorizontalOptions="Center"
+                            TextColor="black"
+                            FontFamily="Racing"
+                            FontSize="25"/>
+                    <!--Scroll -->
+                    <ScrollView>
+
+                        <!-- Contenedor principal para la tarjeta-->
+                        <StackLayout 
+                            Margin="5,5">
+
+                            <StackLayout Orientation="Horizontal">
+                                <Image
+                                    x:Name="imgFotoAuto" 
+                                    Source="foto.png"
+                                    WidthRequest="200"
+                                    HeightRequest="225"/>
+
+                                <Button 
+                                    HorizontalOptions ="Center"
+                                    ImageSource="camara.png"
+                                    x:Name="btnFotoAutos"
+                                    BackgroundColor="#E3E4E5"
+                                    CornerRadius="40"
+                                    WidthRequest="80"
+                                    HeightRequest="80"
+                                    VerticalOptions="Center"
+                                    Clicked="btnFotoAutos_Clicked"/>
+                            </StackLayout>
+
+                            <!--Texto Numero-->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="Questrial"/>
+
+                                <Label 
+                                Text="Ingrese Número de Placa: "
+                                TextColor="Black"
+                                FontSize="20"                                 
+                                FontFamily="Questrial"/>
+
+                            </StackLayout>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="20" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <!--Contenedor del Input Numero-->
+                                <StackLayout
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
+
+                                    <Image 
+                                        Source="numero.png"/>
+
+                                    <Entry 
+                                       x:Name="txtNumeroAutos"
+                                       Margin="0,0,10,0"
+                                       Placeholder="Número Placa"
+                                       PlaceholderColor="Gray"
+                                       FontSize="20"
+                                       FontFamily="Questrial"
+                                       HorizontalOptions="FillAndExpand"/>
+
+                                </StackLayout>
+                            </Frame>
+
+                            <!--Texto Año-->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="Questrial"/>
+
+                                <Label 
+                                Text="Ingrese Año: "
+                                TextColor="Black"
+                                FontSize="20"                                 
+                                FontFamily="Questrial"/>
+
+                            </StackLayout>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="20" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <!--Contenedor del Input Año-->
+                                <StackLayout
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
+
+                                    <Image 
+                                        Source="anio.png"/>
+
+                                    <Entry 
+                                       x:Name="txtAnioAutos"
+                                       Margin="0,0,10,0"
+                                       Placeholder="Año"
+                                       Keyboard="Numeric"
+                                       PlaceholderColor="Gray"
+                                       FontSize="20"
+                                       FontFamily="Questrial"
+                                       HorizontalOptions="FillAndExpand"/>
+
+                                </StackLayout>
+                            </Frame>
+
+                            <!--Texto Modelo-->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="Questrial"/>
+
+                                <Label 
+                                Text="Seleccione Modelo del Auto: "
+                                TextColor="Black"
+                                FontSize="20"                                 
+                                FontFamily="Questrial"/>
+
+                            </StackLayout>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="20" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <!--Contenedor del Input Modelo-->
+                                <StackLayout
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
+
+                                    <Image 
+                                        Source="marca.png"/>
+
+                                    <Picker
+                                        x:Name="PiModeloAutos"
+                                        Title="Seleccione el Modelo"
+                                        FontSize="20"
+                                        FontFamily="Questrial"
+                                        Margin="0,0,10,0"
+                                        />
+
+
+                                </StackLayout>
+                            </Frame>
+
+                            <!--Texto Tipo-->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="Questrial"/>
+
+                                <Label 
+                                Text="Ingrese Marca del Auto: "
+                                TextColor="Black"
+                                FontSize="20"                                 
+                                FontFamily="Questrial"/>
+
+                            </StackLayout>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="20" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <!--Contenedor del Input -->
+                                <StackLayout
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
+
+                                    <Image 
+                                        Source="marca.png"/>
+
+                                    <Picker
+                                        x:Name="PiMarcaAutos"
+                                        Title="Seleccione la Marca"
+                                        FontSize="20"
+                                        FontFamily="Questrial"
+                                        Margin="0,0,10,0"
+                                        />
+
+
+                                </StackLayout>
+                            </Frame>
+
+
+                            <!--Texto Tipo-->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="Questrial"/>
+
+                                <Label 
+                                Text="Ingrese Tipo del Auto: "
+                                TextColor="Black"
+                                FontSize="20"                                 
+                                FontFamily="Questrial"/>
+
+                            </StackLayout>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="20" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <!--Contenedor del Input -->
+                                <StackLayout
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
+
+                                    <Image 
+                                        Source="Search.png"/>
+
+                                    <Picker
+                                        x:Name="PiTipoAutos"
+                                        Title="Seleccione el Tipo"
+                                        FontSize="20"
+                                        FontFamily="Questrial"
+                                        Margin="0,0,10,0"
+                                        />
+                                </StackLayout>
+                            </Frame>
+
+
+                            <!--Texto Tipo-->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="Questrial"/>
+
+                                <Label 
+                                Text="Ingrese Motor del Auto: "
+                                TextColor="Black"
+                                FontSize="20"                                 
+                                FontFamily="Questrial"/>
+
+                            </StackLayout>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="20" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <!--Contenedor del Input -->
+                                <StackLayout
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
+
+                                    <Image 
+                                        Source="Search.png"/>
+
+                                    <Picker
+                                        x:Name="PiMotorautos"
+                                        Title="Seleccione el Motor"
+                                        FontSize="20"
+                                        FontFamily="Questrial"
+                                        Margin="0,0,10,0"
+                                        />
+                                </StackLayout>
+                            </Frame>
+
+                            <!--Texto Año-->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
+
+                                <Label 
+                                     Text="Ingrese Observaciones: "
+                                    TextColor="Black"
+                                    FontSize="20"                                 
+                                    FontFamily="Questrial"/>
+
+                            </StackLayout>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="20" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <!--Contenedor del Input Observacion-->
+                                <StackLayout
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
+
+                                    <Image 
+                                        Source="observacion.png"/>
+
+                                    <Entry 
+                                       x:Name="txtObservacionAutos"
+                                       Margin="0,0,10,0"
+                                       Placeholder="Observación"
+                                       PlaceholderColor="Gray"
+                                       FontSize="20"
+                                       FontFamily="Questrial"
+                                       HorizontalOptions="FillAndExpand"/>
+
+                                </StackLayout>
+                            </Frame>
+                            <Button 
+                            Text="Actualizar" 
+                            x:Name="btnActulizarAutos"
+                            BackgroundColor="#01ADBA"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="50"
+                            BorderWidth="2"
+                            Margin="10,5"/>
+
+                            <Button 
+                            Text="Limpiar" 
+                            x:Name="btnLimpiarAutos"
+                            BackgroundColor="#E3E4E5"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            CornerRadius="50"
+                            BorderWidth="2"
+                            Margin="10,0,0,15"/>
+                            <!-- Contenedor Principal-->
+
+                        </StackLayout>
+                    </ScrollView>
+
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

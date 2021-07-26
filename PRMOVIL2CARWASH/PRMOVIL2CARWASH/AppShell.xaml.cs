@@ -11,8 +11,17 @@ namespace PRMOVIL2CARWASH
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(CambioContra), typeof(CambioContra));
+            //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(ConfigUsuario), typeof(ConfigUsuario));
+            //Routing.RegisterRoute(nameof(Cotizacion), typeof(Cotizacion));
+            Routing.RegisterRoute(nameof(CrearUsuario), typeof(CrearUsuario));
+            Routing.RegisterRoute(nameof(Facturacion), typeof(Facturacion));
+            Routing.RegisterRoute(nameof(Mapas), typeof(Mapas));
+            Routing.RegisterRoute(nameof(RegistrarAutos), typeof(RegistrarAutos));
+            Routing.RegisterRoute(nameof(Reservacion), typeof(Reservacion));
+            Routing.RegisterRoute(nameof(Validacion), typeof(Validacion));
+            Routing.RegisterRoute(nameof(AcercaDe), typeof(AcercaDe));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

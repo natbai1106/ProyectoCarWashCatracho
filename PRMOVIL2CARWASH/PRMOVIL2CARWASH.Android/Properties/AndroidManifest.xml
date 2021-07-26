@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.prmovil2carwash">
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
     <application android:label="PRMOVIL2CARWASH.Android" android:theme="@style/MainTheme">
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAzK8eSyIIJQFpMrwUoqBXchC5F71BD0sg"/>
 		<provider android:name="android.support.v4.content.FileProvider"
 				android:authorities="${applicationId}.fileprovider"
 				android:exported="false"

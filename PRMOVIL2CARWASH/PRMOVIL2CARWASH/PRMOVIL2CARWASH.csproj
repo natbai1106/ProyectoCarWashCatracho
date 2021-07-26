@@ -28,30 +28,37 @@
   <ItemGroup>
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />  
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2083" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CambioContra.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ConfigUsuario.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Cotizacion.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="CrearUsuario.xaml">
+    <EmbeddedResource Update="Views\AcercaDe.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Facturacion.xaml">
+    <EmbeddedResource Update="Views\CrearUsuario.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Facturacion.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="RegistrarAutos.xaml">
+    <EmbeddedResource Update="Views\Mapas.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RegistrarAutos.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Validacion.xaml">
+    <EmbeddedResource Update="Views\Validacion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CambioContra.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ConfigUsuario.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reservacion.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

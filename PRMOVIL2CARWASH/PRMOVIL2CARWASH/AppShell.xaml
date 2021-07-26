@@ -14,7 +14,7 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.BackgroundColor" Value="#259CD5" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
                 <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
@@ -46,6 +46,9 @@
                             </VisualState>
                             <VisualState x:Name="Selected">
                                 <VisualState.Setters>
+                                    <!--
+                                    Cambia el color del Item a seleccionar
+                                    -->                     
                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                 </VisualState.Setters>
                             </VisualState>
@@ -78,15 +81,77 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <FlyoutItem Title="About" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    <FlyoutItem Title="Inicio" 
+                Icon="inicio.png">
+        <ShellContent Route="AboutPage" 
+                      ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Browse" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+    
+    <FlyoutItem Title="Configurar Perfil" 
+                Icon="configuracion_perfil.png">
+        <ShellContent Route="ConfigUsuario" 
+                      ContentTemplate="{DataTemplate local:ConfigUsuario}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Registrar Automóvil" 
+                Icon="carro.png">
+        <ShellContent Route="RegistrarAutos" 
+                      ContentTemplate="{DataTemplate local:RegistrarAutos}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Mis Autos" 
+                Icon="carro.png">
+        <ShellContent Route="ItemsPage" 
+                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Reservación" 
+                Icon="cotizacion.png">
+        <ShellContent Route="Reservacion" 
+                      ContentTemplate="{DataTemplate local:Reservacion}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Historial de Reservaciones" 
+                Icon="historial_cotizaciones.png">
+        <ShellContent Route="ItemsPage" 
+                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Facturación" 
+                Icon="facturacion.png">
+        <ShellContent Route="Facturacion" 
+                      ContentTemplate="{DataTemplate local:Facturacion}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Historial de Facturación" 
+                Icon="historial_facturas.png">
+        <ShellContent Route="ItemsPage" 
+                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Cambiar Contraseña" 
+                Icon="cambiar_contrasenia.png">
+        <ShellContent Route="CambioContra" 
+                      ContentTemplate="{DataTemplate local:CambioContra}" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Acerca de" 
+                Icon="acerca.png">
+        <ShellContent Route="AcercaDe" 
+                      ContentTemplate="{DataTemplate local:AcercaDe}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Mapas" 
+                Icon="acerca.png">
+        <ShellContent Route="Mapas" 
+                      ContentTemplate="{DataTemplate local:Mapas}" />
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="Logout" 
+              StyleClass="MenuItemLayoutStyle"
+              Icon="acerca.png"
+              Clicked="OnMenuItemClicked">
     </MenuItem>
 
     <!--

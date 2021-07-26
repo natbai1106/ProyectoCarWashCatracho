@@ -1,59 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PRMOVIL2CARWASH.Cotizacion"
-              BackgroundImage="fondo.png">
+             x:Class="PRMOVIL2CARWASH.Views.Reservacion"
+             BackgroundImage="fondo.jpg">
     <ContentPage.Content>
-        <!-- Margenes Tarjeta Blanca-->
         <StackLayout Margin="2,5">
 
 
-            <!-- TARJETA COLOR BLANCO -->
-            <Frame
+        <!-- TARJETA COLOR BLANCO -->
+        <Frame
                 BackgroundColor="#F5F5F5F5"
                 CornerRadius="15"
                 HasShadow="True"
                 HeightRequest="800"
                 Margin="10,15">
 
-                <StackLayout
+            <StackLayout
                       Margin="5,15">
 
-                    <!--Titulo -->
-                    <Label 
-                            Text="Cotización"
+                <!--Titulo -->
+                <Label 
+                            Text="Reservación de Espacio para Servicio"
                             HorizontalOptions="Center"
                             TextColor="black"
                             FontFamily="Racing"
                             FontSize="25"/>
-                    <!--Scroll -->
-                    <ScrollView>
+                <!--Scroll -->
+                <ScrollView>
 
-                        <!-- Contenedor principal para la tarjeta-->
-                        <StackLayout 
+                    <!-- Contenedor principal para la tarjeta-->
+                    <StackLayout 
                             Margin="5,5">
 
-                            <!--Texto Numero-->
-                            <StackLayout
+                        <!--Texto Numero-->
+                        <StackLayout
                                 Orientation="Horizontal"
                                 Margin="0,15,0,0">
 
-                                <Label 
+                            <Label 
                                 Text="*"
                                 FontSize="25"
                                 TextColor="red"
                                 FontFamily="Questrial"/>
 
-                                <Label 
+                            <Label 
                                 Text="Fecha a Realizar:  "
                                 TextColor="Black"
                                 FontSize="20"                                 
                                 FontFamily="Questrial"/>
 
-                            </StackLayout>
+                        </StackLayout>
 
-                            <!-- Estilo para el Entry Redondo-->
-                            <Frame
+                        <!-- Estilo para el Entry Redondo-->
+                        <Frame
                                 BackgroundColor="Transparent" 
                                 BorderColor="Black"                             
                                 Padding="0"
@@ -61,15 +60,15 @@
                                 WidthRequest="340"
                                 Margin="20,0,15,0">
 
-                                <!--Contenedor del Input Numero-->
-                                <StackLayout
+                            <!--Contenedor del Input Numero-->
+                            <StackLayout
                                      Orientation="Horizontal"
                                      Margin="25,5">
 
-                                    <Image 
+                                <Image 
                                         Source="calendario.png"/>
 
-                                    <DatePicker  
+                                <DatePicker  
                                         x:Name="DatapickerFecha" 
                                         Margin="0,0,10,0"
                                         IsEnabled="False"
@@ -81,30 +80,30 @@
                                         TextColor="Gray"
                                         HorizontalOptions="FillAndExpand"  
                                          />
-                                </StackLayout>
-                            </Frame>
+                            </StackLayout>
+                        </Frame>
 
-                            <!--Texto Servicio-->
-                            <StackLayout
+                        <!--Texto Servicio-->
+                        <StackLayout
                                 Orientation="Horizontal"
                                 Margin="0,15,0,0">
 
-                                <Label 
+                            <Label 
                                 Text="*"
                                 FontSize="25"
                                 TextColor="red"
                                 FontFamily="Questrial"/>
 
-                                <Label 
+                            <Label 
                                 Text="Seleccione el Servicio Auto: "
                                 TextColor="Black"
                                 FontSize="20"                                 
                                 FontFamily="Questrial"/>
 
-                            </StackLayout>
+                        </StackLayout>
 
-                            <!-- Estilo para el Entry Redondo-->
-                            <Frame
+                        <!-- Estilo para el Entry Redondo-->
+                        <Frame
                                 BackgroundColor="Transparent" 
                                 BorderColor="Black"                             
                                 Padding="0"
@@ -112,45 +111,45 @@
                                 WidthRequest="340"
                                 Margin="20,0,15,0">
 
-                                <!--Contenedor del Input Modelo-->
-                                <StackLayout
+                            <!--Contenedor del Input Modelo-->
+                            <StackLayout
                                      Orientation="Horizontal"
                                      Margin="25,5">
 
-                                    <Image 
+                                <Image 
                                         Source="servicio.png"/>
 
-                                    <Picker
+                                <Picker
                                         x:Name="PiServicioCotizacion"
                                         Title="Seleccione Servicio"
                                         FontSize="20"
                                         FontFamily="Questrial"
                                         Margin="0,0,10,0"
                                         />
-                                </StackLayout>
-                            </Frame>
+                            </StackLayout>
+                        </Frame>
 
-                            <!--Texto Automovil-->
-                            <StackLayout
+                        <!--Texto Automovil-->
+                        <StackLayout
                                 Orientation="Horizontal"
                                 Margin="0,15,0,0">
 
-                                <Label 
+                            <Label 
                                 Text="*"
                                 FontSize="25"
                                 TextColor="red"
                                 FontFamily="Questrial"/>
 
-                                <Label 
+                            <Label 
                                 Text="Seleccione el Automóvil: "
                                 TextColor="Black"
                                 FontSize="20"                                 
                                 FontFamily="Questrial"/>
 
-                            </StackLayout>
+                        </StackLayout>
 
-                            <!-- Estilo para el Entry Redondo-->
-                            <Frame
+                        <!-- Estilo para el Entry Redondo-->
+                        <Frame
                                 BackgroundColor="Transparent" 
                                 BorderColor="Black"                             
                                 Padding="0"
@@ -158,49 +157,48 @@
                                 WidthRequest="340"
                                 Margin="20,0,15,0">
 
-                                <!--Contenedor del Input Modelo-->
-                                <StackLayout
+                            <!--Contenedor del Input Modelo-->
+                            <StackLayout
                                      Orientation="Horizontal"
                                      Margin="25,5">
 
-                                    <Image 
+                                <Image 
                                         Source="Auto.png"/>
 
-                                    <Picker
+                                <Picker
                                         x:Name="PiAutoCotizacion"
                                         Title="Seleccione Servicio"
                                         FontSize="20"
                                         FontFamily="Questrial"
                                         Margin="0,0,10,0"
                                         />
-                                </StackLayout>
-                            </Frame>
+                            </StackLayout>
+                        </Frame>
 
 
-                            <!--Texto Servicio Adomicilio-->
-                            <StackLayout
+                        <!--Texto Servicio Adomicilio-->
+                        <StackLayout
                                 Orientation="Horizontal"
                                 Margin="0,15,0,0">
 
-                                <Label 
+                            <Label 
                                     Text="Servicio Adomicilio: "
                                     TextColor="Black"
                                     FontSize="20"                                 
                                     FontFamily="Questrial"/>
 
-                                <Switch 
+                            <Switch 
                                     OnColor="gray"
                                     ThumbColor="#01ADBA"
                                     />
 
-                            </StackLayout>
-
-
                         </StackLayout>
-                    </ScrollView>
-                </StackLayout>
-            </Frame>
+
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
         </StackLayout>
-            
     </ContentPage.Content>
 </ContentPage>

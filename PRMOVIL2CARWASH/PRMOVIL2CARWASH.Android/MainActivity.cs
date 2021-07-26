@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using System.IO;
 using Plugin.CurrentActivity;
+
 namespace PRMOVIL2CARWASH.Droid
 {
     [Activity(Label = "PRMOVIL2CARWASH", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]

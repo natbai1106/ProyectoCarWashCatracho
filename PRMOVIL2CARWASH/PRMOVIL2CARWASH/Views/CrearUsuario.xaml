@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PRMOVIL2CARWASH.CrearUsuario"
+             x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
              BackgroundImage="fondo.jpg">
     <!-- MARGENES DE LA TARJETA BLANCA -->
     <StackLayout
-        Margin="2,5" >
+       Margin="2,5" >
 
         <!-- TARJETA COLOR BLANCO -->
         <Frame

@@ -4,12 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="PRMOVIL2CARWASH.CambioContra"
+             x:Class="PRMOVIL2CARWASH.Views.CambioContra"
              NavigationPage.HasNavigationBar="False"
              BackgroundImage="fondo.jpg">
     <ContentPage.Content>
         <StackLayout
-                Margin="10,70" >
+                Margin="2,5" >
 
             <!-- TARJETA COLOR BLANCO -->
             <Frame

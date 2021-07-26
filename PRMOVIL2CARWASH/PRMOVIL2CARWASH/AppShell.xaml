@@ -92,7 +92,13 @@
         <ShellContent Route="ConfigUsuario" 
                       ContentTemplate="{DataTemplate local:ConfigUsuario}" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="Registrar Automóvil" 
+                Icon="carro.png">
+        <ShellContent Route="RegistrarAutos" 
+                      ContentTemplate="{DataTemplate local:RegistrarAutos}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Mis Autos" 
                 Icon="carro.png">
         <ShellContent Route="ItemsPage" 
@@ -101,8 +107,8 @@
     
     <FlyoutItem Title="Reservación" 
                 Icon="cotizacion.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="Reservacion" 
+                      ContentTemplate="{DataTemplate local:Reservacion}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Historial de Reservaciones" 
@@ -113,8 +119,8 @@
     
     <FlyoutItem Title="Facturación" 
                 Icon="facturacion.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="Facturacion" 
+                      ContentTemplate="{DataTemplate local:Facturacion}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Historial de Facturación" 
@@ -125,16 +131,22 @@
     
     <FlyoutItem Title="Cambiar Contraseña" 
                 Icon="cambiar_contrasenia.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="CambioContra" 
+                      ContentTemplate="{DataTemplate local:CambioContra}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Acerca de" 
                 Icon="acerca.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="AcercaDe" 
+                      ContentTemplate="{DataTemplate local:AcercaDe}" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="Mapas" 
+                Icon="acerca.png">
+        <ShellContent Route="Mapas" 
+                      ContentTemplate="{DataTemplate local:Mapas}" />
+    </FlyoutItem>
+
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout" 
               StyleClass="MenuItemLayoutStyle"

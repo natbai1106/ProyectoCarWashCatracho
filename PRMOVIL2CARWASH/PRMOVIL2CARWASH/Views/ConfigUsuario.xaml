@@ -5,7 +5,7 @@
              BackgroundImage="fondo.jpg">
     <ContentPage.Content>
         <!-- Margenes Tarjeta Blanca-->
-        <StackLayout Margin="10,40">
+        <StackLayout Margin="2,5">
 
 
             <!-- TARJETA COLOR BLANCO -->
@@ -26,8 +26,7 @@
                             TextColor="black"
                             FontFamily="Racing"
                             FontSize="25"/>
-
-
+                    
                     <!--Scroll -->
                     <ScrollView>
 
@@ -100,7 +99,6 @@
                                 FontFamily="Questrial"/>
                             </StackLayout>
 
-
                             <!-- Estilo para el Entry Redondo-->
                             <Frame
                             BackgroundColor="Transparent" 
@@ -134,9 +132,6 @@
                             <StackLayout
                             Orientation="Horizontal"
                              Margin="0,15,0,0">
-
-
-
                                 <Label 
                                 Text="Ingrese Direccion: "
                                 TextColor="Black"
@@ -238,17 +233,9 @@
                             Margin="10,0,0,15"/>
                             <!-- Contenedor Principal-->
                         </StackLayout>
-
                     </ScrollView>
-
                 </StackLayout>
             </Frame>
-            <Label 
-                Text="Car Wash Catracho  "
-                FontFamily="Racing"
-                Margin="0,0,15,0"
-                Opacity="0.7"
-                HorizontalTextAlignment="End"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

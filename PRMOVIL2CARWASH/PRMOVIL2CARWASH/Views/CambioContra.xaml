@@ -9,7 +9,7 @@
              BackgroundImage="fondo.jpg">
     <ContentPage.Content>
         <StackLayout
-                Margin="10,70" >
+                Margin="2,5" >
 
             <!-- TARJETA COLOR BLANCO -->
             <Frame

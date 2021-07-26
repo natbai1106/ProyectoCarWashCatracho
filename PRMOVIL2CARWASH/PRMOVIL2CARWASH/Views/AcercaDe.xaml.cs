@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PRMOVIL2CARWASH.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Cotizacion : ContentPage
+    public partial class AcercaDe : ContentPage
     {
-        public Cotizacion()
+        public AcercaDe()
         {
             InitializeComponent();
         }

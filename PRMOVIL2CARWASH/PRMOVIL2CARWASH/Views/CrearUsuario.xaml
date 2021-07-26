@@ -5,7 +5,7 @@
              BackgroundImage="fondo.jpg">
     <!-- MARGENES DE LA TARJETA BLANCA -->
     <StackLayout
-        Margin="2,5" >
+       Margin="2,5" >
 
         <!-- TARJETA COLOR BLANCO -->
         <Frame

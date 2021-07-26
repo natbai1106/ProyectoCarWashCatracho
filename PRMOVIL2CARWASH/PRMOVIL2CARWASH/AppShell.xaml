@@ -33,6 +33,8 @@
             -->
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="FontFamily" Value="Questrial"></Setter>
             </Style>
             <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -40,8 +42,8 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{x:OnPlatform UWP=Transparent, iOS=White}" />
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor" Value="#bbdefb"/>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="Black"/>
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Selected">
@@ -66,7 +68,7 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="Red" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -135,22 +137,30 @@
                       ContentTemplate="{DataTemplate local:CambioContra}" />
     </FlyoutItem>
     
+    
+
+    <FlyoutItem Title="Mapas" 
+                Icon="mapa.png">
+        <ShellContent Route="mapas" 
+                      ContentTemplate="{DataTemplate local:Mapas}" />
+    </FlyoutItem>
+
+    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
+    <MenuItem 
+              StyleClass="MenuItemLayoutStyle"
+              Clicked="OnMenuItemClicked">
+    </MenuItem>
+
     <FlyoutItem Title="Acerca de" 
                 Icon="acerca.png">
         <ShellContent Route="AcercaDe" 
                       ContentTemplate="{DataTemplate local:AcercaDe}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Mapas" 
-                Icon="acerca.png">
-        <ShellContent Route="Mapas" 
-                      ContentTemplate="{DataTemplate local:Mapas}" />
-    </FlyoutItem>
-
-    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout" 
+    <MenuItem
+              Text="Logout"
+        Icon="cerrar_sesion.png"
               StyleClass="MenuItemLayoutStyle"
-              Icon="acerca.png"
               Clicked="OnMenuItemClicked">
     </MenuItem>
 

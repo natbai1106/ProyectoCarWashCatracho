@@ -25,8 +25,6 @@ namespace PRMOVIL2CARWASH.Droid
 		
 		public static void UpdateIdValues()
 		{
-<<<<<<< HEAD
-=======
 			global::Plugin.Media.Resource.Attribute.alpha = global::PRMOVIL2CARWASH.Droid.Resource.Attribute.alpha;
 			global::Plugin.Media.Resource.Attribute.coordinatorLayoutStyle = global::PRMOVIL2CARWASH.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Plugin.Media.Resource.Attribute.font = global::PRMOVIL2CARWASH.Droid.Resource.Attribute.font;
@@ -11646,40 +11644,77 @@ namespace PRMOVIL2CARWASH.Droid
 			global::Xamarin.Forms.Platform.Resource.Xml.standalone_badge_gravity_bottom_start = global::PRMOVIL2CARWASH.Droid.Resource.Xml.standalone_badge_gravity_bottom_start;
 			global::Xamarin.Forms.Platform.Resource.Xml.standalone_badge_gravity_top_start = global::PRMOVIL2CARWASH.Droid.Resource.Xml.standalone_badge_gravity_top_start;
 			global::Xamarin.Forms.Platform.Resource.Xml.standalone_badge_offset = global::PRMOVIL2CARWASH.Droid.Resource.Xml.standalone_badge_offset;
->>>>>>> 1c1536485b67274ebb21f8b607a0341ad61f425a
 		}
 		
-		public partial class Attribute
-		{
-			
-			static Attribute()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Attribute()
-			{
-			}
-		}
-		
-		public partial class Color
+		public partial class Animation
 		{
 			
 			// aapt resource value: 0x7F010000
-			public const int colorAccent = 2130771968;
+			public const int abc_fade_in = 2130771968;
 			
 			// aapt resource value: 0x7F010001
-			public const int colorPrimary = 2130771969;
+			public const int abc_fade_out = 2130771969;
 			
 			// aapt resource value: 0x7F010002
-			public const int colorPrimaryDark = 2130771970;
+			public const int abc_grow_fade_in_from_bottom = 2130771970;
 			
 			// aapt resource value: 0x7F010003
-			public const int launcher_background = 2130771971;
+			public const int abc_popup_enter = 2130771971;
 			
-<<<<<<< HEAD
-			static Color()
-=======
+			// aapt resource value: 0x7F010004
+			public const int abc_popup_exit = 2130771972;
+			
+			// aapt resource value: 0x7F010005
+			public const int abc_shrink_fade_out_from_bottom = 2130771973;
+			
+			// aapt resource value: 0x7F010006
+			public const int abc_slide_in_bottom = 2130771974;
+			
+			// aapt resource value: 0x7F010007
+			public const int abc_slide_in_top = 2130771975;
+			
+			// aapt resource value: 0x7F010008
+			public const int abc_slide_out_bottom = 2130771976;
+			
+			// aapt resource value: 0x7F010009
+			public const int abc_slide_out_top = 2130771977;
+			
+			// aapt resource value: 0x7F01000A
+			public const int abc_tooltip_enter = 2130771978;
+			
+			// aapt resource value: 0x7F01000B
+			public const int abc_tooltip_exit = 2130771979;
+			
+			// aapt resource value: 0x7F01000C
+			public const int btn_checkbox_to_checked_box_inner_merged_animation = 2130771980;
+			
+			// aapt resource value: 0x7F01000D
+			public const int btn_checkbox_to_checked_box_outer_merged_animation = 2130771981;
+			
+			// aapt resource value: 0x7F01000E
+			public const int btn_checkbox_to_checked_icon_null_animation = 2130771982;
+			
+			// aapt resource value: 0x7F01000F
+			public const int btn_checkbox_to_unchecked_box_inner_merged_animation = 2130771983;
+			
+			// aapt resource value: 0x7F010010
+			public const int btn_checkbox_to_unchecked_check_path_merged_animation = 2130771984;
+			
+			// aapt resource value: 0x7F010011
+			public const int btn_checkbox_to_unchecked_icon_null_animation = 2130771985;
+			
+			// aapt resource value: 0x7F010012
+			public const int btn_radio_to_off_mtrl_dot_group_animation = 2130771986;
+			
+			// aapt resource value: 0x7F010013
+			public const int btn_radio_to_off_mtrl_ring_outer_animation = 2130771987;
+			
+			// aapt resource value: 0x7F010014
+			public const int btn_radio_to_off_mtrl_ring_outer_path_animation = 2130771988;
+			
+			// aapt resource value: 0x7F010015
+			public const int btn_radio_to_on_mtrl_dot_group_animation = 2130771989;
+			
 			// aapt resource value: 0x7F010016
 			public const int btn_radio_to_on_mtrl_ring_outer_animation = 2130771990;
 			
@@ -11735,200 +11770,18 @@ namespace PRMOVIL2CARWASH.Droid
 			public const int nav_default_pop_exit_anim = 2130772007;
 			
 			static Animation()
->>>>>>> 1c1536485b67274ebb21f8b607a0341ad61f425a
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
-			private Color()
+			private Animation()
 			{
 			}
 		}
 		
-		public partial class Drawable
+		public partial class Animator
 		{
 			
-<<<<<<< HEAD
-			// aapt resource value: 0x7F020004
-			public const int acerca = 2130837508;
-			
-			// aapt resource value: 0x7F020000
-			public const int Anio = 2130837504;
-			
-			// aapt resource value: 0x7F020005
-			public const int apellido = 2130837509;
-			
-			// aapt resource value: 0x7F020006
-			public const int auto = 2130837510;
-			
-			// aapt resource value: 0x7F020007
-			public const int calendario = 2130837511;
-			
-			// aapt resource value: 0x7F020008
-			public const int camara = 2130837512;
-			
-			// aapt resource value: 0x7F020009
-			public const int cambiar_contrasenia = 2130837513;
-			
-			// aapt resource value: 0x7F02000A
-			public const int candado = 2130837514;
-			
-			// aapt resource value: 0x7F02000B
-			public const int cantidad = 2130837515;
-			
-			// aapt resource value: 0x7F02000C
-			public const int carro = 2130837516;
-			
-			// aapt resource value: 0x7F02000D
-			public const int cerrar_sesion = 2130837517;
-			
-			// aapt resource value: 0x7F02000E
-			public const int configuracion_perfil = 2130837518;
-			
-			// aapt resource value: 0x7F02000F
-			public const int confirmar = 2130837519;
-			
-			// aapt resource value: 0x7F020010
-			public const int contrasenia_anterior = 2130837520;
-			
-			// aapt resource value: 0x7F020011
-			public const int contrasenia_nueva = 2130837521;
-			
-			// aapt resource value: 0x7F020012
-			public const int correo = 2130837522;
-			
-			// aapt resource value: 0x7F020013
-			public const int cotizacion = 2130837523;
-			
-			// aapt resource value: 0x7F020014
-			public const int direccion = 2130837524;
-			
-			// aapt resource value: 0x7F020015
-			public const int facturacion = 2130837525;
-			
-			// aapt resource value: 0x7F020016
-			public const int fecha = 2130837526;
-			
-			// aapt resource value: 0x7F020017
-			public const int fondo = 2130837527;
-			
-			// aapt resource value: 0x7F020018
-			public const int foto = 2130837528;
-			
-			// aapt resource value: 0x7F020019
-			public const int historial_cotizaciones = 2130837529;
-			
-			// aapt resource value: 0x7F02001A
-			public const int historial_facturas = 2130837530;
-			
-			// aapt resource value: 0x7F02001B
-			public const int icon_about = 2130837531;
-			
-			// aapt resource value: 0x7F02001C
-			public const int icon_feed = 2130837532;
-			
-			// aapt resource value: 0x7F02001D
-			public const int impuesto = 2130837533;
-			
-			// aapt resource value: 0x7F02001E
-			public const int inicio = 2130837534;
-			
-			// aapt resource value: 0x7F020001
-			public const int Marca = 2130837505;
-			
-			// aapt resource value: 0x7F02001F
-			public const int nombre = 2130837535;
-			
-			// aapt resource value: 0x7F020020
-			public const int num = 2130837536;
-			
-			// aapt resource value: 0x7F020002
-			public const int Numero = 2130837506;
-			
-			// aapt resource value: 0x7F020021
-			public const int observacion = 2130837537;
-			
-			// aapt resource value: 0x7F020022
-			public const int servicio = 2130837538;
-			
-			// aapt resource value: 0x7F020023
-			public const int subtotal = 2130837539;
-			
-			// aapt resource value: 0x7F020024
-			public const int telefono = 2130837540;
-			
-			// aapt resource value: 0x7F020025
-			public const int total = 2130837541;
-			
-			// aapt resource value: 0x7F020026
-			public const int user = 2130837542;
-			
-			// aapt resource value: 0x7F020027
-			public const int usuario = 2130837543;
-			
-			// aapt resource value: 0x7F020028
-			public const int validar = 2130837544;
-			
-			// aapt resource value: 0x7F020003
-			public const int Vehiculo = 2130837507;
-			
-			// aapt resource value: 0x7F020029
-			public const int xamarin_logo = 2130837545;
-			
-			static Drawable()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Drawable()
-			{
-			}
-		}
-		
-		public partial class Mipmap
-		{
-			
-			// aapt resource value: 0x7F030000
-			public const int icon = 2130903040;
-			
-			// aapt resource value: 0x7F030001
-			public const int icon_round = 2130903041;
-			
-			// aapt resource value: 0x7F030002
-			public const int launcher_foreground = 2130903042;
-			
-			static Mipmap()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Mipmap()
-			{
-			}
-		}
-		
-		public partial class Style
-		{
-			
-			// aapt resource value: 0x7F040000
-			public const int MainTheme = 2130968576;
-			
-			static Style()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Style()
-			{
-			}
-		}
-		
-		public partial class Xml
-		{
-			
-			// aapt resource value: 0x7F050000
-			public const int file_paths = 2131034112;
-=======
 			// aapt resource value: 0x7F020000
 			public const int design_appbar_state_list_animator = 2130837504;
 			
@@ -25517,7 +25370,6 @@ namespace PRMOVIL2CARWASH.Droid
 			
 			// aapt resource value: 0x7F110007
 			public const int xamarin_essentials_fileprovider_file_paths = 2131820551;
->>>>>>> 1c1536485b67274ebb21f8b607a0341ad61f425a
 			
 			static Xml()
 			{

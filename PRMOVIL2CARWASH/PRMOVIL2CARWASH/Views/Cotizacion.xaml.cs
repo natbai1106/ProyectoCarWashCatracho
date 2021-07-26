@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace PRMOVIL2CARWASH
+namespace PRMOVIL2CARWASH.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ConfigUsuario : ContentPage
+    public partial class Cotizacion : ContentPage
     {
-        public ConfigUsuario()
+        public Cotizacion()
         {
             InitializeComponent();
         }

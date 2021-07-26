@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PRMOVIL2CARWASH.ConfigUsuario"
+             x:Class="PRMOVIL2CARWASH.Views.ConfigUsuario"
              BackgroundImage="fondo.jpg">
     <ContentPage.Content>
         <!-- Margenes Tarjeta Blanca-->
         <StackLayout Margin="10,40">
-            
-            
+
+
             <!-- TARJETA COLOR BLANCO -->
             <Frame
                 BackgroundColor="#F5F5F5F5"
@@ -18,7 +18,7 @@
 
                 <StackLayout
                       Margin="5,15">
-                    
+
                     <!--Titulo -->
                     <Label 
                             Text="Configuración de Usuario"
@@ -26,35 +26,35 @@
                             TextColor="black"
                             FontFamily="Racing"
                             FontSize="25"/>
-               
-                
-                <!--Scroll -->
-                <ScrollView>
-                    
-                    <!-- Contenedor principal para la tarjeta-->
-                    <StackLayout 
+
+
+                    <!--Scroll -->
+                    <ScrollView>
+
+                        <!-- Contenedor principal para la tarjeta-->
+                        <StackLayout 
                         Margin="5,15">
 
-                        <!--Texto Nombre-->
-                        <StackLayout
+                            <!--Texto Nombre-->
+                            <StackLayout
                             Orientation="Horizontal"
                              Margin="0,15,0,0">
 
-                            <Label 
+                                <Label 
                                 Text="*"
                                 FontSize="25"
                                 TextColor="red"
                                 FontFamily="Questrial"/>
 
-                            <Label 
+                                <Label 
                                 Text="Ingrese Nombre: "
                                 TextColor="Black"
                                 FontSize="20"
                                 FontFamily="Questrial"/>
-                        </StackLayout>
+                            </StackLayout>
 
-                        <!-- Estilo para el Entry Redondo-->
-                        <Frame
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
                             BackgroundColor="Transparent" 
                             BorderColor="Black"                             
                             Padding="0"
@@ -62,15 +62,15 @@
                             WidthRequest="340"
                             Margin="20,0,15,0">
 
-                            <!--Contenedor del Input Nombre-->
-                            <StackLayout
+                                <!--Contenedor del Input Nombre-->
+                                <StackLayout
                                  Orientation="Horizontal"
                                  Margin="25,5">
 
-                                <Image 
+                                    <Image 
                                    Source="usuario.png"/>
 
-                                <Entry 
+                                    <Entry 
                                    x:Name="txtNombreUsuario"
                                    Margin="0,0,15,0"
                                    Placeholder="Nombre"
@@ -79,30 +79,30 @@
                                    FontFamily="Questrial"
                                    HorizontalOptions="FillAndExpand"/>
 
-                            </StackLayout>
-                        </Frame>
+                                </StackLayout>
+                            </Frame>
 
-                        <!--Texto Apellido-->
-                        <StackLayout
+                            <!--Texto Apellido-->
+                            <StackLayout
                             Orientation="Horizontal"
                              Margin="0,15,0,0">
 
-                            <Label 
+                                <Label 
                                 Text="*"
                                 FontSize="25"
                                 TextColor="red"
                                 FontFamily="Questrial"/>
 
-                            <Label 
+                                <Label 
                                 Text="Ingrese Apellido: "
                                 TextColor="Black"
                                 FontSize="20"
                                 FontFamily="Questrial"/>
-                        </StackLayout>
+                            </StackLayout>
 
 
-                        <!-- Estilo para el Entry Redondo-->
-                        <Frame
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
                             BackgroundColor="Transparent" 
                             BorderColor="Black"                             
                             Padding="0"
@@ -110,15 +110,15 @@
                             WidthRequest="340"
                             Margin="20,0,15,0">
 
-                            <!--Contenedor del Input Apellido-->
-                            <StackLayout
+                                <!--Contenedor del Input Apellido-->
+                                <StackLayout
                                  Orientation="Horizontal"
                                  Margin="25,5">
 
-                                <Image 
+                                    <Image 
                                    Source="usuario.png"/>
 
-                                <Entry 
+                                    <Entry 
                                     x:Name="txtApellidoUsuario"
                                    Margin="0,0,15,0"
                                    Placeholder="Apellido"
@@ -127,26 +127,26 @@
                                    FontFamily="Questrial"
                                    HorizontalOptions="FillAndExpand"/>
 
-                            </StackLayout>
-                        </Frame>
+                                </StackLayout>
+                            </Frame>
 
-                        <!--Texto Direccion-->
-                        <StackLayout
+                            <!--Texto Direccion-->
+                            <StackLayout
                             Orientation="Horizontal"
                              Margin="0,15,0,0">
 
-                            
 
-                            <Label 
+
+                                <Label 
                                 Text="Ingrese Direccion: "
                                 TextColor="Black"
                                 FontSize="20"
                                 FontFamily="Questrial"/>
-                        </StackLayout>
+                            </StackLayout>
 
 
-                        <!-- Estilo para el Entry Redondo-->
-                        <Frame
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
                             BackgroundColor="Transparent" 
                             BorderColor="Black"                             
                             Padding="0"
@@ -154,15 +154,15 @@
                             WidthRequest="340"
                             Margin="20,0,15,0">
 
-                            <!--Contenedor del Input direccion-->
-                            <StackLayout
+                                <!--Contenedor del Input direccion-->
+                                <StackLayout
                                  Orientation="Horizontal"
                                  Margin="25,5">
 
-                                <Image 
+                                    <Image 
                                    Source="direccion.png"/>
 
-                                <Entry 
+                                    <Entry 
                                     x:Name="txtDireccionUsuario"
                                    Margin="0,0,15,0"
                                    Placeholder="Direccion"
@@ -171,24 +171,24 @@
                                    FontFamily="Questrial"
                                    HorizontalOptions="FillAndExpand"/>
 
-                            </StackLayout>
-                        </Frame>
+                                </StackLayout>
+                            </Frame>
 
-                        <!--Texto Telefono-->
-                        <StackLayout
+                            <!--Texto Telefono-->
+                            <StackLayout
                             Orientation="Horizontal"
                              Margin="0,15,0,0">
 
-                            <Label 
+                                <Label 
                                 Text="Ingrese Teléfono: "
                                 TextColor="Black"
                                 FontSize="20"
                                 FontFamily="Questrial"/>
-                        </StackLayout>
+                            </StackLayout>
 
 
-                        <!-- Estilo para el Entry Redondo-->
-                        <Frame
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
                             BackgroundColor="Transparent" 
                             BorderColor="Black"                             
                             Padding="0"
@@ -196,15 +196,15 @@
                             WidthRequest="340"
                             Margin="20,0,15,10">
 
-                            <!--Contenedor del Input Telefono-->
-                            <StackLayout
+                                <!--Contenedor del Input Telefono-->
+                                <StackLayout
                                  Orientation="Horizontal"
                                  Margin="25,5">
 
-                                <Image 
+                                    <Image 
                                    Source="telefono.png"/>
 
-                                <Entry 
+                                    <Entry 
                                     x:Name="txtTelefonoUsuario"
                                    Margin="0,0,15,0"
                                    Keyboard="Numeric"
@@ -214,9 +214,9 @@
                                    FontFamily="Questrial"
                                    HorizontalOptions="FillAndExpand"/>
 
-                            </StackLayout>
-                        </Frame>
-                           
+                                </StackLayout>
+                            </Frame>
+
                             <Button 
                             Text="Actualizar" 
                             x:Name="btnActulizarUsuario"
@@ -238,9 +238,9 @@
                             Margin="10,0,0,15"/>
                             <!-- Contenedor Principal-->
                         </StackLayout>
-                    
+
                     </ScrollView>
-                    
+
                 </StackLayout>
             </Frame>
             <Label 

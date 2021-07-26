@@ -10,7 +10,7 @@ using Xamarin.Forms.Maps;
 using Xamarin.Essentials;
 using Plugin.Geolocator;
 
-namespace PRMOVIL2CARWASH
+namespace PRMOVIL2CARWASH.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Mapas : ContentPage

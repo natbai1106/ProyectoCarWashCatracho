@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRMOVIL2CARWASH.Views.CrearAuto"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+
+                <StackLayout>
+                    <!--Titulo -->
+                    <Label 
+                            Text="Registrar Automóviles"
+                            HorizontalOptions="Center"
+                            TextColor="black"
+                            FontFamily="Racing"
+                            FontSize="25"/>
+                    
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Image
+                            x:Name="imgFotoAuto" 
+                            Source="foto.png"
+                            WidthRequest="170"
+                            HeightRequest="170"/>
+                        <Grid>
+                            <Button                        
+                                ImageSource="camara.png"
+                                x:Name="btnFotoAutos"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="7"
+                                Clicked="btnFotoAutos_Clicked"
+                                />
+                            <Button                        
+                                ImageSource="camara.png"
+                                x:Name="btnGaleriaAutos"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="7"
+                                Clicked="btnGaleriaAutos_Clicked"
+                               />
+                        </Grid>
+                    </StackLayout>
+
+                    <!--Texto Numero-->
+                    <StackLayout
+                Orientation="Horizontal"
+                Margin="0,15,0,0">
+
+                        <!--<Label 
+                    Text="*"
+                    FontSize="25"
+                    Margin="20,0,15,0"
+                    TextColor="red"
+                    FontFamily="RobotoRegular"/>-->
+
+                        <Label 
+                    Text="Ingrese Número de Placa: "
+                    TextColor="DimGray"
+                    Margin="30,0,15,0"
+                    FontSize="20"                                 
+                    FontFamily="SansBold"/>
+
+                    </StackLayout>
+
+                    <!-- Estilo para el Entry Redondo-->
+                    <Frame
+                    BackgroundColor="Transparent" 
+                    BorderColor="Black"                             
+                    Padding="0"
+                    CornerRadius="10" 
+                    HasShadow="True"
+                    Margin="20,0,15,0">
+
+                        <!--Contenedor del Input Numero-->
+                        <StackLayout Orientation="Horizontal" Margin="25,5">
+                            <Entry
+                            x:Name="txtNumeroAutos"
+                            FontSize="20"
+                            FontFamily="SansLight"
+                            HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Texto Año-->
+
+                    <StackLayout
+                Orientation="Horizontal"
+                Margin="0,15,0,0">
+                        <Grid>
+                            <StackLayout Orientation="Horizontal"
+                                 Grid.Row="0"
+                                 Grid.Column="0">
+                                <Label 
+                            Text="*"
+                            FontSize="25"
+                            Margin="25,0,15,0"
+                            TextColor="red"
+                            FontFamily="RobotoRegular"/>
+
+                                <Label 
+                            Text="Marca:"
+                            TextColor="DimGray"
+                            Margin="0,0,15,0"
+                            FontSize="20"                                 
+                            FontFamily="SansBold"/>
+                            </StackLayout>
+
+
+                            <StackLayout
+                             Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.Column="1">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                Margin="25,0,15,0"
+                                TextColor="red"
+                                FontFamily="RobotoRegular"/>
+
+                                <Label 
+                                Text="Modelo:"
+                                TextColor="DimGray"
+                                FontSize="20"                                 
+                                FontFamily="SansBold"/>
+                            </StackLayout>
+
+                            <Frame
+                            BackgroundColor="Transparent" 
+                            BorderColor="Black"                             
+                            Padding="0"
+                            CornerRadius="10" 
+                            HasShadow="True"
+                            WidthRequest="120"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="20,-5">
+
+                                <!--Contenedor del Input Anio-->
+                                <StackLayout Orientation="Horizontal">
+                                    <Picker
+                                     WidthRequest="145"  
+                                     x:Name="pckMarca"
+                                     Title="Seleccione.."
+                                     HorizontalOptions="FillAndExpand"
+                                     Margin="15,0"
+                                     FontSize="20"
+                                     FontFamily="Questrial"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                             BackgroundColor="Transparent" 
+                             BorderColor="Black"                             
+                             Padding="0"
+                             CornerRadius="10" 
+                             HasShadow="True"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="15,-5">
+
+                                <!--Contenedor del Input Modelo-->
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Picker
+                                     WidthRequest="145"  
+                                     x:Name="PiModeloAutos"
+                                     Title="Seleccione.."
+                                     HorizontalOptions="FillAndExpand"
+                                     Margin="15,0"
+                                     FontSize="20"
+                                     FontFamily="Questrial"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+
+
+
+
+                    <!--Texto Año-->
+
+                    <StackLayout
+                Orientation="Horizontal"
+                Margin="0,15,0,0">
+                        <Grid>
+                            <StackLayout Orientation="Horizontal"
+                                 Grid.Row="0"
+                                 Grid.Column="0">
+                                <Label 
+                            Text="*"
+                            FontSize="25"
+                            Margin="25,0,15,0"
+                            TextColor="red"
+                            FontFamily="RobotoRegular"/>
+
+                                <Label 
+                            Text="Año:"
+                            TextColor="DimGray"
+                            Margin="0,0,15,0"
+                            FontSize="20"                                 
+                            FontFamily="SansBold"/>
+                            </StackLayout>
+
+
+                            <StackLayout
+                             Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.Column="1">
+
+                                <Label 
+                                Text="*"
+                                FontSize="25"
+                                Margin="25,0,15,0"
+                                TextColor="red"
+                                FontFamily="RobotoRegular"/>
+
+                                <Label 
+                                Text="Tipo:"
+                                TextColor="DimGray"
+                                FontSize="20"                                 
+                                FontFamily="SansBold"/>
+                            </StackLayout>
+
+                            <Frame
+                            BackgroundColor="Transparent" 
+                            BorderColor="Black"                             
+                            Padding="0"
+                            CornerRadius="10" 
+                            HasShadow="True"
+                            WidthRequest="120"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="20,-5">
+
+                                <!--Contenedor del Input Anio-->
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry
+                                     WidthRequest="145"  
+                                     x:Name="txtAnio"
+                                     HorizontalOptions="FillAndExpand"
+                                    Keyboard="Numeric"
+                                     Margin="15,0"
+                                     FontSize="20"
+                                     FontFamily="Questrial"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <!-- Estilo para el Entry Redondo-->
+                            <Frame
+                             BackgroundColor="Transparent" 
+                             BorderColor="Black"                             
+                             Padding="0"
+                             CornerRadius="10" 
+                             HasShadow="True"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="15,-5">
+
+                                <!--Contenedor del Input Modelo-->
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Picker
+                                     WidthRequest="145"  
+                                     x:Name="pckTipo"
+                                     Title="Seleccione.."
+                                     HorizontalOptions="FillAndExpand"
+                                     Margin="15,0"
+                                     FontSize="20"
+                                     FontFamily="Questrial"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                Margin="0,15,0,0">
+                        <!--Texto Numero-->
+
+
+                        <!--<Label 
+                    Text="*"
+                    FontSize="25"
+                    Margin="20,0,15,0"
+                    TextColor="red"
+                    FontFamily="RobotoRegular"/>-->
+
+                        <Label 
+                            Text="Observaciones:"
+                            TextColor="DimGray"
+                            Margin="30,0,15,0"
+                            FontSize="20"                                 
+                            FontFamily="SansBold"/>
+
+                    </StackLayout>
+
+                    <!-- Estilo para el Entry Redondo-->
+                    <Frame
+                    BackgroundColor="Transparent" 
+                    BorderColor="Black"                             
+                    Padding="0"
+                    CornerRadius="10" 
+                    HasShadow="True"
+                    Margin="20,0,15,5">
+
+                        <!--Contenedor del Input Numero-->
+                        <StackLayout Orientation="Horizontal" Margin="25,5">
+                            <Entry
+                            x:Name="observaciones"
+                            FontSize="20"
+                            FontFamily="SansLight"
+                            HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <Grid >
+                <Button
+                        Text="Actualizar" 
+                        x:Name="btnActulizarAutos"
+                        BackgroundColor="#01ADBA"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+
+                <Button
+                        Text="Limpiar" 
+                        x:Name="btnLimpiarAutos"
+                        BackgroundColor="#E3E4E5"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

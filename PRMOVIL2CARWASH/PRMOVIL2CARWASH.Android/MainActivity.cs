@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.OS;
 using System.IO;
 using Plugin.CurrentActivity;
+using Android.Content;
+using Com.OneSignal;
+using Com.OneSignal.Abstractions;
 
 namespace PRMOVIL2CARWASH.Droid
 {
@@ -15,11 +18,18 @@ namespace PRMOVIL2CARWASH.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
 
+            OneSignal.Current.StartInit("42b0cfb0-590b-4ade-983b-cc054e08d1f4")
+             .InFocusDisplaying(OSInFocusDisplayOption.Notification)
+             .EndInit();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            Intent intent = new Intent(this, typeof(SMSBroadcastReceiver));
+            StartService(intent);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

@@ -19,6 +19,7 @@ namespace PRMOVIL2CARWASH
             Routing.RegisterRoute(nameof(Facturacion), typeof(Facturacion));
             Routing.RegisterRoute(nameof(Mapas), typeof(Mapas));
             Routing.RegisterRoute(nameof(RegistrarAutos), typeof(RegistrarAutos));
+            Routing.RegisterRoute(nameof(CrearAuto), typeof(CrearAuto));
             Routing.RegisterRoute(nameof(Reservacion), typeof(Reservacion));
             Routing.RegisterRoute(nameof(Validacion), typeof(Validacion));
             Routing.RegisterRoute(nameof(AcercaDe), typeof(AcercaDe));

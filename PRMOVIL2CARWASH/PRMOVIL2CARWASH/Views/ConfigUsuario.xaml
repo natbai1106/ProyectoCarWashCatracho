@@ -36,94 +36,94 @@
 
                             <!--Texto Nombre-->
                             <StackLayout
-                            Orientation="Horizontal"
-                             Margin="0,15,0,0">
+                                Orientation="Horizontal"
+                                 Margin="0,15,0,0">
 
                                 <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="Questrial"/>
+                                    Text="*"
+                                    FontSize="25"
+                                    TextColor="red"
+                                    FontFamily="Questrial"/>
 
                                 <Label 
-                                Text="Ingrese Nombre: "
-                                TextColor="Black"
-                                FontSize="20"
-                                FontFamily="Questrial"/>
+                                    Text="Ingrese Nombre: "
+                                    TextColor="Black"
+                                    FontSize="20"
+                                    FontFamily="Questrial"/>
                             </StackLayout>
 
                             <!-- Estilo para el Entry Redondo-->
                             <Frame
-                            BackgroundColor="Transparent" 
-                            BorderColor="Black"                             
-                            Padding="0"
-                            CornerRadius="50" 
-                            WidthRequest="340"
-                            Margin="20,0,15,0">
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
 
                                 <!--Contenedor del Input Nombre-->
                                 <StackLayout
-                                 Orientation="Horizontal"
-                                 Margin="25,5">
+                                    Orientation="Horizontal"
+                                    Margin="25,5">
 
                                     <Image 
-                                   Source="usuario.png"/>
+                                        Source="usuario.png"/>
 
                                     <Entry 
-                                   x:Name="txtNombreUsuario"
-                                   Margin="0,0,15,0"
-                                   Placeholder="Nombre"
-                                   PlaceholderColor="Gray"
-                                   FontSize="20"
-                                   FontFamily="Questrial"
-                                   HorizontalOptions="FillAndExpand"/>
+                                       x:Name="txtNombreUsuario"
+                                       Margin="0,0,15,0"
+                                       Placeholder="Nombre"
+                                       PlaceholderColor="Gray"
+                                       FontSize="20"
+                                       FontFamily="Questrial"
+                                       HorizontalOptions="FillAndExpand"/>
 
                                 </StackLayout>
                             </Frame>
 
                             <!--Texto Apellido-->
                             <StackLayout
-                            Orientation="Horizontal"
-                             Margin="0,15,0,0">
+                                Orientation="Horizontal"
+                                Margin="0,15,0,0">
 
                                 <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="Questrial"/>
+                                    Text="*"
+                                    FontSize="25"
+                                    TextColor="red"
+                                    FontFamily="Questrial"/>
 
                                 <Label 
-                                Text="Ingrese Apellido: "
-                                TextColor="Black"
-                                FontSize="20"
-                                FontFamily="Questrial"/>
+                                    Text="Ingrese Apellido: "
+                                    TextColor="Black"
+                                    FontSize="20"
+                                    FontFamily="Questrial"/>
                             </StackLayout>
 
                             <!-- Estilo para el Entry Redondo-->
                             <Frame
-                            BackgroundColor="Transparent" 
-                            BorderColor="Black"                             
-                            Padding="0"
-                            CornerRadius="50" 
-                            WidthRequest="340"
-                            Margin="20,0,15,0">
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="50" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
 
                                 <!--Contenedor del Input Apellido-->
                                 <StackLayout
-                                 Orientation="Horizontal"
-                                 Margin="25,5">
+                                     Orientation="Horizontal"
+                                     Margin="25,5">
 
                                     <Image 
                                    Source="usuario.png"/>
 
                                     <Entry 
-                                    x:Name="txtApellidoUsuario"
-                                   Margin="0,0,15,0"
-                                   Placeholder="Apellido"
-                                   PlaceholderColor="Gray"
-                                   FontSize="20"
-                                   FontFamily="Questrial"
-                                   HorizontalOptions="FillAndExpand"/>
+                                        x:Name="txtApellidoUsuario"
+                                       Margin="0,0,15,0"
+                                       Placeholder="Apellido"
+                                       PlaceholderColor="Gray"
+                                       FontSize="20"
+                                       FontFamily="Questrial"
+                                       HorizontalOptions="FillAndExpand"/>
 
                                 </StackLayout>
                             </Frame>

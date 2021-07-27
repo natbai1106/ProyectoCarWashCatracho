@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PostImagenes.ViewModel" xmlns:Viewmodel="clr-namespace:PRMOVIL2CARWASH.ViewModels"
              x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
              BackgroundImage="fondo.jpg">
+    
     <!-- MARGENES DE LA TARJETA BLANCA -->
     <StackLayout
        Margin="2,5" >
@@ -40,6 +42,25 @@
                     <!-- CONTENEDORES DE LOS ENTRY -->
                     <StackLayout
                         Margin="5,5">
+
+                        <StackLayout Orientation="Horizontal">
+                            <Image
+                                x:Name="imgFotoUsuario" 
+                                Source="foto.png"
+                                WidthRequest="200"
+                                HeightRequest="225"/>
+
+                                <Button 
+                                HorizontalOptions ="Center"
+                                ImageSource="camara.png"
+                                x:Name="btnFotoUsuario"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="40"
+                                WidthRequest="80"
+                                HeightRequest="80"
+                                VerticalOptions="Center"
+                                Clicked="btnFotoUsuario_Clicked"/>
+                            </StackLayout>
 
                         <!-- CAMPO OBLIGATORIO DE ASTERISCO - NOMBRE -->
                         <StackLayout 

@@ -9,6 +9,7 @@ using Plugin.CurrentActivity;
 using Android.Content;
 using Com.OneSignal;
 using Com.OneSignal.Abstractions;
+using System.Threading.Tasks;
 
 namespace PRMOVIL2CARWASH.Droid
 {
@@ -19,7 +20,7 @@ namespace PRMOVIL2CARWASH.Droid
         {
             base.OnCreate(savedInstanceState);
             OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
-
+                
             OneSignal.Current.StartInit("42b0cfb0-590b-4ade-983b-cc054e08d1f4")
              .InFocusDisplaying(OSInFocusDisplayOption.Notification)
              .EndInit();

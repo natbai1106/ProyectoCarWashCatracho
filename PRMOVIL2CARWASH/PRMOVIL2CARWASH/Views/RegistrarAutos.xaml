@@ -7,7 +7,6 @@
         <!-- Margenes Tarjeta Blanca-->
         <StackLayout Margin="2,5">
 
-
             <!-- TARJETA COLOR BLANCO -->
             <Frame
                 BackgroundColor="#F5F5F5F5"

@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PostImagenes.ViewModel" xmlns:Viewmodel="clr-namespace:PRMOVIL2CARWASH.ViewModels"
+             x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
+             BackgroundImage="fondo.jpg">
+    
+    <!-- MARGENES DE LA TARJETA BLANCA -->
+    <StackLayout
+       Margin="2,5" >
+
+        <!-- TARJETA COLOR BLANCO -->
+        <Frame
+                BackgroundColor="#F5F5F5F5"
+                CornerRadius="15"
+                HasShadow="True"
+                HeightRequest="800"
+                Margin="10,15">
+
+            <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
+            <StackLayout
+                Margin="5,15">
+
+                <!-- TITULOS DE LA TARJETA -->
+                <StackLayout
+                    HorizontalOptions="Center">
+
+                    <!-- LABEL DE CREACION DE USUARIO -->
+                    <Label 
+                        Text="Creacion de Usuario"
+                        x:Name="txtInicioSesion"
+                        TextColor="Black"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        FontSize="30"
+                        FontFamily="Racing"/>
+                </StackLayout>
+
+                <!-- SCROLLVIEW DE LA TARJETA -->
+                <ScrollView>
+
+                    <!-- CONTENEDORES DE LOS ENTRY -->
+                    <StackLayout
+                        Margin="5,5">
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            
+                            <Image
+                            x:Name="imgFotoUsuario" 
+                            Source="foto.png"
+                            WidthRequest="170"
+                            HeightRequest="170"/>
+                            <Grid>
+                                <Button                        
+                                ImageSource="camara.png"
+                                x:Name="btnFotosUsuario"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="7"
+                                Clicked="btnFotosUsuario_Clicked"
+                                />
+                                <Button                        
+                                ImageSource="camara.png"
+                                x:Name="btnGaleriaUsuario"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="7"
+                                Clicked="btnGaleriaUsuario_Clicked"
+                               />
+                            </Grid>
+                        </StackLayout>
+
+                        <!-- CAMPO OBLIGATORIO DE ASTERISCO - NOMBRE -->
+                        <StackLayout 
+                            Orientation="Horizontal"
+                            Margin="0,5,0,0">
+
+                            <!-- LABEL DE ASTERISCO - NOMBRE -->
+                            <Label 
+                            Text="*"
+                            TextColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="20"/>
+
+                            <!-- LABEL DE NOMBRE -->
+                            <Label  
+                            Text="Ingrese Nombre: " 
+                            x:Name="txtNombre"
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            FontSize="20"
+                            FontFamily="Questrial"/>
+                        </StackLayout>
+
+                        <!-- ESTILOS DEL ENTRY NOMBRE -->
+                        <Frame
+                            BackgroundColor="Transparent" 
+                            BorderColor="Black" 
+                            Padding="0" 
+                            Margin="0" 
+                            CornerRadius="50" 
+                            WidthRequest="340"
+                            HorizontalOptions="FillAndExpand">
+
+                            <!-- CONTENEDOR ENTRY NOMBRE -->
+                            <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                                <!-- IMAGEN DE NOMBRE -->
+                                <Image 
+                                Source="nombre.png" />
+
+                                <!-- ENTRY NOMBRE -->
+                                <Entry 
+                                Placeholder="Nombre" 
+                                Keyboard="Plain"
+                                FontFamily="Questrial"
+                                FontSize="20"
+                                PlaceholderColor="Gray" 
+                                TextColor="black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <!-- CAMPO OBLIGATORIO DE ASTERISCO - APELLIDO -->
+                        <StackLayout 
+                        Orientation="Horizontal"
+                        Margin="0,5,0,0">
+                            <!-- LABEL DE ASTERISCO - APELLIDO -->
+                            <Label 
+                            Text="*"
+                            TextColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="20"/>
+
+                            <!-- LABEL DE APELLIDO -->
+                            <Label  
+                            Text="Ingrese Apellido: " 
+                            x:Name="txtApellido"
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            FontSize="20"
+                            FontFamily="Questrial"/>
+                        </StackLayout>
+
+                        <!-- ESTILOS DEL ENTRY APELLIDO -->
+                        <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black" 
+                        Padding="0" 
+                        Margin="0" 
+                        CornerRadius="50" 
+                        WidthRequest="340"
+                        HorizontalOptions="FillAndExpand">
+
+                            <!-- CONTENEDOR ENTRY APELLIDO -->
+                            <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                                <!-- IMAGEN DE APELLIDO -->
+                                <Image 
+                                Source="apellido.png" />
+
+                                <!-- ENTRY APELLIDO -->
+                                <Entry 
+                                Placeholder="Apellido" 
+                                Keyboard="Plain"
+                                FontFamily="Questrial"
+                                FontSize="20"
+                                PlaceholderColor="Gray" 
+                                TextColor="black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <!-- CAMPO OBLIGATORIO DE ASTERISCO - DIRECCION -->
+                        <StackLayout 
+                        Orientation="Horizontal"
+                        Margin="0,5,0,0">
+
+                            <!-- LABEL DE ASTERISCO - DIRECCION -->
+                            <Label 
+                            Text="*"
+                            TextColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="20"/>
+
+                            <!-- LABEL DE DIRECCION -->
+                            <Label  
+                            Text="Ingrese Dirección: " 
+                            x:Name="txtDireccion"
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            FontSize="20"
+                            FontFamily="Questrial"/>
+                        </StackLayout>
+
+                        <!-- ESTILOS DEL ENTRY DIRECCION -->
+                        <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black" 
+                        Padding="0" 
+                        Margin="0" 
+                        CornerRadius="50" 
+                        WidthRequest="340"
+                        HorizontalOptions="FillAndExpand">
+
+                            <!-- CONTENEDOR ENTRY DIRECCION -->
+                            <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                                <!-- IMAGEN DE DIRECCION -->
+                                <Image 
+                                Source="direccion.png" />
+                                <!-- ENTRY DIRECCION -->
+                                <Entry 
+                                Placeholder="Dirección" 
+                                Keyboard="Plain"
+                                FontFamily="Questrial"
+                                FontSize="20"
+                                PlaceholderColor="Gray" 
+                                TextColor="black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <!-- CAMPO OBLIGATORIO DE ASTERISCO - CORREO -->
+                        <StackLayout 
+                        Orientation="Horizontal"
+                        Margin="0,5,0,0">
+
+                            <!-- LABEL DE ASTERISCO - CORREO -->
+                            <Label 
+                            Text="*"
+                            TextColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="20"/>
+
+                            <!-- LABEL DE CORREO -->
+                            <Label  
+                            Text="Ingrese Correo: " 
+                            x:Name="txtCorreo"
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            FontSize="20"
+                            FontFamily="Questrial"/>
+                        </StackLayout>
+
+                        <!-- ESTILOS DEL ENTRY CORREO -->
+                        <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black" 
+                        Padding="0" 
+                        Margin="0" 
+                        CornerRadius="50" 
+                        WidthRequest="340"
+                        HorizontalOptions="FillAndExpand">
+
+                            <!-- CONTENEDOR ENTRY CORREO -->
+                            <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                                <!-- IMAGEN DE CORREO -->
+                                <Image 
+                                Source="correo.png" />
+
+                                <!-- ENTRY CORREO -->
+                                <Entry 
+                                    Placeholder="Correo" 
+                                    Keyboard="Email"
+                                    FontFamily="Questrial"
+                                    FontSize="20"
+                                    PlaceholderColor="Gray" 
+                                    TextColor="black" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <!-- CAMPO OBLIGATORIO DE ASTERISCO - TELEFONO -->
+                        <StackLayout 
+                        Orientation="Horizontal"
+                        Margin="0,5,0,0">
+
+                            <!-- LABEL DE ASTERISCO - TELEFONO -->
+                            <Label 
+                            Text="*"
+                            TextColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="20"/>
+
+                            <!-- LABEL DE TELEFONO -->
+                            <Label  
+                            Text="Ingrese Teléfono: " 
+                            x:Name="txtTelefono"
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            FontSize="20"
+                            FontFamily="Questrial"/>
+                        </StackLayout>
+                        <!-- ESTILOS DEL ENTRY TELEFONO -->
+                        <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black" 
+                        Padding="0" 
+                        Margin="0" 
+                        CornerRadius="50" 
+                        WidthRequest="340"
+                        HorizontalOptions="FillAndExpand">
+
+                            <!-- CONTENEDOR ENTRY TELEFONO -->
+                            <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                                <!-- IMAGEN DE TELEFONO -->
+                                <Image 
+                                Source="telefono.png" />
+
+                                <!-- ENTRY TELEFONO -->
+                                <Entry 
+                                Placeholder="Teléfono" 
+                                Keyboard="Telephone"
+                                FontFamily="Questrial"
+                                FontSize="20"
+                                PlaceholderColor="Gray" 
+                                TextColor="black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <!-- CAMPO OBLIGATORIO DE ASTERISCO - INGRESAR USUA -->
+                        <StackLayout 
+                        Orientation="Horizontal"
+                        Margin="0,5,0,0">
+
+                            <!-- LABEL DE ASTERISCO - INGRESAR USUA -->
+                            <Label 
+                            Text="*"
+                            TextColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="20"/>
+
+                            <!-- LABEL DE INGRESAR USUA -->
+                            <Label  
+                            Text="Ingrese Usuario: " 
+                            x:Name="txtIngreseUsuario"
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            FontSize="20"
+                            FontFamily="Questrial"/>
+                        </StackLayout>
+
+                        <!-- ESTILOS DEL ENTRY INGRESAR USUARIO -->
+                        <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black" 
+                        Padding="0" 
+                        Margin="0" 
+                        CornerRadius="50" 
+                        WidthRequest="340"
+                        HorizontalOptions="FillAndExpand">
+
+                            <!-- CONTENEDOR ENTRY INGRESAR USUARIO -->
+                            <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                                <!-- IMAGEN DE INGRESAR USUARIO -->
+                                <Image 
+                                Source="user.png" />
+
+                                <!-- ENTRY INGRESAR USUARIO -->
+                                <Entry 
+                                Placeholder="Usuario" 
+                                Keyboard="Plain"
+                                FontFamily="Questrial"
+                                FontSize="20"
+                                PlaceholderColor="Gray" 
+                                TextColor="black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <!-- CAMPO OBLIGATORIO DE ASTERISCO - INGRESAR CONTRASEÑA -->
+                        <StackLayout 
+                        Orientation="Horizontal"
+                        Margin="0,5,0,0">
+                            <!-- LABEL DE ASTERISCO - INGRESAR CONTRASEÑA -->
+                            <Label 
+                            Text="*"
+                            TextColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="20"/>
+
+                            <!-- LABEL DE INGRESAR CONTRASEÑA -->
+                            <Label  
+                            Text="Ingrese Contraseña: " 
+                            x:Name="txtIngreseContraseña"
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            FontSize="20"
+                            FontFamily="Questrial"/>
+                        </StackLayout>
+
+                        <!-- ESTILOS DEL ENTRY CONTRASEÑA -->
+                        <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black" 
+                        Padding="0" 
+                        Margin="0" 
+                        CornerRadius="50" 
+                        WidthRequest="340"
+                        HorizontalOptions="FillAndExpand">
+
+                            <!-- CONTENEDOR ENTRY CONTRASEÑA -->
+                            <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                                <!-- IMAGEN DE CONTRASEÑA -->
+                                <Image 
+                                Source="candado.png" />
+
+                                <!-- ENTRY   -->
+                                <Entry 
+                                    Placeholder="Contraseña" 
+                                    Keyboard="Plain"
+                                    IsPassword="True"
+                                    FontFamily="Questrial"
+                                    FontSize="20"
+                                    PlaceholderColor="Gray" 
+                                    TextColor="black" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    Margin="0,0,15,0"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Button 
+                            Text="Confirmar" 
+                            x:Name="btnConfirmar"
+                            Clicked="btnConfirmar_Clicked"
+                            BackgroundColor="#01ADBA"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="50"
+                            BorderWidth="2"
+                            Margin="25,5"/>
+
+                        <Button 
+                            Text="Limpiar" 
+                            x:Name="btnLimpiar"
+                            Clicked="btnLimpiar_Clicked"
+                            BackgroundColor="#E3E4E5"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            CornerRadius="50"
+                            BorderWidth="2"
+                            Margin="25,5"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

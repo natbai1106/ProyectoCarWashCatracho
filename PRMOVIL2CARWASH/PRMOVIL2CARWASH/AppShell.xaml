@@ -97,7 +97,7 @@
 
     <FlyoutItem Title="Registrar Automóvil" 
                 Icon="carro.png">
-        <ShellContent Route="RegistrarAutos" 
+        <ShellContent Route="CrearAuto" 
                       ContentTemplate="{DataTemplate local:CrearAuto}" />
     </FlyoutItem>
 

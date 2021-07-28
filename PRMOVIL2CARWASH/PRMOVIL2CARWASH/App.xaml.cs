@@ -20,7 +20,7 @@ namespace PRMOVIL2CARWASH
             MainPage = new AppShell();
 
             // Remove this method to stop OneSignal Debugging
-  OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
 
             OneSignal.Current.StartInit("42b0cfb0-590b-4ade-983b-cc054e08d1f4")
             .Settings(new Dictionary<string, bool>() {
@@ -44,5 +44,8 @@ namespace PRMOVIL2CARWASH
         protected override void OnResume()
         {
         }
+
+
     }
+
 }

@@ -243,9 +243,6 @@
     <AndroidResource Include="Resources\drawable\user_session.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\usuario.svg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\Fondo_diseno.png" />
   </ItemGroup>
   <ItemGroup>

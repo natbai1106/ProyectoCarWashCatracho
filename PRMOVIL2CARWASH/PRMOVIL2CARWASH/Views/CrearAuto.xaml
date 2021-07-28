@@ -223,7 +223,7 @@
                         </StackLayout>
                     </Frame>
 
-                    <!--GRID DEL Anio-->
+                    <!--GRID DE ANIO Y NO DE PLACA-->
                    <Grid
                          Margin="15, 10">
                         <!--Texto Año-->

@@ -162,7 +162,8 @@
                                 CornerRadius="10" 
                                 WidthRequest="340"
                                 Margin="20,0,15,0">
-
+                            
+                               
                       
                                 <StackLayout
                                      Orientation="Horizontal"

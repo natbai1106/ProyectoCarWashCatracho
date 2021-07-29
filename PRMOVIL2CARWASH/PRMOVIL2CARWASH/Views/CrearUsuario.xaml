@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:PostImagenes.ViewModel" xmlns:Viewmodel="clr-namespace:PRMOVIL2CARWASH.ViewModels"
              x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
              BackgroundImage="fondo.jpg">
-    
+
     <!-- MARGENES DE LA TARJETA BLANCA -->
     <StackLayout
        Margin="2,5" >
@@ -47,28 +46,28 @@
                             
                             <Image
                             x:Name="imgFotoUsuario" 
-                            Source="foto.png"
+                            
                             WidthRequest="170"
                             HeightRequest="170"/>
                             <Grid>
                                 <Button                        
                                 ImageSource="camara.png"
                                 x:Name="btnFotosUsuario"
+                                Command="{Binding ThakePhotoCommand}"
                                 Grid.Row="0"
                                 Grid.Column="0"
+                                IsEnabled="{Binding IsBusy}"
                                 BackgroundColor="#E3E4E5"
-                                CornerRadius="7"
-                                Clicked="btnFotosUsuario_Clicked"
-                                />
+                                CornerRadius="7" />
                                 <Button                        
                                 ImageSource="camara.png"
                                 x:Name="btnGaleriaUsuario"
+                                IsEnabled="{Binding IsBusy}"
+                                Command="{Binding OpenGaleryCommand}"
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 BackgroundColor="#E3E4E5"
-                                CornerRadius="7"
-                                Clicked="btnGaleriaUsuario_Clicked"
-                               />
+                                CornerRadius="7"/>
                             </Grid>
                         </StackLayout>
 
@@ -117,6 +116,7 @@
                                 <Entry 
                                 Placeholder="Nombre" 
                                 Keyboard="Plain"
+                                Text="{Binding Name, Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -170,6 +170,7 @@
                                 <Entry 
                                 Placeholder="Apellido" 
                                 Keyboard="Plain"
+                                 Text="{Binding LastName,Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -223,6 +224,7 @@
                                 <Entry 
                                 Placeholder="Dirección" 
                                 Keyboard="Plain"
+                                 Text="{Binding Address}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -279,6 +281,7 @@
                                     Keyboard="Email"
                                     FontFamily="Questrial"
                                     FontSize="20"
+                                     Text="{Binding Mail}"
                                     PlaceholderColor="Gray" 
                                     TextColor="black" 
                                     HorizontalOptions="FillAndExpand" 
@@ -330,6 +333,7 @@
                                 <Entry 
                                 Placeholder="Teléfono" 
                                 Keyboard="Telephone"
+                                Text="{Binding Cellephone,Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -385,11 +389,12 @@
                                 <Entry 
                                 Placeholder="Usuario" 
                                 Keyboard="Plain"
+                                Text="{Binding User,Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
                                 TextColor="black" 
-                                HorizontalOptions="FillAndExpand" 
+                                HorizontalOptions="FillAndExpand"  
                                 Margin="0,0,15,0"/>
                             </StackLayout>
                         </Frame>
@@ -436,7 +441,8 @@
 
                                 <!-- ENTRY   -->
                                 <Entry 
-                                    Placeholder="Contraseña" 
+                                    Placeholder="Contraseña"
+                                    Text="{Binding Password,Mode=TwoWay}"
                                     Keyboard="Plain"
                                     IsPassword="True"
                                     FontFamily="Questrial"
@@ -451,18 +457,20 @@
                         <Button 
                             Text="Confirmar" 
                             x:Name="btnConfirmar"
-                            Clicked="btnConfirmar_Clicked"
+                            Command="{Binding SendVerifyCommand}"
                             BackgroundColor="#01ADBA"
                             TextColor="White"
                             FontAttributes="Bold"
                             CornerRadius="50"
+                            IsEnabled="{Binding IsBusy}"
                             BorderWidth="2"
                             Margin="25,5"/>
 
                         <Button 
                             Text="Limpiar" 
                             x:Name="btnLimpiar"
-                            Clicked="btnLimpiar_Clicked"
+                            IsEnabled="{Binding IsBusy}"
+                            Command="{Binding Clean}"
                             BackgroundColor="#E3E4E5"
                             TextColor="Black"
                             FontAttributes="Bold"

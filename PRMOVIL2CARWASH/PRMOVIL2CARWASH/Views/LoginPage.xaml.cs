@@ -15,7 +15,7 @@ namespace PRMOVIL2CARWASH.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            this.BindingContext = new LoginViewModel(this);
         }
         private async void btnCrear_Clicked(object sender, EventArgs e)
         {

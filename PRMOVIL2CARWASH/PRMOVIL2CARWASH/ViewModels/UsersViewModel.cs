@@ -27,9 +27,11 @@ namespace PRMOVIL2CARWASH.ViewModels
         public string Name { get => name;
             set => name = value; }
         public string LastName { get => lastName; set => lastName = value; }
-        public string Address { get => address; set => address = value; }
+        public string Address { get => address; 
+            set => address = value; }
         public string Mail { get => mail; set => mail = value; }
-        public string Telephone { get => telephone; set => telephone = value; }
+        public string Telephone { get => telephone; 
+            set => telephone = value; }
         public string User { get => user; 
             set => user = value; }
         public string Password { get => password; set => password = value; }
@@ -55,7 +57,14 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         private async void OnRequestVerify(object obj)
         {
-            await Page.DisplayAlert("Existe un error", "esto es un ejemplo", "ok");      
+            if (!string.IsNullOrEmpty(Name))
+            {
+                await Page.DisplayAlert("Su nombre es: ", Name, "Ok");
+            }
+            else 
+            {
+                await Page.DisplayAlert("El nombre no puede ir vacio", Name, "ok");
+            }
         }
 
 

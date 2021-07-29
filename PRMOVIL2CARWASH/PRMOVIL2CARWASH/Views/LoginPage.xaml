@@ -28,14 +28,14 @@
 
             <!-- TARJETA COLOR BLANCO -->
             
-                <Frame BackgroundColor="GhostWhite"
+                <Frame BackgroundColor="Transparent"
                        CornerRadius="7"
                        HasShadow="True"
                        Margin="10,20"
                        HorizontalOptions="FillAndExpand">
                     <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
                     <!-- CONTENEDORES DE LOS ENTRY -->
-                    <StackLayout Margin="0,15">
+                    <StackLayout Margin="0,-3">
                         <!-- ESTILOS DEL ENTRY USUARIO -->
                     <Frame BackgroundColor="Transparent" 
                                BorderColor="Black" 
@@ -88,19 +88,38 @@
                                     HorizontalOptions="FillAndExpand" />
                         </StackLayout>
                     </Frame>
-                    <Grid>
+        
                         <Button 
                             Text="Login" 
                             BackgroundColor="#01ADBA"
                             Command="{Binding LoginCommand}"
                             TextColor="White"
                             FontAttributes="Bold"
-                            Grid.Row="1"
-                            Grid.Column="0"
+                            WidthRequest="10"
+                            HeightRequest="50"
                             CornerRadius="7"
-                            BorderWidth="2"/>
+                            BorderWidth="1"/>
+                    <Label HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Padding="5">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="¿No tienes cuenta? " FontAttributes="Bold" FontSize="15" />
+                                <Span Text="Registrate aqui!" FontAttributes="Bold" FontSize="15"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Command="{Binding ClickCommand}"
+                                    CommandParameter="https://play.google.com/store/apps/details?id=com.GesbDesarrollosTI.cgi" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span 
+                            Text=" y disfruta de muchos beneficios" FontAttributes="Bold" FontSize="15"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
-                    <Button 
+                    <!--<Button 
                         Text="Crear Usuario" 
                         x:Name="btnCrear"
                         Command="{Binding NewUserCommand}"
@@ -109,8 +128,9 @@
                         FontAttributes="Bold"
                         CornerRadius="50"
                         BorderWidth="2"
-                        Margin="25,0"/>
+                        Margin="25,0"/>-->
 
+                    
                 </StackLayout>
             </Frame>
         </StackLayout>

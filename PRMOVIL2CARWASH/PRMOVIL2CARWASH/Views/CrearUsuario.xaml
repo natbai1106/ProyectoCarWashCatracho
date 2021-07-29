@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-<<<<<<< HEAD
-             xmlns:viewmodel="clr-namespace:PostImagenes.ViewModel"
-             xmlns:Viewmodel="clr-namespace:PRMOVIL2CARWASH.ViewModels"
-             x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
-             BackgroundImage="#FDFDFD">
-    
-   
-=======
              x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
              BackgroundImage="fondo.jpg">
 
@@ -23,7 +15,6 @@
                 HasShadow="True"
                 HeightRequest="800"
                 Margin="10,15">
->>>>>>> b1f1fb0a2e05f9d3a3f00f16c4720c94d4ccf7b7
 
             <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
             <StackLayout
@@ -52,7 +43,7 @@
                         Margin="5,5">
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            
+
                             <Image
                             x:Name="imgFotoUsuario" 
                             
@@ -71,7 +62,7 @@
                                 <Button                        
                                 ImageSource="camara.png"
                                 x:Name="btnGaleriaUsuario"
-                                IsEnabled="{Binding IsBusy}"
+                                 IsEnabled="{Binding IsBusy}"
                                 Command="{Binding OpenGaleryCommand}"
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -233,7 +224,7 @@
                                 <Entry 
                                 Placeholder="Dirección" 
                                 Keyboard="Plain"
-                                 Text="{Binding Address}"
+                                 Text="{Binding Address, Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -471,14 +462,12 @@
                             TextColor="White"
                             FontAttributes="Bold"
                             CornerRadius="50"
-                            IsEnabled="{Binding IsBusy}"
                             BorderWidth="2"
                             Margin="25,5"/>
 
                         <Button 
                             Text="Limpiar" 
                             x:Name="btnLimpiar"
-                            IsEnabled="{Binding IsBusy}"
                             Command="{Binding Clean}"
                             BackgroundColor="#E3E4E5"
                             TextColor="Black"
@@ -489,5 +478,6 @@
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
-     
+        </Frame>
+    </StackLayout>
 </ContentPage>

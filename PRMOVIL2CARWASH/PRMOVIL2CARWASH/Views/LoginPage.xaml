@@ -100,18 +100,17 @@
                             CornerRadius="7"
                             BorderWidth="2"/>
 
-                        <Button 
-                            Text="Crear Usuario" 
-                            x:Name="btnCrear"
-                            Clicked="btnCrear_Clicked"
-                            BackgroundColor="#E3E4E5"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            CornerRadius="7"
-                            BorderWidth="2"/>
-                    </Grid>
+                    <Button 
+                        Text="Crear Usuario" 
+                        x:Name="btnCrear"
+                        Command="{Binding NewUserCommand}"
+                        BackgroundColor="#E3E4E5"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        CornerRadius="50"
+                        BorderWidth="2"
+                        Margin="25,0"/>
+
                 </StackLayout>
             </Frame>
         </StackLayout>

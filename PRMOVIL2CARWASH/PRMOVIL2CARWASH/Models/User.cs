@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PRMOVIL2CARWASH.Utils;
+
 namespace PRMOVIL2CARWASH.Models
 {
-  
-	public class User
-	{
-        
 
-		[JsonProperty("idUsuario")]
-		public int IdUsuario {get; set;}
-		[JsonProperty("nombre")]
-		public int Nombre { get; set; }
+    public class User
+    {
+        [JsonProperty("idUsuario")]
+        public int IdUsuario { get; set; }
+        [JsonProperty("nombre")]
+        public int Nombre { get; set; }
         [JsonProperty("apellido")]
         public string Apellido { get; set; }
         [JsonProperty("direccion")]
@@ -26,18 +28,53 @@ namespace PRMOVIL2CARWASH.Models
         [JsonProperty("contraseña")]
         public string Contraseña { get; set; }
         [JsonProperty("estadoSesion")]
-         public bool EstadoSesion { get; set; }
+        public bool EstadoSesion { get; set; }
         [JsonProperty("foto")]
-        public byte [] Foto { get; set; }
+        public byte[] Foto { get; set; }
         [JsonProperty("urlFoto")]
         public string UrlFoto { get; set; }
 
-        public int RegisterUser(User usuario)
-        {
 
-            
+        HttpClient cliente;
+        HttpResponseMessage requestMessage;
+        string url = Constanst.GetUrl("/users");
+        public User()
+        {
+            cliente = new HttpClient();
+
+        }
+        public int RegisterUser()
+        {
+            var m = JsonConvert.SerializeObject(this);
             return 0;
+        }
+
+        public async Task<int> VerfyAccount(string typeVerification,string nombre )
+        {
+            var objeto = new {
+                VericationMethod = typeVerification,
+                Nombre = nombre
+                 };
+          
+            var data = JsonConvert.SerializeObject(this);
+             var content = new StringContent(data, Encoding.UTF8, "application/json");
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/verify"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var respuesta = JsonConvert.DeserializeObject<Response>(requestMessage.Content.ToString());
+                if (respuesta.Status.Equals("ok"))
+                {
+                    return Constanst.REQUEST_OK;
+                }
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
 
         }
     }
+  
+
+
 }

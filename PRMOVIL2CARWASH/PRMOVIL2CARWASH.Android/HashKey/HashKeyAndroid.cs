@@ -36,7 +36,9 @@ namespace PRMOVIL2CARWASH.Droid.HashKey
              Se inicializa el Retriever para esparar por difución la llegada de un nuevo mensaje
              */
             _cliente.StartSmsRetriever();
+          
 
+           
         }
     }
 

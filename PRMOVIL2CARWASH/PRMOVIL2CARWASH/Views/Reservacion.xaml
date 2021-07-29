@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.Reservacion"
+             xmlns:c1="clr-namespace:C1.Xamarin.Forms.Input;assembly=C1.Xamarin.Forms.Input"
+             xmlns:local="clr-namespace:SearchBarSample"
              BackgroundImage="#FDFDFD">
     <ContentPage.Content>
 
@@ -153,7 +155,7 @@
                                 FontFamily="SansBold"/>
 
                     </StackLayout>
-
+                    
                            <!--Contenedor del Input Servicio-->
                            <Frame
                                 BackgroundColor="Transparent" 
@@ -162,22 +164,26 @@
                                 CornerRadius="10" 
                                 WidthRequest="340"
                                 Margin="20,0,15,0">
-                            
-                               
-                      
-                                <StackLayout
-                                     Orientation="Horizontal"
-                                     Margin="25,5">
 
-                                     <Picker
-                                        x:Name="PiServicio"
-                                        Title="Seleccione Servicio"
-                                        FontSize="20"
-                                        HorizontalOptions="FillAndExpand"
-                                        FontFamily="SansLight"
-                                        />
+                                <StackLayout
+                                         Orientation="Horizontal"
+                                         Margin="25,5">
+
+                                   <SearchBar x:Name="ServicieSearchBar"  
+                                             TextChanged="Handle_SearchButtonPressed" 
+                                             FontSize="20"
+                                            />
+
                                 </StackLayout>
-                             </Frame>
+                            </Frame>
+                            <StackLayout>
+
+                                <ListView x:Name="ServicieSearchList"
+                                          Margin="25,5"
+                                          HeightRequest="150"
+                                          
+                                          Footer=""/>
+                            </StackLayout>
 
                     <!--Texto Automovil-->
                     <StackLayout

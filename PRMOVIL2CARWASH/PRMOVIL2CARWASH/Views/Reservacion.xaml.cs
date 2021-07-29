@@ -15,6 +15,18 @@ namespace PRMOVIL2CARWASH.Views
         public Reservacion()
         {
             InitializeComponent();
+
+        }
+
+
+        List<string> Services = new List<string>
+        {
+                "Lavado General" , "Limpieza Interior" , "Lavado Completo" , "Lavado de Motor"
+        };
+        private void Handle_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var ServicieSearched = Services.Where(c => c.Contains(ServicieSearchBar.Text));
+            ServicieSearchList.ItemsSource = ServicieSearched;
         }
     }
 }

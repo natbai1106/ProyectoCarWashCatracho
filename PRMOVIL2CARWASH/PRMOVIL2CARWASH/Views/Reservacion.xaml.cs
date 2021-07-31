@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PRMOVIL2CARWASH.ViewModels;
+using PRMOVIL2CARWASH.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,15 +20,20 @@ namespace PRMOVIL2CARWASH.Views
 
         }
 
+        //private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    var viewModel = BindingContext as ServicesViewModels;
+        //    var service = e.Item as Service;
 
-        List<string> Services = new List<string>
-        {
-                "Lavado General" , "Limpieza Interior" , "Lavado Completo" , "Lavado de Motor"
-        };
-        private void Handle_SearchButtonPressed(object sender, EventArgs e)
-        {
-            var ServicieSearched = Services.Where(c => c.Contains(ServicieSearchBar.Text));
-            ServicieSearchList.ItemsSource = ServicieSearched;
-        }
+        //}
+
+
+
+        //private void Handle_SearchButtonPressed(object sender, EventArgs e)
+        //{
+
+        //    //var ServicieSearched = Services.Where(c => c.Contains(ServicieSearchBar.Text));
+        //    ServicieSearchList.ItemsSource = Services;
+        //}
     }
 }

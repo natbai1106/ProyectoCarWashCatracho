@@ -2,11 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.Reservacion"
-             xmlns:c1="clr-namespace:C1.Xamarin.Forms.Input;assembly=C1.Xamarin.Forms.Input"
-             xmlns:local="clr-namespace:SearchBarSample"
+             xmlns:local="clr-namespace:PRMOVIL2CARWASH.Models" 
              BackgroundImage="#FDFDFD">
     <ContentPage.Content>
-
+        
         <StackLayout
                       Margin="5,15">
 
@@ -169,21 +168,39 @@
                                          Orientation="Horizontal"
                                          Margin="25,5">
 
-                                   <SearchBar x:Name="ServicieSearchBar"  
+                                    <Picker
+                                            x:Name="PiSeleccionarCotizacion"
+                                            Title="Seleccione Servicio"
+                                            FontSize="20"
+                                            FontFamily="SansLight"
+                                            Margin="0,0,10,0"
+                                            HorizontalOptions="FillAndExpand"
+                                            />
+                            <!--<SearchBar x:Name="ServicieSearchBar"  
                                              TextChanged="Handle_SearchButtonPressed" 
                                              FontSize="20"
-                                            />
+                                            />-->
 
                                 </StackLayout>
                             </Frame>
                             <StackLayout>
 
-                                <ListView x:Name="ServicieSearchList"
-                                          Margin="25,5"
-                                          HeightRequest="150"
-                                          
-                                          Footer=""/>
-                            </StackLayout>
+                            <ListView 
+                                x:Name="ListServices"
+                                 Margin="25,5"
+                                 HeightRequest="150"
+                                 ItemsSource="{Binding Services}"
+                                SelectedItem="{Binding SelectServicies}">
+                                
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextCell Text="{Binding nombre_servicio}"
+                                                    Detail="{Binding descripcion}" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                            </ListView>
+                    </StackLayout>
 
                     <!--Texto Automovil-->
                     <StackLayout

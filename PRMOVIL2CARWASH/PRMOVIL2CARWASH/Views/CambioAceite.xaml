@@ -60,6 +60,7 @@
                                 <Label Grid.Row="0" 
                                        Grid.Column="0"
                                        Text="17/Julio/20"  
+                                       FontFamily="SansBold"
                                        TextColor="#bfc0c0" 
                                        FontAttributes="Bold" 
                                        VerticalOptions="Start"/>
@@ -78,14 +79,16 @@
                                        Grid.Column="1" 
                                        CornerRadius="25"
                                        HasShadow="False"
-                                       Margin="5,0,30,60">
+                                       Margin="5,10,20,20">
                                     <StackLayout Padding="10" x:DataType="model:Item">
                                         <Label Text="{Binding Text}" 
-                                               FontAttributes="Bold" 
+                                               FontAttributes="Bold"
+                                               FontFamily="SansBold"
                                                TextColor="#535257" 
                                                FontSize="18"/>
                                         <Label Text="{Binding Description}" 
-                                               TextColor="Silver" 
+                                               TextColor="Silver"                                                
+                                               FontFamily="SansRegular"
                                                FontSize="18"/>
                                         <!-- Here add the code that is being explained in the "Market bar" block-->
                                     </StackLayout>

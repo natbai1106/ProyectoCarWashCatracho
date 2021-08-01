@@ -10,6 +10,7 @@ using Android.Content;
 using Com.OneSignal;
 using Com.OneSignal.Abstractions;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 
 namespace PRMOVIL2CARWASH.Droid
 {
@@ -19,7 +20,7 @@ namespace PRMOVIL2CARWASH.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+
                 
             OneSignal.Current.StartInit("42b0cfb0-590b-4ade-983b-cc054e08d1f4")
              .InFocusDisplaying(OSInFocusDisplayOption.Notification)
@@ -29,6 +30,9 @@ namespace PRMOVIL2CARWASH.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             LoadApplication(new App());
 
+            UserDialogs.Init(this);
+
+            //Inicializa el servicio de Broadcast 
             Intent intent = new Intent(this, typeof(SMSBroadcastReceiver));
             StartService(intent);
         }

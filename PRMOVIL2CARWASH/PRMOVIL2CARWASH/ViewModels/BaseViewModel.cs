@@ -13,10 +13,17 @@ namespace PRMOVIL2CARWASH.ViewModels
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
+        bool isEmpty = true;
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
+        }
+
+        public bool IsEmpty
+        {
+            get { return isEmpty; }
+            set { SetProperty(ref isEmpty, value); }
         }
 
         string title = string.Empty;

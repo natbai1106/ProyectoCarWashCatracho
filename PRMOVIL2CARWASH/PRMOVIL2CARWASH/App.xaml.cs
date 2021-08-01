@@ -1,5 +1,6 @@
 ﻿using Com.OneSignal;
 using Com.OneSignal.Abstractions;
+using MonkeyCache.FileStore;
 using PRMOVIL2CARWASH.Services;
 using PRMOVIL2CARWASH.Views;
 using System;
@@ -18,6 +19,7 @@ namespace PRMOVIL2CARWASH
 
             DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage( new LoginPage());
+            Barrel.ApplicationId = "com.companyname.prmovil2carwash";
 
             // Remove this method to stop OneSignal Debugging
             OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);

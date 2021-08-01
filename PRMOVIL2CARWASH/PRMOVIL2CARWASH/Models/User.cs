@@ -14,7 +14,7 @@ namespace PRMOVIL2CARWASH.Models
         [JsonProperty("idUsuario")]
         public int IdUsuario { get; set; }
         [JsonProperty("nombre")]
-        public int Nombre { get; set; }
+        public string Nombre { get; set; }
         [JsonProperty("apellido")]
         public string Apellido { get; set; }
         [JsonProperty("direccion")]
@@ -25,15 +25,19 @@ namespace PRMOVIL2CARWASH.Models
         public string Telefono { get; set; }
         [JsonProperty("usuario")]
         public string Usuario { get; set; }
-        [JsonProperty("contraseña")]
-        public string Contraseña { get; set; }
+        [JsonProperty("contrasena")]
+        public string Contrasena { get; set; }
         [JsonProperty("estadoSesion")]
         public bool EstadoSesion { get; set; }
         [JsonProperty("foto")]
         public byte[] Foto { get; set; }
         [JsonProperty("urlFoto")]
         public string UrlFoto { get; set; }
+        [JsonProperty("codigo")]
+        public string Codigo { get; set; }
 
+        [JsonProperty("token")]
+        public string Token { get; set; }
 
         HttpClient cliente;
         HttpResponseMessage requestMessage;
@@ -49,19 +53,21 @@ namespace PRMOVIL2CARWASH.Models
             return 0;
         }
 
-        public async Task<int> VerfyAccount(string typeVerification,string nombre )
+        public async Task<int> VerfyAccount(string typeVerification,string value )
         {
             var objeto = new {
-                VericationMethod = typeVerification,
-                Nombre = nombre
+                  VericationMethod = typeVerification,
+                  ValueMethod = value
                  };
           
-            var data = JsonConvert.SerializeObject(this);
+            var data = JsonConvert.SerializeObject(objeto);
              var content = new StringContent(data, Encoding.UTF8, "application/json");
+           
             requestMessage = await cliente.PostAsync(string.Concat(url, "/verify"), content);
             if (requestMessage.IsSuccessStatusCode)
             {
-                var respuesta = JsonConvert.DeserializeObject<Response>(requestMessage.Content.ToString());
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
                 {
                     return Constanst.REQUEST_OK;

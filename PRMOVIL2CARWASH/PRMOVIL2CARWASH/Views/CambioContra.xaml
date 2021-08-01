@@ -35,13 +35,7 @@
                                 FontSize="30"
                                 FontFamily="Racing"/>
 
-                        <!--<Label  
-                                Text="Carwash Catracho" 
-                                TextColor="Black" 
-                                HorizontalOptions="FillAndExpand" 
-                                HorizontalTextAlignment="Center" 
-                                FontSize="25" 
-                                FontFamily="Racing"/>-->
+                       
                     </StackLayout>
 
                     <!-- CONTENEDORES DE LOS ENTRY -->

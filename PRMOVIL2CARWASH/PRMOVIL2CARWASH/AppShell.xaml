@@ -88,7 +88,13 @@
         <ShellContent Route="AboutPage" 
                       ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="Perfil" 
+                Icon="configuracion_perfil.png">
+        <ShellContent Route="Perfil" 
+                      ContentTemplate="{DataTemplate local:Perfil}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Configurar Perfil" 
                 Icon="configuracion_perfil.png">
         <ShellContent Route="ConfigUsuario" 

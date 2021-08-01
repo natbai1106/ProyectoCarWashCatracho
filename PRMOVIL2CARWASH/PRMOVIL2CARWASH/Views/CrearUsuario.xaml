@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
+             BackgroundImage="#FDFDFD">
+    
+   
              BackgroundImage="fondo.jpg">
 
     <!-- MARGENES DE LA TARJETA BLANCA -->
@@ -480,6 +483,5 @@
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
-        </Frame>
-    </StackLayout>
+     
 </ContentPage>

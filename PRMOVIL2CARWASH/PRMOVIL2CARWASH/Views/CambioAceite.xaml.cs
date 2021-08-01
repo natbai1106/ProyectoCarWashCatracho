@@ -20,7 +20,8 @@ namespace PRMOVIL2CARWASH.Views
         public CambioAceite()
         {
             InitializeComponent();
-           
+            BindingContext = _viewModel = new ItemsViewModel();
+
         }
 
         protected override void OnAppearing()

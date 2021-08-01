@@ -11,9 +11,6 @@ namespace PRMOVIL2CARWASH.Models
 {
     public class Vehicles
     {
-        [JsonProperty("idVehiculos")]
-        public int IdVehiculo { get; set; }
-
         [JsonProperty("numeroPlaca")]
         public string NumeroPlaca { get; set; }
 
@@ -40,16 +37,29 @@ namespace PRMOVIL2CARWASH.Models
 
         HttpClient cliente;
         HttpResponseMessage requestMessage;
-        string url = Constanst.GetUrl("/vehicles/add");
+        string url = Constanst.GetUrl("/vehicle");
 
         public Vehicles()
         {
             cliente = new HttpClient();
         }
-        public int RegisterVehicles()
+        public async Task<int> RegisterVehicle()
         {
-            var m = JsonConvert.SerializeObject(this);
-            return 0;
+            var data = JsonConvert.SerializeObject(this);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var respuesta = JsonConvert.DeserializeObject<Response>(requestMessage.Content.ToString());
+                if (respuesta.Status.Equals("ok"))
+                {
+                    return Constanst.REQUEST_OK;
+                }
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
         }
     }
 }

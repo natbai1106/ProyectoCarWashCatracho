@@ -9,7 +9,7 @@ namespace PRMOVIL2CARWASH.ViewModels
 {
    public class UsersViewModel:BaseViewModel
     {
-        public Command SendVerifyCommand {  get; }
+        public Command SendVerifyCommand { get; }
         public Command ThakePhotoCommand { get; }
         public Command OpenGaleryCommand { get; }
         Page Page;

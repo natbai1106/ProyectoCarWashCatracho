@@ -64,7 +64,7 @@
     <EmbeddedResource Update="Views\Mapas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Perfil.xaml">
+    <EmbeddedResource Update="Views\PerfilUsuario.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Validacion.xaml">

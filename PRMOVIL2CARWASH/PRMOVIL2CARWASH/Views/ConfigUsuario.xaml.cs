@@ -12,5 +12,10 @@ namespace PRMOVIL2CARWASH.Views
         {
             InitializeComponent();
         }
+
+        private void btnGaleriaPerfilUsuario_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

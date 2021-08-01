@@ -17,7 +17,7 @@ namespace PRMOVIL2CARWASH
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage( new LoginPage());
+            MainPage = new AppShell();
 
             // Remove this method to stop OneSignal Debugging
             OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);

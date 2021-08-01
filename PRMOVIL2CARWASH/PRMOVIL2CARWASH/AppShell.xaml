@@ -91,14 +91,8 @@
 
     <FlyoutItem Title="Perfil" 
                 Icon="configuracion_perfil.png">
-        <ShellContent Route="Perfil" 
-                      ContentTemplate="{DataTemplate local:Perfil}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Configurar Perfil" 
-                Icon="configuracion_perfil.png">
-        <ShellContent Route="ConfigUsuario" 
-                      ContentTemplate="{DataTemplate local:ConfigUsuario}" />
+        <ShellContent Route="PerfilUsuario" 
+                      ContentTemplate="{DataTemplate local:PerfilUsuario}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Registrar Automóvil" 
@@ -130,25 +124,21 @@
         <ShellContent Route="Facturacion" 
                       ContentTemplate="{DataTemplate local:Facturacion}" />
     </FlyoutItem>
-    
+
     <FlyoutItem Title="Historial de Facturación" 
                 Icon="historial_facturas.png">
         <ShellContent Route="ItemsPage" 
                       ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    
-    <FlyoutItem Title="Cambiar Contraseña" 
-                Icon="cambiar_contrasenia.png">
-        <ShellContent Route="CambioContra" 
-                      ContentTemplate="{DataTemplate local:CambioContra}" />
-    </FlyoutItem>
-    
-    
 
     <FlyoutItem Title="Mapas" 
                 Icon="mapa.png">
         <ShellContent Route="mapas" 
                       ContentTemplate="{DataTemplate local:Mapas}" />
+    </FlyoutItem>
+
+    <FlyoutItem >
+        <ShellContent  />
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

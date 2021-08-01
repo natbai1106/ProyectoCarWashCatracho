@@ -3,9 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
              BackgroundImage="#FDFDFD">
-    
-   
-             BackgroundImage="fondo.jpg">
 
     <!-- MARGENES DE LA TARJETA BLANCA -->
     <StackLayout
@@ -46,7 +43,7 @@
                         Margin="5,5">
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            
+
                             <Image
                             x:Name="imgFotoUsuario" 
                             
@@ -482,6 +479,8 @@
                             Margin="25,5"/>
                     </StackLayout>
                 </ScrollView>
+
             </StackLayout>
-     
+        </Frame>
+            </StackLayout>
 </ContentPage>

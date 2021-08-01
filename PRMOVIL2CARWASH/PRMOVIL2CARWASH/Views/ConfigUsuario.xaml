@@ -10,11 +10,11 @@
 
             <!--Titulo -->
             <Label 
-                            Text="Configuración de Usuario"
-                            HorizontalOptions="Center"
-                            TextColor="black"
-                            FontFamily="Racing"
-                            FontSize="25"/>
+                Text="Editar Usuario"
+                HorizontalOptions="Center"
+                TextColor="black"
+                FontFamily="Racing"
+                FontSize="25"/>
 
             <!--Scroll -->
             <ScrollView>
@@ -23,7 +23,69 @@
                 <StackLayout 
                         Margin="5,15">
 
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Image
+                            x:Name="imgFotoAuto" 
+                            Source="foto.png"
+                            WidthRequest="170"
+                            HeightRequest="170"/>
+                        
+                        <Grid>
+                            <Button                        
+                                ImageSource="camara.png"
+                                x:Name="btnGaleriaPerfilUsuario"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="7"
+                                Clicked="btnGaleriaPerfilUsuario_Clicked"
+                               />
+                        </Grid>
+                    </StackLayout>
+
                     <!--Texto Nombre-->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
+
+                        <Label 
+                             Text="*"
+                             FontSize="25"
+                             TextColor="red"
+                             FontFamily="SansBold"/>
+
+                        <Label 
+                             Text="Ingrese Nombre: "
+                             FontSize="20"
+                             FontFamily="SansBold"/>
+                    </StackLayout>
+
+                    <!-- Estilo para el Entry Input Nombre-->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
+
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                            <Entry 
+                                x:Name="txtNombreUsuario"
+                                Margin="0,0,15,0"
+                                Placeholder="Nombre"
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Texto Apellido-->
                     <StackLayout
                                 Orientation="Horizontal"
                                  Margin="0,15,0,0">
@@ -35,7 +97,7 @@
                              FontFamily="SansBold"/>
 
                         <Label 
-                             Text="Ingrese Nombre: "
+                             Text="Ingrese Apellido: "
                              FontSize="20"
                              FontFamily="SansBold"/>
                     </StackLayout>
@@ -54,59 +116,12 @@
                                     Margin="25,5">
 
                             <Entry 
-                                       x:Name="txtNombreUsuario"
+                                       x:Name="txtApellidoUsuario"
                                        Margin="0,0,15,0"
                                        Placeholder="Nombre"
                                        PlaceholderColor="Gray"
                                        FontSize="20"
                                        FontFamily="SansLight"
-                                       HorizontalOptions="FillAndExpand"/>
-
-                        </StackLayout>
-                    </Frame>
-
-                    <!--Texto Apellido-->
-                    <StackLayout
-                                Orientation="Horizontal"
-                                Margin="0,15,0,0">
-
-                        <Label 
-                                    Text="*"
-                                    FontSize="25"
-                                    TextColor="red"
-                                    FontFamily="Questrial"/>
-
-                        <Label 
-                                    Text="Ingrese Apellido: "
-                                    TextColor="Black"
-                                    FontSize="20"
-                                    FontFamily="Questrial"/>
-                    </StackLayout>
-
-                    <!-- Estilo para el Entry Redondo-->
-                    <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                Margin="20,0,15,0">
-
-                        <!--Contenedor del Input Apellido-->
-                        <StackLayout
-                                     Orientation="Horizontal"
-                                     Margin="25,5">
-
-                            <Image 
-                                   Source="usuario.png"/>
-
-                            <Entry 
-                                        x:Name="txtApellidoUsuario"
-                                       Margin="0,0,15,0"
-                                       Placeholder="Apellido"
-                                       PlaceholderColor="Gray"
-                                       FontSize="20"
-                                       FontFamily="Questrial"
                                        HorizontalOptions="FillAndExpand"/>
 
                         </StackLayout>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRMOVIL2CARWASH.Views.PerfilUsuario">
+
+    <StackLayout>
+        <StackLayout 
+            BackgroundColor="#E3E4E5" 
+            HeightRequest="350">
+
+            <Image 
+                Source="perfilusuario.png" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Margin="5,5,200,0"/>
+
+            <Button 
+                x:Name="btnEditarPerfil"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                ImageSource="editarperfil.png"
+                CornerRadius="60"
+                VerticalOptions="Center" 
+                Margin="60,-150,-240,0"
+                HeightRequest="85"
+                Clicked="btnEditarPerfil_Clicked"/>
+
+            <Label 
+                Margin="30,55,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="Nombre de Usuario &#10;" 
+                            FontSize="30"
+                            LineHeight="4"
+                            FontAttributes="Bold" 
+                            ForegroundColor="Black" />
+                        <Span 
+                            Text="Correo Electrónico &#10;" 
+                            FontSize="20" 
+                            LineHeight="2"
+                            ForegroundColor="Black" />
+                        <Span 
+                            Text="Numero de Teléfono" 
+                            FontSize="20" 
+                            ForegroundColor="Black" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Frame 
+                CornerRadius="55" 
+                Margin="0,0,0,-20" 
+                BackgroundColor="#E3E4E5" 
+                HasShadow="False" 
+                HeightRequest="25" 
+                VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <Button 
+                Text="Cambiar Contraseña" 
+                x:Name="btnCambiarContraseña"
+                BackgroundColor="#01ADBA"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="7"
+                BorderWidth="2"
+                Margin="65,20"
+                Clicked="btnCambiarContraseña_Clicked"/>
+
+    </StackLayout>
+
+</ContentPage>

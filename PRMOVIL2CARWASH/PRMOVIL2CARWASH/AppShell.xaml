@@ -103,8 +103,8 @@
 
     <FlyoutItem Title="Mis Autos" 
                 Icon="carro.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="ListaCarros" 
+                      ContentTemplate="{DataTemplate local:ListaCarros}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Reservación" 

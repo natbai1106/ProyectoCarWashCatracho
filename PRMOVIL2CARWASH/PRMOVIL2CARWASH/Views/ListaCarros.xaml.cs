@@ -8,21 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace PRMOVIL2CARWASH.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CambioAceite : ContentPage
+    
+    public partial class ListaCarros : ContentPage
     {
         ItemsViewModel _viewModel;
-        public CambioAceite()
+
+        public ListaCarros()
         {
             InitializeComponent();
-           
+            BindingContext = _viewModel = new ItemsViewModel();
         }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();

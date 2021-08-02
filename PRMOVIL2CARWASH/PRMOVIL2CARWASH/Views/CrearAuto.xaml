@@ -72,9 +72,9 @@
                             <Picker WidthRequest="145"  
                                             x:Name="pckMarca"
                                             Title="Seleccione Marca"
-                                            ItemsSource="{Binding Brand, Mode=TwoWay}"
+                                            ItemsSource="{Binding Brand}"
                                             ItemDisplayBinding="{Binding NombreMarca}"
-                                            SelectedItem="{Binding IdMarca}"
+                                            SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
                                             HorizontalOptions="FillAndExpand"
                                             FontSize="20"
                                             FontFamily="SansLight"/>
@@ -116,9 +116,9 @@
                                         WidthRequest="145"  
                                         x:Name="PiModeloAutos"
                                         Title="Seleccione Modelo"
-                                        ItemsSource="{Binding Modelo, Mode=TwoWay}"
+                                        ItemsSource="{Binding Modelo}"
                                         ItemDisplayBinding="{Binding NombreModelo}"
-                                        SelectedItem="{Binding IdModelo}"
+                                        SelectedItem="{Binding ModeloSelected, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         FontSize="20"
                                         FontFamily="SansLight"/>
@@ -162,10 +162,10 @@
                             <Picker
                                     WidthRequest="145"  
                                     x:Name="pckTipo"
-                                    Title="Seleccione Tipo"
-                                    ItemsSource="{Binding Type, Mode=TwoWay}"
-                                    ItemDisplayBinding="{Binding NombreTipo}"
-                                    SelectedItem="{Binding IdTipo}"
+                                    Title="Seleccione Tipo de Vehículo"
+                                    ItemsSource="{Binding Type}"
+                                    ItemDisplayBinding="{Binding NombreTipoVehicle}"
+                                    SelectedItem="{Binding TypeSelected, Mode=TwoWay}"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="20"
                                     FontFamily="SansLight"/>
@@ -208,7 +208,7 @@
                                 Title="Seleccione Motor"
                                 ItemsSource="{Binding Motor}"
                                 ItemDisplayBinding="{Binding NombreMotor}"
-                                SelectedItem="{Binding IdMotor, Mode=TwoWay}"
+                                SelectedItem="{Binding MotorSelected, Mode=TwoWay}"
                                 HorizontalOptions="FillAndExpand"
                                 FontSize="20"
                                 FontFamily="SansLight"/>
@@ -247,10 +247,10 @@
 
                             <StackLayout Orientation="Horizontal"
                                          Margin="25,5">
-                                <Entry x:Name="txtAnio"
-                                       Text="{Binding Year, Mode=TwoWay}"
-                                       HorizontalOptions="FillAndExpand"
-                                       Keyboard="Numeric"
+                                <DatePicker x:Name="pckAnio"
+                                       MinimumDate="01/01/1900" 
+                                       MaximumDate="12/31/2100" 
+                                       x:DataType="DatePicker"                                     
                                        FontSize="20"
                                        FontFamily="RobotoLight"/>
                             </StackLayout>

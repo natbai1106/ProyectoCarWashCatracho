@@ -19,36 +19,37 @@ namespace PRMOVIL2CARWASH.ViewModels
         List<Modelos> modelo;
         List<TypeVehicle> type;
         List<MotorType> motor;
-        int idmotor;
-        int idmarca;
-        int idmodelo;
-        int idtipovehiculo;
+        MotorType motorSelected;
+        TypeVehicle typeSelected;
+        Brand brandSelected;
+        Modelos modeloSelected;
         int year;
         string plaque;
         string observation;
         byte[] foto;
         ImageSource photo = ImageSource.FromUri(new Uri("https://images.vexels.com/media/users/3/204554/isolated/lists/53193fd7db3d2618ab56635e69e64515-pequenas-hojas-de-frutos-rojos.png"));
 
-        public int IdMotor
+        public MotorType MotorSelected
         {
-            get => idmotor;
-            set => SetProperty(ref idmotor, value);
+            get => motorSelected;
+            set => SetProperty(ref motorSelected, value);
         }
-        public int IdMarca
+        public TypeVehicle TypeSelected
         {
-            get => idmarca;
-            set => SetProperty(ref idmarca, value);
+            get => typeSelected;
+            set => SetProperty(ref typeSelected, value);
         }
-        public int IdModelo
+        public Brand BrandSelected
         {
-            get => idmodelo;
-            set => SetProperty(ref idmodelo, value);
+            get => brandSelected;
+            set => SetProperty(ref brandSelected, value);
         }
-        public int IdTypeVehicle
+        public Modelos ModeloSelected
         {
-            get => idtipovehiculo;
-            set => SetProperty(ref idtipovehiculo, value);
+            get => modeloSelected;
+            set => SetProperty(ref modeloSelected, value);
         }
+        
 
         public List<Brand> Brand { get => brand; 
             set => brand = value; }
@@ -56,10 +57,10 @@ namespace PRMOVIL2CARWASH.ViewModels
         public List<Modelos> Modelo { get => modelo; 
             set => modelo = value; }
 
-        public List<TypeVehicle> TypeVehicle { get => type; 
+        public List<TypeVehicle> Type { get => type; 
             set => type = value; }
 
-        public List<MotorType> MotorType { get => motor; 
+        public List<MotorType> Motor { get => motor; 
             set => motor = value; }
 
         public int Year { get => year; 
@@ -92,40 +93,50 @@ namespace PRMOVIL2CARWASH.ViewModels
             TypeVehicle typeVehicle = new TypeVehicle();
 
             Brand = listaBrand.GetMarcas().OrderBy(c => c.NombreMarca).ToList();
-            TypeVehicle = typeVehicle.GetTipos().OrderBy(c => c.NombreTipoVehicle).ToList();
-            MotorType = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
+            Type = typeVehicle.GetTipos().OrderBy(c => c.NombreTipoVehicle).ToList();
+            Motor = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
             Modelo = modelos.GetModelos().OrderBy(c => c.NombreModelo).ToList();
+            
 
             SaveInformation = new Command(OnRequestSave);
             OpenGalleryCommand = new Command(OnOpenGallery);
             TakePhotoCommand = new Command(OnTakePhoto);
+
+            //MotorSelected.IdMotor = 0;
+            //TypeSelected.IdTipoVehicle = 0;
+            //BrandSelected.IdMarca = 0;
+            //ModeloSelected.IdModelo = 0;
+
         }
-        
+
         private async void OnRequestSave(object obj)
         {
-            var ListaBrand = new List<Brand>();
-            if (ListaBrand.Count == 0)
+            DateTime fechaActual = DateTime.Now;
+            int anio = int.Parse(fechaActual.ToString("yyyy"));
+            await Page.DisplayAlert("Mensaje", ""+anio, "Ok");
+
+            if (MotorSelected == null || TypeSelected == null || BrandSelected == null || ModeloSelected == null || Year == 0 || Plaque == null)
             {
-                await Page.DisplayAlert("Mensaje", "Debe seleccionar una Marca para su auto", "Ok");
+                await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");
             }
 
-            var ListaModelos = new List<Modelos>();
-            if (ListaModelos.Count == 0)
-            {
-                await Page.DisplayAlert("Mensaje", "Debe seleccionar un Modelo para su auto", "Ok");
-            }
+        //    var ListaModelos = new List<Modelos>();
+        //    if (ListaModelos.Count == 0)
+        //    {
+        //        await Page.DisplayAlert("Mensaje", "Debe seleccionar un Modelo para su auto", "Ok");
+        //    }
 
-            var ListaType = new List<TypeVehicle>();
-            if (ListaType.Count == 0)
-            {
-                await Page.DisplayAlert("Mensaje", "Debe seleccionar un Tipo de auto", "Ok");
-            }
+        //    var ListaType = new List<TypeVehicle>();
+        //    if (ListaType.Count == 0)
+        //    {
+        //        await Page.DisplayAlert("Mensaje", "Debe seleccionar un Tipo de auto", "Ok");
+        //    }
 
-            var ListaMotor = new List<MotorType>();
-            if (ListaMotor.Count == 0)
-            {
-                await Page.DisplayAlert("Mensaje", "Debe seleccionar el Tipo de combustible para el Motor de su auto", "Ok");
-            }
+        //    var ListaMotor = new List<MotorType>();
+        //    if (ListaMotor.Count == 0)
+        //    {
+        //        await Page.DisplayAlert("Mensaje", "Debe seleccionar el Tipo de combustible para el Motor de su auto", "Ok");
+        //    }
         }
         private async void OnOpenGallery()
         {

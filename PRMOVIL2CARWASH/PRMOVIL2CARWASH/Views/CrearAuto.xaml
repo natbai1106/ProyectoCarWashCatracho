@@ -28,7 +28,6 @@
                                     Command = "{Binding TakePhotoCommand}"
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    IsEnabled = "{Binding IsBusy}"
                                     BackgroundColor="#E3E4E5"
                                     CornerRadius="7" />
 
@@ -37,7 +36,6 @@
                                     Command="{Binding OpenGalleryCommand}"
                                     Grid.Row="1"
                                     Grid.Column="0"
-                                    IsEnabled="{Binding IsBusy}"
                                     BackgroundColor="#E3E4E5"
                                     CornerRadius="7" />
                         </Grid>

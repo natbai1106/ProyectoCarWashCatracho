@@ -115,21 +115,16 @@
 
    
 
-    <FlyoutItem Title="Facturación" 
-                Icon="facturacion.png">
-        <ShellContent Route="Facturacion" 
-                      ContentTemplate="{DataTemplate local:Facturacion}" />
-    </FlyoutItem>
     <FlyoutItem Title="Cambio de Aceite" 
                 Icon="embudo.png">
         <ShellContent Route="CambioAceite" 
                       ContentTemplate="{DataTemplate local:CambioAceite}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Historial de Facturación" 
+    <FlyoutItem Title="Historial de Reservacion" 
                 Icon="historial_facturas.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="Reservaciones" 
+                      ContentTemplate="{DataTemplate local:Reservaciones}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Cambiar Contraseña" 

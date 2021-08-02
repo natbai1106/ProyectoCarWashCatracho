@@ -74,7 +74,9 @@
                             <Picker WidthRequest="145"  
                                             x:Name="pckMarca"
                                             Title="Seleccione Marca"
-                                            ItemsSource="{Binding Brandn, Mode=TwoWay}"
+                                            ItemsSource="{Binding Brand, Mode=TwoWay}"
+                                            ItemDisplayBinding="{Binding NombreMarca}"
+                                            SelectedItem="{Binding IdMarca}"
                                             HorizontalOptions="FillAndExpand"
                                             FontSize="20"
                                             FontFamily="SansLight"/>
@@ -117,6 +119,8 @@
                                         x:Name="PiModeloAutos"
                                         Title="Seleccione Modelo"
                                         ItemsSource="{Binding Modelo, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding NombreModelo}"
+                                        SelectedItem="{Binding IdModelo}"
                                         HorizontalOptions="FillAndExpand"
                                         FontSize="20"
                                         FontFamily="SansLight"/>
@@ -162,6 +166,8 @@
                                     x:Name="pckTipo"
                                     Title="Seleccione Tipo"
                                     ItemsSource="{Binding Type, Mode=TwoWay}"
+                                    ItemDisplayBinding="{Binding NombreTipo}"
+                                    SelectedItem="{Binding IdTipo}"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="20"
                                     FontFamily="SansLight"/>
@@ -202,7 +208,9 @@
                                 WidthRequest="145"  
                                 x:Name="pckMotor"
                                 Title="Seleccione Motor"
-                                ItemsSource="{Binding Motor, Mode=TwoWay}"
+                                ItemsSource="{Binding Motor}"
+                                ItemDisplayBinding="{Binding NombreMotor}"
+                                SelectedItem="{Binding IdMotor, Mode=TwoWay}"
                                 HorizontalOptions="FillAndExpand"
                                 FontSize="20"
                                 FontFamily="SansLight"/>

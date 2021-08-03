@@ -6,9 +6,9 @@ namespace PRMOVIL2CARWASH.Models
 {
    public class Response
     {
-        public string Status { get; set; }
-        public int CodeStatus { get; set; }
-        public string Message { get; set; }
+        public string Status { get; set; }//Devuelve el estado de en formato de string
+        public int CodeStatus { get; set; }// Devuelve el codigio de estado de la peticion 
+        public string Message { get; set; }//Envia un mensaje 
         public bool StatusSession { get; set; }
     }
 }

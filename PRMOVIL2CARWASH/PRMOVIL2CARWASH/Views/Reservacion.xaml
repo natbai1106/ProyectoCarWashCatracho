@@ -6,8 +6,7 @@
              BackgroundImage="#FDFDFD">
     <ContentPage.Content>
         
-        <StackLayout
-                      Margin="5,15">
+        <StackLayout>
 
             <!--Titulo -->
             <Label 
@@ -26,30 +25,31 @@
                     <!--Texto Servicio Adomicilio-->
                     <StackLayout
                                 Orientation="Horizontal"
-                                Margin="0,15,0,0">
+                                 Margin="10,0">
 
                         <Label 
-                                    Text="Servicio Adomicilio: "
-                                    TextColor="Black"
-                                    FontSize="20"                                 
-                                    FontFamily="Questrial"/>
+                            Text="Servicio a Domicilio: "
+                            FontSize="20"    
+                            Margin="0,0,10,0"
+                            FontFamily="SansBold"/>
 
                         <Switch 
-                                    OnColor="gray"
-                                    ThumbColor="#01ADBA"
+                            x:Name="SwitchMapa"
+                              OnColor="gray"
+                              ThumbColor="#01ADBA"
+                            Toggled="SwitchMapa_Toggled"
                                     />
 
                     </StackLayout>
 
-                    <Grid 
-                        >
+                    <Grid  Margin="10,0">
 
                         <!--Texto FECHA-->
                         <StackLayout
                                 Orientation="Horizontal"
                                 Margin="0,15,0,0"
-                                 Grid.Row="0"
-                                 Grid.Column="0">
+                                Grid.Row="0"
+                                Grid.Column="0">
 
                             <Label 
                                 Text="*"
@@ -140,13 +140,14 @@
                     <!--Texto Servicio-->
                     <StackLayout
                                 Orientation="Horizontal"
-                                Margin="0,15,0,0">
+                                Margin="10,0">
 
                         <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="RobotoRegular"/>
+                            Text="*"
+                            FontSize="25"
+                            TextColor="red"         
+                            Margin="0,0,10,0"
+                            FontFamily="RobotoRegular"/>
 
                         <Label 
                                 Text="Seleccione el Servicio Auto: "
@@ -185,10 +186,26 @@
                             </Frame>
                             <StackLayout>
 
-                            <ListView 
+                        <CollectionView                  
+                                ItemsSource="{Binding countries}"
+                                VerticalOptions="StartAndExpand"
+                                ItemsLayout="HorizontalList" 
+                                HeightRequest="100" 
+                                Background="aqua"
+                                Margin="25,5">
+                            
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding nombre_servicio}"
+                                                    Detail="{Binding descripcion}" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!--<ListView 
                                 x:Name="ListServices"
                                  Margin="25,5"
-                                 HeightRequest="150"
+                                BackgroundColor="Aqua"
+                                 HeightRequest="100"
                                  ItemsSource="{Binding Services}"
                                 SelectedItem="{Binding SelectServicies}">
                                 
@@ -199,19 +216,20 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
 
-                            </ListView>
+                            </ListView>-->
                     </StackLayout>
 
                     <!--Texto Automovil-->
                     <StackLayout
                                 Orientation="Horizontal"
-                                Margin="0,15,0,0">
+                                Margin="10,0">
 
                         <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="RobotoRegular"/>
+                            Text="*"
+                            FontSize="25"
+                            Margin="0,0,10,0"
+                            TextColor="red"
+                            FontFamily="RobotoRegular"/>
 
                         <Label 
                                 Text="Seleccione el Automóvil: "
@@ -220,36 +238,53 @@
 
                     </StackLayout>
 
-                    <!-- Estilo para el Entry Redondo-->
-                    <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="10" 
-                                WidthRequest="340"
-                                Margin="20,0,15,0">
+                        <!-- Estilo para el Entry Redondo-->
+                        <Frame
+                            BackgroundColor="Transparent" 
+                            BorderColor="Black"                             
+                            Padding="0"
+                            CornerRadius="10" 
+                            WidthRequest="340"
+                            Margin="20,0,15,0">
 
-                        <!--Contenedor del Input Modelo-->
-                        <StackLayout
-                                     Orientation="Horizontal"
-                                     Margin="25,5">
+                            <!--Contenedor del Input Modelo-->
+                            <StackLayout
+                                 Orientation="Horizontal"
+                                  Margin="25,5">
 
-                            <Picker
-                                        x:Name="PiAutoCotizacion"
-                                        Title="Seleccione Servicio"
-                                        FontSize="20"
-                                        FontFamily="SansLight"
-                                        Margin="0,0,10,0"
-                                        />
-                        </StackLayout>
-                    </Frame>
-
-
-
-
-
+                                <Picker
+                                    x:Name="PiAutoCotizacion"
+                                    Title="Seleccione Servicio"
+                                    FontSize="20"
+                                    FontFamily="SansLight"
+                                    Margin="0,0,10,0" />
+                            </StackLayout>
+                        </Frame>
+                    
+                    
                 </StackLayout>
             </ScrollView>
+            <Grid 
+                HeightRequest="80">
+                <Button
+                        Text="Actualizar" 
+                        x:Name="btnActulizarAutos"
+                        BackgroundColor="#01ADBA"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                       
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+
+                <Button
+                        Text="Limpiar" 
+                        x:Name="btnLimpiarAutos"
+                        BackgroundColor="#E3E4E5"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

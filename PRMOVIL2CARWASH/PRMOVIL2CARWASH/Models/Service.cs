@@ -1,15 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using PRMOVIL2CARWASH.Utils;
 
 namespace PRMOVIL2CARWASH.Models
 {
-    class Service
+    public class Service
     {
-        public int idServicios { get; set; }
-        public string nombre_servicio { get; set; }
-        public string descripcion { get; set; }
-        public int disponible_domicilio { get; set; }
+        [JsonProperty("idServicios")]
+        //Propiedad de la Clase lo del public
+        public int IdServicios { get; set; }
+
+        [JsonProperty("nombre_servicio")]
+        public string NombreServicio { get; set; }
+
+        [JsonProperty("descripcion")]
+        public string Descripcion { get; set; }
+
+        [JsonProperty("disponible_domicilio")]
+        public int DisponibleDomicilio { get; set; }
+
+        HttpClient cliente;
+        HttpResponseMessage requestMessage;
+        string url = Constanst.GetUrl("/services");
+
+        public Service()
+        {
+            cliente = new HttpClient();
+        }
 
     }
 }

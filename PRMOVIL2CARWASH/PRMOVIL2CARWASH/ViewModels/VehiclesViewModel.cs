@@ -96,17 +96,10 @@ namespace PRMOVIL2CARWASH.ViewModels
             Type = typeVehicle.GetTipos().OrderBy(c => c.NombreTipoVehicle).ToList();
             Motor = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
             Modelo = modelos.GetModelos().OrderBy(c => c.NombreModelo).ToList();
-            
 
             SaveInformation = new Command(OnRequestSave);
             OpenGalleryCommand = new Command(OnOpenGallery);
             TakePhotoCommand = new Command(OnTakePhoto);
-
-            //MotorSelected.IdMotor = 0;
-            //TypeSelected.IdTipoVehicle = 0;
-            //BrandSelected.IdMarca = 0;
-            //ModeloSelected.IdModelo = 0;
-
         }
 
         private async void OnRequestSave(object obj)

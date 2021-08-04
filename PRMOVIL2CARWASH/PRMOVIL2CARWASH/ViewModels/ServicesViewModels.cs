@@ -15,7 +15,7 @@ namespace PRMOVIL2CARWASH.ViewModels
     public class ServicesViewModels : BaseViewModel
     {
         Page Page;
-        ObservableCollection<Service> service;
+        ObservableCollection<Service> Items ;
 
         string date;
         string time;
@@ -32,15 +32,16 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         public ObservableCollection<Service> Service
         {
-            get => service;
-            set => service= value;
+            get => Items;
+            set => Items= value;
         }
+        
         public ServicesViewModels(Page Pag)
         {
             Page = Pag;
 
             NameService nameService = new NameService();
-            Service = nameService.GetNameService().OrderBy(c => c.NombreServicio).ToList();
+            Service = nameService.GetNameService();
 
         }
         
@@ -48,8 +49,8 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         //public INavigation Navigation { get; set; }
 
-        }
 
+     }
         
 
     }

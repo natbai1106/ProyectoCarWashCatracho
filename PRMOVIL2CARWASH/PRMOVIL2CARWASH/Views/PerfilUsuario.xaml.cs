@@ -26,5 +26,10 @@ namespace PRMOVIL2CARWASH.Views
         {
             await Navigation.PushAsync(new CambioContra());
         }
+
+        private void btnConfigurarPerfil_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

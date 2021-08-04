@@ -6,190 +6,160 @@
              mc:Ignorable="d"
              x:Class="PRMOVIL2CARWASH.Views.CambioContra"
              NavigationPage.HasNavigationBar="False"
-             BackgroundImage="fondo.jpg">
+             BackgroundImage="#FDFDFD"
+             Title="Cambiar Contraseña">
     <ContentPage.Content>
         <StackLayout
                 Margin="2,5" >
 
-            <!-- TARJETA COLOR BLANCO -->
-            <Frame
-                    BackgroundColor="#F5F5F5F5"
-                    CornerRadius="15"
-                    HasShadow="True"
-                    HeightRequest="580"
-                    Margin="10,20"
-                    HorizontalOptions="FillAndExpand">
+            <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
+            <StackLayout>
 
-                <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
-                <StackLayout>
-
-                    <!-- TITULOS DE LA TARJETA -->
-                    <StackLayout
+                <!-- TITULOS DE LA TARJETA -->
+                <StackLayout
                             HorizontalOptions="Center">
 
-                        <Label 
-                                Text="Cambiar Contraseña"
-                                TextColor="Black"
-                                HorizontalOptions="FillAndExpand"
-                                HorizontalTextAlignment="Center"
-                                FontSize="30"
-                                FontFamily="Racing"/>
+                </StackLayout>
 
-                       
+                <!-- CONTENEDORES DE LOS ENTRY -->
+
+                <StackLayout
+                            Margin="5,5">
+
+                    <!--Texto Nombre-->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
+
+                        <Label 
+                             Text="*"
+                             FontSize="25"
+                             TextColor="red"
+                             FontFamily="SansBold"/>
+
+                        <Label 
+                             Text="Contraseña Anterior: "
+                             FontSize="20"
+                             FontFamily="SansBold"/>
                     </StackLayout>
 
-                    <!-- CONTENEDORES DE LOS ENTRY -->
+                    <!-- Estilo para el Entry Input Nombre-->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
 
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                            <Entry 
+                                x:Name="txtContraseñaAnterior"
+                                Margin="0,0,15,0"
+                                Placeholder="Anterior..."
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Texto Nombre-->
                     <StackLayout
-                            Margin="5,5">
-                        <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Text="*"
-                                       TextColor="Red"
-                                       FontAttributes="Bold"/>
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
 
-                            <!--LABEL DE CONTRASEÑA ANTERIOR -->
-                            <Label  
-                                       Text="Ingrese contraseña anterior:" 
-                                       TextColor="Black" 
-                                       HorizontalOptions="FillAndExpand" 
-                                       FontSize="20"
-                                       FontFamily="Questrial"/>
-                        </StackLayout>
+                        <Label 
+                             Text="*"
+                             FontSize="25"
+                             TextColor="red"
+                             FontFamily="SansBold"/>
 
-                        <!-- ESTILOS DEL ENTRY CONTRASEÑA ANTERIOR -->
-                        <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black" 
-                                Padding="0" 
-                                Margin="0" 
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                HorizontalOptions="FillAndExpand">
+                        <Label 
+                             Text="Nueva Contraseña: "
+                             FontSize="20"
+                             FontFamily="SansBold"/>
+                    </StackLayout>
 
-                            <!-- CONTENEDOR ENTRY CONTRASEÑA ANTERIOR -->
-                            <StackLayout
-                                    Orientation="Horizontal"
-                                    Margin="25,5">
+                    <!-- Estilo para el Entry Input Nombre-->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
 
-                                <!-- IMAGEN DE CONTRASEÑA ANTERIOR -->
-                                <Image 
-                                        Source="contrasenia_anterior.png" />
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
 
-                                <!-- ENTRY CONTRASEÑA ANTERIOR -->
-                                <Entry 
-                                        Placeholder="Contraseña anterior" 
-                                        FontFamily="Questrial"
-                                        FontSize="20"
-                                        PlaceholderColor="Gray"
-                                        IsPassword="True"
-                                        TextColor="black" 
-                                        HorizontalOptions="FillAndExpand" 
-                                        Margin="0,0,15,0"/>
-                            </StackLayout>
-                        </Frame>
-
-                        <!--LABEL DE CONTRASEÑA NUEVA -->
-                        <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Text="*"
-                                       TextColor="Red"
-                                       FontAttributes="Bold"/>
-                            <Label  
-                                Text="Ingrese contraseña nueva:" 
-                                TextColor="Black" 
-                                HorizontalOptions="FillAndExpand"  
+                            <Entry 
+                                x:Name="txtNuevaContraseña"
+                                Margin="0,0,15,0"
+                                Placeholder="Nueva..."
+                                PlaceholderColor="Gray"
                                 FontSize="20"
-                                FontFamily="Questrial"/>
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
                         </StackLayout>
+                    </Frame>
 
-                        <!-- ESTILOS DEL ENTRY CONTRASEÑA NUEVA -->
-                        <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black" 
-                                Padding="0" 
-                                Margin="0" 
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                HorizontalOptions="FillAndExpand">
+                    <!--Texto Nombre-->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
 
-                            <!-- CONTENEDOR ENTRY CONTRASEÑA NUEVA -->
-                            <StackLayout
-                                    Orientation="Horizontal"
-                                    Margin="25,5">
+                        <Label 
+                             Text="*"
+                             FontSize="25"
+                             TextColor="red"
+                             FontFamily="SansBold"/>
 
-                                <!-- IMAGEN DE CONTRASEÑA NUEVA -->
-                                <Image 
-                                        Source="contrasenia_nueva.png" />
+                        <Label 
+                             Text="Confirmar Contraseña: "
+                             FontSize="20"
+                             FontFamily="SansBold"/>
+                    </StackLayout>
 
-                                <!-- ENTRY CONTRASEÑA NUEVA -->
+                    <!-- Estilo para el Entry Input Nombre-->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
 
-                                <Entry 
-                                        Placeholder="Contraseña nueva" 
-                                        FontFamily="Questrial"
-                                        FontSize="20"
-                                        PlaceholderColor="Gray" 
-                                        IsPassword="True"
-                                        TextColor="black" 
-                                        HorizontalOptions="FillAndExpand" 
-                                        Margin="0,0,15,0"/>
-                            </StackLayout>
-                        </Frame>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
 
-                        <!--LABEL DE CONFIRMAR CONTRASEÑA -->
-                        <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Text="*"
-                                       TextColor="Red"
-                                       FontAttributes="Bold"/>
-                            <Label  
-                                Text="Confirmar contraseña" 
-                                TextColor="Black" 
-                                HorizontalOptions="FillAndExpand"
+                            <Entry 
+                                x:Name="txtConfirmarContraseña"
+                                Margin="0,0,15,0"
+                                Placeholder="Confirmar..."
+                                PlaceholderColor="Gray"
                                 FontSize="20"
-                                FontFamily="Questrial"/>
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
                         </StackLayout>
-
-                        <!-- ESTILOS DEL ENTRY CONFIRMAR CONTRASEÑA -->
-                        <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black" 
-                                Padding="0" 
-                                Margin="0" 
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                HorizontalOptions="FillAndExpand">
-
-                            <!-- CONTENEDOR ENTRY CONFIRMAR CONTRASEÑA -->
-                            <StackLayout
-                                    Orientation="Horizontal"
-                                    Margin="25,5">
-
-                                <!-- IMAGEN DE CONFIRMAR CONTRASEÑA -->
-                                <Image 
-                                        Source="confirmar.png" />
-
-                                <!-- ENTRY CONFIRMAR CONTRASEÑA -->
-                                <Entry 
-                                        Placeholder="Contraseña"
-                                        FontFamily="Questrial"
-                                        FontSize="20"
-                                        PlaceholderColor="Gray"
-                                        IsPassword="True"
-                                        TextColor="black" 
-                                        HorizontalOptions="FillAndExpand" 
-                                        Margin="0,0,15,0"/>
-                            </StackLayout>
-                        </Frame>
-                        <Button 
-                                    Text="Cambiar Contraseña" 
+                    </Frame>
+                    
+                    <Button 
+                                    Text="Guardar Cambios" 
                                     x:Name="btnCambiarContra"
                                     BackgroundColor="#01ADBA"
                                     TextColor="White"
                                     FontAttributes="Bold"
-                                    CornerRadius="50"
+                                    CornerRadius="10"
                                     BorderWidth="2"
-                                    Margin="25,5"/>
-                    </StackLayout>
+                                    Margin="65,5"/>
                 </StackLayout>
-            </Frame>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

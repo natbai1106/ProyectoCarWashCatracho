@@ -96,15 +96,15 @@
     </FlyoutItem>
 
     <FlyoutItem Title="Registrar Automóvil" 
-                Icon="carro.png">
+                Icon="registrar_auto.png">
         <ShellContent Route="CrearAuto" 
                       ContentTemplate="{DataTemplate local:CrearAuto}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Mis Autos" 
                 Icon="carro.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="ListaCarros" 
+                      ContentTemplate="{DataTemplate local:ListaCarros}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Reservación" 
@@ -112,23 +112,21 @@
         <ShellContent Route="Reservacion" 
                       ContentTemplate="{DataTemplate local:Reservacion}" />
     </FlyoutItem>
-    
-    <FlyoutItem Title="Historial de Reservaciones" 
-                Icon="historial_cotizaciones.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+
+   
+
+    <FlyoutItem Title="Cambio de Aceite" 
+                Icon="embudo.png">
+        <ShellContent Route="CambioAceite" 
+                      ContentTemplate="{DataTemplate local:CambioAceite}" />
     </FlyoutItem>
-    
-    <FlyoutItem Title="Facturación" 
-                Icon="facturacion.png">
-        <ShellContent Route="Facturacion" 
-                      ContentTemplate="{DataTemplate local:Facturacion}" />
-    </FlyoutItem>
+
+    <FlyoutItem Title="Historial de Reservacion" ></FlyoutItem>
 
     <FlyoutItem Title="Historial de Facturación" 
                 Icon="historial_facturas.png">
-        <ShellContent Route="ItemsPage" 
-                      ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Route="Reservaciones" 
+                      ContentTemplate="{DataTemplate local:Reservaciones}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Mapas" 

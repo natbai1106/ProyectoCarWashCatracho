@@ -62,7 +62,7 @@
                                 <Button                        
                                 ImageSource="camara.png"
                                 x:Name="btnGaleriaUsuario"
-                                IsEnabled="{Binding IsBusy}"
+                                 IsEnabled="{Binding IsBusy}"
                                 Command="{Binding OpenGaleryCommand}"
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -224,7 +224,7 @@
                                 <Entry 
                                 Placeholder="Dirección" 
                                 Keyboard="Plain"
-                                 Text="{Binding Address}"
+                                 Text="{Binding Address, Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -462,14 +462,12 @@
                             TextColor="White"
                             FontAttributes="Bold"
                             CornerRadius="50"
-                            IsEnabled="{Binding IsBusy}"
                             BorderWidth="2"
                             Margin="25,5"/>
 
                         <Button 
                             Text="Limpiar" 
                             x:Name="btnLimpiar"
-                            IsEnabled="{Binding IsBusy}"
                             Command="{Binding Clean}"
                             BackgroundColor="#E3E4E5"
                             TextColor="Black"
@@ -479,8 +477,7 @@
                             Margin="25,5"/>
                     </StackLayout>
                 </ScrollView>
-
             </StackLayout>
         </Frame>
-            </StackLayout>
+    </StackLayout>
 </ContentPage>

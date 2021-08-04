@@ -17,6 +17,10 @@ namespace PRMOVIL2CARWASH.Views
         public Reservacion()
         {
             InitializeComponent();
+            BindingContext = new ServicesViewModels(this);
+            //BindingContext = new VehiclesViewModel(this);
+
+            
 
         }
 
@@ -45,12 +49,13 @@ namespace PRMOVIL2CARWASH.Views
 
             return true;
         }
-        //private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        //{
-        //    var viewModel = BindingContext as ServicesViewModels;
-        //    var service = e.Item as Service;
+       
 
-        //}
+        private void ListServices_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var viewModel = BindingContext as ServicesViewModels;
+            var service = e.Item as Service;
+        }
 
 
 

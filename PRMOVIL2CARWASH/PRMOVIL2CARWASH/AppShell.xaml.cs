@@ -19,9 +19,12 @@ namespace PRMOVIL2CARWASH
             Routing.RegisterRoute(nameof(Facturacion), typeof(Facturacion));
             Routing.RegisterRoute(nameof(Mapas), typeof(Mapas));
             Routing.RegisterRoute(nameof(CrearAuto), typeof(CrearAuto));
-            Routing.RegisterRoute(nameof(Reservacion), typeof(Reservacion));
+            Routing.RegisterRoute(nameof(Reservaciones), typeof(Reservaciones));
             Routing.RegisterRoute(nameof(Validacion), typeof(Validacion));
             Routing.RegisterRoute(nameof(AcercaDe), typeof(AcercaDe));
+            Routing.RegisterRoute(nameof(CambioAceite), typeof(CambioAceite));
+            Routing.RegisterRoute(nameof(ListaCarros), typeof(ListaCarros));
+
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

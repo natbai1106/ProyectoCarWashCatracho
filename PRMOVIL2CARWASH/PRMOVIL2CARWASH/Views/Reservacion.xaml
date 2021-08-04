@@ -75,6 +75,9 @@
                             <Picker
                                     x:Name="PiAutoCotizacion"
                                     Title="Seleccione el  Automóvil"
+                                    ItemsSource="{Binding Vehicle}"
+                                    ItemDisplayBinding="{Binding NumeroPlaca}"
+                                    SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
                                     
                                     FontSize="20"
                                     FontFamily="SansLight"

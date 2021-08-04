@@ -134,7 +134,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             Motor = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
             //Modelo = modelo.GetModelos().OrderBy(c => c.NombreModelo).ToList();
 
-
+            
             SaveInformation = new Command(OnRequestSave);
             OpenGalleryCommand = new Command(OnOpenGallery);
             TakePhotoCommand = new Command(OnTakePhoto);

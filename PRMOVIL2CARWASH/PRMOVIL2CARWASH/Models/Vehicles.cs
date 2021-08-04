@@ -12,7 +12,7 @@ namespace PRMOVIL2CARWASH.Models
     public class Vehicles
     {
         [JsonProperty("idVehiculos")]
-        public string IdVehiculos { get; set; }
+        public int IdVehiculos { get; set; }
 
         [JsonProperty("numeroPlaca")]
         public string NumeroPlaca { get; set; }

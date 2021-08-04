@@ -19,7 +19,7 @@ namespace PRMOVIL2CARWASH.Models
         {
             var vNombre = new ObservableCollection<Service>()
             {
-                new Service (){ IdServicios = 1, NombreServicio = "Lavado Genral"},
+                new Service (){ IdServicios = 1, NombreServicio = "Lavado Genral Prueba"},
                 new Service (){ IdServicios = 2, NombreServicio = "Cambio de aceite"},
                 new Service (){ IdServicios = 3, NombreServicio = "Lavado Completo"}
             };

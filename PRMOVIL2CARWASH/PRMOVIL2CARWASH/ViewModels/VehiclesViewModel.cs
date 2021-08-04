@@ -45,7 +45,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             set => brand = value;
         }
 
-        /*--------------------MODELO DEL VEHICULO--------------------*/
+        ///*--------------------MODELO DEL VEHICULO--------------------*/
 
         public Modelos ModeloSelected
         {
@@ -106,24 +106,21 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         public VehiclesViewModel(Page pag)
         {
+            Page = pag;
+
             Modelos Models = new Modelos();
             Brand Marca = new Brand();
 
-            //Task<ObservableCollection<Modelos>> task = Modelos.ObterModelos();
             Modelo = Models.ObtenerModelos().Result;
-            Brand = Marca.ObtenerMarcas().Result;
-     
+            //Brand = Marca.ObtenerMarcas().Result;
 
-            Page = pag;
-            MotorType motorType = new MotorType();
-            Brand listaBrand = new Brand();
-            //Modelos modelos = new Modelos();
-            TypeVehicle typeVehicle = new TypeVehicle();
+            //MotorType motorType = new MotorType();
+            //TypeVehicle typeVehicle = new TypeVehicle();
 
-            //Brand = listaBrand.GetMarcas().OrderBy(c => c.NombreMarca).ToList();
-            Type = typeVehicle.GetTipos().OrderBy(c => c.NombreTipoVehicle).ToList();
-            Motor = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
-           // Modelo = modelos.GetModelos().OrderBy(c => c.NombreModelo).ToList();
+
+            //Type = typeVehicle.GetTipos().OrderBy(c => c.NombreTipoVehicle).ToList();
+            //Motor = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
+
 
             SaveInformation = new Command(OnRequestSave);
             OpenGalleryCommand = new Command(OnOpenGallery);
@@ -136,10 +133,10 @@ namespace PRMOVIL2CARWASH.ViewModels
             int anio = int.Parse(fechaActual.ToString("yyyy"));
             await Page.DisplayAlert("Mensaje", ""+anio, "Ok");
 
-            if (MotorSelected == null || TypeSelected == null || BrandSelected == null || ModeloSelected == null || Year == 0 || Plaque == null)
-            {
-                await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");
-            }
+            //if (MotorSelected == null || TypeSelected == null || BrandSelected == null || ModeloSelected == null || Year == 0 || Plaque == null)
+            //{
+            //    await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");
+            //}
         }
 
         private async void OnOpenGallery()

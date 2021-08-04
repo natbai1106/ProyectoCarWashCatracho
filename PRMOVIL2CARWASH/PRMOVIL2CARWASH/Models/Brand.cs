@@ -11,7 +11,7 @@ namespace PRMOVIL2CARWASH.Models
 {
     public class Brand
     {
-        HttpClient client;
+        HttpClient clientMarcas;
         [JsonProperty("idModeloVehiculos")]
         public int IdMarca
         {
@@ -22,39 +22,36 @@ namespace PRMOVIL2CARWASH.Models
         {
             get; set;
         }
-        public List<Brand> GetMarcas()
-        {
-            var vMarcas = new List<Brand>()
-            {
-                new Brand (){ IdMarca = 1, NombreMarca = "Toyota"},
-                new Brand (){ IdMarca = 2, NombreMarca = "Honda"},
-                new Brand (){ IdMarca = 3, NombreMarca = "Mazda"}
-            };
-            return vMarcas;
-        }
+        //public List<Brand> GetMarcas()
+        //{
+        //    var vMarcas = new List<Brand>()
+        //    {
+        //        new Brand (){ IdMarca = 1, NombreMarca = "Toyota"},
+        //        new Brand (){ IdMarca = 2, NombreMarca = "Honda"},
+        //        new Brand (){ IdMarca = 3, NombreMarca = "Mazda"}
+        //    };
+        //    return vMarcas;
+        //}
         public Brand()
         {
-            client = new HttpClient();
+            clientMarcas = new HttpClient();
         }
         public const string Url = "http://173.249.21.6/v1/vehicle/brand";
         public async Task<ObservableCollection<Brand>> ObtenerMarcas()
         {
             try
             {
-                var response = client.GetStringAsync(Url).Result;
+                var response = clientMarcas.GetStringAsync(Url).Result;
                 Console.WriteLine("VALOR DE LA VARIABLE RESPONSE" + response);
-                ObservableCollection<Brand> taskresult = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(response);
-                Console.WriteLine("VALOR DE LA VARIABLE TASRESULT" + taskresult);
-                return taskresult;
+                ObservableCollection<Brand> taskresultMarcas = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(response);
+                Console.WriteLine("VALOR DE LA VARIABLE TASRESULT" + taskresultMarcas);
+                return taskresultMarcas;
             }
             catch (Exception e)
             {
                 throw;
-                Debug.WriteLine("Error", "Error " + e.Message, "Ok");
+                //Debug.WriteLine("Error", "Error " + e.Message, "Ok");
             }
-
-
-
         }
     }
 }

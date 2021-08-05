@@ -71,7 +71,7 @@
 
                         <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
                         <Label 
-                            Text="Nombre Completo: "
+                            Text="Nombre: "
                             FontSize="20"
                             FontFamily="SansBold"/>
                     </StackLayout>
@@ -92,10 +92,56 @@
 
                             <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                             <Entry 
-                                x:Name="txtNombreCompleto"
+                                x:Name="txtNombre"
                                 Keyboard="Plain"
                                 Margin="0,0,15,0"
-                                Placeholder="Nombre completo..."
+                                Placeholder="Nombre..."
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
+
+                        <!-- INICIO DEL LABEL ASTERISCO -->
+                        <Label 
+                            Text="*"
+                            FontSize="25"
+                            TextColor="red"
+                            FontFamily="SansBold"/>
+
+                        <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
+                        <Label 
+                            Text="Apellido: "
+                            FontSize="20"
+                            FontFamily="SansBold"/>
+                    </StackLayout>
+
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT NOMBRE COMPLETO -->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
+
+                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY NOMBRE COMPLETO -->
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                            <Entry 
+                                x:Name="txtApellido"
+                                Keyboard="Plain"
+                                Margin="0,0,15,0"
+                                Placeholder="Apellido..."
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"

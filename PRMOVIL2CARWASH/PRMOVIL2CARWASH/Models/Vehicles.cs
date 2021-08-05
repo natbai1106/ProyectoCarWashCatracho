@@ -22,7 +22,7 @@ namespace PRMOVIL2CARWASH.Models
         public int Anio { get; set; }
 
         [JsonProperty("fotoRuta")]
-        public byte[] RutaFoto { get; set; }
+        public string RutaFoto { get; set; }
 
         [JsonProperty("observacion")]
         public string Observacion { get; set; }
@@ -46,8 +46,6 @@ namespace PRMOVIL2CARWASH.Models
         public Vehicles()
         {
             cliente = new HttpClient();
-           
-
         }
         public async Task<int> RegisterVehicle()
         {
@@ -67,7 +65,5 @@ namespace PRMOVIL2CARWASH.Models
             else
                 return Constanst.REQUEST_ERROR;
         }
-
-       
     }
 }

@@ -2,222 +2,322 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.ConfigUsuario"
-             BackgroundImage="#FDFDFD">
+             BackgroundImage="#FDFDFD"
+             Title="Editar Usuario">
+    
+    <!-- INICIO DEL CONTENTPAGE -->
     <ContentPage.Content>
 
+        <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA PANTALLA -->
         <StackLayout
-                      Margin="5,15">
-
-            <!--Titulo -->
-            <Label 
-                            Text="Configuración de Usuario"
-                            HorizontalOptions="Center"
-                            TextColor="black"
-                            FontFamily="Racing"
-                            FontSize="25"/>
-
-            <!--Scroll -->
+            Margin="5,15">
+            
+            <!-- INICIO SCROLL VIEW -->
             <ScrollView>
-
-                <!-- Contenedor principal para la tarjeta-->
+                
+                <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA IMAGEN -->
                 <StackLayout 
-                        Margin="5,15">
+                    Margin="5,15">
 
-                    <!--Texto Nombre-->
+                    <!-- INICIO DEL STACKLAYOUT DE LA IMAGEN DE USUARIO -->
+                    <StackLayout 
+                        Orientation="Horizontal" 
+                        HorizontalOptions="Center">
+
+                        <!-- INICIO DE LA IMAGEN DE USUARIO -->
+                        <Image
+                            x:Name="imgFotoUsuario" 
+                            WidthRequest="170"
+                            HeightRequest="170"/>
+                        
+                        <!-- INICIO DEL GRID -->
+                        <Grid>
+                            
+                            <!-- INICIO DEL BOTON DE LA CAMARA -->
+                            <Button                        
+                                ImageSource="camara.png"
+                                x:Name="btnFotosEditarUsuario"
+                                Command="{Binding ThakePhotoCommand}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                IsEnabled="{Binding IsBusy}"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="7" />
+                            
+                            <!-- INICIO DEL BOTON DE LA GALERIA -->
+                            <Button                        
+                                ImageSource="galeria.png"
+                                x:Name="btnGaleriaEditarUsuario"
+                                IsEnabled="{Binding IsBusy}"
+                                Command="{Binding OpenGaleryCommand}"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="#E3E4E5"
+                                CornerRadius="7"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
-                                Orientation="Horizontal"
-                                 Margin="0,15,0,0">
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
 
+                        <!-- INICIO DEL LABEL ASTERISCO -->
+                        <Label 
+                            Text="*"
+                            FontSize="25"
+                            TextColor="red"
+                            FontFamily="SansBold"/>
+
+                        <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
+                        <Label 
+                            Text="Nombre: "
+                            FontSize="20"
+                            FontFamily="SansBold"/>
+                    </StackLayout>
+
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT NOMBRE COMPLETO -->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
+
+                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY NOMBRE COMPLETO -->
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                            <Entry 
+                                x:Name="txtNombre"
+                                Keyboard="Plain"
+                                Margin="0,0,15,0"
+                                Placeholder="Nombre..."
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
+
+                        <!-- INICIO DEL LABEL ASTERISCO -->
+                        <Label 
+                            Text="*"
+                            FontSize="25"
+                            TextColor="red"
+                            FontFamily="SansBold"/>
+
+                        <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
+                        <Label 
+                            Text="Apellido: "
+                            FontSize="20"
+                            FontFamily="SansBold"/>
+                    </StackLayout>
+
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT NOMBRE COMPLETO -->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
+
+                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY NOMBRE COMPLETO -->
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                            <Entry 
+                                x:Name="txtApellido"
+                                Keyboard="Plain"
+                                Margin="0,0,15,0"
+                                Placeholder="Apellido..."
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
+
+                        <!-- INICIO DEL LABEL ASTERISCO -->
                         <Label 
                              Text="*"
                              FontSize="25"
                              TextColor="red"
                              FontFamily="SansBold"/>
 
+                        <!-- INICIO DEL LABEL CORREO ELECTRONICO -->
                         <Label 
-                             Text="Ingrese Nombre: "
+                             Text="Correo Electroncio: "
                              FontSize="20"
                              FontFamily="SansBold"/>
                     </StackLayout>
 
-                    <!-- Estilo para el Entry Input Nombre-->
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT CORREO ELECTRONICO -->
                     <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="10" 
-                                WidthRequest="340"
-                                Margin="10,0,15,0">
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
 
+                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY CORREO ELECTRONICO -->
                         <StackLayout
-                                    Orientation="Horizontal"
-                                    Margin="25,5">
-
-                            <Entry 
-                                       x:Name="txtNombreUsuario"
-                                       Margin="0,0,15,0"
-                                       Placeholder="Nombre"
-                                       PlaceholderColor="Gray"
-                                       FontSize="20"
-                                       FontFamily="SansLight"
-                                       HorizontalOptions="FillAndExpand"/>
-
-                        </StackLayout>
-                    </Frame>
-
-                    <!--Texto Apellido-->
-                    <StackLayout
-                                Orientation="Horizontal"
-                                Margin="0,15,0,0">
-
-                        <Label 
-                                    Text="*"
-                                    FontSize="25"
-                                    TextColor="red"
-                                    FontFamily="Questrial"/>
-
-                        <Label 
-                                    Text="Ingrese Apellido: "
-                                    TextColor="Black"
-                                    FontSize="20"
-                                    FontFamily="Questrial"/>
-                    </StackLayout>
-
-                    <!-- Estilo para el Entry Redondo-->
-                    <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                Margin="20,0,15,0">
-
-                        <!--Contenedor del Input Apellido-->
-                        <StackLayout
-                                     Orientation="Horizontal"
-                                     Margin="25,5">
-
-                            <Image 
-                                   Source="usuario.png"/>
-
-                            <Entry 
-                                        x:Name="txtApellidoUsuario"
-                                       Margin="0,0,15,0"
-                                       Placeholder="Apellido"
-                                       PlaceholderColor="Gray"
-                                       FontSize="20"
-                                       FontFamily="Questrial"
-                                       HorizontalOptions="FillAndExpand"/>
-
-                        </StackLayout>
-                    </Frame>
-
-                    <!--Texto Direccion-->
-                    <StackLayout
                             Orientation="Horizontal"
-                             Margin="0,15,0,0">
-                        <Label 
-                                Text="Ingrese Direccion: "
-                                TextColor="Black"
-                                FontSize="20"
-                                FontFamily="Questrial"/>
-                    </StackLayout>
+                            Margin="25,5">
 
-
-                    <!-- Estilo para el Entry Redondo-->
-                    <Frame
-                            BackgroundColor="Transparent" 
-                            BorderColor="Black"                             
-                            Padding="0"
-                            CornerRadius="50" 
-                            WidthRequest="340"
-                            Margin="20,0,15,0">
-
-                        <!--Contenedor del Input direccion-->
-                        <StackLayout
-                                 Orientation="Horizontal"
-                                 Margin="25,5">
-
-                            <Image 
-                                   Source="direccion.png"/>
-
+                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                             <Entry 
-                                    x:Name="txtDireccionUsuario"
-                                   Margin="0,0,15,0"
-                                   Placeholder="Direccion"
-                                   PlaceholderColor="Gray"
-                                   FontSize="20"
-                                   FontFamily="Questrial"
-                                   HorizontalOptions="FillAndExpand"/>
+                                x:Name="txtApellidoUsuario"
+                                Margin="0,0,15,0"
+                                Keyboard="Email"
+                                Placeholder="Correo electronico..."
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
 
                         </StackLayout>
                     </Frame>
 
-                    <!--Texto Telefono-->
+                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
-                            Orientation="Horizontal"
-                             Margin="0,15,0,0">
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
 
+                        <!-- INICIO DEL LABEL ASTERISCO -->
                         <Label 
-                                Text="Ingrese Teléfono: "
-                                TextColor="Black"
-                                FontSize="20"
-                                FontFamily="Questrial"/>
+                             Text="*"
+                             FontSize="25"
+                             TextColor="red"
+                             FontFamily="SansBold"/>
+
+                        <!-- INICIO DEL LABEL DIRECCION -->
+                        <Label 
+                             Text="Direccion: "
+                             FontSize="20"
+                             FontFamily="SansBold"/>
                     </StackLayout>
 
-
-                    <!-- Estilo para el Entry Redondo-->
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT DIRECCION -->
                     <Frame
-                            BackgroundColor="Transparent" 
-                            BorderColor="Black"                             
-                            Padding="0"
-                            CornerRadius="50" 
-                            WidthRequest="340"
-                            Margin="20,0,15,10">
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
 
-                        <!--Contenedor del Input Telefono-->
+                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY DIRECCION -->
                         <StackLayout
-                                 Orientation="Horizontal"
-                                 Margin="25,5">
+                            Orientation="Horizontal"
+                            Margin="25,5">
 
-                            <Image 
-                                   Source="telefono.png"/>
-
+                            <!-- INICIO DEL ENTRY DE DIRECCION -->
                             <Entry 
-                                    x:Name="txtTelefonoUsuario"
-                                   Margin="0,0,15,0"
-                                   Keyboard="Numeric"
-                                   Placeholder="Teléfono"
-                                   PlaceholderColor="Gray"
-                                   FontSize="20"
-                                   FontFamily="Questrial"
-                                   HorizontalOptions="FillAndExpand"/>
+                                x:Name="txtDireccion"
+                                Margin="0,0,15,0"
+                                Keyboard="Plain"
+                                Placeholder="Direccion..."
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
 
                         </StackLayout>
                     </Frame>
 
-                    <Button 
-                            Text="Actualizar" 
-                            x:Name="btnActulizarUsuario"
-                            BackgroundColor="#01ADBA"
-                            TextColor="White"
-                            FontAttributes="Bold"
-                            CornerRadius="50"
-                            BorderWidth="2"
-                            Margin="10,5"/>
+                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="0,15,0,0">
 
-                    <Button 
-                            Text="Limpiar" 
-                            x:Name="btnLimpiarUsuario"
-                            BackgroundColor="#E3E4E5"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            CornerRadius="50"
-                            BorderWidth="2"
-                            Margin="10,0,0,15"/>
-                    <!-- Contenedor Principal-->
+                        <!-- INICIO DEL LABEL ASTERISCO -->
+                        <Label 
+                             Text="*"
+                             FontSize="25"
+                             TextColor="red"
+                             FontFamily="SansBold"/>
+
+                        <!-- INICIO DEL LABEL TELEFONO -->
+                        <Label 
+                             Text="Telefono: "
+                             FontSize="20"
+                             FontFamily="SansBold"/>
+                    </StackLayout>
+
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT TELEFONO -->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340"
+                        Margin="10,0,15,0">
+
+                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY TELEFONO -->
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
+
+                            <!-- INICIO DEL ENTRY DE TELEFONO -->
+                            <Entry 
+                                x:Name="txtTelefono"
+                                Margin="0,0,15,0"
+                                Keyboard="Numeric"
+                                Placeholder="Telefono..."
+                                PlaceholderColor="Gray"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
                 </StackLayout>
             </ScrollView>
+
+            <!-- INICIO DEL GRID -->
+            <Grid 
+                HeightRequest="80">
+                
+                <!-- INICIO DEL BOTON DE GUARDAR CAMBIOS -->
+                <Button
+                    Text="Guardar Cambios" 
+                    x:Name="btnGuardarCambios"
+                    BackgroundColor="#01ADBA"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Clicked="btnGuardarCambios_Clicked"/>
+
+                <!-- INICIO DEL BOTON DE LIMPIAR CAMPOS -->
+                <Button
+                    Text="Limpiar" 
+                    x:Name="btnLimpiarPerfilUsuario"
+                    BackgroundColor="#E3E4E5"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Clicked="btnLimpiarPerfilUsuario_Clicked"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
+    
 </ContentPage>

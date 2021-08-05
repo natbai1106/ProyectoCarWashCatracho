@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PRMOVIL2CARWASH.ViewModels
 {
+
     public class VehiclesViewModel : BaseViewModel
     {
         public Command SaveInformation { get; }
@@ -19,8 +20,8 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         ObservableCollection<Brand> brand;
         ObservableCollection<Modelos> modelo;
-        List<TypeVehicle> type;
-        List<MotorType> motor;
+        ObservableCollection<TypeVehicle> type;
+        ObservableCollection<MotorType> motor;
         MotorType motorSelected;
         TypeVehicle typeSelected;
         Brand brandSelected;
@@ -59,21 +60,19 @@ namespace PRMOVIL2CARWASH.ViewModels
             set => SetProperty(ref modeloSelected, value);
         }
 
-
         public ObservableCollection<Brand> Brand
         {
             get => brand;
             set => brand = value;
         }
 
-
-        public List<TypeVehicle> Type
+        public ObservableCollection<TypeVehicle> Type
         {
             get => type;
             set => type = value;
         }
 
-        public List<MotorType> Motor
+        public ObservableCollection<MotorType> Motor
         {
             get => motor;
             set => motor = value;
@@ -114,36 +113,21 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         public VehiclesViewModel(Page pag)
         {
+            Page = pag;
 
             Modelos Models = new Modelos();
             Brand Marcas = new Brand();
-
+            TypeVehicle TipoVehiculo = new TypeVehicle();
+            MotorType MotorTipo = new MotorType();
 
             Modelo = Models.ObtenerModelos().Result;
             Brand = Marcas.ObtenerMarcas().Result;
+            Motor = MotorTipo.ObtenerTipoMotor().Result;
+            Type = TipoVehiculo.ObtenerTipoVehiculo().Result;
 
-
-            Page = pag;
-            MotorType motorType = new MotorType();
-            //Brand listaBrand = new Brand();
-            //Modelos modelos = new Modelos();
-            TypeVehicle typeVehicle = new TypeVehicle();
-
-            //Brand = listaBrand.GetMarcas().OrderBy(c => c.NombreMarca).ToList();
-            Type = typeVehicle.GetTipos().OrderBy(c => c.NombreTipoVehicle).ToList();
-            Motor = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
-            //Modelo = modelo.GetModelos().OrderBy(c => c.NombreModelo).ToList();
-
-            
             SaveInformation = new Command(OnRequestSave);
             OpenGalleryCommand = new Command(OnOpenGallery);
             TakePhotoCommand = new Command(OnTakePhoto);
-
-            //MotorSelected.IdMotor = 0;
-            //TypeSelected.IdTipoVehicle = 0;
-            //BrandSelected.IdMarca = 0;
-            //ModeloSelected.IdModelo = 0;
-
         }
 
         private async void OnRequestSave(object obj)
@@ -157,23 +141,6 @@ namespace PRMOVIL2CARWASH.ViewModels
                 await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");
             }
 
-            //    var ListaModelos = new List<Modelos>();
-            //    if (ListaModelos.Count == 0)
-            //    {
-            //        await Page.DisplayAlert("Mensaje", "Debe seleccionar un Modelo para su auto", "Ok");
-            //    }
-
-            //    var ListaType = new List<TypeVehicle>();
-            //    if (ListaType.Count == 0)
-            //    {
-            //        await Page.DisplayAlert("Mensaje", "Debe seleccionar un Tipo de auto", "Ok");
-            //    }
-
-            //    var ListaMotor = new List<MotorType>();
-            //    if (ListaMotor.Count == 0)
-            //    {
-            //        await Page.DisplayAlert("Mensaje", "Debe seleccionar el Tipo de combustible para el Motor de su auto", "Ok");
-            //    }
         }
         private async void OnOpenGallery()
         {

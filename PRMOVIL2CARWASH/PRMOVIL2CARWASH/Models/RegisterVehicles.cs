@@ -60,11 +60,9 @@ namespace PRMOVIL2CARWASH.Models
         public const string Url = "http://173.249.21.6/v1/vehicle/all/1";
         public async Task<ObservableCollection<RegisterVehicles>> GetVehicles()
         {
-
             try
-            {
-                
-                var responseVehiculo =  APIVehiculo.GetStringAsync(Url).Result;
+            {                
+                var responseVehiculo = await APIVehiculo.GetStringAsync(Url);
                 Console.WriteLine("VALOR DE LA VARIABLE RESPONSE VEHICULOS" + responseVehiculo);
                 ObservableCollection<RegisterVehicles> taskVehicle = JsonConvert.DeserializeObject<ObservableCollection<RegisterVehicles>>(responseVehiculo);
                 Console.WriteLine("VALOR DE LA VARIABLE TASRESULT VEHICULOS" + taskVehicle);
@@ -73,9 +71,7 @@ namespace PRMOVIL2CARWASH.Models
             catch (Exception e)
             {
                 throw;
-                Debug.WriteLine("Error", "Error " + e.Message, "Ok");
             }
-
         }
     }
 }

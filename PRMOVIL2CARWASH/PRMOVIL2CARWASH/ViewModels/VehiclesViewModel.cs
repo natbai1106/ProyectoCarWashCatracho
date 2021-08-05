@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PRMOVIL2CARWASH.ViewModels
 {
+
     public class VehiclesViewModel : BaseViewModel
     {
         public Command SaveInformation { get; }
@@ -28,7 +29,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         int year;
         string plaque;
         string observation;
-        string foto;
+        byte[] foto;
         ImageSource photo = ImageSource.FromUri(new Uri("https://images.vexels.com/media/users/3/204554/isolated/lists/53193fd7db3d2618ab56635e69e64515-pequenas-hojas-de-frutos-rojos.png"));
 
         public ObservableCollection<Modelos> Modelo
@@ -124,13 +125,6 @@ namespace PRMOVIL2CARWASH.ViewModels
 
 
             Page = pag;
-
-            Modelos Models = new Modelos();
-            Brand Marcas = new Brand();
-
-            Modelo = Models.ObtenerModelos().Result;
-            Brand = Marcas.ObtenerMarcas().Result;
-
             MotorType motorType = new MotorType();
             //Brand listaBrand = new Brand();
             //Modelos modelos = new Modelos();
@@ -141,7 +135,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             Motor = motorType.GetMotor().OrderBy(c => c.NombreMotor).ToList();
             //Modelo = modelo.GetModelos().OrderBy(c => c.NombreModelo).ToList();
 
-            
+
             SaveInformation = new Command(OnRequestSave);
             OpenGalleryCommand = new Command(OnOpenGallery);
             TakePhotoCommand = new Command(OnTakePhoto);
@@ -163,7 +157,6 @@ namespace PRMOVIL2CARWASH.ViewModels
             {
                 await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");
             }
-        }
 
             //    var ListaModelos = new List<Modelos>();
             //    if (ListaModelos.Count == 0)

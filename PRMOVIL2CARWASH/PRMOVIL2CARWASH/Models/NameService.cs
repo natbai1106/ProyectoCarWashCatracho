@@ -49,9 +49,9 @@ namespace PRMOVIL2CARWASH.Models
             try
             {
                 var responseMarca = ApiServicio.GetStringAsync(Url).Result;
-                Console.WriteLine("VALOR DE LA VARIABLE RESPONSE" + responseMarca);
+                Console.WriteLine("VALOR DE LA VARIABLE RESPONSE SERVICIOS" + responseMarca);
                 ObservableCollection<Service> taskService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(responseMarca);
-                Console.WriteLine("VALOR DE LA VARIABLE TASRESULT" + taskService);
+                Console.WriteLine("VALOR DE LA VARIABLE TASRESULT SERVICIOS" + taskService);
                 return taskService;
             }
             catch (Exception e)

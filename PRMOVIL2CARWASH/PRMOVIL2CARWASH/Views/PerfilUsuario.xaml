@@ -1,18 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PRMOVIL2CARWASH.Views.PerfilUsuario">
+             x:Class="PRMOVIL2CARWASH.Views.PerfilUsuario"
+             Title="Perfil">
 
     <StackLayout>
+        <ScrollView>
+            <StackLayout>
 
-        <Image 
+                <Image 
                 Source="perfilusuario.png" 
                 HeightRequest="300"
                 WidthRequest="300"
                 VerticalOptions="Center" 
                 Margin="25,10"/>
 
-        <Frame 
+                <Frame 
                 CornerRadius="55" 
                 Margin="0,0,0,-20" 
                 BackgroundColor="#E3E4E5" 
@@ -20,61 +23,60 @@
                 HeightRequest="20"
                 VerticalOptions="EndAndExpand"/>
 
-        <!-- INICIO DEL BOTON DE CONFIGURAR PERFIL -->
-        <Button 
-                        x:Name="btnEditarPerfil"
-                        BackgroundColor="DarkGreen" 
-                        ImageSource="editar.png" 
-                        BorderColor="Black" 
-                        CornerRadius="40" 
-                        Background="#01ADBA"
-                        BorderWidth="2"
-                        Margin="0,-75,30,65" 
-                        HeightRequest="65" 
-                        WidthRequest="65" 
-                        HorizontalOptions="End" 
-                        VerticalOptions="End"
-                        Clicked="btnEditarPerfil_Clicked"/>
+                <!-- INICIO DEL BOTON DE CONFIGURAR PERFIL -->
+                <Button 
+             x:Name="btnEditarPerfil"
+             BackgroundColor="DarkGreen" 
+             ImageSource="editar.png" 
+             CornerRadius="40" 
+             Background="#01ADBA"
+             BorderWidth="2"
+             Margin="0,-75,30,65" 
+             HeightRequest="65" 
+             WidthRequest="65" 
+             HorizontalOptions="End" 
+             VerticalOptions="End"
+             Clicked="btnEditarPerfil_Clicked"/>
 
-        <StackLayout 
+                <StackLayout 
             BackgroundColor="#E3E4E5" 
             HeightRequest="250"
             Margin="0,-65,0,0">
 
-            <Label 
+                    <Label 
                 Margin="30,0,0,0">
 
-                <Label.FormattedText>
+                        <Label.FormattedText>
 
-                    <FormattedString>
-                        <Span 
+                            <FormattedString>
+                                <Span 
                             Text="Nombre Completo &#10;" 
                             FontSize="30"
                             LineHeight="4"
                             FontAttributes="Bold" 
                             ForegroundColor="Black" />
-                        <Span 
+                                <Span 
                             Text="Correo Electrónico &#10;" 
                             FontSize="20" 
                             LineHeight="2"
                             ForegroundColor="Black" />
-                        <Span 
+                                <Span 
                             Text="Numero de Teléfono" 
                             FontSize="20" 
                             ForegroundColor="Black" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
-            <Label
+                    <Label
                 Text="__________________________________________________________________"
                 FontSize="13"
                 TextColor="Black"
                 FontAttributes="Bold"
                 Margin="17,0,0,-23"/>
-            
-            <!-- ESTILOS DEL ENTRY NOMBRE -->
-            <Frame
+
+                    <!-- ESTILOS DEL ENTRY NOMBRE -->
+                    <Frame
                             BackgroundColor="Transparent" 
                             Padding="0"
                             Margin="10" 
@@ -82,19 +84,19 @@
                             HeightRequest="70"
                             HorizontalOptions="FillAndExpand">
 
-                <!-- CONTENEDOR ENTRY NOMBRE -->
-                <StackLayout
+                        <!-- CONTENEDOR ENTRY NOMBRE -->
+                        <StackLayout
                             Orientation="Horizontal"
                             Margin="5,5,5,5"
                             Background="#E3E4E5">
 
-                    <!-- IMAGEN DE NOMBRE -->
-                    <Image 
+                            <!-- IMAGEN DE NOMBRE -->
+                            <Image 
                                 Source="cambiar_contrasenia.png" 
                                 Margin="10"/>
 
-                    <!-- ENTRY NOMBRE -->
-                    <Button 
+                            <!-- ENTRY NOMBRE -->
+                            <Button 
                         x:Name="btnCambiarContraseña"
                         Text="Cambiar Contraseña"
                         FontFamily="Questrial"
@@ -107,21 +109,24 @@
                         Margin="0,0,15,0"
                         Clicked="btnCambiarContraseña_Clicked"/>
 
-                    <!-- IMAGEN DE NOMBRE -->
-                    <Image 
+                            <!-- IMAGEN DE NOMBRE -->
+                            <Image 
                                 Source="flechaderecha.png" 
                                 Margin="10"/>
 
-                </StackLayout>
-            </Frame>
+                        </StackLayout>
+                    </Frame>
 
-            <Label
+                    <Label
                 Text="__________________________________________________________"
                 FontSize="15"
                 TextColor="Black"
                 FontAttributes="Bold"
                 Margin="17,-40,0,10"/>
 
-        </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
     </StackLayout>
 </ContentPage>

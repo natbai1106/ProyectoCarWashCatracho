@@ -10,14 +10,14 @@
 
         <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA PANTALLA -->
         <StackLayout
-            Margin="5,15">
+            Margin="0,15">
             
             <!-- INICIO SCROLL VIEW -->
             <ScrollView>
                 
                 <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA IMAGEN -->
                 <StackLayout 
-                    Margin="5,15">
+                    Margin="5,10">
 
                     <!-- INICIO DEL STACKLAYOUT DE LA IMAGEN DE USUARIO -->
                     <StackLayout 
@@ -27,33 +27,45 @@
                         <!-- INICIO DE LA IMAGEN DE USUARIO -->
                         <Image
                             x:Name="imgFotoUsuario" 
-                            WidthRequest="170"
-                            HeightRequest="170"/>
+                            Source="perfil.png"
+                            WidthRequest="190"
+                            HeightRequest="190"/>
                         
                         <!-- INICIO DEL GRID -->
                         <Grid>
                             
                             <!-- INICIO DEL BOTON DE LA CAMARA -->
-                            <Button                        
+                            <Button     
+                                BackgroundColor="#01ADBA" 
+                                CornerRadius="40" 
+                                Background="#01ADBA"
+                                BorderWidth="2"
+                                HeightRequest="80" 
+                                WidthRequest="80" 
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
                                 ImageSource="camara.png"
                                 x:Name="btnFotosEditarUsuario"
                                 Command="{Binding ThakePhotoCommand}"
                                 Grid.Row="0"
-                                Grid.Column="0"
-                                IsEnabled="{Binding IsBusy}"
-                                BackgroundColor="#E3E4E5"
-                                CornerRadius="7" />
+                                Grid.Column="0"/>
                             
                             <!-- INICIO DEL BOTON DE LA GALERIA -->
-                            <Button                        
+                            <Button
+                                 BackgroundColor="#01ADBA" 
+                                CornerRadius="40" 
+                                Background="#01ADBA"
+                                BorderWidth="2"
+                                HeightRequest="80" 
+                                WidthRequest="80"  
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
                                 ImageSource="galeria.png"
                                 x:Name="btnGaleriaEditarUsuario"
                                 IsEnabled="{Binding IsBusy}"
                                 Command="{Binding OpenGaleryCommand}"
                                 Grid.Row="1"
-                                Grid.Column="0"
-                                BackgroundColor="#E3E4E5"
-                                CornerRadius="7"/>
+                                Grid.Column="0"/>
                         </Grid>
                     </StackLayout>
 
@@ -293,7 +305,7 @@
 
             <!-- INICIO DEL GRID -->
             <Grid 
-                HeightRequest="80">
+                HeightRequest="100">
                 
                 <!-- INICIO DEL BOTON DE GUARDAR CAMBIOS -->
                 <Button

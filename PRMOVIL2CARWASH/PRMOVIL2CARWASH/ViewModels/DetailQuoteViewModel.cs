@@ -52,13 +52,14 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         public DetailQuoteViewModel(Page Pag)
         {
-            Page = Pag;
+            
 
             NameService nameService = new NameService();
             RegisterVehicles registerVehicles = new RegisterVehicles();
 
-            Service = nameService.GetNameService();
+            Service = nameService.ObtenerServicios().Result;
             Vehicle = registerVehicles.GetRegisterVehicles();
+            Page = Pag;
         }
 
 

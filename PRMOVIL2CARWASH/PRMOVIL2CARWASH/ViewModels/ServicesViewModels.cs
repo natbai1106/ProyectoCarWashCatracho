@@ -36,14 +36,14 @@ namespace PRMOVIL2CARWASH.ViewModels
             set => Items= value;
         }
         
-        public ServicesViewModels(Page Pag)
-        {
-            Page = Pag;
+        //public ServicesViewModels(Page Pag)
+        //{
+        //    Page = Pag;
 
-            NameService nameService = new NameService();
-            Service = nameService.GetNameService();
+        //    NameService nameService = new NameService();
+        //    Service = nameService.ObtenerServicios();
 
-        }
+        //}
         
         //public ICommand GoToDetailsCommand { private set; get; }
 

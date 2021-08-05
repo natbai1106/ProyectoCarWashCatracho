@@ -13,16 +13,18 @@ namespace PRMOVIL2CARWASH.Models
     {
         HttpClient clientMarca;
 
-        [JsonProperty("idModeloVehiculos")]
+        [JsonProperty("idMarcaVehiculos")]
         public int IdMarca
         {
             get; set;
         }
+
         [JsonProperty("marca")]
         public string NombreMarca
         {
             get; set;
         }
+
         //public List<Brand> GetMarcas()
         //{
         //    var vMarcas = new List<Brand>()
@@ -33,27 +35,32 @@ namespace PRMOVIL2CARWASH.Models
         //    };
         //    return vMarcas;
         //}
+
         public Brand()
         {
             clientMarca = new HttpClient();
         }
+
+
         public const string Url = "http://173.249.21.6/v1/vehicle/brand";
         public async Task<ObservableCollection<Brand>> ObtenerMarcas()
         {
-            ObservableCollection<Brand> taskMarca;
+
             try
             {
-                var responseMarca = await clientMarca.GetAsync(Url);
-                var contents = await responseMarca.Content.ReadAsStringAsync();
-                taskMarca = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(contents);
+                var responseMarca = clientMarca.GetStringAsync(Url).Result;
+                Console.WriteLine("VALOR DE LA VARIABLE RESPONSE" + responseMarca);
+                ObservableCollection<Brand> taskMarca = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(responseMarca);
+                Console.WriteLine("VALOR DE LA VARIABLE TASRESULT" + taskMarca);
+                return taskMarca;
             }
             catch (Exception e)
             {
-                taskMarca = new ObservableCollection<Brand>();
-
+                throw;
                 Debug.WriteLine("Error", "Error " + e.Message, "Ok");
             }
-            return taskMarca;
+
         }
+
     }
 }

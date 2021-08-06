@@ -223,7 +223,7 @@
                                         FontSize="20"
                                         ItemsSource="{Binding Service}"
                                         ItemDisplayBinding="{Binding NombreServicio}"
-                                        SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
+                                        SelectedItem="{Binding ServiceSelected, Mode=TwoWay}"
                                         FontFamily="SansLight"
                                         Margin="0,0,10,0"
                                         HorizontalOptions="FillAndExpand"

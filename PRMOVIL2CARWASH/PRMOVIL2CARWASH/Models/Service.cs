@@ -31,6 +31,5 @@ namespace PRMOVIL2CARWASH.Models
         {
             cliente = new HttpClient();
         }
-
     }
 }

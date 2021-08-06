@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.ConfigUsuario"
              BackgroundImage="#FDFDFD"
-             Title="Editar Usuario">
+             Title="Editar Usuario"
+             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
+             >
     
     <!-- INICIO DEL CONTENTPAGE -->
     <ContentPage.Content>
@@ -111,7 +113,11 @@
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
-                                HorizontalOptions="FillAndExpand"/>
+                                HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <behavior:TextValidationBehavior/>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                     </Frame>
 
@@ -157,7 +163,11 @@
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
-                                HorizontalOptions="FillAndExpand"/>
+                                HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <behavior:TextValidationBehavior/>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                     </Frame>
 
@@ -196,14 +206,17 @@
 
                             <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                             <Entry 
-                                x:Name="txtApellidoUsuario"
                                 Margin="0,0,15,0"
-                                Keyboard="Email"
                                 Placeholder="Correo electronico..."
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
-                                HorizontalOptions="FillAndExpand"/>
+                                HorizontalOptions="FillAndExpand">
+
+                                <Entry.Behaviors>
+                                    <behavior:EmailValidationBehavior/>
+                                </Entry.Behaviors>           
+                            </Entry>
 
                         </StackLayout>
                     </Frame>
@@ -252,6 +265,7 @@
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand"/>
 
+
                         </StackLayout>
                     </Frame>
 
@@ -297,7 +311,12 @@
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
-                                HorizontalOptions="FillAndExpand"/>
+                                HorizontalOptions="FillAndExpand">
+
+                                <Entry.Behaviors>
+                                    <behavior:MaskedBehavior Mask="(+504) XXXX-XXXX"/>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

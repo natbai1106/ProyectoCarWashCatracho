@@ -4,19 +4,22 @@ using PRMOVIL2CARWASH.Models;
 using PRMOVIL2CARWASH.Utils;
 using PRMOVIL2CARWASH.Views;
 using System;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace PRMOVIL2CARWASH.ViewModels
 {
-    public class UsersViewModel:BaseViewModel
+    public class UsersViewModel : BaseViewModel
     {
-        public Command SendVerifyCommand {  get; }
+        public Command SendVerifyCommand { get; }
         public Command ThakePhotoCommand { get; }
         public Command OpenGaleryCommand { get; }
         public Command CancelRegisterCommand { get; }
 
         Page Page;
 
+        #region Declaracion de variables
         string name;
         string lastName;
         string address;
@@ -24,101 +27,213 @@ namespace PRMOVIL2CARWASH.ViewModels
         string telephone;
         string user;
         string password;
-        byte[] foto;
-        bool verifyMethod;
-        ImageSource photo;
-   
-        bool isBusy = false;
-        public bool IsBussy
+        bool lastMethodVerify = false;
+        byte[] photoArray;
+        bool verifyByMail=true;
+        bool takeNewPhoto;
+        
+        
+        ImageSource photoProfile;
+        User UserInCache { get; set; }
+      
+        public string Name
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get => name;
+            set { SetProperty(ref name, value);  }
         }
-        public string Name { get => name;
-            set { SetProperty(ref name, value); }
+        public string LastName
+        {
+            get => lastName;
+            set { SetProperty(ref lastName, value);  }
         }
-        public string LastName { get => lastName;
-            set { SetProperty(ref lastName, value); } }
-        public string Address { get => address;
-            set { SetProperty(ref address, value); } }
-        public string Mail { get =>     mail; 
-            set { SetProperty(ref mail, value); } }
-        public string Telephone { get => telephone; 
-            set { SetProperty(ref telephone, value); } }
-        public string User { get => user;
-            set { SetProperty(ref user, value); }
+        public string Address
+        {
+            get => address;
+            set { SetProperty(ref address, value);  }
         }
-        public string Password { get => password;set { SetProperty(ref password, value); } }
+        public string Mail  
+        {
+            get => mail;
+            set { SetProperty(ref mail, value);  }
+        }
+        public string Telephone
+        {
+            get => telephone;
+            set { SetProperty(ref telephone, value); }
+        }
+        public string User
+        {
+            get => user;
+            set { SetProperty(ref user, value);}
+        }
+        public string Password { get => password; set { SetProperty(ref password, value); } }
 
 
-       public byte[] PhotoByte { get => foto; set => foto = value; }
-        public ImageSource Photo
-        { 
-            get => photo;
+        public byte[] PhotoByteArray { get => photoArray; set{ photoArray = value; } }
+        public ImageSource PhotoProfile
+        {
+            get => photoProfile;
             set
             {
-                SetProperty(ref photo, value);
+                SetProperty(ref photoProfile, value);
             }
         }
 
-        public bool VerifyByMail { get => verifyMethod; set => verifyMethod = value; }
-
+        public bool VerifyByMail
+        {
+            get => verifyByMail;
+            set { SetProperty(ref verifyByMail, value); }
+        }
+        public bool TakeNewPhoto { get => takeNewPhoto; set => takeNewPhoto = value; }
+       
+       
+        #endregion
         public UsersViewModel(Page pag)
         {
-            Page = pag;
+             Page = pag;
             SendVerifyCommand = new Command(OnRequestVerify);
-            OpenGaleryCommand = new Command(OnOpenGalery, () => !IsBussy);
+            OpenGaleryCommand = new Command(OnOpenGalery);
             CancelRegisterCommand = new Command(OnCancelRegister);
-            ThakePhotoCommand = new Command(OnTakePhoto, () => !IsBussy);
-            //  Photo = ImageSource.FromUri(new Uri("https://images.vexels.com/media/users/3/204554/isolated/lists/53193fd7db3d2618ab56635e69e64515-pequenas-hojas-de-frutos-rojos.png"));
-              LoadCache();
+            ThakePhotoCommand = new Command(OnTakePhoto);
+            LoadCache();
+
+           
         }
-
-
         private async void OnRequestVerify(object obj)
-        {
+            {
             
-            //realiza una validacion  a la para obtener un codigo de verificación
-            User user = new User
+           
+            if (Barrel.Current.Exists(Constanst.USER_CACHE) && !IsChange())//Valida si existe un usuario existen y no hay cambios lo envia  a la pantalla de validadicion
+            {   
+                await Page.Navigation.PushAsync(new Validacion());
+                return;
+            }
+            if(!IsNotConnect)//valida la conexion a internet
             {
-                Nombre = Name,
-                Apellido = LastName,
-                Direccion=Address,
-                Correo=Mail,
-                Telefono=Telephone,
-                Usuario=User,
-                Contrasena=Password,
-                Foto=PhotoByte
-            };
-            int respuesta;
+                int respuesta = Constanst.REQUEST_ERROR;
+                if (CheckRequires())//Valida los campos requeridos
+                {
+                    bool changeMail = !UserInCache.Correo.Equals(Mail);
+                    bool changePhone = !UserInCache.Telefono.Equals(Telephone);
+                    bool changeMethod = VerifyByMail != lastMethodVerify;
 
-            //Verifica si esta habilitado enviar por mail en caso contrario se envia por telefono
-            if (VerifyByMail)
-            {
-                respuesta = await user.VerfyAccount(Constanst.VERIFY_MAIL, Mail);
+                    if (!string.IsNullOrEmpty(UserInCache.Token))//Si tiene un Token entonces es una actualizacion de lo contrario es primera vez que llena el formulario
+                    {
+                        if(changeMethod || changeMail || changeMail) //Se reenviara solo si se cambio el correo, el telefono, o el metodo de verificación
+                        {
+                            UserInCache.ModoVerificacion = VerifyByMail ? Constanst.VERIFY_MAIL : Constanst.VERIFY_PHONE_NUMBER;
+                          
+                            SetDataToInstance(UserInCache);
+                            Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
+
+                            UserDialogs.Instance.ShowLoading("Reenviando");
+                            respuesta = await UserInCache.ResendVerifyCode();
+                            UserDialogs.Instance.HideLoading();
+
+                            if (respuesta == Constanst.REQUEST_OK)
+                                await Page.Navigation.PushAsync(new Validacion());
+                            else
+                                UserDialogs.Instance.Toast("Error al reenviar codigo de verificación");
+
+                        }
+                        else//Sino se realizaron cambios entonces guardamos los cambios en cache
+                        {
+                            SetDataToInstance(UserInCache);
+                            Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
+                            await Page.Navigation.PushAsync(new Validacion());
+                        }
+                        /*/
+                        if (VerifyByMail !=lastMethodVerify) //Si cambio entonces realiza la verificíon del metodo de validación
+                        {
+                            if (VerifyByMail) //Verifica si esta habilitado enviar por mail en caso contrario se envia por telefono
+                            {
+                                respuesta = await UserInCache.VerfyAccount(Constanst.VERIFY_MAIL, Mail);
+                            }
+                            else
+                            {
+                                respuesta = await UserInCache.VerfyAccount(Constanst.VERIFY_PHONE_NUMBER, Telephone);
+                            }
+                        }
+                        //Si cambio los valores del correo o el telefono hara de nuevo el reenvio
+                        else if (!UserInCache.Correo.Equals(Mail) || !UserInCache.Telefono.Equals(Telephone))
+                        {
+
+                            if (!UserInCache.Correo.Equals(Mail) && VerifyByMail) //Si cambie el correo o el metodo de verificacion es por mail establezco el metodo de verificació
+                                UserInCache.ModoVerificacion = Constanst.VERIFY_MAIL;
+
+                            if (!UserInCache.Telefono.Equals(Telephone))// Si no es verificar por correo, entonces es por telefono
+                                UserInCache.ModoVerificacion = Constanst.VERIFY_PHONE_NUMBER;
+
+
+
+                            #region ocultar
+                            SetDataToInstance(UserInCache);
+                            Barrel.Current.Empty(Constanst.USER_CACHE);//Quitamos el barril antiguo y volvemos crearlo
+                            Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
+
+                            UserDialogs.Instance.ShowLoading("Reenviando");
+                            respuesta = await UserInCache.ResendVerifyCode();
+                            UserDialogs.Instance.HideLoading();
+
+                            if (respuesta == Constanst.REQUEST_OK)
+                                await Page.Navigation.PushAsync(new Validacion());
+                            #endregion
+                        }
+                        else
+                        {
+                            SetDataToInstance(UserInCache);
+                            Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
+                            await Page.Navigation.PushAsync(new Validacion());
+
+                        }*/
+
+                    }
+                    else
+                    {
+                        if (VerifyByMail) //Verifica si esta habilitado enviar por mail en caso contrario se envia por telefono
+                        {
+                            respuesta = await UserInCache.VerfyAccount(Constanst.VERIFY_MAIL, Mail);
+                        }
+                        else
+                        {
+                            respuesta = await UserInCache.VerfyAccount(Constanst.VERIFY_PHONE_NUMBER, Telephone);
+                        }
+
+                        UserDialogs.Instance.ShowLoading("Cargando");
+                        //Si el resultado es correcto entonces se procede a validar si existe algun dato guardado en cache de lo contrario lo guarda
+                        if (respuesta == Constanst.REQUEST_OK)
+                        {
+                            SetDataToInstance(UserInCache);//Asignamos los datos a una instacia de usuario para posteriormente guardar en cache
+                            Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
+                            await Page.Navigation.PushAsync(new Validacion());
+
+                        }
+
+                        else
+                            UserDialogs.Instance.Toast("Lo sentimos no hemos podido enviar código de verificación.");
+
+                        UserDialogs.Instance.HideLoading();
+                    }
+                }
+                else if (respuesta == Constanst.USER_EXIST)
+                {
+                    await Page.DisplayAlert("Usuario existnte", "Ya existe un usuario registrado con este " + (VerifyByMail ? "correo " + Mail : "Numero de télefono " + Telephone), "Aceptar");
+                }
+                else
+                    UserDialogs.Instance.Toast("Lo sentimos no fue imposible enviar código."); 
             }
             else
             {
-               respuesta = await user.VerfyAccount(Constanst.VERIFY_PHONE_NUMBER, Name);
+                UserDialogs.Instance.Toast("Necesita acceso a internet para registrarse");
             }
-             
-              //Si el resultado es correcto entonces se procede a validar si existe algun dato guardado en cache de lo contrario lo guarda
-               if(respuesta==Constanst.REQUEST_OK)
-                {
-                   if(Barrel.Current.Exists(key: Constanst.USER_CACHE))
-                   {
-                     Barrel.Current.Empty(key: Constanst.USER_CACHE);
-                   }
-                    Barrel.Current.Add<User>(key: Constanst.USER_CACHE, data: user, expireIn: TimeSpan.FromDays(7));
-                    await Page.Navigation.PushAsync(new Validacion());
-                }
-           
+
+
 
         }
 
-       /*Abre la galeria*/
+        /*Abre la galeria*/
         private async void OnOpenGalery()
-        { 
+        {
             var media = new MediaManager();
 
             UserDialogs.Instance.ShowLoading("Cargando");
@@ -126,9 +241,10 @@ namespace PRMOVIL2CARWASH.ViewModels
             LoadPhoto(isSuccess, media);
             UserDialogs.Instance.HideLoading();
         }
-
+        #region Foto
         /*Abre la camarara*/
         private async void OnTakePhoto()
+
         {
             var media = new MediaManager();
             //Se crea una instancia de la clase MediaManager para mostrar los cuando se esta cargando
@@ -138,55 +254,128 @@ namespace PRMOVIL2CARWASH.ViewModels
             UserDialogs.Instance.HideLoading();
         }
 
-        private async void OnCancelRegister()
-        {
-          
-
-            bool IsCanceled = await Page.DisplayAlert("Cancelar registro","¿Esta seguro que desea cancelar?, si tiene datos ingresados se perderan.","Aceptar","Cancelar");
-           if (IsCanceled)
-            {
-                Name = string.Empty;
-                LastName = string.Empty;
-                Address= string.Empty;
-                Mail = string.Empty;
-                Telephone = string.Empty;
-                User = string.Empty;
-                Password = string.Empty;
-                Photo = FileImageSource.FromFile("camara.png");
-                PhotoByte = null; 
-
-            }
-        }
-
         //Se carga la foto obtenidad de la galeria o camara y la almacena en las variables para mostrarla en la vista
         private void LoadPhoto(bool isSucces, MediaManager media)
         {
             if (isSucces)
             {
-                Photo = media.Image;
-                PhotoByte = media.ByteImage;
+                PhotoProfile = media.Image;
+                PhotoByteArray = media.ByteImage;
+                TakeNewPhoto = true;
             }
         }
-
-
-       private void LoadCache()
+        #endregion
+        private async void OnCancelRegister()
         {
-            
-            if (!Barrel.Current.IsExpired(key: Constanst.USER_CACHE))
-            {
-              var userCache = Barrel.Current.Get<User>(Constanst.USER_CACHE);
 
-                Name = userCache.Nombre;
-                LastName = userCache.Apellido;
-                Address = userCache.Direccion;
-                Mail = userCache.Correo;
-                Telephone = userCache.Telefono;
-                User = userCache.Usuario;
-                Password = userCache.Contrasena;
-                Photo = FileImageSource.FromFile("camara.png");
-                PhotoByte = userCache.Foto;
+            bool IsCanceled = await Page.DisplayAlert("Cancelar registro", "¿Esta seguro que desea cancelar?, si tiene datos ingresados se perderan.", "Aceptar", "Cancelar");
+            if (IsCanceled)
+            {
+                Barrel.Current.EmptyAll();
+                Preferences.Clear();
+                await Page.Navigation.PopAsync();
+
             }
         }
 
+
+
+        private async void LoadCache()
+        {
+
+            string usuario =  Constanst.USER_CACHE;
+            if(Barrel.Current.Exists(key: usuario))
+            {
+                if (!Barrel.Current.IsExpired(key: usuario))
+                {
+
+                    UserInCache = Barrel.Current.Get<User>(usuario);
+                    Name = UserInCache.Nombre;
+                    LastName = UserInCache.Apellido;
+                    Address = UserInCache.Direccion;
+                    Mail = UserInCache.Correo;
+                    Telephone = UserInCache.Telefono;
+                    User = UserInCache.Usuario;
+                    Password = UserInCache.Contrasena;
+                    PhotoByteArray = UserInCache.FotoByteArray;
+                    if (UserInCache.FotoByteArray == null)
+                        PhotoProfile = ImageSource.FromFile(Constanst.USER_IMAGE_DEFAULT);
+                    else
+                    {
+                        PhotoProfile = new MediaManager().ConvertByteArrayToImage(UserInCache.FotoByteArray);
+                        TakeNewPhoto = true;
+                    }
+                      
+                   //Establce nuevamente el metodo de verificacion
+                    if (UserInCache.ModoVerificacion.Equals(Constanst.VERIFY_MAIL))
+                        VerifyByMail = true;
+                    else
+                        VerifyByMail = false;
+
+                    lastMethodVerify = VerifyByMail;
+                }
+                else
+                {
+                    UserInCache = new User();
+                    PhotoProfile = ImageSource.FromFile(Constanst.USER_IMAGE_DEFAULT);
+                }
+                    
+            }
+          
+            else
+            {
+                PhotoProfile = ImageSource.FromFile(Constanst.USER_IMAGE_DEFAULT);
+                UserInCache = new User();
+            }
+
+
+        }   
+     
+
+        private bool CheckRequires()
+        {
+            if (!string.IsNullOrEmpty(User) && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(LastName)
+                && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Address) && !string.IsNullOrEmpty(Mail))
+                return true;
+            else 
+                return false;
+        }
+
+        
+
+
+        public async Task<int> OnSaveUserClicked()
+        {
+            return 0;
+        }
+
+       private void SetDataToInstance(User user)
+        {
+            user.Nombre = Name;
+            user.Apellido = LastName;
+            user.Direccion = Address;
+            user.Correo = Mail;
+            user.Telefono = Telephone;
+            user.Usuario = User;
+            user.Contrasena = Password;
+            if (TakeNewPhoto)
+                user.FotoByteArray = PhotoByteArray;
+            else
+                user.FotoByteArray = null;
+        }
+
+        private bool IsChange()
+        {
+             if (UserInCache.Nombre.Equals(Name) && UserInCache.Apellido.Equals(LastName) && UserInCache.Direccion.Equals(Address) &&
+                 UserInCache.Telefono.Equals(Telephone) && UserInCache.Usuario.Equals(User) && UserInCache.Contrasena.Equals(Password) &&
+                 UserInCache.Correo.Equals(Mail) && UserInCache.FotoByteArray.Equals(PhotoByteArray) && lastMethodVerify == VerifyByMail)
+                return false;
+            else
+                return true;
+        }
+        public void Verify()
+        {
+
+        }
     }
 }

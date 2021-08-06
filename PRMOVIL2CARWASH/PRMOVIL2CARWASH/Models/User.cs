@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using MonkeyCache.FileStore;
 using Newtonsoft.Json;
 using PRMOVIL2CARWASH.Utils;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace PRMOVIL2CARWASH.Models
 {
@@ -29,8 +32,6 @@ namespace PRMOVIL2CARWASH.Models
         public string Contrasena { get; set; }
         [JsonProperty("estadoSesion")]
         public bool EstadoSesion { get; set; }
-        [JsonProperty("foto")]
-        public byte[] Foto { get; set; }
         [JsonProperty("urlFoto")]
         public string UrlFoto { get; set; }
         [JsonProperty("codigo")]
@@ -39,37 +40,42 @@ namespace PRMOVIL2CARWASH.Models
         [JsonProperty("token")]
         public string Token { get; set; }
 
-        HttpClient cliente;
-        HttpResponseMessage requestMessage;
+        [JsonProperty("respuesta")]
+        public  Response Respuesta;
+
+        [JsonProperty("metodoVerificacion")]
+        public string ModoVerificacion { get; set; }
+
+        [JsonProperty("foto")]
+        public byte[] FotoByteArray { get; set; }
+        public ImageSource FotoPerfil { get; set; }
+
+        private HttpClient cliente;
+        private HttpResponseMessage requestMessage;
         string url = Constanst.GetUrl("/users");
+
+        //Se crea un constructor con el fin de mantener una solo instacia de la clase 
         public User()
         {
             cliente = new HttpClient();
-
-        }
-        public int RegisterUser()
-        {
-            var m = JsonConvert.SerializeObject(this);
-            return 0;
         }
 
-        public async Task<int> VerfyAccount(string typeVerification,string value )
+        public async Task<int> RegisterUser()
         {
-            var objeto = new {
-                  VericationMethod = typeVerification,
-                  ValueMethod = value
-                 };
-          
-            var data = JsonConvert.SerializeObject(objeto);
-             var content = new StringContent(data, Encoding.UTF8, "application/json");
-           
-            requestMessage = await cliente.PostAsync(string.Concat(url, "/verify"), content);
+
+            var data = JsonConvert.SerializeObject(this);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), content);
             if (requestMessage.IsSuccessStatusCode)
             {
                 var contents = await requestMessage.Content.ReadAsStringAsync();
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
                 {
+                    /*Se recupera el token y se almacena en la variable TOKEN*/
+
+                    Respuesta = respuesta;
                     return Constanst.REQUEST_OK;
                 }
                 else
@@ -79,8 +85,193 @@ namespace PRMOVIL2CARWASH.Models
                 return Constanst.REQUEST_ERROR;
 
         }
+
+        public async Task<int> VerfyAccount(string verificationMethod, string value)
+        {
+            var objeto = new
+            {
+                metodoVerificacion = verificationMethod,
+                destinatario = value
+            };
+
+            var data = JsonConvert.SerializeObject(objeto);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/verify"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    /*Se recupera el token y se almacena en la variable TOKEN*/
+                    ModoVerificacion = verificationMethod;
+                    Token = respuesta.Token;
+                    return Constanst.REQUEST_OK;
+                }
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+
+        }
+        public async Task<int> LogIn(string User, string Password)
+        {
+            var objeto = new
+            {
+                usuario = User,
+                contrasena = Password
+            };
+
+            var data = JsonConvert.SerializeObject(objeto);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/login"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    GetUser(User, Password);
+                    return Constanst.REQUEST_OK;
+                }
+                else if (respuesta.Status.Equals("userExist"))
+                    return Constanst.USER_EXIST;
+
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+        }
+        public async void GetUser(string user, string password)
+        {
+            var auxUrl = string.Concat(url, "?usuario=", user, "&contrasena=", password);
+
+            requestMessage = await cliente.GetAsync(auxUrl);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var currentUser = JsonConvert.DeserializeObject<User>(contents);
+               
+                if (currentUser.Respuesta.Status.Equals("ok"))
+                {
+                    App.SetCurrentUser(currentUser);
+                    Cache.SaveCache(currentUser.Usuario, currentUser, Constanst.EXPIRE_CURREN_USER);
+                    Preferences.Set(Constanst.CURRENT_USER, currentUser.Usuario);
+                    Preferences.Set(Constanst.STATE_SESSION, true);
+                }
+
+            }
+
+        }
+         
+       public async Task<int> ResendVerifyCode()
+        {
+
+            string verificationMethod, valueMethod;
+
+            if (ModoVerificacion.Equals(Constanst.VERIFY_MAIL))//Se obtiene el metodo de verificacion para reenviar el codigo de verificación
+            {
+                verificationMethod = Constanst.VERIFY_MAIL;
+                valueMethod = Correo;
+            }
+               
+            else
+            { 
+                verificationMethod = Constanst.VERIFY_PHONE_NUMBER;
+                valueMethod = Telefono;
+            }
+
+            //Objeto anonimo para codificar
+            var objeto = new {
+                metodoVerificacion = verificationMethod,
+                destinatario = valueMethod,
+                token = Token
+            };
+          
+            var data = JsonConvert.SerializeObject(objeto);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/verify/resend"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    return Constanst.REQUEST_OK;
+                }
+                else if (respuesta.Status.Equals("userExist"))
+                    return Constanst.USER_EXIST;
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+
+        }
+        public async Task<int> CheckStatusSession()
+        {
+            //Objeto anonimo para codificar
+            var objeto = new
+            {
+                usuario = Usuario
+            };
+
+            var data = JsonConvert.SerializeObject(objeto);
+
+            requestMessage = await cliente.GetAsync(string.Concat(url,"/state?usuario=", Usuario));
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.StatusSession)//Si esta inciada la sesion entones deuelve true
+                {
+                    GetUser(Usuario,Contrasena);
+                    return Constanst.REQUEST_OK;
+                }
+                else
+                    return Constanst.SESSION_CLOSED;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+
+        }
+
+        public async Task<int> LogOut()
+        {
+            var objeto = new
+            {
+                usuario = Usuario,
+                contrasena = Contrasena
+            };
+
+            var data = JsonConvert.SerializeObject(objeto);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/logout"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    Barrel.Current.EmptyAll();//Si se cerro sesion correctamente entonces limpia el cache y las preferencias
+                    Preferences.Clear();
+                    return Constanst.REQUEST_OK;
+
+                }
+                else if (respuesta.Status.Equals("noExist"))
+                    return Constanst.USER_NO_EXIST;
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+        }
     }
-  
 
 
 }

@@ -47,7 +47,7 @@
 
                             <Image
                             x:Name="imgFotoUsuario" 
-                            Source="{Binding Photo}"
+                            Source="{Binding PhotoProfile}"
                             WidthRequest="170"
                             HeightRequest="170"/>
                             <Grid>
@@ -225,7 +225,7 @@
                                 <Entry 
                                 Placeholder="Dirección" 
                                 Keyboard="Plain"
-                                 Text="{Binding Address}"
+                                 Text="{Binding Address, Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -312,6 +312,9 @@
                             FontFamily="Questrial"/>
                         </StackLayout>
                         <!-- ESTILOS DEL ENTRY TELEFONO -->
+                        <Label                             Text="Correo "                            FontSize="20"                                Margin="30,0,10,5"                            FontFamily="SansBold"/>                        <Switch                             x:Name="SwitchMapa"                              OnColor="gray"                              ThumbColor="#01ADBA"                           IsToggled="{Binding VerifyByMail,Mode=TwoWay}"                                                                />
+                        <Label                             Text="Telefono "                            FontSize="20"                                Margin="30,0,10,5"                            FontFamily="SansBold"/>
+
                         <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black" 

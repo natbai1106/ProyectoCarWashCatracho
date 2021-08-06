@@ -1,5 +1,6 @@
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -16,4 +17,5 @@ using Xamarin.Forms;
 [assembly: ExportFont("RobotoSlab-Regular.ttf", Alias = "RobotoRegular")]
 [assembly: ExportFont("RobotoSlab-Bold.ttf", Alias = "RobotoBold")]
 [assembly: ExportFont("OpenSans-Bold.ttf", Alias = "SansBold")]
+
 //[assembly: ExportFont("Encode.ttf", Alias = "Encode")]

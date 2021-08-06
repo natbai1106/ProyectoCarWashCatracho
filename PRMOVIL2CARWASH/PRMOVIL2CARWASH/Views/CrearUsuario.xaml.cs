@@ -1,4 +1,7 @@
-﻿using Plugin.Media;
+﻿using MonkeyCache.FileStore;
+using Plugin.Media;
+using PRMOVIL2CARWASH.Models;
+using PRMOVIL2CARWASH.Utils;
 using PRMOVIL2CARWASH.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,10 +19,10 @@ namespace PRMOVIL2CARWASH.Views
         public CrearUsuario()
         {
             InitializeComponent();
+            
             BindingContext = new UsersViewModel(this);
               
             
         }
-        
     }
 }

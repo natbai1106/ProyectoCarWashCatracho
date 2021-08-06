@@ -20,21 +20,27 @@
                    />
 
             <Entry x:Name="entCodigo"
+                   Text="{Binding Code,Mode=TwoWay}"
                    Placeholder="Código"
                    HorizontalTextAlignment="Center"/>
+            <Button Text="Verificar"
+                    Command="{Binding SaveUserCommand}"
+                    IsEnabled="{Binding CodeIsCorrect}" />
+
+            <Button Text="Verificar"
+                    Command="{Binding ModifyDataCommand}"/>
 
             <Label HorizontalOptions="Center"
                 VerticalOptions="CenterAndExpand">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="Hello " />
-                        <Span Text="Click Me!"
+                        <Span Text="No recibido ningun código. "/>
+                       <Span Text="Reenviar"
                               TextColor="Blue"
                               TextDecorations="Underline">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer 
-                                    Command="{Binding ClickCommand}"
-                                    CommandParameter="https://play.google.com/store/apps/details?id=com.GesbDesarrollosTI.cgi" />
+                                    Command="{Binding ResendCodeCommand}" />
                             </Span.GestureRecognizers>
                         </Span>
                         <Span 

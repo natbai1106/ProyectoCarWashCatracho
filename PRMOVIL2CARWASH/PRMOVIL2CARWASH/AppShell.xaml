@@ -159,9 +159,9 @@
 
     <MenuItem
               Text="Logout"
-        Icon="cerrar_sesion.png"
+              Icon="cerrar_sesion.png"
               StyleClass="MenuItemLayoutStyle"
-              Clicked="OnMenuItemClicked">
+              Clicked="LogoutClicked">
     </MenuItem>
 
     <!--

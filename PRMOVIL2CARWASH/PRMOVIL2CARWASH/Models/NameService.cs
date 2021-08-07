@@ -38,7 +38,7 @@ namespace PRMOVIL2CARWASH.Models
                 var responseService = await ApiServicio.GetAsync(Constanst.GetUrl("/price/all/1"));
                 // ObservableCollection<NameService> taskService = JsonConvert.DeserializeObject<ObservableCollection<NameService>>(responseService);
                 //return taskService;
-                return new ObservableCollection;
+                return new ObservableCollection<NameService>();
             }
             catch (Exception e)
             {

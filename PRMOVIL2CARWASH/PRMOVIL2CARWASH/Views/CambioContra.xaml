@@ -5,15 +5,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PRMOVIL2CARWASH.Views.CambioContra"
+             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
              NavigationPage.HasNavigationBar="False"
              BackgroundImage="#FDFDFD"
              Title="Cambiar Contraseña">
     <ContentPage.Content>
         <StackLayout
-                Margin="10,5" >
+                Margin="15,15" >
 
             <Image
-                Source="CarwashLogo.png"
+                Source="seguridad.png"
                 WidthRequest="150"
                 HeightRequest="150"/>
 
@@ -34,30 +35,47 @@
                   FontFamily="SansBold"/>
             </StackLayout>
 
-            <!-- Estilo para el Entry Input Nombre-->
-            <Frame
+            <!--<StackLayout
+                Orientation="Horizontal"
+                >-->
+                <!-- Estilo para el Entry Input Nombre-->
+                <Frame
                BackgroundColor="Transparent" 
                BorderColor="Black"                             
                Padding="0"
                CornerRadius="10" 
                WidthRequest="340"
-               Margin="10,0,15,0">
+               Margin="10,0,10,0">
 
-                <StackLayout
+                    <StackLayout
                     Orientation="Horizontal"
                     Margin="25,5">
 
-                    <Entry 
-                       x:Name="txtContraseñaAnterior"
-                       Margin="0,0,15,0"
-                       IsPassword="true" 
-                       Placeholder="Anterior..."
-                       PlaceholderColor="Gray"
-                       FontSize="20"
-                       FontFamily="SansLight"
-                       HorizontalOptions="FillAndExpand"/>
-                </StackLayout>
-            </Frame>
+                        <Entry 
+                           x:Name="txtContraseñaAnterior"
+                           IsPassword="true" 
+                           Placeholder="Anterior..."
+                           PlaceholderColor="Gray"
+                           FontSize="20"
+                           FontFamily="SansLight"
+                           HorizontalOptions="FillAndExpand">
+                            <Entry.Behaviors>
+                                <behavior:PasswordBehavior Mask="XXXXXXXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </StackLayout>
+                </Frame>
+
+                <!--<Button
+                    x:Name="btnMostrarContrasenia"
+                    BackgroundColor="Transparent"
+                    ImageSource="eye_slash.png"
+                    Clicked="btnMostrarContrasenia_Clicked"
+                    />-->
+
+            <!--</StackLayout>-->
+           
 
             <!--Texto Nombre-->
             <StackLayout
@@ -144,7 +162,7 @@
             </Frame>
 
             <Button 
-                                    Text="Guardar Cambios" 
+                Text="Guardar Cambios" 
                                     x:Name="btnCambiarContra"
                                     BackgroundColor="#01ADBA"
                                     TextColor="White"

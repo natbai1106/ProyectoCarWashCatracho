@@ -11,5 +11,9 @@ namespace PRMOVIL2CARWASH.Views
         {
             InitializeComponent();
         }
+
+        private void btnMostrarContrasenia_Clicked(object sender, EventArgs e)
+        {
+        }
     }
 }

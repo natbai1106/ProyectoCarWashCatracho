@@ -89,12 +89,13 @@
 
                             <!-- IMAGEN DE NOMBRE -->
                             <Image 
-                                Source="cambiar_contrasenia.png" 
+                                Source="" 
                                 Margin="10"/>
 
                             <!-- ENTRY NOMBRE -->
                             <Button 
                                 x:Name="btnCambiarContraseña"
+                                ImageSource="candado.png"
                                 Text="Cambiar Contraseña"
                                 FontFamily="Questrial"
                                 FontSize="20"

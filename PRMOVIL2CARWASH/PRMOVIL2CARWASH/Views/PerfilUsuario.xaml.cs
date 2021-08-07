@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRMOVIL2CARWASH.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace PRMOVIL2CARWASH.Views
 
         private async void btnCambiarContraseña_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CambioContra());
+            await Navigation.PushAsync(new CambioContra(Constanst.TYPE_CHANGE,""));
         }
     }
 }

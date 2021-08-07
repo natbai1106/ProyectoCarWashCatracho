@@ -42,7 +42,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                         currentUser = App.CurrentUser();
                         Title = currentUser.Usuario;
                         return;
-                   
+                        
                 }
                 else if(!IsNotConnect && exisInCache)//Si esta conectado y 
                 {
@@ -52,8 +52,6 @@ namespace PRMOVIL2CARWASH.ViewModels
                     if (respuesta == Constanst.SESSION_CLOSED || respuesta == Constanst.REQUEST_ERROR)//Si la sesión esta iniciada 
                     {
                         Preferences.Set(Constanst.RECENT_SESSION, false);
-                        
-                       
                         Application.Current.MainPage = new NavigationPage(new LoginPage());
                     }
                     else
@@ -63,6 +61,9 @@ namespace PRMOVIL2CARWASH.ViewModels
                     Application.Current.MainPage = new NavigationPage(new LoginPage());
 
             }
+            else
+                Title = App.CurrentUser().Usuario;
+
 
             Preferences.Set(Constanst.RECENT_SESSION, false);
 

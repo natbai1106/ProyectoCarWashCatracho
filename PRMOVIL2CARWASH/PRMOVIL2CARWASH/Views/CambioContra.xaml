@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="PRMOVIL2CARWASH.Views.CambioContra"
              NavigationPage.HasNavigationBar="False"
-             BackgroundImage="#FDFDFD"
+             BackgroundColor="#FDFDFD"
              Title="Cambiar Contraseña">
     <ContentPage.Content>
         <StackLayout
@@ -51,6 +51,7 @@
                        x:Name="txtContraseñaAnterior"
                        Margin="0,0,15,0"
                        IsPassword="true" 
+                       Text="{Binding OldPassword}"
                        Placeholder="Anterior..."
                        PlaceholderColor="Gray"
                        FontSize="20"
@@ -92,6 +93,7 @@
                     <Entry 
                          IsPassword="true" 
                                 x:Name="txtNuevaContraseña"
+                                Text="{Binding NewPassword}"
                                 Margin="0,0,15,0"
                                 Placeholder="Nueva..."
                                 PlaceholderColor="Gray"
@@ -134,6 +136,7 @@
                     <Entry 
                          IsPassword="true" 
                          x:Name="txtConfirmarContraseña"
+                        Text="{Binding ConfirmPassword}"
                          Margin="0,0,15,0"
                          Placeholder="Confirmar..."
                          PlaceholderColor="Gray"
@@ -146,6 +149,7 @@
             <Button 
                                     Text="Guardar Cambios" 
                                     x:Name="btnCambiarContra"
+                                    Command="{Binding ChangePasswordCommand}"
                                     BackgroundColor="#01ADBA"
                                     TextColor="White"
                                     FontAttributes="Bold"

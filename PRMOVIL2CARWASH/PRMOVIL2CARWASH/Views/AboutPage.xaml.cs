@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRMOVIL2CARWASH.ViewModels;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,6 +11,7 @@ namespace PRMOVIL2CARWASH.Views
         public AboutPage()
         {
             InitializeComponent();
+            BindingContext = new HomeViewModel(this);
         }
     }
 }

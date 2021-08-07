@@ -160,10 +160,4 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\PRMOVIL2CARWASH\PRMOVIL2CARWASH.csproj">
-      <Project>{BFE52EBE-3431-47A7-A0D8-E58F0D992B63}</Project>
-      <Name>PRMOVIL2CARWASH</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

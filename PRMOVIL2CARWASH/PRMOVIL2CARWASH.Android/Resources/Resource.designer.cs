@@ -19087,6 +19087,8 @@ namespace PRMOVIL2CARWASH.Droid
 			
 			// aapt resource value: 0x7F07009A
 			public const int facturacion = 2131165338;
+
+			public const int historial_facturas = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
 			public const int fecha = 2131165339;

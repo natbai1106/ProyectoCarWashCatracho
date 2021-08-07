@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Http;
-using System.Text;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PRMOVIL2CARWASH.Utils;
+using System.Diagnostics;
 
 namespace PRMOVIL2CARWASH.Models
 {
     public class Vehicles
     {
+        [JsonProperty("idVehiculos")]
+        public int IdVehiculos { get; set; }
+
         [JsonProperty("numeroPlaca")]
         public string NumeroPlaca { get; set; }
 
@@ -18,7 +22,7 @@ namespace PRMOVIL2CARWASH.Models
         public int Anio { get; set; }
 
         [JsonProperty("fotoRuta")]
-        public byte[] RutaFoto { get; set; }
+        public string RutaFoto { get; set; }
 
         [JsonProperty("observacion")]
         public string Observacion { get; set; }
@@ -26,13 +30,13 @@ namespace PRMOVIL2CARWASH.Models
         [JsonProperty("idMarcaVehiculos")]
         public int IdMarcaVehiculos { get; set; }
 
-        [JsonProperty("idUsuario")]
-        public int IdUsuario { get; set; }
+        //[JsonProperty("idUsuario")]
+        //public int IdUsuario { get; set; }
 
         [JsonProperty("idModeloVehiculos")]
         public int IdModeloVehiculos { get; set; }
 
-        [JsonProperty("idTipoCombustible")]
+        [JsonProperty("idtipoCombustible")]
         public int IdTipoCombustible { get; set; }
 
         HttpClient cliente;

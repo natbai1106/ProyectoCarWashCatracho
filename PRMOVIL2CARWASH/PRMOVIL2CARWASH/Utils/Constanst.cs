@@ -6,6 +6,7 @@ namespace PRMOVIL2CARWASH.Utils
 {
      public class Constanst
     {
+<<<<<<< HEAD
 
         public const string USER_CACHE = "usuariocache";
         public const string VERIFY_PHONE_NUMBER = "phoneNumber";
@@ -16,6 +17,9 @@ namespace PRMOVIL2CARWASH.Utils
        
         public const string VERIFY_MAIL = "mail";
         private const string UrlBase = "http://173.249.21.6/v1";
+=======
+        private const string UrlBase = "https://www.ccatracho.space/v1";
+>>>>>>> 062c4cd9545a03f7f68c32c813cb3ed3c1096fdd
         public const int  REQUEST_OK= 201;
         public const int REQUEST_ERROR= 400;
         public const int SESSION_CLOSED = 3;

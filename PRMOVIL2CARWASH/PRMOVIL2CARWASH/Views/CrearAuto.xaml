@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.CrearAuto"
-             BackgroundColor="#FDFDFD">
+             BackgroundColor="#FDFDFD"
+             Title="Registrar Automovil">
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
@@ -19,27 +20,38 @@
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Image x:Name="imgFotoAuto" 
-                               Source="foto.png"
-                               WidthRequest="170"
-                               HeightRequest="170"/>
+                               Source="Automovil.png"
+                               WidthRequest="190"
+                               HeightRequest="190"/>
                         <Grid>
-                            <Button ImageSource="camara.png"
+                            <Button ImageSource="galeria.png"
                                     x:Name="btnFotoAutos"
                                     Command = "{Binding TakePhotoCommand}"
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    IsEnabled = "{Binding IsBusy}"
-                                    BackgroundColor="#E3E4E5"
-                                    CornerRadius="7" />
+                                     BackgroundColor="#01ADBA" 
+                                CornerRadius="40" 
+                                Background="#01ADBA"
+                                BorderWidth="2"
+                                HeightRequest="80" 
+                                WidthRequest="80" 
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                />
 
-                            <Button ImageSource="camara.png"
-                                    x:Name="btnGaleriaAutos"
-                                    Command="{Binding OpenGalleryCommand}"
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    IsEnabled="{Binding IsBusy}"
-                                    BackgroundColor="#E3E4E5"
-                                    CornerRadius="7" />
+                            <Button  BackgroundColor="#01ADBA" 
+                                CornerRadius="40" 
+                                Background="#01ADBA"
+                                BorderWidth="2"
+                                HeightRequest="80" 
+                                WidthRequest="80"  
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                ImageSource="camara.png"
+                                x:Name="btnGaleriaAutos"
+                                Command="{Binding OpenGalleryCommand}"
+                                Grid.Row="1"
+                                Grid.Column="0" />
                         </Grid>
                     </StackLayout>
 
@@ -74,7 +86,9 @@
                             <Picker WidthRequest="145"  
                                             x:Name="pckMarca"
                                             Title="Seleccione Marca"
-                                            ItemsSource="{Binding Brandn, Mode=TwoWay}"
+                                            ItemsSource="{Binding Brand}"
+                                            ItemDisplayBinding="{Binding NombreMarca}"
+                                            SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
                                             HorizontalOptions="FillAndExpand"
                                             FontSize="20"
                                             FontFamily="SansLight"/>
@@ -116,7 +130,9 @@
                                         WidthRequest="145"  
                                         x:Name="PiModeloAutos"
                                         Title="Seleccione Modelo"
-                                        ItemsSource="{Binding Modelo, Mode=TwoWay}"
+                                        ItemsSource="{Binding Modelo}"
+                                        ItemDisplayBinding="{Binding NombreModelo}"
+                                        SelectedItem="{Binding ModeloSelected, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         FontSize="20"
                                         FontFamily="SansLight"/>
@@ -160,8 +176,10 @@
                             <Picker
                                     WidthRequest="145"  
                                     x:Name="pckTipo"
-                                    Title="Seleccione Tipo"
-                                    ItemsSource="{Binding Type, Mode=TwoWay}"
+                                    Title="Seleccione Tipo de Vehículo"
+                                    ItemsSource="{Binding Type}"
+                                    ItemDisplayBinding="{Binding NombreTipoVehicle}"
+                                    SelectedItem="{Binding TypeSelected, Mode=TwoWay}"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="20"
                                     FontFamily="SansLight"/>
@@ -202,7 +220,9 @@
                                 WidthRequest="145"  
                                 x:Name="pckMotor"
                                 Title="Seleccione Motor"
-                                ItemsSource="{Binding Motor, Mode=TwoWay}"
+                                ItemsSource="{Binding Motor}"
+                                ItemDisplayBinding="{Binding NombreMotor}"
+                                SelectedItem="{Binding MotorSelected, Mode=TwoWay}"
                                 HorizontalOptions="FillAndExpand"
                                 FontSize="20"
                                 FontFamily="SansLight"/>
@@ -241,10 +261,10 @@
 
                             <StackLayout Orientation="Horizontal"
                                          Margin="25,5">
-                                <Entry x:Name="txtAnio"
-                                       Text="{Binding Year, Mode=TwoWay}"
-                                       HorizontalOptions="FillAndExpand"
-                                       Keyboard="Numeric"
+                                <DatePicker x:Name="pckAnio"
+                                       MinimumDate="01/01/1900" 
+                                       MaximumDate="12/31/2100" 
+                                       x:DataType="DatePicker"                                     
                                        FontSize="20"
                                        FontFamily="RobotoLight"/>
                             </StackLayout>
@@ -307,6 +327,7 @@
                                     Text="{Binding Observation, Mode=TwoWay}"
                                     FontSize="20"
                                     FontFamily="SansLight"
+                                   HeightRequest="100"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand" />
                         </StackLayout>

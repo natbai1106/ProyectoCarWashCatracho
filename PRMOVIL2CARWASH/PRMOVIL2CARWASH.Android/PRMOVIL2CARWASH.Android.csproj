@@ -114,12 +114,6 @@
     <AndroidResource Include="Resources\drawable\icon_feed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PRMOVIL2CARWASH\PRMOVIL2CARWASH.csproj">
-      <Project>{58C26F9E-669C-4513-8F11-109F8FC52A5B}</Project>
-      <Name>PRMOVIL2CARWASH</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\apellido.png" />
   </ItemGroup>
   <ItemGroup>

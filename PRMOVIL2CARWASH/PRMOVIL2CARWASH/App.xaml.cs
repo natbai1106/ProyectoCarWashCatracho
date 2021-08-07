@@ -22,11 +22,19 @@ namespace PRMOVIL2CARWASH
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+<<<<<<< HEAD
             SwitchMainPage();
             // MainPage = new NavigationPage( new LoginPage());
             // MainPage = new AppShell();
             // Remove this method to stop OneSignal Debugging
             // OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+=======
+            MainPage = new AppShell();
+
+            // Remove this method to stop OneSignal Debugging
+            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+
+>>>>>>> 062c4cd9545a03f7f68c32c813cb3ed3c1096fdd
             OneSignal.Current.StartInit("42b0cfb0-590b-4ade-983b-cc054e08d1f4")
             .Settings(new Dictionary<string, bool>() {
                 { IOSSettings.kOSSettingsKeyAutoPrompt, false },
@@ -52,6 +60,7 @@ namespace PRMOVIL2CARWASH
         }
 
 
+<<<<<<< HEAD
         private void SwitchMainPage()
         {
             Barrel.ApplicationId = "com.companyname.prmovil2carwash";
@@ -100,5 +109,8 @@ namespace PRMOVIL2CARWASH
         {
             currenUser = user;
         }
+=======
+>>>>>>> 062c4cd9545a03f7f68c32c813cb3ed3c1096fdd
     }
+
 }

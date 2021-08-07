@@ -26,6 +26,11 @@ namespace PRMOVIL2CARWASH.Views
             //}
         }
 
+        private void pckMotor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         //private async void btnFotoAutos_Clicked(object sender, EventArgs e)
         //{
         //    if (!CrossMedia.Current.IsTakePhotoSupported)

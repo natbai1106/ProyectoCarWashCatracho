@@ -2,203 +2,300 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.Reservacion"
-             BackgroundImage="fondo.jpg">
+             xmlns:local="clr-namespace:PRMOVIL2CARWASH.Models" 
+             Title="Reservación de Servicio"
+             BackgroundImage="#FDFDFD">
     <ContentPage.Content>
-        <StackLayout Margin="2,5">
+        
+        <StackLayout>
 
+          
+            <ScrollView>
 
-        <!-- TARJETA COLOR BLANCO -->
-        <Frame
-                BackgroundColor="#F5F5F5F5"
-                CornerRadius="15"
-                HasShadow="True"
-                HeightRequest="800"
-                Margin="10,15">
+                <!-- Contenedor principal para la tarjeta-->
+                <StackLayout 
+                            Margin="5,15">
 
-            <StackLayout
-                      Margin="5,15">
-
-                <!--Titulo -->
-                <Label 
-                            Text="Reservación de Espacio para Servicio"
-                            HorizontalOptions="Center"
-                            TextColor="black"
-                            FontFamily="Racing"
-                            FontSize="25"/>
-                <!--Scroll -->
-                <ScrollView>
-
-                    <!-- Contenedor principal para la tarjeta-->
-                    <StackLayout 
-                            Margin="5,5">
-
-                        <!--Texto Numero-->
-                        <StackLayout
+                    <!--Texto Servicio Adomicilio-->
+                    <StackLayout
                                 Orientation="Horizontal"
-                                Margin="0,15,0,0">
+                                 Margin="10,0">
 
-                            <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="Questrial"/>
+                        <Label 
+                            Text="Servicio a Domicilio: "
+                            FontSize="20"    
+                            Margin="30,0,10,5"
+                            FontFamily="SansBold"/>
 
-                            <Label 
-                                Text="Fecha a Realizar:  "
-                                TextColor="Black"
-                                FontSize="20"                                 
-                                FontFamily="Questrial"/>
-
-                        </StackLayout>
-
-                        <!-- Estilo para el Entry Redondo-->
-                        <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                Margin="20,0,15,0">
-
-                            <!--Contenedor del Input Numero-->
-                            <StackLayout
-                                     Orientation="Horizontal"
-                                     Margin="25,5">
-
-                                <Image 
-                                        Source="calendario.png"/>
-
-                                <DatePicker  
-                                        x:Name="DatapickerFecha" 
-                                        Margin="0,0,10,0"
-                                        IsEnabled="False"
-                                        Background="#EEEDED"
-                                        Format="dd/MM/yyyy"
-                                        MinimumDate="01/01/1871"
-                                        MaximumDate="12/31/9998"
-                                        FontSize="20"
-                                        TextColor="Gray"
-                                        HorizontalOptions="FillAndExpand"  
-                                         />
-                            </StackLayout>
-                        </Frame>
-
-                        <!--Texto Servicio-->
-                        <StackLayout
-                                Orientation="Horizontal"
-                                Margin="0,15,0,0">
-
-                            <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="Questrial"/>
-
-                            <Label 
-                                Text="Seleccione el Servicio Auto: "
-                                TextColor="Black"
-                                FontSize="20"                                 
-                                FontFamily="Questrial"/>
-
-                        </StackLayout>
-
-                        <!-- Estilo para el Entry Redondo-->
-                        <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                Margin="20,0,15,0">
-
-                            <!--Contenedor del Input Modelo-->
-                            <StackLayout
-                                     Orientation="Horizontal"
-                                     Margin="25,5">
-
-                                <Image 
-                                        Source="servicio.png"/>
-
-                                <Picker
-                                        x:Name="PiServicioCotizacion"
-                                        Title="Seleccione Servicio"
-                                        FontSize="20"
-                                        FontFamily="Questrial"
-                                        Margin="0,0,10,0"
-                                        />
-                            </StackLayout>
-                        </Frame>
-
-                        <!--Texto Automovil-->
-                        <StackLayout
-                                Orientation="Horizontal"
-                                Margin="0,15,0,0">
-
-                            <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="Questrial"/>
-
-                            <Label 
-                                Text="Seleccione el Automóvil: "
-                                TextColor="Black"
-                                FontSize="20"                                 
-                                FontFamily="Questrial"/>
-
-                        </StackLayout>
-
-                        <!-- Estilo para el Entry Redondo-->
-                        <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="50" 
-                                WidthRequest="340"
-                                Margin="20,0,15,0">
-
-                            <!--Contenedor del Input Modelo-->
-                            <StackLayout
-                                     Orientation="Horizontal"
-                                     Margin="25,5">
-
-                                <Image 
-                                        Source="Auto.png"/>
-
-                                <Picker
-                                        x:Name="PiAutoCotizacion"
-                                        Title="Seleccione Servicio"
-                                        FontSize="20"
-                                        FontFamily="Questrial"
-                                        Margin="0,0,10,0"
-                                        />
-                            </StackLayout>
-                        </Frame>
-
-
-                        <!--Texto Servicio Adomicilio-->
-                        <StackLayout
-                                Orientation="Horizontal"
-                                Margin="0,15,0,0">
-
-                            <Label 
-                                    Text="Servicio Adomicilio: "
-                                    TextColor="Black"
-                                    FontSize="20"                                 
-                                    FontFamily="Questrial"/>
-
-                            <Switch 
-                                    OnColor="gray"
-                                    ThumbColor="#01ADBA"
+                        <Switch 
+                            x:Name="SwitchMapa"
+                              OnColor="gray"
+                              ThumbColor="#01ADBA"
+                            Toggled="SwitchMapa_Toggled"
                                     />
 
-                        </StackLayout>
+                    </StackLayout>
 
+                    <StackLayout
+                                Orientation="Horizontal"
+                                Margin="15,0">
+
+                        <Label 
+                            Text="*"
+                            FontSize="25"
+                            Margin="0,0,10,0"
+                            TextColor="red"
+                            FontFamily="RobotoRegular"/>
+
+                        <Label 
+                                Text="Automóvil: "
+                                FontSize="20"                                 
+                                FontFamily="SansBold"/>
 
                     </StackLayout>
-                </ScrollView>
-            </StackLayout>
-        </Frame>
+
+                    <!-- Estilo para el Entry Redondo-->
+                    <Frame
+                            BackgroundColor="Transparent" 
+                            BorderColor="Black"                             
+                            Padding="0"
+                            CornerRadius="10" 
+                            WidthRequest="340"
+                            Margin="20,0,15,0">
+
+                        <!--Contenedor del Input Modelo-->
+                        <StackLayout
+                                 Orientation="Horizontal"
+                                  Margin="25,5">
+
+                            <!--ItemsSource="{Binding Brand}"
+                                    ItemDisplayBinding="{Binding NombreMarca}"
+                                    SelectedItem="{Binding BrandSelected, Mode=TwoWay}"-->
+
+                            <Picker
+                                    x:Name="PiAutoCotizacion"
+                                    Title="Seleccione el  Automóvil"
+                                    ItemsSource="{Binding Vehicle}"
+                                    ItemDisplayBinding="{Binding NumeroPlaca}"
+                                    SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
+                                    
+                                    FontSize="20"
+                                    FontFamily="SansLight"
+                                    Margin="0,0,10,0"
+                                    HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Grid  Margin="10,0">
+
+                        <!--Texto FECHA-->
+                        <StackLayout
+                                Orientation="Horizontal"
+                                Margin="5,20,0,0"
+                                Grid.Row="0"
+                                Grid.Column="0">
+
+                            <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="RobotoRegular"/>
+
+                            <Label 
+                                Text="Fecha:  "
+                                FontSize="20"                                 
+                                FontFamily="SansBold"/>
+
+                        </StackLayout>
+
+                        <!--Contenedor del Input Fecha-->
+                        <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="10" 
+                                WidthRequest="340"
+                                Margin="10,0,15,0"
+                                Grid.Row="1"
+                                Grid.Column="0">
+
+
+                            <StackLayout
+                                      Orientation="Horizontal"
+                                      Margin="25,5">
+
+                                <DatePicker  
+                                   x:Name="DatapickerFecha" 
+                                   Margin="0,0,10,0"
+                                   Format="dd/MM/yyyy"
+                                   MinimumDate="01/01/1871"
+                                   MaximumDate="12/31/9998"
+                                   FontSize="20"
+                                   HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                        </Frame>
+
+                        <!--Texto HORA-->
+                        <StackLayout
+                                Orientation="Horizontal"
+                                Margin="5,15,0,0"
+                                Grid.Row="0"
+                                Grid.Column="1">
+
+                            <Label 
+                                Text="*"
+                                FontSize="25"
+                                TextColor="red"
+                                FontFamily="RobotoRegular"/>
+
+                            <Label 
+                                Text="Hora:  "
+                                FontSize="20"                                 
+                                FontFamily="SansBold"/>
+
+                        </StackLayout>
+
+                        <!--Contenedor del Input HORA-->
+                            <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="10" 
+                                WidthRequest="340"
+                                Margin="10,0,15,0"
+                                Grid.Row="1"
+                                Grid.Column="1">
+
+
+                                <StackLayout
+                                      Orientation="Horizontal"
+                                      Margin="25,5">
+
+
+                                    <TimePicker  
+                                       x:Name="TimeHora" 
+                                       FontSize="20"
+                                       HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+
+                    </Grid>
+                    
+
+                    <!--Texto Servicio-->
+                    <StackLayout
+                                Orientation="Horizontal"
+                                Margin="15,10,0,0">
+
+                        <Label 
+                            Text="*"
+                            FontSize="25"
+                            TextColor="red"         
+                            Margin="0,0,10,0"
+                            FontFamily="RobotoRegular"/>
+
+                        <Label 
+                                Text="Servicio Auto: "
+                                FontSize="20"                                 
+                                FontFamily="SansBold"/>
+
+                    </StackLayout>
+                    
+                           <!--Contenedor del Input Servicio-->
+                           <Frame
+                                BackgroundColor="Transparent" 
+                                BorderColor="Black"                             
+                                Padding="0"
+                                CornerRadius="10" 
+                                WidthRequest="340"
+                                Margin="20,0,15,0">
+
+                                <StackLayout
+                                         Orientation="Horizontal"
+                                         Margin="25,5">
+                                    
+                            
+
+
+                            <Picker
+                                        x:Name="PiSeleccionarCotizacion"
+                                        Title="Seleccione Servicio"
+                                        FontSize="20"
+                                        ItemsSource="{Binding Service}"
+                                        ItemDisplayBinding="{Binding NombreServicio}"
+                                        SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
+                                        FontFamily="SansLight"
+                                        Margin="0,0,10,0"
+                                        HorizontalOptions="FillAndExpand"
+                                            />
+                            <!--<SearchBar x:Name="ServicieSearchBar"  
+                                             TextChanged="Handle_SearchButtonPressed" 
+                                             FontSize="20"
+                                            />-->
+
+                                </StackLayout>
+                            </Frame>
+                            <StackLayout>
+
+                        <!--<CollectionView   
+                            
+                                VerticalOptions="StartAndExpand"
+                                ItemsLayout="HorizontalList" 
+                                HeightRequest="100" 
+                                Background="aqua"
+                                Margin="25,5">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding NombreServicio}"
+                                                    Detail="{Binding descripcion}" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>-->
+                        <ListView 
+                            x:Name="ListServices"
+                            Margin="25,5"
+                            Background="gray"
+                            ItemTapped="ListServices_ItemTapped"
+                            ItemsSource="{Binding Service}">
+
+                            <ListView.ItemTemplate>
+                                
+                                <DataTemplate>
+                                    <TextCell Text="{Binding IdServicios}"
+                                                    Detail="{Binding NombreServicio}" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                    </StackLayout>
+
+                    <!--Texto Automovil-->
+                   
+
+                </StackLayout>
+            </ScrollView>
+            <Grid 
+                HeightRequest="100">
+                <Button
+                        Text="Realizar" 
+                        x:Name="btnRealizar"
+                        BackgroundColor="#01ADBA"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                       
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+
+                <Button
+                        Text="Limpiar" 
+                        x:Name="btnLimpiarAutos"
+                        BackgroundColor="#E3E4E5"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

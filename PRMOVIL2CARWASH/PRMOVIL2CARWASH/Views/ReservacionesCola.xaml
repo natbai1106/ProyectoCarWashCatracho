@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRMOVIL2CARWASH.Views.ReservacionesCola"
+             Title="Recientes"
+             IconImageSource="reservaciones.png"
+             xmlns:local="clr-namespace:PRMOVIL2CARWASH.ViewModels"  
+             xmlns:model="clr-namespace:PRMOVIL2CARWASH.Models"
+              BackgroundColor="#f3f4f6">
+    <ContentPage.Content>
+        <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>-->
+        <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+            <Grid Padding="25,0,0,0" RowDefinitions="Auto, Auto, Auto, *" ColumnDefinitions="Auto, *, Auto">
+
+
+                <Image Grid.Row="0" 
+                   Grid.Column="2" 
+                   HeightRequest="90"/>
+
+                <!--Schedule timeline-->
+                <Image Grid.Row="1" 
+                   Grid.Column="0" 
+                   Source="Checklist.png"
+                   HeightRequest="50" 
+                   Margin="0,-70,0,0"
+                   VerticalOptions="Start"/>
+
+                <BoxView Grid.Row="2" 
+                     Grid.Column="0" 
+                     VerticalOptions="Start" 
+                     WidthRequest="4"
+                     Color="#bfc0c0" 
+                     HeightRequest="40" 
+                     Margin="25,-20,25,10"/>
+
+                <!-- Date description-->
+                <Label Grid.Row="1" 
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Text="Reservaciones Recientes" 
+                   Margin="0,-80,0,0" 
+                   TextColor="#535257" 
+                   FontFamily="Racing" 
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30" 
+                   Padding="10,0,0,0"/>
+
+
+
+                <CollectionView ItemsSource="{Binding Items}"
+                            Grid.Row="3" Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            VerticalScrollBarVisibility="Never"
+                            VerticalOptions="Start">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="Auto, Auto" 
+                                  ColumnDefinitions="Auto, *">
+                                <!-- Schedule time-->
+                                <Label Grid.Row="0" 
+                                   Grid.Column="0"
+                                   Text="17/Julio/20"  
+                                   FontFamily="SansBold"
+                                   TextColor="#bfc0c0" 
+                                   FontAttributes="Bold" 
+                                   VerticalOptions="Start"/>
+                                <!-- Vertical Line-->
+                                <BoxView Grid.Row="1" 
+                                     Grid.Column="0" 
+                                     WidthRequest="4" 
+                                     Color="Silver"  
+                                     Margin="25,0,50,20" />
+                                <!-- Here add the code that is being explained in the "Market bar" block-->
+                                <StackLayout Grid.Row="0"
+                                       Grid.RowSpan="2" 
+                                       Grid.Column="1" 
+                                       Margin="5,10">
+                                    <!-- Card -->
+                                    <Frame 
+                                       CornerRadius="25"
+                                       HasShadow="False"
+                                       Margin="0,0,10,0">
+                                        <StackLayout Padding="0"
+                                             x:DataType="model:Item">
+
+                                            <Label Text="{Binding Text}" 
+                                               FontAttributes="Bold" 
+                                               FontFamily="SansBold"
+                                               TextColor="#535257" 
+                                               FontSize="18"/>
+                                            
+                                            <Label Text="{Binding Description}" 
+                                               TextColor="Silver" 
+                                               FontFamily="SansRegular"
+                                               FontSize="18"/>
+                                            
+                                            <!-- Here add the code that is being explained in the "Market bar" block-->
+
+                                           
+                                                <Frame CornerRadius="35"
+                                                   Margin="-40,0,-40,0" 
+                                                   BackgroundColor="#01ADBA" 
+                                                   HasShadow="False" 
+                                                   VerticalOptions="FillAndExpand"/>
+                                                <Label Text="Estado" 
+                                                       TextColor="white" 
+                                                       Margin="0,-35,10,05"
+                                                       FontFamily="SansBold"
+                                                       FontSize="18" 
+                                                       HorizontalOptions="End"/>
+                
+                                        </StackLayout>
+                                    </Frame>
+
+                                </StackLayout>
+
+
+
+
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </Grid>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

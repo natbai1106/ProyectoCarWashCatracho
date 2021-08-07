@@ -18,10 +18,12 @@ namespace PRMOVIL2CARWASH.Views
         public Mapas()
         {
             InitializeComponent();
+
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            var status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
 
             //var localizacion = CrossGeolocator.Current;
             //if (localizacion != null)

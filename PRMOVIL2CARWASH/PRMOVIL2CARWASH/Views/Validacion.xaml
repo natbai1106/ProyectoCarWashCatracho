@@ -27,7 +27,7 @@
                     Command="{Binding SaveUserCommand}"
                     IsEnabled="{Binding CodeIsCorrect}" />
 
-            <Button Text="Verificar"
+            <Button Text="Modificar mi información"
                     Command="{Binding ModifyDataCommand}"/>
 
             <Label HorizontalOptions="Center"

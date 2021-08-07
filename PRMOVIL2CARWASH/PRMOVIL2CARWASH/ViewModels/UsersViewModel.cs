@@ -113,13 +113,16 @@ namespace PRMOVIL2CARWASH.ViewModels
                 int respuesta = Constanst.REQUEST_ERROR;
                 if (CheckRequires())//Valida los campos requeridos
                 {
-                    bool changeMail = !UserInCache.Correo.Equals(Mail);
-                    bool changePhone = !UserInCache.Telefono.Equals(Telephone);
-                    bool changeMethod = VerifyByMail != lastMethodVerify;
+                  
 
                     if (!string.IsNullOrEmpty(UserInCache.Token))//Si tiene un Token entonces es una actualizacion de lo contrario es primera vez que llena el formulario
                     {
-                        if(changeMethod || changeMail || changeMail) //Se reenviara solo si se cambio el correo, el telefono, o el metodo de verificación
+
+                        bool changeMail = !UserInCache.Correo.Equals(Mail);
+                        bool changePhone = !UserInCache.Telefono.Equals(Telephone);
+                        bool changeMethod = VerifyByMail != lastMethodVerify;
+
+                        if (changeMethod || changeMail || changeMail) //Se reenviara solo si se cambio el correo, el telefono, o el metodo de verificación
                         {
                             UserInCache.ModoVerificacion = VerifyByMail ? Constanst.VERIFY_MAIL : Constanst.VERIFY_PHONE_NUMBER;
                           
@@ -133,8 +136,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                             if (respuesta == Constanst.REQUEST_OK)
                                 await Page.Navigation.PushAsync(new Validacion());
                             else
-                                UserDialogs.Instance.Toast("Error al reenviar codigo de verificación");
-
+                                UserDialogs.Instance.Toast("Error al reenviar codigo de verificación.");
                         }
                         else//Sino se realizaron cambios entonces guardamos los cambios en cache
                         {
@@ -142,51 +144,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                             Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
                             await Page.Navigation.PushAsync(new Validacion());
                         }
-                        /*/
-                        if (VerifyByMail !=lastMethodVerify) //Si cambio entonces realiza la verificíon del metodo de validación
-                        {
-                            if (VerifyByMail) //Verifica si esta habilitado enviar por mail en caso contrario se envia por telefono
-                            {
-                                respuesta = await UserInCache.VerfyAccount(Constanst.VERIFY_MAIL, Mail);
-                            }
-                            else
-                            {
-                                respuesta = await UserInCache.VerfyAccount(Constanst.VERIFY_PHONE_NUMBER, Telephone);
-                            }
-                        }
-                        //Si cambio los valores del correo o el telefono hara de nuevo el reenvio
-                        else if (!UserInCache.Correo.Equals(Mail) || !UserInCache.Telefono.Equals(Telephone))
-                        {
-
-                            if (!UserInCache.Correo.Equals(Mail) && VerifyByMail) //Si cambie el correo o el metodo de verificacion es por mail establezco el metodo de verificació
-                                UserInCache.ModoVerificacion = Constanst.VERIFY_MAIL;
-
-                            if (!UserInCache.Telefono.Equals(Telephone))// Si no es verificar por correo, entonces es por telefono
-                                UserInCache.ModoVerificacion = Constanst.VERIFY_PHONE_NUMBER;
-
-
-
-                            #region ocultar
-                            SetDataToInstance(UserInCache);
-                            Barrel.Current.Empty(Constanst.USER_CACHE);//Quitamos el barril antiguo y volvemos crearlo
-                            Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
-
-                            UserDialogs.Instance.ShowLoading("Reenviando");
-                            respuesta = await UserInCache.ResendVerifyCode();
-                            UserDialogs.Instance.HideLoading();
-
-                            if (respuesta == Constanst.REQUEST_OK)
-                                await Page.Navigation.PushAsync(new Validacion());
-                            #endregion
-                        }
-                        else
-                        {
-                            SetDataToInstance(UserInCache);
-                            Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
-                            await Page.Navigation.PushAsync(new Validacion());
-
-                        }*/
-
+                     
                     }
                     else
                     {
@@ -208,7 +166,6 @@ namespace PRMOVIL2CARWASH.ViewModels
                             await Page.Navigation.PushAsync(new Validacion());
 
                         }
-
                         else
                             UserDialogs.Instance.Toast("Lo sentimos no hemos podido enviar código de verificación.");
 
@@ -368,7 +325,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         {
              if (UserInCache.Nombre.Equals(Name) && UserInCache.Apellido.Equals(LastName) && UserInCache.Direccion.Equals(Address) &&
                  UserInCache.Telefono.Equals(Telephone) && UserInCache.Usuario.Equals(User) && UserInCache.Contrasena.Equals(Password) &&
-                 UserInCache.Correo.Equals(Mail) && UserInCache.FotoByteArray.Equals(PhotoByteArray) && lastMethodVerify == VerifyByMail)
+                 UserInCache.Correo.Equals(Mail) && UserInCache.FotoByteArray == PhotoByteArray && lastMethodVerify == VerifyByMail)
                 return false;
             else
                 return true;

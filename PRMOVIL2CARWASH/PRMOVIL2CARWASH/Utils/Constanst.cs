@@ -21,6 +21,7 @@ namespace PRMOVIL2CARWASH.Utils
         public const int SESSION_CLOSED = 3;
         public const int EXPIRE_DAYS = 7;
         public const int EXPIRE_CURREN_USER = 365;
+        public const int FAIL_AUTH = 35;
 
 
         public const string USER_IMAGE_DEFAULT = "camara.png";

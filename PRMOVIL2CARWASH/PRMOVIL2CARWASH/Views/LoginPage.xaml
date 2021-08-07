@@ -129,10 +129,27 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                  
 
-                    
-                </StackLayout>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    
+                            <Span Text="Olvide mi contraseña" FontAttributes="Bold" FontSize="15"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Command="{Binding ResetPasswordCommand}"
+                                    />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span 
+                            Text="" FontAttributes="Bold" FontSize="15"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
             </Frame>
           </ScrollView>
         </StackLayout>

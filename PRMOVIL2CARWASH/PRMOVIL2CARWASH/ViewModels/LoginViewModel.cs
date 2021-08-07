@@ -17,15 +17,18 @@ namespace PRMOVIL2CARWASH.ViewModels
         public Command LoginCommand { get; }
         public Command NewUserCommand { get; }
         public Command ResetPasswordCommand { get; }
-      
 
+        public Command SendUserToResetCommand { get; }
+        //Inicio de sesion
         string user;
         string password;
-
+        // Reseteo de contraseña
+        string userToRecovery;
         public string User { get => user;
             set => SetProperty(ref user, value); }
         public string Password { get => password; 
             set => SetProperty(ref password, value); }
+ 
 
         Page page;
         User userInstance;
@@ -36,6 +39,40 @@ namespace PRMOVIL2CARWASH.ViewModels
             LoginCommand = new Command(OnLoginClicked);
             NewUserCommand = new Command(OnNewUserClicked);
             ResetPasswordCommand = new Command(OnResetPassClicked);
+            SendUserToResetCommand = new Command(OnSendUserClicked);
+
+
+        }
+
+        private async void OnSendUserClicked(object obj)
+        {
+            if (!IsNotConnect)
+            {
+                if (!string.IsNullOrEmpty(User))
+                {
+                    UserDialogs.Instance.ShowLoading();
+                    int repuesta = await userInstance.ResetPassword(User);
+                    if (repuesta == Constanst.REQUEST_OK)
+                    {
+                        await page.DisplayAlert("Enviado", "Te hemos enviado un correo con tu un código para recuperar tu contraseña", "Aceptar");
+                    }
+                    else
+                    {
+                        await page.DisplayAlert("Error", "Usuario no existe", "Ok");
+                    }
+                    UserDialogs.Instance.HideLoading();
+
+                }
+                else
+                {
+                    UserDialogs.Instance.Toast("Debe llernar todos los campos");
+                }
+            }
+            else
+            {
+                UserDialogs.Instance.Toast("Necesita estar conectado a internet.");
+            }
+
         }
 
         private async void OnLoginClicked(object obj)
@@ -49,6 +86,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                     if (repuesta == Constanst.REQUEST_OK)
                     { 
                         Preferences.Set(Constanst.RECENT_SESSION, true);
+                        var m = Preferences.Get(Constanst.RECENT_SESSION, false);
                         Application.Current.MainPage = new AppShell();
                     }
                     else
@@ -70,6 +108,7 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         }
 
+        //Estos comando se utilizan en el login
         private async void OnNewUserClicked()
         {
             UserDialogs.Instance.ShowLoading("");
@@ -79,7 +118,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         
         private async void OnResetPassClicked()
         {
-
+            await page.Navigation.PushAsync(new ResetPassPage());
         }
     }
 }

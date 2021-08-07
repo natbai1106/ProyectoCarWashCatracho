@@ -312,8 +312,27 @@
                             FontFamily="Questrial"/>
                         </StackLayout>
                         <!-- ESTILOS DEL ENTRY TELEFONO -->
-                        <Label                             Text="Correo "                            FontSize="20"                                Margin="30,0,10,5"                            FontFamily="SansBold"/>                        <Switch                             x:Name="SwitchMapa"                              OnColor="gray"                              ThumbColor="#01ADBA"                           IsToggled="{Binding VerifyByMail,Mode=TwoWay}"                                                                />
-                        <Label                             Text="Telefono "                            FontSize="20"                                Margin="30,0,10,5"                            FontFamily="SansBold"/>
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label 
+                            Text="Telefono "
+                            FontSize="15"    
+                            Margin="30,0,10,5"
+                            FontFamily="SansBold"/>
+                            
+                            <Switch 
+                            x:Name="SwitchMapa"
+                              OnColor="gray"
+                              ThumbColor="#01ADBA"
+                           IsToggled="{Binding VerifyByMail,Mode=TwoWay}"/>
+                            
+                            <Label 
+                            Text="Correo "
+                            FontSize="15"    
+                            Margin="30,0,10,5"
+                            FontFamily="SansBold"/>
+                        </StackLayout>
+                        
 
                         <Frame
                         BackgroundColor="Transparent" 

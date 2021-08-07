@@ -14,7 +14,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         public Command OpenGalleryCommand { get; }
 
         Page Page;
-
+    
         string brand;
         string modelo;
         string type;

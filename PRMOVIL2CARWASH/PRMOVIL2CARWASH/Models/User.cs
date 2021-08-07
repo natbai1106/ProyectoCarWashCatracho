@@ -116,6 +116,7 @@ namespace PRMOVIL2CARWASH.Models
                 return Constanst.REQUEST_ERROR;
 
         }
+
         public async Task<int> LogIn(string User, string Password)
         {
             var objeto = new
@@ -123,10 +124,8 @@ namespace PRMOVIL2CARWASH.Models
                 usuario = User,
                 contrasena = Password
             };
-
             var data = JsonConvert.SerializeObject(objeto);
             var content = new StringContent(data, Encoding.UTF8, "application/json");
-
             requestMessage = await cliente.PostAsync(string.Concat(url, "/login"), content);
             if (requestMessage.IsSuccessStatusCode)
             {
@@ -134,7 +133,7 @@ namespace PRMOVIL2CARWASH.Models
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
                 {
-                    GetUser(User, Password);
+                    await GetUser(User, Password);
                     return Constanst.REQUEST_OK;
                 }
                 else if (respuesta.Status.Equals("userExist"))
@@ -146,11 +145,19 @@ namespace PRMOVIL2CARWASH.Models
             else
                 return Constanst.REQUEST_ERROR;
         }
-        public async void GetUser(string user, string password)
-        {
-            var auxUrl = string.Concat(url, "?usuario=", user, "&contrasena=", password);
 
-            requestMessage = await cliente.GetAsync(auxUrl);
+        public async Task GetUser(string user, string password)
+        {
+            var objeto = new
+            {
+                usuario = user,
+                contrasena = password
+            };
+
+            var data = JsonConvert.SerializeObject(objeto);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            requestMessage = await cliente.PostAsync(url, content);
+
             if (requestMessage.IsSuccessStatusCode)
             {
                 var contents = await requestMessage.Content.ReadAsStringAsync();
@@ -212,24 +219,18 @@ namespace PRMOVIL2CARWASH.Models
                 return Constanst.REQUEST_ERROR;
 
         }
+
         public async Task<int> CheckStatusSession()
         {
             //Objeto anonimo para codificar
-            var objeto = new
-            {
-                usuario = Usuario
-            };
-
-            var data = JsonConvert.SerializeObject(objeto);
-
-            requestMessage = await cliente.GetAsync(string.Concat(url,"/state?usuario=", Usuario));
+            requestMessage = await cliente.GetAsync(string.Concat(url,"/status?usuario=",Usuario));
             if (requestMessage.IsSuccessStatusCode)
             {
                 var contents = await requestMessage.Content.ReadAsStringAsync();
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.StatusSession)//Si esta inciada la sesion entones deuelve true
                 {
-                    GetUser(Usuario,Contrasena);
+                    await  GetUser(Usuario,Contrasena);
                     return Constanst.REQUEST_OK;
                 }
                 else
@@ -270,6 +271,34 @@ namespace PRMOVIL2CARWASH.Models
             }
             else
                 return Constanst.REQUEST_ERROR;
+        }
+
+        public async Task<int> ResetPassword(string user)
+        { 
+            //Objeto anonimo para codificar
+            var objeto = new
+            {
+                usuario = user
+            };
+            var data = JsonConvert.SerializeObject(objeto);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            requestMessage = await cliente.PutAsync(string.Concat(url, "/resetpass"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    return Constanst.REQUEST_OK;
+                }
+                else if (respuesta.Status.Equals("failAuth"))
+                    return Constanst.FAIL_AUTH;
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+
         }
     }
 

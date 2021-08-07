@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PRMOVIL2CARWASH.Views.ResetPassPage">
+             x:Class="PRMOVIL2CARWASH.Views.ResetPassPage"
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Ingrese su usuario para poder ingresar e iniciar sesion"
+            <Label Text="Ingrese su usuario para poder ingresar e iniciar sesión"
                
                 HorizontalOptions="CenterAndExpand" />
             <Entry Text="{Binding User}"

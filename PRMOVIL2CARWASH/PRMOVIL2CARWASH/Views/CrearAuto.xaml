@@ -9,27 +9,23 @@
             <ScrollView>
 
                 <StackLayout>
-                    <!--Titulo -->
-                    <Label Text="Registrar Automóviles"
-                           HorizontalOptions="Center"
-                           TextColor="black"
-                           FontFamily="Racing"
-                           FontSize="25"/>
-
+                
                     <!-- Imagenes -->
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout Orientation="Horizontal" 
+                                 HorizontalOptions="Center">
                         <Image x:Name="imgFotoAuto" 
                                Source="Automovil.png"
                                WidthRequest="190"
                                HeightRequest="190"/>
                         <Grid>
-                            <Button ImageSource="galeria.png"
-                                    x:Name="btnFotoAutos"
-                                    Command = "{Binding TakePhotoCommand}"
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                     BackgroundColor="#01ADBA" 
+                            <Button  
+                                ImageSource="camara.png"
+                                x:Name="btnGaleriaAutos"
+                                Command="{Binding OpenGalleryCommand}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="#01ADBA" 
                                 CornerRadius="40" 
                                 Background="#01ADBA"
                                 BorderWidth="2"
@@ -39,7 +35,10 @@
                                 VerticalOptions="Center"
                                 />
 
-                            <Button  BackgroundColor="#01ADBA" 
+                            <Button  ImageSource="galeria.png"
+                                    x:Name="btnFotoAutos"
+                                Command = "{Binding TakePhotoCommand}"
+                                BackgroundColor="#01ADBA" 
                                 CornerRadius="40" 
                                 Background="#01ADBA"
                                 BorderWidth="2"
@@ -47,9 +46,6 @@
                                 WidthRequest="80"  
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
-                                ImageSource="camara.png"
-                                x:Name="btnGaleriaAutos"
-                                Command="{Binding OpenGalleryCommand}"
                                 Grid.Row="1"
                                 Grid.Column="0" />
                         </Grid>

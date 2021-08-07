@@ -12,7 +12,7 @@ namespace PRMOVIL2CARWASH.Utils
     public class MediaManager
     {
 
-        private Page page;
+    
 
         public string ErrorMessage { get; private set; }
         public string Path { get; private set; }
@@ -20,12 +20,12 @@ namespace PRMOVIL2CARWASH.Utils
         public bool IsSuccess { get; private set; }
         public ImageSource Image { get; private set; }
         public byte [] ByteImage{ get; private set; }
-        private MemoryStream  Stream {  get;  set; }
+        private MemoryStream  MemStream {  get;  set; }
 
 
         public MediaManager()
         {
-            Stream = new MemoryStream();
+            MemStream = new MemoryStream();
         }
         public async Task<bool> TakePicture()
         {
@@ -37,7 +37,9 @@ namespace PRMOVIL2CARWASH.Utils
 
             MediaFile = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
             {
-                PhotoSize = PhotoSize.Medium
+                PhotoSize = PhotoSize.Medium,
+               
+                
             });
 
             if (MediaFile == null)
@@ -49,8 +51,8 @@ namespace PRMOVIL2CARWASH.Utils
             Path = MediaFile.Path;
 
             Image = ImageSource.FromStream(() => MediaFile.GetStream());
-            MediaFile.GetStream().CopyTo(Stream);
-            ByteImage = Stream.ToArray();
+            MediaFile.GetStream().CopyTo(MemStream);
+            ByteImage = MemStream.ToArray();
             return IsSuccess = true;
         }
 
@@ -77,12 +79,17 @@ namespace PRMOVIL2CARWASH.Utils
 
                 Path = MediaFile.Path;
                 Image = ImageSource.FromStream(() => MediaFile.GetStream());
-                 MediaFile.GetStream().CopyTo(Stream);
-                ByteImage = Stream.ToArray();
-                return IsSuccess = true;
-
+                 MediaFile.GetStream().CopyTo(MemStream);
+                ByteImage = MemStream.ToArray();
+                return IsSuccess = true; 
             }
         }
+
+        public ImageSource ConvertByteArrayToImage(byte[] image)
+        {
+            return ImageSource.FromStream(()=> { return (Stream)new MemoryStream(image); });
+        }
+        
     }
 
     

@@ -30,12 +30,11 @@ namespace PRMOVIL2CARWASH.Models
             clientTipoVehiculo = new HttpClient();
         }
 
-        //public string Url = Constanst.GetUrl("/vehicle/brand");
         public async Task<ObservableCollection<TypeVehicle>> ObtenerTipoVehiculo()
         {
             try
             {
-                var responseTipoVehiculo = await clientTipoVehiculo.GetStringAsync(Constanst.GetUrl("/vehicle/brand"));
+                var responseTipoVehiculo = await clientTipoVehiculo.GetStringAsync(Constanst.GetUrl("/vehicle/type/1"));
                 ObservableCollection<TypeVehicle> taskTipoVehiculo = JsonConvert.DeserializeObject<ObservableCollection<TypeVehicle>>(responseTipoVehiculo);
                 return taskTipoVehiculo;
             }

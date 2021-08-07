@@ -9,9 +9,18 @@
              BackgroundImageSource="FondoLogin.png">
     <ContentPage.Content>        
         <!-- MARGENES DE LA TARJETA BLANCA -->
-        <StackLayout Margin="10,80">            
+        <StackLayout Margin="10,80">
+            <Label Text="{Binding NetworkMessage}"
+                     
+                       TextColor="Red"
+                       IsVisible="{Binding IsNotConnect}"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="10"
+                       FontFamily="Racing"/>
             <!-- TITULOS DE LA TARJETA -->
             <StackLayout HorizontalOptions="Center">
+                
                 <Label Text="Mi Cuenta"
                        x:Name="txtInicioSesion"
                        TextColor="Black"
@@ -27,7 +36,7 @@
                        VerticalOptions="Center"/>
 
             <!-- TARJETA COLOR BLANCO -->
-            
+            <ScrollView>   
                 <Frame BackgroundColor="Transparent"
                        CornerRadius="7"
                        HasShadow="True"
@@ -52,7 +61,8 @@
                             <Image Source="user.png" />
 
                             <!-- ENTRY USUARIO -->
-                            <Entry Placeholder="Usuario" 
+                            <Entry Placeholder="Usuario"
+                                   Text="{Binding User, Mode=TwoWay}"
                                    Keyboard="Plain"
                                    FontFamily="Questrial"
                                    FontSize="20"
@@ -61,7 +71,7 @@
                                    HorizontalOptions="FillAndExpand"/>
                         </StackLayout>
                     </Frame>
-                        
+                   
                     <!-- ESTILOS DEL ENTRY USUARIO -->
                     <Frame BackgroundColor="Transparent"
                            BorderColor="Black" 
@@ -80,6 +90,7 @@
                             <!-- ENTRY PASSWORD -->
                             <Entry Placeholder="Contraseña" 
                                     Keyboard="Plain"
+                                    Text="{Binding Password, Mode=TwoWay}"
                                     FontFamily="Questrial"
                                     FontSize="20"
                                     IsPassword="True"
@@ -104,13 +115,13 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="¿No tienes cuenta? " FontAttributes="Bold" FontSize="15" />
-                                <Span Text="Registrate aqui!" FontAttributes="Bold" FontSize="15"
+                                <Span Text="Registrate aquí!" FontAttributes="Bold" FontSize="15"
                               TextColor="Blue"
                               TextDecorations="Underline">
                                     <Span.GestureRecognizers>
                                         <TapGestureRecognizer 
-                                    Command="{Binding ClickCommand}"
-                                    CommandParameter="https://play.google.com/store/apps/details?id=com.GesbDesarrollosTI.cgi" />
+                                    Command="{Binding NewUserCommand}"
+                                    />
                                     </Span.GestureRecognizers>
                                 </Span>
                                 <Span 
@@ -119,20 +130,28 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <!--<Button 
-                        Text="Crear Usuario" 
-                        x:Name="btnCrear"
-                        Command="{Binding NewUserCommand}"
-                        BackgroundColor="#E3E4E5"
-                        TextColor="Black"
-                        FontAttributes="Bold"
-                        CornerRadius="50"
-                        BorderWidth="2"
-                        Margin="25,0"/>-->
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    
+                            <Span Text="Olvide mi contraseña" FontAttributes="Bold" FontSize="15"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Command="{Binding ResetPasswordCommand}"
+                                    />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span 
+                            Text="" FontAttributes="Bold" FontSize="15"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        </Label>
 
-                    
-                </StackLayout>
+                    </StackLayout>
             </Frame>
+          </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

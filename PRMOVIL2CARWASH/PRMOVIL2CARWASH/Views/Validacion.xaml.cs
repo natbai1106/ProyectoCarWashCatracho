@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRMOVIL2CARWASH.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,9 @@ namespace PRMOVIL2CARWASH.Views
         public Validacion()
         {
             InitializeComponent();
+            BindingContext = new VerifyAccountViewModel(this);
+            
         }
-        public System.Windows.Input.ICommand ClickCommand => new Command<string>((url) =>
-        {
-            Xamarin.Essentials.Launcher.OpenAsync(new System.Uri(url));
-        });
+       
     }
 }

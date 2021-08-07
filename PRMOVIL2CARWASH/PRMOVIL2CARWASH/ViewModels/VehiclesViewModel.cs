@@ -35,7 +35,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         public ObservableCollection<Modelos> Modelo
         {
             get => modelo;
-            set => modelo = value;
+            set => SetProperty(ref modelo, value);
         }
 
         public MotorType MotorSelected
@@ -63,19 +63,19 @@ namespace PRMOVIL2CARWASH.ViewModels
         public ObservableCollection<Brand> Brand
         {
             get => brand;
-            set => brand = value;
+            set => SetProperty(ref brand, value);
         }
 
         public ObservableCollection<TypeVehicle> Type
         {
             get => type;
-            set => type = value;
+            set => SetProperty(ref type, value);
         }
 
         public ObservableCollection<MotorType> Motor
         {
             get => motor;
-            set => motor = value;
+            set => SetProperty(ref motor, value);
         }
 
         public int Year
@@ -114,20 +114,24 @@ namespace PRMOVIL2CARWASH.ViewModels
         public VehiclesViewModel(Page pag)
         {
             Page = pag;
+            
+            Cargar();
 
+            SaveInformation = new Command(OnRequestSave);
+            OpenGalleryCommand = new Command(OnOpenGallery);
+            TakePhotoCommand = new Command(OnTakePhoto);
+        }
+        private async void Cargar() 
+        {
             Modelos Models = new Modelos();
             Brand Marcas = new Brand();
             TypeVehicle TipoVehiculo = new TypeVehicle();
             MotorType MotorTipo = new MotorType();
 
-            Modelo = Models.ObtenerModelos().Result;
-            Brand = Marcas.ObtenerMarcas().Result;
-            Motor = MotorTipo.ObtenerTipoMotor().Result;
-            Type = TipoVehiculo.ObtenerTipoVehiculo().Result;
-
-            SaveInformation = new Command(OnRequestSave);
-            OpenGalleryCommand = new Command(OnOpenGallery);
-            TakePhotoCommand = new Command(OnTakePhoto);
+            Modelo = await Models.ObtenerModelos();
+            Brand = await Marcas.ObtenerMarcas();
+            Motor = await MotorTipo.ObtenerTipoMotor();
+            Type = await TipoVehiculo.ObtenerTipoVehiculo();
         }
 
         private async void OnRequestSave(object obj)

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PRMOVIL2CARWASH.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,12 +31,12 @@ namespace PRMOVIL2CARWASH.Models
         {
             clientTipoMotor = new HttpClient();
         }
-        public const string Url = "http://173.249.21.6/v1/vehicle/brand";
+
         public async Task<ObservableCollection<MotorType>> ObtenerTipoMotor()
         {
             try
             {
-                var responseTipoMotor = await clientTipoMotor.GetStringAsync(Url);
+                var responseTipoMotor = await clientTipoMotor.GetStringAsync(Constanst.GetUrl("/vehicle/gas"));
                 ObservableCollection<MotorType> taskTipoMotor = JsonConvert.DeserializeObject<ObservableCollection<MotorType>>(responseTipoMotor);
                 return taskTipoMotor;
             }

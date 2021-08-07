@@ -7,7 +7,7 @@
     <!-- MARGENES DE LA TARJETA BLANCA -->
     <StackLayout
        Margin="2,5" >
-
+        
         <!-- TARJETA COLOR BLANCO -->
         <Frame
                 BackgroundColor="#F5F5F5F5"
@@ -33,6 +33,7 @@
                         HorizontalTextAlignment="Center"
                         FontSize="30"
                         FontFamily="Racing"/>
+                    <!--ActivityIndicator IsRunning="True" Color="Red"/-->
                 </StackLayout>
 
                 <!-- SCROLLVIEW DE LA TARJETA -->
@@ -46,7 +47,7 @@
 
                             <Image
                             x:Name="imgFotoUsuario" 
-                            
+                            Source="{Binding PhotoProfile}"
                             WidthRequest="170"
                             HeightRequest="170"/>
                             <Grid>
@@ -54,15 +55,15 @@
                                 ImageSource="camara.png"
                                 x:Name="btnFotosUsuario"
                                 Command="{Binding ThakePhotoCommand}"
+            
                                 Grid.Row="0"
                                 Grid.Column="0"
-                                IsEnabled="{Binding IsBusy}"
+                               
                                 BackgroundColor="#E3E4E5"
                                 CornerRadius="7" />
                                 <Button                        
                                 ImageSource="camara.png"
                                 x:Name="btnGaleriaUsuario"
-                                 IsEnabled="{Binding IsBusy}"
                                 Command="{Binding OpenGaleryCommand}"
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -311,6 +312,28 @@
                             FontFamily="Questrial"/>
                         </StackLayout>
                         <!-- ESTILOS DEL ENTRY TELEFONO -->
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label 
+                            Text="Telefono "
+                            FontSize="15"    
+                            Margin="30,0,10,5"
+                            FontFamily="SansBold"/>
+                            
+                            <Switch 
+                            x:Name="SwitchMapa"
+                              OnColor="gray"
+                              ThumbColor="#01ADBA"
+                           IsToggled="{Binding VerifyByMail,Mode=TwoWay}"/>
+                            
+                            <Label 
+                            Text="Correo "
+                            FontSize="15"    
+                            Margin="30,0,10,5"
+                            FontFamily="SansBold"/>
+                        </StackLayout>
+                        
+
                         <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black" 
@@ -333,7 +356,7 @@
                                 <Entry 
                                 Placeholder="Teléfono" 
                                 Keyboard="Telephone"
-                                Text="{Binding Cellephone,Mode=TwoWay}"
+                                Text="{Binding Telephone,Mode=TwoWay}"
                                 FontFamily="Questrial"
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
@@ -468,7 +491,7 @@
                         <Button 
                             Text="Limpiar" 
                             x:Name="btnLimpiar"
-                            Command="{Binding Clean}"
+                            Command="{Binding CancelRegisterCommand}"
                             BackgroundColor="#E3E4E5"
                             TextColor="Black"
                             FontAttributes="Bold"
@@ -478,6 +501,7 @@
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
+            
         </Frame>
     </StackLayout>
 </ContentPage>

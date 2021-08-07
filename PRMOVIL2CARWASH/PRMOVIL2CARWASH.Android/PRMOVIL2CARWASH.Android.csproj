@@ -248,5 +248,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\FondoLogin.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PRMOVIL2CARWASH\PRMOVIL2CARWASH.csproj">
+      <Project>{D9B83E08-6956-4187-BDC3-E8BC21568344}</Project>
+      <Name>PRMOVIL2CARWASH</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

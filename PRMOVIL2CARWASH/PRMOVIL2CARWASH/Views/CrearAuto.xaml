@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.CrearAuto"
-             BackgroundColor="#FDFDFD">
+             BackgroundColor="#FDFDFD"
+             Title="Registrar Automovil">
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
@@ -19,25 +20,38 @@
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Image x:Name="imgFotoAuto" 
-                               Source="foto.png"
-                               WidthRequest="170"
-                               HeightRequest="170"/>
+                               Source="Automovil.png"
+                               WidthRequest="190"
+                               HeightRequest="190"/>
                         <Grid>
-                            <Button ImageSource="camara.png"
+                            <Button ImageSource="galeria.png"
                                     x:Name="btnFotoAutos"
                                     Command = "{Binding TakePhotoCommand}"
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    BackgroundColor="#E3E4E5"
-                                    CornerRadius="7" />
+                                     BackgroundColor="#01ADBA" 
+                                CornerRadius="40" 
+                                Background="#01ADBA"
+                                BorderWidth="2"
+                                HeightRequest="80" 
+                                WidthRequest="80" 
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                />
 
-                            <Button ImageSource="camara.png"
-                                    x:Name="btnGaleriaAutos"
-                                    Command="{Binding OpenGalleryCommand}"
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    BackgroundColor="#E3E4E5"
-                                    CornerRadius="7" />
+                            <Button  BackgroundColor="#01ADBA" 
+                                CornerRadius="40" 
+                                Background="#01ADBA"
+                                BorderWidth="2"
+                                HeightRequest="80" 
+                                WidthRequest="80"  
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                ImageSource="camara.png"
+                                x:Name="btnGaleriaAutos"
+                                Command="{Binding OpenGalleryCommand}"
+                                Grid.Row="1"
+                                Grid.Column="0" />
                         </Grid>
                     </StackLayout>
 
@@ -313,6 +327,7 @@
                                     Text="{Binding Observation, Mode=TwoWay}"
                                     FontSize="20"
                                     FontFamily="SansLight"
+                                   HeightRequest="100"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand" />
                         </StackLayout>

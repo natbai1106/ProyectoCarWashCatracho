@@ -24,7 +24,7 @@ namespace PRMOVIL2CARWASH.Views
 
         }
 
-        private async void SwitchMapa_Toggled(object sender, ToggledEventArgs e)
+        private void SwitchMapa_Toggled(object sender, ToggledEventArgs e)
         {
             if (true)
             {

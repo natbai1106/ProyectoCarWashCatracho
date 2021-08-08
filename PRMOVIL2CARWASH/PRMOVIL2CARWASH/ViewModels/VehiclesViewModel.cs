@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
-
 using PRMOVIL2CARWASH.Utils;
-
-=======
-using PRMOVIL2CARWASH.Utils;
->>>>>>> 062c4cd9545a03f7f68c32c813cb3ed3c1096fdd
 using Xamarin.Forms;
 using System.Linq;
 using PRMOVIL2CARWASH.Models;
@@ -23,13 +17,6 @@ namespace PRMOVIL2CARWASH.ViewModels
         public Command OpenGalleryCommand { get; }
 
         Page Page;
-<<<<<<< HEAD
-    
-        string brand;
-        string modelo;
-        string type;
-        string motor;
-=======
 
         ObservableCollection<Brand> brand;
         ObservableCollection<Modelos> modelo;
@@ -39,7 +26,6 @@ namespace PRMOVIL2CARWASH.ViewModels
         TypeVehicle typeSelected;
         Brand brandSelected;
         Modelos modeloSelected;
->>>>>>> 062c4cd9545a03f7f68c32c813cb3ed3c1096fdd
         int year;
         string plaque;
         string observation;

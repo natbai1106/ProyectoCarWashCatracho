@@ -87,11 +87,6 @@ namespace PRMOVIL2CARWASH.ViewModels
             get => observation; set => observation = value;
         }
 
-        //public byte[] Foto
-        //{
-        //    get => foto; set => foto = value;
-        //}
-
         public byte[] PhotoByteArray { get => photoArray; set { photoArray = value; } }
 
         public ImageSource PhotoProfile

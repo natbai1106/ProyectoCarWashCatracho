@@ -54,11 +54,11 @@ namespace PRMOVIL2CARWASH.ViewModels
                     int repuesta = await userInstance.ResetPassword(User);
                     if (repuesta == Constanst.REQUEST_OK)
                     {
-                        await page.DisplayAlert("Enviado", "Te hemos enviado un correo con tu un código para recuperar tu contraseña", "Aceptar");
+                        await page.Navigation.PushAsync(new CambioContra(Constanst.TYPE_RESET, User));
                     }
                     else
                     {
-                        await page.DisplayAlert("Error", "Usuario no existe", "Ok");
+                        await page.DisplayAlert("Error", "Asegura que tu usurio es correcto.", "Aceptar");
                     }
                     UserDialogs.Instance.HideLoading();
 

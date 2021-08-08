@@ -19,7 +19,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             
             //Validamos el estado del internet
-            CheckNetworkState(Connectivity.NetworkAccess, Connectivity.ConnectionProfiles);
+            CheckNetworkState(Connectivity.NetworkAccess);
             
         }
         bool isBusy = false;
@@ -89,13 +89,13 @@ namespace PRMOVIL2CARWASH.ViewModels
             var profiles = e.ConnectionProfiles;
             //Se valida el tipo de perfil de conexión
 
-            CheckNetworkState(access, profiles);
+            CheckNetworkState(access);
            
             
         }
 
 
-        void CheckNetworkState(NetworkAccess access, IEnumerable<ConnectionProfile> profiles)
+        void CheckNetworkState(NetworkAccess access)
         {
             //if (profiles.Contains(ConnectionProfile.Cellular) || profiles.Contains(ConnectionProfile.WiFi))
             //{

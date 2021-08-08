@@ -7,7 +7,7 @@
              x:Class="PRMOVIL2CARWASH.Views.CambioContra"
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
              NavigationPage.HasNavigationBar="False"
-             BackgroundImage="#FDFDFD"
+             BackgroundColor="#FDFDFD"
              Title="Cambiar Contraseña">
     <ContentPage.Content>
         <StackLayout
@@ -51,6 +51,18 @@
                     Orientation="Horizontal"
                     Margin="25,5">
 
+                    <Entry 
+                       x:Name="txtContraseñaAnterior"
+                       Margin="0,0,15,0"
+                       IsPassword="true" 
+                       Text="{Binding OldPassword}"
+                       Placeholder="Anterior..."
+                       PlaceholderColor="Gray"
+                       FontSize="20"
+                       FontFamily="SansLight"
+                       HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
                         <Entry 
                            x:Name="txtContraseñaAnterior"
                            IsPassword="true" 
@@ -110,6 +122,7 @@
                     <Entry 
                          IsPassword="true" 
                                 x:Name="txtNuevaContraseña"
+                                Text="{Binding NewPassword}"
                                 Margin="0,0,15,0"
                                 Placeholder="Nueva..."
                                 PlaceholderColor="Gray"
@@ -152,6 +165,7 @@
                     <Entry 
                          IsPassword="true" 
                          x:Name="txtConfirmarContraseña"
+                        Text="{Binding ConfirmPassword}"
                          Margin="0,0,15,0"
                          Placeholder="Confirmar..."
                          PlaceholderColor="Gray"
@@ -164,6 +178,7 @@
             <Button 
                 Text="Guardar Cambios" 
                                     x:Name="btnCambiarContra"
+                                    Command="{Binding ChangePasswordCommand}"
                                     BackgroundColor="#01ADBA"
                                     TextColor="White"
                                     FontAttributes="Bold"

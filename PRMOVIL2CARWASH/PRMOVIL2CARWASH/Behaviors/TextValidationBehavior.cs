@@ -23,6 +23,7 @@ namespace PRMOVIL2CARWASH.Behaviors
             Entry entry = (Entry)sender;
             if (!string.IsNullOrEmpty(entry.Text))
             {
+                //[0-9]
                 string TextRegEx = "[0-9]"; 
                 bool isMacthed = Regex.IsMatch(entry.Text, TextRegEx);
 

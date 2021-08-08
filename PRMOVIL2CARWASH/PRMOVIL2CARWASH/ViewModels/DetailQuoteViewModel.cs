@@ -13,7 +13,7 @@ namespace PRMOVIL2CARWASH.ViewModels
     {
 
         Page Page;
-        ObservableCollection<Service> _service;
+        ObservableCollection<NameService> _service;
         ObservableCollection<RegisterVehicles> _vehicles;
 
         int idDetalleCotizacion;
@@ -32,7 +32,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             set => SetProperty(ref serviceSelected, value);
         }
 
-        public ObservableCollection<Service> Service
+        public ObservableCollection<NameService> Service
         {
             get => _service;
             set => _service = value;
@@ -52,15 +52,17 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         public DetailQuoteViewModel(Page Pag)
         {
-            
+            Cargar();
 
-            NameService nameService = new NameService();
-            RegisterVehicles registerVehicles = new RegisterVehicles();
 
-            Service = nameService.ObtenerServicios().Result;
-            Vehicle = registerVehicles.GetVehicles().Result;
             Page = Pag;
         }
+        private async void Cargar()
+        {
+            NameService service = new NameService();
+            Service = await service.ObtenerServicio();
+        }
+
 
 
     }

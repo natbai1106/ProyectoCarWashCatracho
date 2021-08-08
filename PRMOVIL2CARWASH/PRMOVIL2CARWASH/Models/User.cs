@@ -300,7 +300,40 @@ namespace PRMOVIL2CARWASH.Models
                 return Constanst.REQUEST_ERROR;
 
         }
+
+        public async Task<int> ChangePassword(string user, string type,string newPass,string oldPass)
+        {
+            //Objeto anonimo para codificar
+            var objeto = new
+            {  
+                usuario= user,
+                contrasenaVieja=oldPass,
+                contrasenaNueva = newPass,
+                tipo= type
+            };
+
+            var data = JsonConvert.SerializeObject(objeto);
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            requestMessage = await cliente.PutAsync(string.Concat(url, "/changepass"), content);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    return Constanst.REQUEST_OK;
+                }
+                else if (respuesta.Status.Equals("noMatch"))
+                    return Constanst.NO_MATCH_PASS;
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+
+        }
     }
+
 
 
 }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PRMOVIL2CARWASH.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -46,32 +47,20 @@ namespace PRMOVIL2CARWASH.Models
         }
 
 
-        //public ObservableCollection<Vehicles> GetRegisterVehicles()
-        //{
-        //    var vNombre = new ObservableCollection<Vehicles>()
-        //    {
-        //        new Vehicles (){ IdVehiculos = 1, NumeroPlaca = "BAA0001 LOCAL"},
-        //        new Vehicles (){ IdVehiculos = 2, NumeroPlaca = "HND0024"},
-        //        new Vehicles (){ IdVehiculos = 3, NumeroPlaca = "SPS0098"}
-        //    };
-        //    return vNombre;
-        //}
 
-        public const string Url = "http://173.249.21.6/v1/vehicle/all/1";
-        public async Task<ObservableCollection<RegisterVehicles>> GetVehicles()
-        {
-            try
-            {                
-                var responseVehiculo = await APIVehiculo.GetStringAsync(Url);
-                Console.WriteLine("VALOR DE LA VARIABLE RESPONSE VEHICULOS" + responseVehiculo);
-                ObservableCollection<RegisterVehicles> taskVehicle = JsonConvert.DeserializeObject<ObservableCollection<RegisterVehicles>>(responseVehiculo);
-                Console.WriteLine("VALOR DE LA VARIABLE TASRESULT VEHICULOS" + taskVehicle);
-                return taskVehicle;
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-        }
+        //public const string Url = "http://173.249.21.6/v1/vehicle/all/1";
+        //public async Task<ObservableCollection<RegisterVehicles>> GetVehicles()
+        //{
+        //    try
+        //    {                
+        //        var responseVehiculo = await APIVehiculo.GetStringAsync(Constanst.GetUrl("/vehicle/all/1"));
+        //        ObservableCollection<RegisterVehicles> taskVehicle = JsonConvert.DeserializeObject<ObservableCollection<RegisterVehicles>>(responseVehiculo);
+        //        return taskVehicle;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 }

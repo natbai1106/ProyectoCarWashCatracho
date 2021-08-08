@@ -15,43 +15,49 @@ namespace PRMOVIL2CARWASH.ViewModels
     public class ServicesViewModels : BaseViewModel
     {
         Page Page;
-        ObservableCollection<Service> Items ;
 
-        string date;
-        string time;
-        Boolean home;
-        Service serviceSelected;
+        ObservableCollection<NameService> servicio;
+        NameService serviceSelected;
+        string nameService;
+        string description;
+        string availableHome;
 
-        //private Service _selectedServices;
+        public ObservableCollection<NameService> Servicio
+        {
+            get => servicio;
+            set => SetProperty(ref servicio, value);
+        }
 
-        public Service ServiceSelected
+        public NameService ServiceSelected
         {
             get => serviceSelected;
             set => SetProperty(ref serviceSelected, value);
         }
-
-        public ObservableCollection<Service> Service
+        public string NameService
         {
-            get => Items;
-            set => Items= value;
+            get => nameService;
+            set => nameService = value;
         }
-        
-        //public ServicesViewModels(Page Pag)
-        //{
-        //    Page = Pag;
+        public string Description
+        {
+            get => description;
+            set => description = value;
+        }
+        public string AvaibleHome
+        {
+            get => availableHome;
+            set => availableHome = value;
+        }
+        public ServicesViewModels(Page pag)
+        {
+            Page = pag;
+            Cargar();
+        }
 
-        //    NameService nameService = new NameService();
-        //    Service = nameService.ObtenerServicios();
-
-        //}
-        
-        //public ICommand GoToDetailsCommand { private set; get; }
-
-        //public INavigation Navigation { get; set; }
-
-
-     }
-        
-
+        private async void Cargar()
+        {
+            NameService service = new NameService();
+            Servicio = await service.ObtenerServicio();
+        }
     }
-
+}

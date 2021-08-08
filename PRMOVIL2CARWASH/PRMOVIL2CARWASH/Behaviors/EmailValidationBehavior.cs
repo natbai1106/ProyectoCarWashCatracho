@@ -26,7 +26,7 @@ namespace PRMOVIL2CARWASH.Behaviors
             Entry entry = (Entry)sender; 
             if (!string.IsNullOrEmpty(entry.Text))
             {
-                string emailRegEx= @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+                string emailRegEx= @"^(?=.*[0-9])@([\w\-]+)((\.(\w){2,3})+)$";
                 bool isMacthed = Regex.IsMatch(entry.Text, emailRegEx);
 
                 if (isMacthed)

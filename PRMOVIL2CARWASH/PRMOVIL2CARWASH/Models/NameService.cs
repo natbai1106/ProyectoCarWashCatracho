@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PRMOVIL2CARWASH.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,33 +26,19 @@ namespace PRMOVIL2CARWASH.Models
         [JsonProperty("tipo_vehiculo")]
         public string TipoVehiculo { get; set; }
 
-        //public ObservableCollection<Service> GetNameService()
-        //{
-        //    var vNombre = new ObservableCollection<Service>()
-        //    {
-        //        new Service (){ IdServicios = 1, NombreServicio = "Lavado Genral Prueba"},
-        //        new Service (){ IdServicios = 2, NombreServicio = "Cambio de aceite"},
-        //        new Service (){ IdServicios = 3, NombreServicio = "Lavado Completo"}
-        //    };
-        //    return vNombre;
-        //}
-
         public NameService()
         {
             ApiServicio = new HttpClient();
         }
 
-
-        public const string Url = "http://173.249.21.6/v1/price/all/1";
-        public async Task<ObservableCollection<Service>> ObtenerServicios()
+        public async Task<ObservableCollection<NameService>> ObtenerServicio()
         {
             try
             {
-                var responseMarca = await ApiServicio.GetStringAsync(Url);
-                Console.WriteLine("VALOR DE LA VARIABLE RESPONSE SERVICIOS" + responseMarca);
-                ObservableCollection<Service> taskService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(responseMarca);
-                Console.WriteLine("VALOR DE LA VARIABLE TASRESULT SERVICIOS" + taskService);
-                return taskService;
+                var responseService = await ApiServicio.GetAsync(Constanst.GetUrl("/price/all/1"));
+                // ObservableCollection<NameService> taskService = JsonConvert.DeserializeObject<ObservableCollection<NameService>>(responseService);
+                //return taskService;
+                return new ObservableCollection<NameService>();
             }
             catch (Exception e)
             {

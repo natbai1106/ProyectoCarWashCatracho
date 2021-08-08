@@ -14,18 +14,17 @@ namespace PRMOVIL2CARWASH.Utils
         public const string DEFAULT_USER = "defaultUser";
         public const string STATE_SESSION = "stateSesion";
         public const string RECENT_SESSION = "resentSession";
-       
+        public const string TYPE_CHANGE = "change";
+        public const string TYPE_RESET= "reset";
         public const string VERIFY_MAIL = "mail";
         private const string UrlBase = "http://173.249.21.6/v1";
-
-       // private const string UrlBase = "https://www.ccatracho.space/v1";
-
         public const int  REQUEST_OK= 201;
         public const int REQUEST_ERROR= 400;
         public const int SESSION_CLOSED = 3;
         public const int EXPIRE_DAYS = 7;
         public const int EXPIRE_CURREN_USER = 365;
         public const int FAIL_AUTH = 35;
+        public const int NO_MATCH_PASS = 21;
 
 
         public const string USER_IMAGE_DEFAULT = "camara.png";

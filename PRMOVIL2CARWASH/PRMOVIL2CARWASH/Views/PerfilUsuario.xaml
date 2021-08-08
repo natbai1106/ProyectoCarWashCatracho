@@ -113,7 +113,7 @@
 
                             <!-- IMAGEN DE NOMBRE -->
                             <Image 
-                                Source="flechaderecha.png" 
+                                Source="derecha.png" 
                                 Margin="10"/>
 
                         </StackLayout>

@@ -15,6 +15,16 @@ namespace PRMOVIL2CARWASH.Views
         public PerfilUsuario()
         {
             InitializeComponent();
+
+        }
+
+        protected  override void OnAppearing()
+        {
+            lblNombreCompleto.Text =  App.CurrentUser().Nombre;
+            lblCorreo.Text= App.CurrentUser().Correo;
+            lblTelefono.Text= App.CurrentUser().Telefono;
+
+            base.OnAppearing();
         }
 
         private async void btnEditarPerfil_Clicked(object sender, EventArgs e)

@@ -4,34 +4,41 @@
              x:Class="PRMOVIL2CARWASH.Views.ConfigUsuario"
              BackgroundImage="#FDFDFD"
              Title="Editar Usuario"
-             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
-             >
+             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors">
     
     <!-- INICIO DEL CONTENTPAGE -->
     <ContentPage.Content>
-
+        
         <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA PANTALLA -->
-        <StackLayout
-            Margin="0,15">
+        <StackLayout>
             
             <!-- INICIO SCROLL VIEW -->
-            <ScrollView>
+            <ScrollView  Margin="9,10">
                 
                 <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA IMAGEN -->
-                <StackLayout 
-                    Margin="5,10">
+                <StackLayout >
 
                     <!-- INICIO DEL STACKLAYOUT DE LA IMAGEN DE USUARIO -->
                     <StackLayout 
                         Orientation="Horizontal" 
                         HorizontalOptions="Center">
 
-                        <!-- INICIO DE LA IMAGEN DE USUARIO -->
-                        <Image
-                            x:Name="imgFotoUsuario" 
-                            Source="perfil.png"
+                        <Frame 
+                            CornerRadius="95" 
+                            HeightRequest="190"
                             WidthRequest="190"
-                            HeightRequest="190"/>
+                            HorizontalOptions="FillAndExpand"
+                            Padding="0"
+                            VerticalOptions="FillAndExpand"
+                            Margin="1">
+
+                            <Image
+                            x:Name="imgFotoUsuario" 
+                            Source="perfil.png"/>
+
+                        </Frame>
+                        <!-- INICIO DE LA IMAGEN DE USUARIO -->
+                       
                         
                         <!-- INICIO DEL GRID -->
                         <Grid>
@@ -46,9 +53,9 @@
                                 WidthRequest="80" 
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
-                                ImageSource="camara.png"
+                                ImageSource="camara.png"                                                               
+                                Command="{Binding OpenGaleryCommand}"
                                 x:Name="btnFotosEditarUsuario"
-                                Command="{Binding ThakePhotoCommand}"
                                 Grid.Row="0"
                                 Grid.Column="0"/>
                             
@@ -65,7 +72,7 @@
                                 ImageSource="galeria.png"
                                 x:Name="btnGaleriaEditarUsuario"
                                 IsEnabled="{Binding IsBusy}"
-                                Command="{Binding OpenGaleryCommand}"
+                                Command="{Binding ThakePhotoCommand}" 
                                 Grid.Row="1"
                                 Grid.Column="0"/>
                         </Grid>
@@ -73,8 +80,7 @@
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
-                        Orientation="Horizontal"
-                        Margin="0,15,0,0">
+                        Orientation="Horizontal">
 
                         <!-- INICIO DEL LABEL ASTERISCO -->
                         <Label 
@@ -96,8 +102,7 @@
                         BorderColor="Black"                             
                         Padding="0"
                         CornerRadius="10" 
-                        WidthRequest="340"
-                        Margin="10,0,15,0">
+                        WidthRequest="340">
 
                         <!-- INICIO DEL STACKLAYOUT DEL ENTRY NOMBRE COMPLETO -->
                         <StackLayout
@@ -108,8 +113,6 @@
                             <Entry 
                                 x:Name="txtNombre"
                                 Keyboard="Plain"
-                                Margin="0,0,15,0"
-                                Placeholder="Nombre..."
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
@@ -146,8 +149,7 @@
                         BorderColor="Black"                             
                         Padding="0"
                         CornerRadius="10" 
-                        WidthRequest="340"
-                        Margin="10,0,15,0">
+                        WidthRequest="340">
 
                         <!-- INICIO DEL STACKLAYOUT DEL ENTRY NOMBRE COMPLETO -->
                         <StackLayout
@@ -158,8 +160,6 @@
                             <Entry 
                                 x:Name="txtApellido"
                                 Keyboard="Plain"
-                                Margin="0,0,15,0"
-                                Placeholder="Apellido..."
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
@@ -196,8 +196,7 @@
                         BorderColor="Black"                             
                         Padding="0"
                         CornerRadius="10" 
-                        WidthRequest="340"
-                        Margin="10,0,15,0">
+                        WidthRequest="340">
 
                         <!-- INICIO DEL STACKLAYOUT DEL ENTRY CORREO ELECTRONICO -->
                         <StackLayout
@@ -206,8 +205,7 @@
 
                             <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                             <Entry 
-                                Margin="0,0,15,0"
-                                Placeholder="Correo electronico..."
+                                x:Name="txtCorreo"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
@@ -246,8 +244,7 @@
                         BorderColor="Black"                             
                         Padding="0"
                         CornerRadius="10" 
-                        WidthRequest="340"
-                        Margin="10,0,15,0">
+                        WidthRequest="340">
 
                         <!-- INICIO DEL STACKLAYOUT DEL ENTRY DIRECCION -->
                         <StackLayout
@@ -257,9 +254,7 @@
                             <!-- INICIO DEL ENTRY DE DIRECCION -->
                             <Entry 
                                 x:Name="txtDireccion"
-                                Margin="0,0,15,0"
                                 Keyboard="Plain"
-                                Placeholder="Direccion..."
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
@@ -293,9 +288,9 @@
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
                         Padding="0"
+                        Margin="0,0,0,5"
                         CornerRadius="10" 
-                        WidthRequest="340"
-                        Margin="10,0,15,0">
+                        WidthRequest="340">
 
                         <!-- INICIO DEL STACKLAYOUT DEL ENTRY TELEFONO -->
                         <StackLayout
@@ -305,9 +300,7 @@
                             <!-- INICIO DEL ENTRY DE TELEFONO -->
                             <Entry 
                                 x:Name="txtTelefono"
-                                Margin="0,0,15,0"
                                 Keyboard="Numeric"
-                                Placeholder="Telefono..."
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"

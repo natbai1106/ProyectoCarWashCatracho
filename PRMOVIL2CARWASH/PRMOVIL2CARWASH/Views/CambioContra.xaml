@@ -10,181 +10,156 @@
              BackgroundColor="#FDFDFD"
              Title="Cambiar Contraseña">
     <ContentPage.Content>
-        <StackLayout
-                Margin="15,15" >
+        <StackLayout>
+            <ScrollView   
+                Margin="9,10" >
+                <StackLayout>
+                    <Image
+                        Source="seguridad.png"
+                        WidthRequest="150"
+                        HeightRequest="150"/>
 
-            <Image
-                Source="seguridad.png"
-                WidthRequest="150"
-                HeightRequest="150"/>
-
-            <!--Texto Nombre-->
-            <StackLayout
-                        Orientation="Horizontal"
-                        Margin="0,15,0,0">
-
-                <Label 
-                    Text="*"
-                    FontSize="25"
-                    TextColor="red"
-                    FontFamily="SansBold"/>
-
-                <Label 
-                   Text="Contraseña Anterior: "
-                   FontSize="20"
-                  FontFamily="SansBold"/>
-            </StackLayout>
-
-            <!--<StackLayout
-                Orientation="Horizontal"
-                >-->
-                <!-- Estilo para el Entry Input Nombre-->
-                <Frame
-               BackgroundColor="Transparent" 
-               BorderColor="Black"                             
-               Padding="0"
-               CornerRadius="10" 
-               WidthRequest="340"
-               Margin="10,0,10,0">
-
+                    <!--Texto Nombre-->
                     <StackLayout
-                    Orientation="Horizontal"
-                    Margin="25,5">
+                        Orientation="Horizontal">
 
-                    <Entry 
-                       x:Name="txtContraseñaAnterior"
-                       Margin="0,0,15,0"
-                       IsPassword="true" 
-                       Text="{Binding OldPassword}"
-                       Placeholder="Anterior..."
-                       PlaceholderColor="Gray"
-                       FontSize="20"
-                       FontFamily="SansLight"
-                       HorizontalOptions="FillAndExpand"/>
-                </StackLayout>
-            </Frame>
-                        <Entry 
-                           x:Name="txtContraseñaAnterior"
-                           IsPassword="true" 
-                           Placeholder="Anterior..."
-                           PlaceholderColor="Gray"
+                        <Label 
+                            Text="*"
+                            FontSize="25"
+                            TextColor="red"
+                            FontFamily="SansBold"/>
+
+                        <Label 
+                           Text="Contraseña Anterior: "
                            FontSize="20"
-                           FontFamily="SansLight"
-                           HorizontalOptions="FillAndExpand">
-                            <Entry.Behaviors>
-                                <behavior:PasswordBehavior Mask="XXXXXXXX"/>
-                            </Entry.Behaviors>
-                        </Entry>
-
+                           FontFamily="SansBold"/>
                     </StackLayout>
-                </Frame>
 
-                <!--<Button
-                    x:Name="btnMostrarContrasenia"
-                    BackgroundColor="Transparent"
-                    ImageSource="eye_slash.png"
-                    Clicked="btnMostrarContrasenia_Clicked"
-                    />-->
+                   
+                    <!-- Estilo para el Entry Input Nombre-->
+                    <Frame
+                       BackgroundColor="Transparent" 
+                       BorderColor="Black"                             
+                       Padding="0"
+                       CornerRadius="10" 
+                       WidthRequest="340">
 
-            <!--</StackLayout>-->
-           
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="25,5">
 
-            <!--Texto Nombre-->
-            <StackLayout
+                            <Entry 
+                               x:Name="txtContraseñaAnterior"
+                               IsPassword="true" 
+                               Text="{Binding OldPassword}"
+                               PlaceholderColor="Gray"
+                               FontSize="20"
+                               FontFamily="SansLight"
+                               HorizontalOptions="FillAndExpand" >
+                                <Entry.Behaviors>
+                                    <behavior:PasswordBehavior Mask="XXXXXXXX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Texto Nombre-->
+                    <StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
-                <Label 
+                        <Label 
                              Text="*"
                              FontSize="25"
                              TextColor="red"
                              FontFamily="SansBold"/>
 
-                <Label 
+                        <Label 
                              Text="Nueva Contraseña: "
                              FontSize="20"
                              FontFamily="SansBold"/>
-            </StackLayout>
+                    </StackLayout>
 
-            <!-- Estilo para el Entry Input Nombre-->
-            <Frame
+                    <!-- Estilo para el Entry Input Nombre-->
+                    <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
                         Padding="0"
                         CornerRadius="10" 
-                        WidthRequest="340"
-                        Margin="10,0,15,0">
+                        WidthRequest="340">
 
-                <StackLayout
+                        <StackLayout
                             Orientation="Horizontal"
                             Margin="25,5">
 
-                    <Entry 
-                         IsPassword="true" 
+                            <Entry 
+                                IsPassword="true" 
                                 x:Name="txtNuevaContraseña"
                                 Text="{Binding NewPassword}"
-                                Margin="0,0,15,0"
-                                Placeholder="Nueva..."
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand"/>
-                </StackLayout>
-            </Frame>
+                        </StackLayout>
+                    </Frame>
 
-            <!--Texto Nombre-->
-            <StackLayout
+                    <!--Texto Nombre-->
+                    <StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
-                <Label 
+                        <Label 
                              Text="*"
                              FontSize="25"
                              TextColor="red"
                              FontFamily="SansBold"/>
 
-                <Label 
+                        <Label 
                              Text="Confirmar Contraseña: "
                              FontSize="20"
                              FontFamily="SansBold"/>
-            </StackLayout>
+                    </StackLayout>
 
-            <!-- Estilo para el Entry Input Nombre-->
-            <Frame
+                    <!-- Estilo para el Entry Input Nombre-->
+                    <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
                         Padding="0"
                         CornerRadius="10" 
-                        WidthRequest="340"
-                        Margin="10,0,15,0">
+                        WidthRequest="340">
 
-                <StackLayout
+                        <StackLayout
                             Orientation="Horizontal"
                             Margin="25,5">
 
-                    <Entry 
-                         IsPassword="true" 
-                         x:Name="txtConfirmarContraseña"
-                        Text="{Binding ConfirmPassword}"
-                         Margin="0,0,15,0"
-                         Placeholder="Confirmar..."
-                         PlaceholderColor="Gray"
-                         FontSize="20"
-                         FontFamily="SansLight"
-                         HorizontalOptions="FillAndExpand"/>
-                </StackLayout>
-            </Frame>
+                            <Entry 
+                               IsPassword="true" 
+                               x:Name="txtConfirmarContraseña"
+                               Text="{Binding ConfirmPassword}"
+                               PlaceholderColor="Gray"
+                               FontSize="20"
+                               FontFamily="SansLight"
+                               HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
 
-            <Button 
-                Text="Guardar Cambios" 
-                                    x:Name="btnCambiarContra"
-                                    Command="{Binding ChangePasswordCommand}"
-                                    BackgroundColor="#01ADBA"
-                                    TextColor="White"
-                                    FontAttributes="Bold"
-                                    CornerRadius="10"
-                                    BorderWidth="2"
-                                    Margin="65,5"/>
+                    <Button 
+                        Text="Guardar Cambios" 
+                        x:Name="btnCambiarContra"
+                        Command="{Binding ChangePasswordCommand}"
+                        BackgroundColor="#01ADBA"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        Margin="65,5"/>
+                </StackLayout>
+                
+
+            </ScrollView>
+
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

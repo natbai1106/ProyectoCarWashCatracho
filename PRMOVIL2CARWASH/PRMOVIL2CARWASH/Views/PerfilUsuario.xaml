@@ -9,7 +9,7 @@
             <StackLayout >
 
         <Frame 
-            BackgroundColor="Red"
+            BackgroundColor="Transparent"
             CornerRadius="150" 
             HeightRequest="300"
             WidthRequest="300"
@@ -19,7 +19,7 @@
             Margin="1">
             
             <Image 
-                BackgroundColor="AliceBlue"
+                
                 Source="perfilusuario.png" 
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill" />

@@ -13,10 +13,11 @@
                     <!-- Imagenes -->
 
                     <StackLayout Orientation="Horizontal" 
-                                 HorizontalOptions="Center">
+                                 HorizontalOptions="Center"
+                                 Margin="15">
                         <Image x:Name="imgFotoAuto" 
-                               Source="Automovil.png"
-                               WidthRequest="190"
+                               Source="{Binding PhotoProfile}"
+                               WidthRequest="170"
                                HeightRequest="190"/>
                         <Grid>
                             <Button  

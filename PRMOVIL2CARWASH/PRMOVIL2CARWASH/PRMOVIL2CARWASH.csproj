@@ -71,9 +71,9 @@
     <EmbeddedResource Update="Views\Mapas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Update="Views\ResetPassPage.xaml">
-=======
+
+    <EmbeddedResource Update="Views\ResetPassPage.xaml"/>
+
     <EmbeddedResource Update="Views\PerfilUsuario.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -81,7 +81,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ReservacionesCola.xaml">
->>>>>>> 062c4cd9545a03f7f68c32c813cb3ed3c1096fdd
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Validacion.xaml">

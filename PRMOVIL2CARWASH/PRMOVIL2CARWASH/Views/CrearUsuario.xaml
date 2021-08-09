@@ -388,7 +388,7 @@
                 </Frame>
                 <StackLayout Orientation="Horizontal" Spacing="6">
                     <CheckBox x:Name="CheckBoxAgree" />
-                    <Label Text="Los datos ingresados, son correctos?" VerticalTextAlignment="Center" />
+                    <Label Text="Los datos ingresados, son correctos?"  HorizontalOptions="CenterAndExpand"  FontSize="20"/>
                 </StackLayout>
             </StackLayout>
             </ScrollView>
@@ -406,47 +406,48 @@
                             <BindingCondition Binding="{Binding Source={x:Reference EntryNombre}, 
                                                   Path=Text.Length, 
                                                   Converter={StaticResource intToBoolConverter}}" Value="True"/>
-
+                            
                             <BindingCondition Binding="{Binding Source={x:Reference EntryApellido}, 
                                                   Path=Text.Length, 
                                                   Converter={StaticResource intToBoolConverter}}" Value="True"/>
-
+                            
                             <BindingCondition Binding="{Binding Source={x:Reference EntryCorreo}, 
                                                   Path=Text.Length, 
                                                   Converter={StaticResource intToBoolConverter}}" Value="True"/>
-
+                            
                             <BindingCondition Binding="{Binding Source={x:Reference EntryDireccion}, 
                                                   Path=Text.Length, 
                                                   Converter={StaticResource intToBoolConverter}}" Value="True"/>
-
+                            
                             <BindingCondition Binding="{Binding Source={x:Reference EntryPassword}, 
                                                   Path=Text.Length, 
                                                   Converter={StaticResource intToBoolConverter}}" Value="True"/>
-
+                            
                             <BindingCondition Binding="{Binding Source={x:Reference EntryTelefono}, 
                                                   Path=Text.Length, 
                                                   Converter={StaticResource intToBoolConverter}}" Value="True"/>
-
+                            
                             <BindingCondition Binding="{Binding Source={x:Reference EntryUsuario}, 
                                                   Path=Text.Length, 
                                                   Converter={StaticResource intToBoolConverter}}" Value="True"/>
-
+                            
                             <BindingCondition Binding="{Binding Source={x:Reference CheckBoxAgree},
                                                   Path=IsChecked}" Value="True"/>
                         </MultiTrigger.Conditions>
                         <Setter Property="IsEnabled" Value="True"/>
+                        <Setter Property="CommandParameter" Value="{Binding SendVerifyCommand}"/>
                     </MultiTrigger>
                 </Button.Triggers>
             </Button>
 
             <Button Text="Limpiar" 
-                            x:Name="btnLimpiar"
-                            Command="{Binding CancelRegisterCommand}"
-                        BackgroundColor="#E3E4E5"
-                        TextColor="Black"
-                        FontAttributes="Bold"
-                        Grid.Row="0"
-                        Grid.Column="1"/>
+                    x:Name="btnLimpiar"
+                    Command="{Binding CancelRegisterCommand}"
+                    BackgroundColor="#E3E4E5"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
         </Grid>
     </StackLayout>
 </ContentPage>

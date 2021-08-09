@@ -36,12 +36,13 @@
 
             <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
             <!-- CONTENEDORES DE LOS ENTRY -->
-            <StackLayout Margin="0,-3" >
+            <StackLayout Margin="0,5" >
 
                 <!-- ESTILOS DEL ENTRY USUARIO -->
                 <Frame BackgroundColor="Transparent" 
                      BorderColor="Black" 
                      Padding="0"  
+                      Margin="10,5"
                      CornerRadius="7" 
                      WidthRequest="340"
                      HorizontalOptions="FillAndExpand">
@@ -66,9 +67,10 @@
                 <!--PRUEBA-->
                 <!-- ESTILOS DEL ENTRY USUARIO -->
                 <Frame 
-                    BackgroundColor="Transparent"
+                           BackgroundColor="Transparent"
                            BorderColor="Black" 
                            Padding="0" 
+                           Margin="10,5"
                            CornerRadius="7" 
                            WidthRequest="340"
                            HorizontalOptions="FillAndExpand">
@@ -93,6 +95,7 @@
                 </Frame>
 
                 <Button 
+                      Margin="10,5"
                         Text="Login" 
                         BackgroundColor="#01ADBA"
                         Command="{Binding LoginCommand}"

@@ -6,25 +6,25 @@
              Title="Reservación de Servicio"
              BackgroundImage="#FDFDFD">
     <ContentPage.Content>
-        
-        <StackLayout>
+
+        <StackLayout Margin="7,0">
 
           
             <ScrollView>
 
                 <!-- Contenedor principal para la tarjeta-->
                 <StackLayout 
-                            Margin="5,15">
+                           >
 
                     <!--Texto Servicio Adomicilio-->
                     <StackLayout
-                                Orientation="Horizontal"
-                                 Margin="10,0">
+                                Orientation="Horizontal">
 
                         <Label 
+                            TextColor="Black"
                             Text="Servicio a Domicilio: "
                             FontSize="20"    
-                            Margin="30,0,10,5"
+                            Margin="30,0,2,5"
                             FontFamily="SansBold"/>
 
                         <Switch 
@@ -38,17 +38,17 @@
 
                     <StackLayout
                                 Orientation="Horizontal"
-                                Margin="15,0">
+                                Margin="0,10">
 
                         <Label 
                             Text="*"
                             FontSize="25"
-                            Margin="0,0,10,0"
                             TextColor="red"
                             FontFamily="RobotoRegular"/>
 
                         <Label 
-                                Text="Automóvil: "
+                            Text="Automóvil: "
+                            TextColor="Black"
                                 FontSize="20"                                 
                                 FontFamily="SansBold"/>
 
@@ -60,38 +60,30 @@
                             BorderColor="Black"                             
                             Padding="0"
                             CornerRadius="10" 
-                            WidthRequest="340"
-                            Margin="20,0,15,0">
+                            WidthRequest="340">
 
                         <!--Contenedor del Input Modelo-->
-                        <StackLayout
-                                 Orientation="Horizontal"
-                                  Margin="25,5">
-
-                            <!--ItemsSource="{Binding Brand}"
-                                    ItemDisplayBinding="{Binding NombreMarca}"
-                                    SelectedItem="{Binding BrandSelected, Mode=TwoWay}"-->
+                       
 
                             <Picker
-                                    x:Name="PiAutoCotizacion"
-                                    Title="Seleccione el  Automóvil"
-                                    ItemsSource="{Binding Vehicle}"
-                                    ItemDisplayBinding="{Binding NumeroPlaca}"
-                                    SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
-                                    
-                                    FontSize="20"
-                                    FontFamily="SansLight"
-                                    Margin="0,0,10,0"
-                                    HorizontalOptions="FillAndExpand"/>
-                        </StackLayout>
+                                x:Name="PiAutoCotizacion"
+                                Title="Seleccione el  Automóvil"
+                                ItemsSource="{Binding Vehicle}"
+                                ItemDisplayBinding="{Binding NumeroPlaca}"
+                                SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
+                                FontSize="20"
+                                FontFamily="SansLight"
+                                Margin="25,5"
+                                HorizontalOptions="FillAndExpand"/>
+                   
                     </Frame>
 
-                    <Grid  Margin="10,0">
+                    <Grid  >
 
                         <!--Texto FECHA-->
                         <StackLayout
                                 Orientation="Horizontal"
-                                Margin="5,20,0,0"
+                              
                                 Grid.Row="0"
                                 Grid.Column="0">
 
@@ -103,42 +95,37 @@
 
                             <Label 
                                 Text="Fecha:  "
-                                FontSize="20"                                 
+                                FontSize="20" 
+                                TextColor="Black"
                                 FontFamily="SansBold"/>
 
                         </StackLayout>
 
                         <!--Contenedor del Input Fecha-->
                         <Frame
-                                BackgroundColor="Transparent" 
-                                BorderColor="Black"                             
-                                Padding="0"
-                                CornerRadius="10" 
-                                WidthRequest="340"
-                                Margin="10,0,15,0"
-                                Grid.Row="1"
-                                Grid.Column="0">
-
-
-                            <StackLayout
-                                      Orientation="Horizontal"
-                                      Margin="25,5">
+                            BackgroundColor="Transparent" 
+                            BorderColor="Black"                             
+                            Padding="0"
+                            CornerRadius="10" 
+                            WidthRequest="340"
+                            Grid.Row="1"
+                            Grid.Column="0">
 
                                 <DatePicker  
-                                   x:Name="DatapickerFecha" 
-                                   Margin="0,0,10,0"
-                                   Format="dd/MM/yyyy"
-                                   MinimumDate="01/01/1871"
-                                   MaximumDate="12/31/9998"
-                                   FontSize="20"
-                                   HorizontalOptions="FillAndExpand" />
-                            </StackLayout>
+                                    x:Name="DatapickerFecha" 
+                                    MinimumDate="01/01/1900" 
+                                    MaximumDate="12/31/2100" 
+                                    x:DataType="DatePicker"                                     
+                                    FontSize="20"
+                                    Margin="20,5"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontFamily="RobotoLight"/>
+                          
                         </Frame>
 
                         <!--Texto HORA-->
                         <StackLayout
                                 Orientation="Horizontal"
-                                Margin="5,15,0,0"
                                 Grid.Row="0"
                                 Grid.Column="1">
 
@@ -150,6 +137,7 @@
 
                             <Label 
                                 Text="Hora:  "
+                                TextColor="black"
                                 FontSize="20"                                 
                                 FontFamily="SansBold"/>
 
@@ -162,21 +150,15 @@
                                 Padding="0"
                                 CornerRadius="10" 
                                 WidthRequest="340"
-                                Margin="10,0,15,0"
                                 Grid.Row="1"
                                 Grid.Column="1">
 
-
-                                <StackLayout
-                                      Orientation="Horizontal"
-                                      Margin="25,5">
-
-
                                     <TimePicker  
+                                       Margin="20,5"
                                        x:Name="TimeHora" 
                                        FontSize="20"
                                        HorizontalOptions="FillAndExpand" />
-                                </StackLayout>
+                               
                             </Frame>
 
                     </Grid>
@@ -184,17 +166,16 @@
 
                     <!--Texto Servicio-->
                     <StackLayout
-                                Orientation="Horizontal"
-                                Margin="15,10,0,0">
+                                Orientation="Horizontal">
 
                         <Label 
                             Text="*"
                             FontSize="25"
-                            TextColor="red"         
-                            Margin="0,0,10,0"
+                            TextColor="red"   
                             FontFamily="RobotoRegular"/>
 
                         <Label 
+                            TextColor="Black"
                                 Text="Servicio Auto: "
                                 FontSize="20"                                 
                                 FontFamily="SansBold"/>
@@ -207,17 +188,9 @@
                                 BorderColor="Black"                             
                                 Padding="0"
                                 CornerRadius="10" 
-                                WidthRequest="340"
-                                Margin="20,0,15,0">
+                                WidthRequest="340">
 
-                                <StackLayout
-                                         Orientation="Horizontal"
-                                         Margin="25,5">
-                                    
-                            
-
-
-                            <Picker
+                                <Picker
                                         x:Name="PiSeleccionarCotizacion"
                                         Title="Seleccione Servicio"
                                         FontSize="20"
@@ -225,7 +198,7 @@
                                         ItemDisplayBinding="{Binding NombreServicio}"
                                         SelectedItem="{Binding ServiceSelected, Mode=TwoWay}"
                                         FontFamily="SansLight"
-                                        Margin="0,0,10,0"
+                                        Margin="20,5"
                                         HorizontalOptions="FillAndExpand"
                                             />
                             <!--<SearchBar x:Name="ServicieSearchBar"  
@@ -233,7 +206,6 @@
                                              FontSize="20"
                                             />-->
 
-                                </StackLayout>
                             </Frame>
                             <StackLayout>
 
@@ -254,7 +226,6 @@
                         </CollectionView>-->
                         <ListView 
                             x:Name="ListServices"
-                            Margin="25,5"
                             Background="gray"
                             ItemTapped="ListServices_ItemTapped"
                             ItemsSource="{Binding Service}">

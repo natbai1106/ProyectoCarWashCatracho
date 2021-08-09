@@ -15,7 +15,7 @@
 
                 <!-- CONTENEDORES DE LOS ENTRY -->
                 <StackLayout
-                        Margin="5,5">
+                        Margin="5">
 
                     <StackLayout 
                         Orientation="Horizontal" 

@@ -14,8 +14,9 @@
 
                     <StackLayout Orientation="Horizontal" 
                                  HorizontalOptions="Center">
+                        
                         <Image x:Name="imgFotoAuto" 
-                               Source="Automovil.png"
+                              Source="{Binding PhotoProfile}"
                                WidthRequest="190"
                                HeightRequest="190"/>
                         <Grid>
@@ -255,15 +256,15 @@
                                Grid.Row="1"
                                Grid.Column="0">
 
-                            <StackLayout Orientation="Horizontal"
-                                         Margin="25,5">
-                                <DatePicker x:Name="pckAnio"
+
+                            <DatePicker x:Name="pckAnio"
                                        MinimumDate="01/01/1900" 
                                        MaximumDate="12/31/2100" 
                                        x:DataType="DatePicker"                                     
                                        FontSize="20"
+                                       Margin="20,5"
+                                       HorizontalOptions="FillAndExpand"
                                        FontFamily="RobotoLight"/>
-                            </StackLayout>
                         </Frame>
 
                         <!--Numero de Placa-->
@@ -286,14 +287,13 @@
                                Grid.Row="1"
                                Grid.Column="1">
 
-                            <StackLayout Orientation="Horizontal" 
-                                         Margin="25,5">
-                                <Entry x:Name="txtNumeroAutos"
+
+                            <Entry Margin="20,5"
+                                       HorizontalOptions="FillAndExpand"
+                                    x:Name="txtNumeroAutos"
                                        Text="{Binding Plaque, Mode=TwoWay}"
                                        FontSize="20"
-                                       FontFamily="SansLight"
-                                       HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
+                                       FontFamily="SansLight"/>
                         </Frame>
                     </Grid>
 

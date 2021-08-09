@@ -123,18 +123,13 @@
 
     <FlyoutItem Title="Historial de Reservacion" ></FlyoutItem>
 
-    <FlyoutItem Title="Historial de Facturación" 
+    <FlyoutItem Title="Historial de Reservaciones" 
                 Icon="historial_facturas.png">
         <ShellContent Route="Reservaciones" 
                       ContentTemplate="{DataTemplate local:Reservaciones}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Mapas" 
-                Icon="mapa.png">
-        <ShellContent Route="mapas" 
-                      ContentTemplate="{DataTemplate local:Mapas}" />
-    </FlyoutItem>
-
+   
     <FlyoutItem >
         <ShellContent  />
     </FlyoutItem>

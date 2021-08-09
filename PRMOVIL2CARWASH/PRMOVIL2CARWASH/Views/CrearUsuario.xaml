@@ -19,12 +19,12 @@
 
                     <StackLayout 
                         Orientation="Horizontal" 
-                        HorizontalOptions="Center">
+                        HorizontalOptions="CenterAndExpand">
 
                         <Frame 
                             CornerRadius="95" 
-                            HeightRequest="190"
-                            WidthRequest="190"
+                            HeightRequest="200"
+                            WidthRequest="200"
                             HorizontalOptions="FillAndExpand"
                             Padding="0"
                             VerticalOptions="FillAndExpand"
@@ -36,12 +36,18 @@
 
                         </Frame>
 
-                        <Grid>
-                            <!-- INICIO DEL BOTON DE LA CAMARA -->
-                            <Button     
-                                BackgroundColor="#01ADBA" 
+                    <Frame 
+                        BackgroundColor="Transparent"
+                        CornerRadius="55" 
+                        Margin="-95,10,-50,-45" 
+                        HasShadow="false" 
+                        VerticalOptions="End">
+
+                        <Button     
+                        Margin="0,15,20,30"
+                            BorderColor="#01ADBA"
                                 CornerRadius="40" 
-                                Background="#01ADBA"
+                                Background="#FDFDFD"
                                 BorderWidth="2"
                                 HeightRequest="80" 
                                 WidthRequest="80" 
@@ -50,11 +56,10 @@
                                 ImageSource="new_foto.png"
                                 Command="{Binding SelectMedia}"
                                x:Name="btnFotosUsuario"
-                                Grid.Row="0"
-                                Grid.Column="0"/>
+                               />
+                    </Frame>
 
-                        </Grid>
-                    </StackLayout>
+                </StackLayout>
 
                     <!-- CAMPO OBLIGATORIO DE ASTERISCO - NOMBRE -->
                     <StackLayout 

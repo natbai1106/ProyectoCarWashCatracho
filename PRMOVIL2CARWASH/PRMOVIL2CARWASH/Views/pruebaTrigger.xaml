@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRMOVIL2CARWASH.Views.pruebaTrigger"
+             xmlns:triggers ="clr-namespace:PRMOVIL2CARWASH.Triggers"
+             xmlns:converters="clr-namespace:PRMOVIL2CARWASH.Converters">
+    <ContentPage.Resources>
+        <converters:IntToBoolConverter x:Key="intToBoolConverter"/>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Purple" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="WidthRequest" Value="150" />
+            <Setter Property="CornerRadius" Value="20" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="LightSkyBlue" />
+            <Style.Triggers>
+                <!-- Propiedades del Trigger -->
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="BackgroundColor" Value="BlanchedAlmond" />
+                    <Setter Property="FontSize" Value="Large" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="USUARIO:"/>
+            <Entry Placeholder="usuario" x:Name="EntryName" Text=""/>
+            <Label Text="PASSWORD:"/>
+            <Entry Placeholder="contrasenia" x:Name="EntryPassword" IsPassword="True" Text=""/>
+            <Label Text="EDAD:"/>
+            <Entry Placeholder="Age" x:Name="EntryAge">
+                <Entry.Triggers>
+                    <!-- EVENTOS DEL TRIGGER-->
+                    <EventTrigger Event="TextChanged">
+                        <triggers:AgeVerificationTrigger/>
+                    </EventTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label Text="CORREO:"/>
+            <Entry Placeholder="correo" x:Name="EntryEmail"/>
+            <StackLayout Orientation="Horizontal" Spacing="6">
+                <CheckBox x:Name="CheckBoxAgree" />
+                <Label Text="acepto" VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Button Text="Register" IsEnabled="False">
+                    <Button.Triggers>
+                        <!--PROPIEDADES TRIGGERS-->
+                        <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                            <Setter Property="BackgroundColor" Value="LightGray"/>
+                            <Setter Property="TextColor" Value="Black"/>
+                        </Trigger>
+                        <!--DATA TRIGGERS-->
+                        <!--<DataTrigger TargetType="Button"
+                                     Binding="{Binding Source={x:Reference CheckBoxAgree}, 
+                                     Path=IsChecked}" Value="True">
+                            <Setter Property="IsEnabled" Value="True"/>
+                            <Setter Property="BackgroundColor" Value="Purple"/>
+                            <Setter Property="TextColor" Value="White"/>
+                        </DataTrigger-->
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference EntryName}, 
+                                                  Path=Text.Length, 
+                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
+                                <BindingCondition Binding="{Binding Source={x:Reference EntryPassword}, 
+                                                  Path=Text.Length, 
+                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
+                                <BindingCondition Binding="{Binding Source={x:Reference EntryAge}, 
+                                                  Path=Text.Length, 
+                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
+                                <BindingCondition Binding="{Binding Source={x:Reference CheckBoxAgree},
+                                                  Path=IsChecked}" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="Clear"/>
+            </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

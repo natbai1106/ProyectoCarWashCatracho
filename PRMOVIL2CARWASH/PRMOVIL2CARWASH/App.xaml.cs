@@ -17,6 +17,7 @@ namespace PRMOVIL2CARWASH
     {
         //Creamos una instancia global que existira mientras la app este con vida
         private static User currenUser;
+        public static string playerId;
         public App()
         {
             InitializeComponent();
@@ -24,12 +25,6 @@ namespace PRMOVIL2CARWASH
             DependencyService.Register<MockDataStore>();
 
             SwitchMainPage();
-            // MainPage = new NavigationPage( new LoginPage());
-            // MainPage = new AppShell();
-            // Remove this method to stop OneSignal Debugging
-            // OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
-
-            MainPage = new AppShell();
 
             // Remove this method to stop OneSignal Debugging
             OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
@@ -41,6 +36,10 @@ namespace PRMOVIL2CARWASH
             .InFocusDisplaying(OSInFocusDisplayOption.Notification)
             .EndInit();
             // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 7)
+            OneSignal.Current.IdsAvailable(new Com.OneSignal.Abstractions.IdsAvailableCallback((playerID, pushToken) =>
+            {
+                playerId = playerID;
+            }));
             OneSignal.Current.RegisterForPushNotifications();
            
         }

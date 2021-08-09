@@ -39,6 +39,9 @@ namespace PRMOVIL2CARWASH.Models
 
         [JsonProperty("token")]
         public string Token { get; set; }
+        [JsonProperty("playerId")]
+        public Response PlayerId;
+
 
         [JsonProperty("respuesta")]
         public  Response Respuesta;
@@ -331,6 +334,14 @@ namespace PRMOVIL2CARWASH.Models
             else
                 return Constanst.REQUEST_ERROR;
 
+        }
+
+        public async  Task<int> UpdateUser()
+        {
+            MultipartFormDataContent form = new MultipartFormDataContent();
+            
+            return 0;
+                    
         }
     }
 

@@ -31,9 +31,9 @@ namespace PRMOVIL2CARWASH.Views
         protected override void OnAppearing()
         {
             txtNombre.Text = App.CurrentUser().Nombre;
-            txtApellido.Text = App.CurrentUser().Apellido;
+            //txtApellido.Text = App.CurrentUser().Apellido;
             txtCorreo.Text = App.CurrentUser().Correo;
-            txtDireccion.Text = App.CurrentUser().Direccion;
+          //  txtDireccion.Text = App.CurrentUser().Direccion;
             txtTelefono.Text = App.CurrentUser().Telefono;
 
             base.OnAppearing();

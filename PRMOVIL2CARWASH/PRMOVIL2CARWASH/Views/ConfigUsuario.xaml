@@ -34,7 +34,7 @@
 
                             <Image
                             x:Name="imgFotoUsuario" 
-                            Source="perfil.png"/>
+                            Source="{Binding PhotoProfile}"/>
 
                         </Frame>
                         <!-- INICIO DE LA IMAGEN DE USUARIO -->
@@ -71,7 +71,6 @@
                                 VerticalOptions="Center"
                                 ImageSource="galeria.png"
                                 x:Name="btnGaleriaEditarUsuario"
-                                IsEnabled="{Binding IsBusy}"
                                 Command="{Binding ThakePhotoCommand}" 
                                 Grid.Row="1"
                                 Grid.Column="0"/>
@@ -125,25 +124,23 @@
                     </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
-                    <StackLayout
+                    <!--StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
-                        <!-- INICIO DEL LABEL ASTERISCO -->
                         <Label 
                             Text="*"
                             FontSize="25"
                             TextColor="red"
                             FontFamily="SansBold"/>
 
-                        <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
+                        
                         <Label 
                             Text="Apellido: "
                             FontSize="20"
                             FontFamily="SansBold"/>
                     </StackLayout>
 
-                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT NOMBRE COMPLETO -->
                     <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
@@ -151,12 +148,10 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY NOMBRE COMPLETO -->
+                     
                         <StackLayout
                             Orientation="Horizontal"
                             Margin="25,5">
-
-                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                             <Entry 
                                 x:Name="txtApellido"
                                 Keyboard="Plain"
@@ -169,7 +164,7 @@
                                 </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
-                    </Frame>
+                    </Frame-->
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
@@ -220,25 +215,23 @@
                     </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
-                    <StackLayout
+                    <!--StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
-                        <!-- INICIO DEL LABEL ASTERISCO -->
                         <Label 
                              Text="*"
                              FontSize="25"
                              TextColor="red"
                              FontFamily="SansBold"/>
 
-                        <!-- INICIO DEL LABEL DIRECCION -->
+                     
                         <Label 
                              Text="Direccion: "
                              FontSize="20"
                              FontFamily="SansBold"/>
                     </StackLayout>
 
-                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT DIRECCION -->
                     <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
@@ -246,12 +239,10 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY DIRECCION -->
                         <StackLayout
                             Orientation="Horizontal"
                             Margin="25,5">
 
-                            <!-- INICIO DEL ENTRY DE DIRECCION -->
                             <Entry 
                                 x:Name="txtDireccion"
                                 Keyboard="Plain"
@@ -262,7 +253,7 @@
 
 
                         </StackLayout>
-                    </Frame>
+                    </Frame-->
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout

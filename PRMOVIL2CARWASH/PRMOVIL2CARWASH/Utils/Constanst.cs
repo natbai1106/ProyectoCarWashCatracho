@@ -6,8 +6,7 @@ namespace PRMOVIL2CARWASH.Utils
 {
      public class Constanst
     {
-
-
+        public const string NAME_IMAGE = "imageToUpload";
         public const string USER_CACHE = "usuariocache";
         public const string VERIFY_PHONE_NUMBER = "phoneNumber";
         public const string CURRENT_USER = "currentUser";

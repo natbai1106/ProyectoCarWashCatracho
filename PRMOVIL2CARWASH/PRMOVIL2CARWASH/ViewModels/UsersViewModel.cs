@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using MonkeyCache.FileStore;
+using Plugin.Media.Abstractions;
 using PRMOVIL2CARWASH.Models;
 using PRMOVIL2CARWASH.Utils;
 using PRMOVIL2CARWASH.Views;
@@ -31,7 +32,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         byte[] photoArray;
         bool verifyByMail=true;
         bool takeNewPhoto;
-        
+        MediaFile mediaFile;
         
         ImageSource photoProfile;
         User UserInCache { get; set; }
@@ -90,7 +91,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         #endregion
         public UsersViewModel(Page pag)
         {
-             Page = pag;
+            Page = pag;
             SendVerifyCommand = new Command(OnRequestVerify);
             OpenGaleryCommand = new Command(OnOpenGalery);
             CancelRegisterCommand = new Command(OnCancelRegister);
@@ -218,6 +219,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             {
                 PhotoProfile = media.Image;
                 PhotoByteArray = media.ByteImage;
+                mediaFile = media.MediaFile;
                 TakeNewPhoto = true;
             }
         }

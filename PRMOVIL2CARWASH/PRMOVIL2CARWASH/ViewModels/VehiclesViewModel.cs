@@ -139,7 +139,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             DateTime fechaActual = DateTime.Now;
             int anio = int.Parse(fechaActual.ToString("yyyy"));
             await Page.DisplayAlert("Mensaje", "" + anio, "Ok");
-
+ 
             if (MotorSelected == null || TypeSelected == null || BrandSelected == null || ModeloSelected == null || Year == 0 || Plaque == null)
             {
                 await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");

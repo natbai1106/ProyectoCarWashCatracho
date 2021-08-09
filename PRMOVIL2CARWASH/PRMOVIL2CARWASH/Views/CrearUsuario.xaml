@@ -47,28 +47,12 @@
                                 WidthRequest="80" 
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
-                                ImageSource="camara.png"                                                               
-                                Command="{Binding OpenGaleryCommand}"
+                                ImageSource="new_foto.png"
+                                Command="{Binding SelectMedia}"
                                x:Name="btnFotosUsuario"
                                 Grid.Row="0"
                                 Grid.Column="0"/>
 
-                            <!-- INICIO DEL BOTON DE LA GALERIA -->
-                            <Button
-                                 BackgroundColor="#01ADBA" 
-                                CornerRadius="40" 
-                                Background="#01ADBA"
-                                BorderWidth="2"
-                                HeightRequest="80" 
-                                WidthRequest="80"  
-                                HorizontalOptions="Center" 
-                                VerticalOptions="Center"
-                                ImageSource="galeria.png"
-                                x:Name="btnGaleriaUsuario"
-                                IsEnabled="{Binding IsBusy}"
-                                Command="{Binding ThakePhotoCommand}" 
-                                Grid.Row="1"
-                                Grid.Column="0"/>
                         </Grid>
                     </StackLayout>
 

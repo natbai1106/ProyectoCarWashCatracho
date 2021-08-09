@@ -6,152 +6,150 @@
              mc:Ignorable="d"
              x:Class="PRMOVIL2CARWASH.Views.LoginPage"
              Shell.NavBarIsVisible="False"
-             BackgroundImageSource="FondoLogin.png">
-    <ContentPage.Content>        
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FDFDFD"
+             >
+    <!--BackgroundImageSource="FondoLogin.png"-->
+    <ContentPage.Content>
         <!-- MARGENES DE LA TARJETA BLANCA -->
-        <StackLayout Margin="10,80">
+        <StackLayout Margin="10"
+                     VerticalOptions="Center">
+            
             <Label Text="{Binding NetworkMessage}"
-                     
-                       TextColor="Red"
-                       IsVisible="{Binding IsNotConnect}"
-                       HorizontalOptions="FillAndExpand"
-                       HorizontalTextAlignment="Center"
-                       FontSize="10"
-                       FontFamily="Racing"/>
+                   IsVisible="{Binding IsNotConnect}"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   FontSize="10"
+                   FontFamily="Racing"/>
             <!-- TITULOS DE LA TARJETA -->
-            <StackLayout HorizontalOptions="Center">
-                
-                <Label Text="Mi Cuenta"
-                       x:Name="txtInicioSesion"
-                       TextColor="Black"
-                       HorizontalOptions="FillAndExpand"
-                       HorizontalTextAlignment="Center"
-                       FontSize="30"
-                       FontFamily="Racing"/>
+            <StackLayout 
+                Margin="10"
+                HorizontalOptions="Center">
+
+                <Image Source="CARWASH.png" 
+                     WidthRequest="200" 
+                     HeightRequest="200"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"/>
+
             </StackLayout>
-                <Image Source="persona.png" 
-                       WidthRequest="100" 
-                       HeightRequest="100"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
 
-            <!-- TARJETA COLOR BLANCO -->
-            <ScrollView>   
-                <Frame BackgroundColor="Transparent"
-                       CornerRadius="7"
-                       HasShadow="True"
-                       Margin="10,20"
-                       HorizontalOptions="FillAndExpand">
-                    <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
-                    <!-- CONTENEDORES DE LOS ENTRY -->
-                    <StackLayout Margin="0,-3">
-                        <!-- ESTILOS DEL ENTRY USUARIO -->
-                    <Frame BackgroundColor="Transparent" 
-                               BorderColor="Black" 
-                               Padding="0" 
-                               Margin="0,20" 
-                               CornerRadius="7" 
-                               WidthRequest="340"
-                               HorizontalOptions="FillAndExpand">
+            <!-- CONTENEDOR PRINCIPAL DE TARJETA -->
+            <!-- CONTENEDORES DE LOS ENTRY -->
+            <StackLayout Margin="0,-3" >
 
-                        <!-- CONTENEDOR ENTRY USUARIO -->
-                        <StackLayout Orientation="Horizontal"
+                <!-- ESTILOS DEL ENTRY USUARIO -->
+                <Frame BackgroundColor="Transparent" 
+                     BorderColor="Black" 
+                     Padding="0"  
+                     CornerRadius="7" 
+                     WidthRequest="340"
+                     HorizontalOptions="FillAndExpand">
+
+                    <!-- CONTENEDOR ENTRY USUARIO -->
+                    <StackLayout Orientation="Horizontal"
                                      Margin="25,5">
-                            <!-- IMAGEN DE USUARIO -->
-                            <Image Source="user.png" />
+                        <!-- IMAGEN DE USUARIO -->
+                        <Image Source="user.png" />
 
-                            <!-- ENTRY USUARIO -->
-                            <Entry Placeholder="Usuario"
-                                   Text="{Binding User, Mode=TwoWay}"
-                                   Keyboard="Plain"
-                                   FontFamily="Questrial"
-                                   FontSize="20"
-                                   PlaceholderColor="Gray" 
-                                   TextColor="black" 
-                                   HorizontalOptions="FillAndExpand"/>
-                        </StackLayout>
-                    </Frame>
-                   
-                    <!-- ESTILOS DEL ENTRY USUARIO -->
-                    <Frame BackgroundColor="Transparent"
+                        <!-- ENTRY USUARIO -->
+                        <Entry Placeholder="Usuario"
+                                Text="{Binding User, Mode=TwoWay}"
+                                Keyboard="Plain"
+                                FontFamily="Questrial"
+                                FontSize="20"
+                                PlaceholderColor="Gray" 
+                                TextColor="black" 
+                                HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <!--PRUEBA-->
+                <!-- ESTILOS DEL ENTRY USUARIO -->
+                <Frame 
+                    BackgroundColor="Transparent"
                            BorderColor="Black" 
                            Padding="0" 
-                           Margin="0,10" 
                            CornerRadius="7" 
                            WidthRequest="340"
                            HorizontalOptions="FillAndExpand">
 
-                        <!-- CONTENEDOR ENTRY USUARIO -->
-                        <StackLayout Orientation="Horizontal"
+                    <!-- CONTENEDOR ENTRY USUARIO -->
+                    <StackLayout Orientation="Horizontal"
                                      Margin="25,5">
-                            <!-- IMAGEN DE PASSWORD -->
-                            <Image Source="candado.png" />
+                        <!-- IMAGEN DE PASSWORD -->
+                        <Image Source="candado.png" />
 
-                            <!-- ENTRY PASSWORD -->
-                            <Entry Placeholder="Contraseña" 
-                                    Keyboard="Plain"
-                                    Text="{Binding Password, Mode=TwoWay}"
-                                    FontFamily="Questrial"
-                                    FontSize="20"
-                                    IsPassword="True"
-                                    PlaceholderColor="Gray" 
-                                    TextColor="black" 
-                                    HorizontalOptions="FillAndExpand" />
-                        </StackLayout>
-                    </Frame>
-        
-                        <Button 
-                            Text="Login" 
-                            BackgroundColor="#01ADBA"
-                            Command="{Binding LoginCommand}"
-                            TextColor="White"
-                            FontAttributes="Bold"
-                            WidthRequest="10"
-                            HeightRequest="50"
-                            CornerRadius="7"
-                            BorderWidth="1"/>
-                    <Label HorizontalOptions="FillAndExpand"
-                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Padding="5">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="¿No tienes cuenta? " FontAttributes="Bold" FontSize="15" />
-                                <Span Text="Registrate aquí!" FontAttributes="Bold" FontSize="15"
-                              TextColor="Blue"
-                              TextDecorations="Underline">
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                    Command="{Binding NewUserCommand}"
-                                    />
-                                    </Span.GestureRecognizers>
-                                </Span>
-                                <Span 
-                            Text=" y disfruta de muchos beneficios" FontAttributes="Bold" FontSize="15"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                        <!-- ENTRY PASSWORD -->
+                        <Entry Placeholder="Contraseña" 
+                                Keyboard="Plain"
+                                Text="{Binding Password, Mode=TwoWay}"
+                                FontFamily="Questrial"
+                                FontSize="20"
+                                IsPassword="True"
+                                PlaceholderColor="Gray" 
+                                TextColor="black" 
+                                HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </Frame>
 
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    
-                            <Span Text="Olvide mi contraseña" FontAttributes="Bold" FontSize="15"
-                              TextColor="Blue"
-                              TextDecorations="Underline">
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer 
+                <Button 
+                        Text="Login" 
+                        BackgroundColor="#01ADBA"
+                        Command="{Binding LoginCommand}"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        WidthRequest="10"
+                        HeightRequest="50"
+                        CornerRadius="7"
+                        BorderWidth="1"/>
+
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+
+                            <Span Text="Olvide mi contraseña"
+                                  FontAttributes="Bold"
+                                  FontSize="15"
+								  TextColor="Blue"
+							      FontFamily="SansRegular"
+							      TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer 
                                     Command="{Binding ResetPasswordCommand}"
                                     />
-                                    </Span.GestureRecognizers>
-                                </Span>
-                                <Span 
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span 
                             Text="" FontAttributes="Bold" FontSize="15"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                        </Label>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
-                    </StackLayout>
-            </Frame>
-          </ScrollView>
+                <Label 
+                       FontFamily="SansRegular"
+                       HorizontalTextAlignment="Center" 
+                       Padding="5">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="¿No tienes cuenta? "
+                                  FontAttributes="Bold" 
+                                  FontSize="15" />
+                            <Span Text="Regístrate aquí!"
+                                  FontAttributes="Bold" 
+                                  FontSize="15"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                    Command="{Binding NewUserCommand}"
+                                    />
+                                </Span.GestureRecognizers>
+                            </Span>
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

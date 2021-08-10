@@ -22,6 +22,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         Page Page;
 
         #region Declaracion de variables
+        string message;
         string name;
         string lastName;
         string address;
@@ -116,7 +117,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                 int respuesta = Constanst.REQUEST_ERROR;
                 if (CheckRequires())//Valida los campos requeridos
                 {
-                  
+
 
                     if (!string.IsNullOrEmpty(UserInCache.Token))//Si tiene un Token entonces es una actualizacion de lo contrario es primera vez que llena el formulario
                     {
@@ -128,7 +129,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                         if (changeMethod || changeMail || changeMail) //Se reenviara solo si se cambio el correo, el telefono, o el metodo de verificación
                         {
                             UserInCache.ModoVerificacion = VerifyByMail ? Constanst.VERIFY_MAIL : Constanst.VERIFY_PHONE_NUMBER;
-                          
+
                             SetDataToInstance(UserInCache);
                             Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
 
@@ -147,7 +148,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                             Cache.SaveCache(Constanst.USER_CACHE, UserInCache, Constanst.EXPIRE_DAYS);
                             await Page.Navigation.PushAsync(new Validacion());
                         }
-                     
+
                     }
                     else
                     {
@@ -169,26 +170,25 @@ namespace PRMOVIL2CARWASH.ViewModels
                             await Page.Navigation.PushAsync(new Validacion());
 
                         }
+                        else if (respuesta == Constanst.USER_EXIST)
+                        {
+                            await Page.DisplayAlert("Usuario existnte", "Ya existe un usuario registrado con este " + (VerifyByMail ? "correo " + Mail : "Numero de télefono " + Telephone), "Aceptar");
+                        }
+
                         else
                             UserDialogs.Instance.Toast("Lo sentimos no hemos podido enviar código de verificación.");
 
                         UserDialogs.Instance.HideLoading();
                     }
                 }
-                else if (respuesta == Constanst.USER_EXIST)
-                {
-                    await Page.DisplayAlert("Usuario existnte", "Ya existe un usuario registrado con este " + (VerifyByMail ? "correo " + Mail : "Numero de télefono " + Telephone), "Aceptar");
-                }
+
                 else
-                    UserDialogs.Instance.Toast("Lo sentimos no fue imposible enviar código."); 
+                    await Page.DisplayAlert("Advertencia", message, "Aceptar");
             }
             else
             {
                 UserDialogs.Instance.Toast("Necesita acceso a internet para registrarse");
             }
-
-
-
         }
 
         /*Abre la galeria*/
@@ -295,11 +295,49 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         private bool CheckRequires()
         {
-            if (!string.IsNullOrEmpty(User) && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(LastName)
-                && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Address) && !string.IsNullOrEmpty(Mail))
-                return true;
-            else 
-                return false;
+            message = "Tienes incorrectos los siguientes campos: ";
+            bool respuesta = true;
+            if (string.IsNullOrEmpty(User))
+            {
+                respuesta = false;
+                string.Concat(message, " Nombre vacío ");
+            }
+            if (string.IsNullOrEmpty(Mail))
+            {
+                respuesta = false;
+                string.Concat(message, " Correo vacío ");
+            }
+            //if (string.IsNullOrEmpty(Address))
+            //{
+            //    respuesta = false;
+            //    string.Concat(message, "Dirección vacío");
+            //}
+            //if (string.IsNullOrEmpty(Telephone))
+            //{
+            //    respuesta = false;
+            //    string.Concat(message, "\n Teléfono vacío");
+            //}
+            if (string.IsNullOrEmpty(Password))
+            {
+                respuesta = false;
+                string.Concat(message, " Contraseña vacía ");
+            }
+            else if (!Validations.IsCorrectMail(Mail))
+            {
+                respuesta = false;
+                string.Concat(message, " Correo incorrecto ");
+            }
+            else if (!Validations.IsCorrectPhone(Telephone))
+            {
+                respuesta = false;
+                string.Concat(message, " Teléfono vacío ");
+            }
+
+            //if (!string.IsNullOrEmpty(User) && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(LastName)
+            //    && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Address) && !string.IsNullOrEmpty(Mail))
+            //    return true;
+            //else 
+                return respuesta;
         }
 
         
@@ -307,7 +345,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         {
 
             string action = await Page.DisplayActionSheet("Abrir", "Cancel", null, Constanst.CAMARA, Constanst.GALERIA);
-            Console.WriteLine("Selecciono " + action);
+            Console.WriteLine("Seleccionó " + action);
 
             if (action == Constanst.CAMARA)
             {

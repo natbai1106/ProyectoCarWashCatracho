@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
              xmlns:triggers ="clr-namespace:PRMOVIL2CARWASH.Triggers"
-             xmlns:converters="clr-namespace:PRMOVIL2CARWASH.Converters"
+             xmlns:converters="clr-namespace:PRMOVIL2CARWASH.Converters" 
+             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
              BackgroundImage="#FDFDFD"
              Title="Creacion de Usuario">
-    <ContentPage.Resources>
-        <converters:IntToBoolConverter x:Key="intToBoolConverter"/>
+    <!--<ContentPage.Resources>-->
+        <!--<converters:IntToBoolConverter x:Key="intToBoolConverter"/>-->
         <!--<Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="Purple" />
             <Setter Property="TextColor" Value="White" />
@@ -24,7 +25,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>-->
-    </ContentPage.Resources>
+    <!--</ContentPage.Resources>-->
 
     <!-- MARGENES DE LA TARJETA BLANCA -->
     <StackLayout
@@ -124,18 +125,18 @@
                                />
                 </Frame>
 
-                    <!-- CAMPO OBLIGATORIO DE ASTERISCO - APELLIDO -->
+                    <!-- CAMPO OBLIGATORIO DE ASTERISCO - APELLIDO --><!--
                     <StackLayout 
                         Orientation="Horizontal"
                         Margin="0,5,0,0">
-                        <!-- LABEL DE ASTERISCO - APELLIDO -->
+                        --><!-- LABEL DE ASTERISCO - APELLIDO --><!--
                     <Label 
                             Text="*"
                             FontSize="25"
                             TextColor="red"
                             FontFamily="SansBold"/>
 
-                    <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
+                    --><!-- INICIO DEL LABEL NOMBRE COMPLETO --><!--
                     <Label 
                             FontSize="20"
                             TextColor="Black"
@@ -145,7 +146,7 @@
                     </StackLayout>
 
                   
-                    <!-- ESTILOS DEL ENTRY NOMBRE -->
+                    --><!-- ESTILOS DEL ENTRY NOMBRE --><!--
                     <Frame BackgroundColor="Transparent" 
                      BorderColor="Black" 
                      Padding="0"  
@@ -153,7 +154,7 @@
                      WidthRequest="340"
                      
                      HorizontalOptions="FillAndExpand">
-                        <!-- ENTRY NOMBRE -->
+                        --><!-- ENTRY NOMBRE --><!--
                     <Entry x:Name="EntryApellido"
                                  Margin="25,5"
                                 Keyboard="Plain"
@@ -163,20 +164,20 @@
                                 PlaceholderColor="Gray" 
                                 TextColor="black" 
                                 HorizontalOptions="FillAndExpand" />
-                    </Frame>
+                    </Frame>-->
 
                     <!-- CAMPO OBLIGATORIO DE ASTERISCO - DIRECCION -->
-                <StackLayout 
+                <!--<StackLayout 
                         Orientation="Horizontal"
                         Margin="0,5,0,0">
-                    <!-- LABEL DE ASTERISCO - APELLIDO -->
+                    --><!-- LABEL DE ASTERISCO - APELLIDO --><!--
                     <Label 
                             Text="*"
                             FontSize="25"
                             TextColor="red"
                             FontFamily="SansBold"/>
 
-                    <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
+                    --><!-- INICIO DEL LABEL NOMBRE COMPLETO --><!--
                     <Label 
                             FontSize="20"
                             TextColor="Black"
@@ -184,7 +185,7 @@
                             Text="Ingrese Dirección: " />
                     </StackLayout>
 
-                <!-- ESTILOS DEL ENTRY NOMBRE -->
+                --><!-- ESTILOS DEL ENTRY NOMBRE --><!--
                 <Frame BackgroundColor="Transparent" 
                      BorderColor="Black" 
                      Padding="0"  
@@ -192,7 +193,7 @@
                      WidthRequest="340"
                      
                      HorizontalOptions="FillAndExpand">
-                    <!-- ENTRY NOMBRE -->
+                    --><!-- ENTRY NOMBRE --><!--
                     <Entry x:Name="EntryDireccion"
                                  Margin="25,5"
                                  Keyboard="Plain"
@@ -202,7 +203,7 @@
                                 PlaceholderColor="Gray" 
                                 TextColor="black" 
                                 HorizontalOptions="FillAndExpand" />
-                </Frame>
+                </Frame>-->
 
                 <StackLayout 
                         Orientation="Horizontal"
@@ -238,7 +239,11 @@
                                      Text="{Binding Mail}"
                                     PlaceholderColor="Gray" 
                                     TextColor="black" 
-                                    HorizontalOptions="FillAndExpand" />
+                                    HorizontalOptions="FillAndExpand" >
+                        <Entry.Behaviors>
+                            <behavior:EmailValidationBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
                 </Frame>
 
                 <StackLayout 
@@ -259,7 +264,7 @@
                             Text="Ingrese Teléfono: "/>
                     </StackLayout>
                     <!-- ESTILOS DEL ENTRY TELEFONO -->
-                    <StackLayout Orientation="Horizontal">
+                    <!--<StackLayout Orientation="Horizontal">
 
                         <Label 
                             Text="Teléfono "
@@ -278,7 +283,7 @@
                             FontSize="15"    
                             Margin="30,0,10,5"
                             FontFamily="SansBold"/>
-                    </StackLayout>
+                    </StackLayout>-->
 
 
                 <Frame BackgroundColor="Transparent" 
@@ -297,7 +302,11 @@
                                 FontSize="20"
                                 PlaceholderColor="Gray" 
                                 TextColor="black" 
-                                HorizontalOptions="FillAndExpand" />
+                                HorizontalOptions="FillAndExpand" >
+                        <Entry.Behaviors>
+                            <behavior:MaskedBehavior Mask="XXXXXXXX"/>
+                        </Entry.Behaviors>
+                    </Entry>
                 </Frame>
 
 
@@ -373,62 +382,27 @@
                                     FontSize="20"
                                     PlaceholderColor="Gray" 
                                     TextColor="Black" 
-                                    HorizontalOptions="FillAndExpand" />
+                                    HorizontalOptions="FillAndExpand" >
+                        <Entry.Behaviors>
+                            <behavior:PasswordValidatorBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
                 </Frame>
-                <StackLayout Orientation="Horizontal" Spacing="6">
+                <!--<StackLayout Orientation="Horizontal" Spacing="6">
                     <CheckBox x:Name="CheckBoxAgree" />
                     <Label Text="Los datos ingresados, son correctos?"  HorizontalOptions="CenterAndExpand"  FontSize="20"/>
-                </StackLayout>
+                </StackLayout>-->
             </StackLayout>
             </ScrollView>
-        <Grid 
-                HeightRequest="100">
-            <Button Text="Confirmar" IsEnabled="False" x:Name="btnConfirmar">
-                <Button.Triggers>
-                    <!--PROPIEDADES TRIGGERS-->
-                    <Trigger TargetType="Button" Property="IsEnabled" Value="False">
-                        <Setter Property="BackgroundColor" Value="LightGray"/>
-                        <Setter Property="TextColor" Value="Black"/>
-                    </Trigger>
-                    <MultiTrigger TargetType="Button">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference EntryNombre}, 
-                                                  Path=Text.Length, 
-                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
-                            
-                            <BindingCondition Binding="{Binding Source={x:Reference EntryApellido}, 
-                                                  Path=Text.Length, 
-                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
-                            
-                            <BindingCondition Binding="{Binding Source={x:Reference EntryCorreo}, 
-                                                  Path=Text.Length, 
-                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
-                            
-                            <BindingCondition Binding="{Binding Source={x:Reference EntryDireccion}, 
-                                                  Path=Text.Length, 
-                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
-                            
-                            <BindingCondition Binding="{Binding Source={x:Reference EntryPassword}, 
-                                                  Path=Text.Length, 
-                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
-                            
-                            <BindingCondition Binding="{Binding Source={x:Reference EntryTelefono}, 
-                                                  Path=Text.Length, 
-                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
-                            
-                            <BindingCondition Binding="{Binding Source={x:Reference EntryUsuario}, 
-                                                  Path=Text.Length, 
-                                                  Converter={StaticResource intToBoolConverter}}" Value="True"/>
-                            
-                            <BindingCondition Binding="{Binding Source={x:Reference CheckBoxAgree},
-                                                  Path=IsChecked}" Value="True"/>
-                        </MultiTrigger.Conditions>
-                        <Setter Property="IsEnabled" Value="True"/>
-                        <Setter Property="CommandParameter" Value="{Binding SendVerifyCommand}"/>
-                    </MultiTrigger>
-                </Button.Triggers>
-            </Button>
-
+        <Grid HeightRequest="80">
+            <Button Text="Guardar"                     
+                    Command="{Binding SendVerifyCommand}"
+                    BackgroundColor="#01ADBA"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    Grid.Row="0"
+                    Grid.Column="0"/>
+            
             <Button Text="Limpiar" 
                     x:Name="btnLimpiar"
                     Command="{Binding CancelRegisterCommand}"

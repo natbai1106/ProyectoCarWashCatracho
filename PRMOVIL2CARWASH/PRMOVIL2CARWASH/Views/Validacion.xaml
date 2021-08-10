@@ -30,7 +30,7 @@
                    HorizontalTextAlignment="Center">
 
                             <Entry.Behaviors>
-                                <behavior:MaskedBehavior Mask="XXXX"/>
+                                <behavior:MaskedBehavior/>
                             </Entry.Behaviors>
                         </Entry>
             

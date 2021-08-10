@@ -5,16 +5,16 @@
              BackgroundImage="#FDFDFD"
              Title="Editar Usuario"
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors">
-    
+
     <!-- INICIO DEL CONTENTPAGE -->
     <ContentPage.Content>
-        
+
         <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA PANTALLA -->
         <StackLayout>
-            
+
             <!-- INICIO SCROLL VIEW -->
             <ScrollView  Margin="9,10">
-                
+
                 <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA IMAGEN -->
                 <StackLayout >
 
@@ -38,8 +38,8 @@
 
                         </Frame>
                         <!-- INICIO DE LA IMAGEN DE USUARIO -->
-                       
-                        
+
+
                         <!-- INICIO DEL GRID -->
                         <Frame 
                         BackgroundColor="Transparent" 
@@ -91,7 +91,7 @@
                         WidthRequest="340">
 
 
-                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                        <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                         <Entry 
                                 
                                 Margin="25,5"
@@ -134,9 +134,9 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                     
 
-                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+
+                        <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                         <Entry 
                                 Margin="25,5"
                                 x:Name="txtApellido"
@@ -178,10 +178,10 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                    
 
-                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
-                            <Entry 
+
+                        <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                        <Entry 
                                 Margin="25,5"
                                 x:Name="txtCorreo"
                                 PlaceholderColor="Gray"
@@ -189,10 +189,10 @@
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand">
 
-                                <Entry.Behaviors>
-                                    <behavior:EmailValidationBehavior/>
-                                </Entry.Behaviors>           
-                            </Entry>
+                            <Entry.Behaviors>
+                                <behavior:EmailValidationBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
 
                     </Frame>
 
@@ -262,7 +262,7 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                            <!-- INICIO DEL ENTRY DE TELEFONO -->
+                        <!-- INICIO DEL ENTRY DE TELEFONO -->
                         <Entry 
                                 Margin="25,5"
                                 x:Name="txtTelefono"
@@ -283,7 +283,7 @@
             <!-- INICIO DEL GRID -->
             <Grid 
                 HeightRequest="100">
-                
+
                 <!-- INICIO DEL BOTON DE GUARDAR CAMBIOS -->
                 <Button
                     Text="Guardar Cambios" 
@@ -308,5 +308,5 @@
             </Grid>
         </StackLayout>
     </ContentPage.Content>
-    
+
 </ContentPage>

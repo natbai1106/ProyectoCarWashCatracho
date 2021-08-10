@@ -18,6 +18,8 @@ namespace PRMOVIL2CARWASH.Utils
         public const string TYPE_CHANGE = "change";
         public const string TYPE_RESET= "reset";
         public const string VERIFY_MAIL = "mail";
+        public const string DIGITOS_REGEX = @"^[0-9]+$";
+        public const string EMAIL_REGEX = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*" + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
         private const string UrlBase = "http://173.249.21.6/v1";
         public const int  REQUEST_OK= 201;
         public const int REQUEST_ERROR= 400;

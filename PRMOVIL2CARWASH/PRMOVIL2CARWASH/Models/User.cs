@@ -75,9 +75,10 @@ namespace PRMOVIL2CARWASH.Models
             var content = new StringContent(data, Encoding.UTF8, "application/json");
 
             requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), content);
+            var contents = await requestMessage.Content.ReadAsStringAsync();
             if (requestMessage.IsSuccessStatusCode)
             {
-                var contents = await requestMessage.Content.ReadAsStringAsync();
+                
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
                 {

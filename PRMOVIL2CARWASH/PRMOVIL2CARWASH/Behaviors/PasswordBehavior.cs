@@ -8,7 +8,7 @@ namespace PRMOVIL2CARWASH.Behaviors
 {
    public class PasswordBehavior : Behavior<Entry>
     {
-        const string passwordRegex = @"^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{8,}$";
+        const string passwordRegex = @"{8,}$";
 
         private string _mask = "";
         public string Mask

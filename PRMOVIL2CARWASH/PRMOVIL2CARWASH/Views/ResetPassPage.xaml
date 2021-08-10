@@ -4,14 +4,41 @@
              x:Class="PRMOVIL2CARWASH.Views.ResetPassPage"
              BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Ingrese su usuario para poder ingresar e iniciar sesión"
-               
+        <StackLayout VerticalOptions="Center"
+                     Margin="9,10">
+            <Label 
+                Text="Para poder reestablecer la contraseña, es necesario que nos puedas brindar tu nombre de usuario"
+                FontFamily="SansLight"      
+                TextColor="Black"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Text="{Binding User}"
-                   />
 
+            <Frame
+                Margin="40,10"
+                        BackgroundColor="Transparent" 
+                        BorderColor="Black"                             
+                        Padding="0"
+                        CornerRadius="10" 
+                        WidthRequest="340">
+                <Entry Text="{Binding User}"
+                       Margin="15,6"
+                       Placeholder="Usuario"
+                       HorizontalTextAlignment="Center"
+                        PlaceholderColor="Gray"
+                               FontSize="20"
+                               FontFamily="SansLight"
+                               HorizontalOptions="FillAndExpand"
+                   />
+            </Frame>
+            
             <Button Text="Resetear contraseña"
+                    BackgroundColor="#01ADBA"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    BorderWidth="2"
+                    Margin="20,5"
                     Command="{Binding SendUserToResetCommand}"/>
         </StackLayout>
     </ContentPage.Content>

@@ -6,6 +6,7 @@ using System.Linq;
 using PRMOVIL2CARWASH.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 
 namespace PRMOVIL2CARWASH.ViewModels
 {
@@ -29,87 +30,74 @@ namespace PRMOVIL2CARWASH.ViewModels
         int year;
         string plaque;
         string observation;
-        byte[] foto;
-        ImageSource photo = ImageSource.FromUri(new Uri("https://images.vexels.com/media/users/3/204554/isolated/lists/53193fd7db3d2618ab56635e69e64515-pequenas-hojas-de-frutos-rojos.png"));
+        byte[] photoArray;
+        bool takeNewPhoto;
+        ImageSource photoProfile;
 
         public ObservableCollection<Modelos> Modelo
         {
-            get => modelo;
-            set => SetProperty(ref modelo, value);
+            get => modelo; set => SetProperty(ref modelo, value);
         }
 
         public MotorType MotorSelected
         {
-            get => motorSelected;
-            set => SetProperty(ref motorSelected, value);
+            get => motorSelected; set => SetProperty(ref motorSelected, value);
         }
         public TypeVehicle TypeSelected
         {
-            get => typeSelected;
-            set => SetProperty(ref typeSelected, value);
+            get => typeSelected; set => SetProperty(ref typeSelected, value);
         }
         public Brand BrandSelected
         {
-            get => brandSelected;
-            set => SetProperty(ref brandSelected, value);
+            get => brandSelected; set => SetProperty(ref brandSelected, value);
         }
 
         public Modelos ModeloSelected
         {
-            get => modeloSelected;
-            set => SetProperty(ref modeloSelected, value);
+            get => modeloSelected; set => SetProperty(ref modeloSelected, value);
         }
 
         public ObservableCollection<Brand> Brand
         {
-            get => brand;
-            set => SetProperty(ref brand, value);
+            get => brand; set => SetProperty(ref brand, value);
         }
 
         public ObservableCollection<TypeVehicle> Type
         {
-            get => type;
-            set => SetProperty(ref type, value);
+            get => type; set => SetProperty(ref type, value);
         }
 
         public ObservableCollection<MotorType> Motor
         {
-            get => motor;
-            set => SetProperty(ref motor, value);
+            get => motor; set => SetProperty(ref motor, value);
         }
 
         public int Year
         {
-            get => year;
-            set => year = value;
+            get => year; set => year = value;
         }
 
         public string Plaque
         {
-            get => plaque;
-            set => plaque = value;
+            get => plaque; set => plaque = value;
         }
 
         public string Observation
         {
-            get => observation;
-            set => observation = value;
+            get => observation; set => observation = value;
         }
 
-        public byte[] Foto
-        {
-            get => foto;
-            set => foto = value;
-        }
+        public byte[] PhotoByteArray { get => photoArray; set { photoArray = value; } }
 
-        public ImageSource Photo
+        public ImageSource PhotoProfile
         {
-            get => photo;
+            get => photoProfile;
             set
             {
-                SetProperty(ref photo, value);
+                SetProperty(ref photoProfile, value);
             }
         }
+        public bool TakeNewPhoto { get => takeNewPhoto; set => takeNewPhoto = value; }
 
         public VehiclesViewModel(Page pag)
         {
@@ -146,21 +134,39 @@ namespace PRMOVIL2CARWASH.ViewModels
             }
 
         }
+        /*Abre la galeria*/
         private async void OnOpenGallery()
         {
-            IsBusy = true;
             var media = new MediaManager();
+
+            UserDialogs.Instance.ShowLoading("Cargando");
             bool isSuccess = await media.TakePicture();
-            if (isSuccess)
-                Photo = media.Image;
-            IsBusy = false;
+            LoadPhoto(isSuccess, media);
+            UserDialogs.Instance.HideLoading();
         }
+        #region Foto
+        /*Abre la camarara*/
         private async void OnTakePhoto()
+
         {
             var media = new MediaManager();
+            //Se crea una instancia de la clase MediaManager para mostrar los cuando se esta cargando
+            UserDialogs.Instance.ShowLoading("Cargando");
             bool isSuccess = await media.PickPicture();
-            if (isSuccess)
-                Photo = media.Image;
+            LoadPhoto(isSuccess, media);
+            UserDialogs.Instance.HideLoading();
         }
+
+        //Se carga la foto obtenidad de la galeria o camara y la almacena en las variables para mostrarla en la vista
+        private void LoadPhoto(bool isSucces, MediaManager media)
+        {
+            if (isSucces)
+            {
+                PhotoProfile = media.Image;
+                PhotoByteArray = media.ByteImage;
+                TakeNewPhoto = true;
+            }
+        }
+        #endregion
     }
 }

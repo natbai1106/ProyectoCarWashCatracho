@@ -129,9 +129,6 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <StackLayout
-                            Orientation="Horizontal"
-                            Margin="25,5">
 
                             <Entry 
                                IsPassword="true" 
@@ -139,9 +136,10 @@
                                Text="{Binding ConfirmPassword}"
                                PlaceholderColor="Gray"
                                FontSize="20"
+                                Margin="25,5"
                                FontFamily="SansLight"
                                HorizontalOptions="FillAndExpand"/>
-                        </StackLayout>
+                        
                     </Frame>
 
                     <Button 

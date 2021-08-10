@@ -5,50 +5,52 @@
              BackgroundColor="#FDFDFD"
              Title="Registrar Automovil">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="2,0">
             <ScrollView>
-
                 <StackLayout>
-                
+
                     <!-- Imagenes -->
 
                     <StackLayout Orientation="Horizontal" 
                                  HorizontalOptions="Center">
-                        <Image x:Name="imgFotoAuto" 
-                               Source="Automovil.png"
+
+                        <Frame 
+                            CornerRadius="95" 
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            HorizontalOptions="FillAndExpand"
+                            Padding="0"
+                            VerticalOptions="FillAndExpand"
+                            Margin="1">
+
+                            <Image BackgroundColor="AliceBlue"
+                            x:Name="imgFotoAuto" 
+                              Source="{Binding PhotoProfile}"
                                WidthRequest="190"
                                HeightRequest="190"/>
-                        <Grid>
-                            <Button  
-                                ImageSource="camara.png"
-                                x:Name="btnGaleriaAutos"
-                                Command="{Binding OpenGalleryCommand}"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="#01ADBA" 
+                        </Frame>
+                        <Frame 
+                        BackgroundColor="Transparent"
+                        CornerRadius="55" 
+                        Margin="-95,10,-50,-45" 
+                        HasShadow="false" 
+                        VerticalOptions="End">
+
+                            <Button     
+                        Margin="0,15,20,30"
+                            BorderColor="#01ADBA"
                                 CornerRadius="40" 
-                                Background="#01ADBA"
+                                Background="#FDFDFD"
                                 BorderWidth="2"
                                 HeightRequest="80" 
                                 WidthRequest="80" 
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
-                                />
-
-                            <Button  ImageSource="galeria.png"
-                                    x:Name="btnFotoAutos"
-                                Command = "{Binding TakePhotoCommand}"
-                                BackgroundColor="#01ADBA" 
-                                CornerRadius="40" 
-                                Background="#01ADBA"
-                                BorderWidth="2"
-                                HeightRequest="80" 
-                                WidthRequest="80"  
-                                HorizontalOptions="Center" 
-                                VerticalOptions="Center"
-                                Grid.Row="1"
-                                Grid.Column="0" />
-                        </Grid>
+                                ImageSource="new_foto.png"
+                                Command="{Binding SelectMedia}"
+                               x:Name="btnFotosUsuario"
+                               />
+                        </Frame>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal"
@@ -69,25 +71,25 @@
 
                     <!--INPUT MARCA-->
                     <Frame BackgroundColor="Transparent" 
-                               BorderColor="Black"                             
-                               Padding="0"
-                               CornerRadius="10" 
-                               HasShadow="True"
-                               WidthRequest="120"
-                               Margin="15,0">
+                           BorderColor="Black"                             
+                           Padding="0"
+                           CornerRadius="10" 
+                           HasShadow="True"
+                           WidthRequest="120"
+                           Margin="15,0">
 
                         <StackLayout Orientation="Horizontal"
                                          Margin="25,5">
 
                             <Picker WidthRequest="145"  
-                                            x:Name="pckMarca"
-                                            Title="Seleccione Marca"
-                                            ItemsSource="{Binding Brand}"
-                                            ItemDisplayBinding="{Binding NombreMarca}"
-                                            SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
-                                            HorizontalOptions="FillAndExpand"
-                                            FontSize="20"
-                                            FontFamily="SansLight"/>
+                                    x:Name="pckMarca"
+                                    Title="Seleccione Marca"
+                                    ItemsSource="{Binding Brand}"
+                                    ItemDisplayBinding="{Binding NombreMarca}"
+                                    SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="20"
+                                    FontFamily="SansLight"/>
                         </StackLayout>
                     </Frame>
 
@@ -97,80 +99,71 @@
                                  Margin="0,10">
 
                         <Label Text="*"
-                                 FontSize="25"
-                                 Margin="25,0,15,0"
-                                 TextColor="red"
-                                 FontFamily="RobotoRegular"/>
+                               FontSize="25"
+                               Margin="25,0,15,0"
+                               TextColor="red"
+                               FontFamily="RobotoRegular"/>
 
                         <Label Text="Modelo:"
-                              TextColor="DimGray"
-                              FontSize="20"                                 
-                              FontFamily="SansBold"/>
+                               TextColor="DimGray"
+                               FontSize="20"                                 
+                               FontFamily="SansBold"/>
                     </StackLayout>
 
                     <!-- Input  Modelo-->
-                    <Frame
-                                 BackgroundColor="Transparent" 
-                                 BorderColor="Black"                             
-                                 Padding="0"
-                                 CornerRadius="10" 
-                                 HasShadow="True"
-                                 WidthRequest="120"
-                                 Margin="15,0">
+                    <Frame BackgroundColor="Transparent" 
+                           BorderColor="Black"                             
+                           Padding="0"
+                           CornerRadius="10" 
+                           HasShadow="True"
+                           WidthRequest="120"
+                           Margin="15,0">
 
-                        <StackLayout 
-                                    Orientation="Horizontal"
-                                    Margin="25,5">
+                        <StackLayout Orientation="Horizontal"
+                                     Margin="25,5">
 
-                            <Picker
-                                        WidthRequest="145"  
-                                        x:Name="PiModeloAutos"
-                                        Title="Seleccione Modelo"
-                                        ItemsSource="{Binding Modelo}"
-                                        ItemDisplayBinding="{Binding NombreModelo}"
-                                        SelectedItem="{Binding ModeloSelected, Mode=TwoWay}"
-                                        HorizontalOptions="FillAndExpand"
-                                        FontSize="20"
-                                        FontFamily="SansLight"/>
+                            <Picker WidthRequest="145"
+                                    x:Name="PiModeloAutos"
+                                    Title="Seleccione Modelo"
+                                    ItemsSource="{Binding Modelo}"
+                                    ItemDisplayBinding="{Binding NombreModelo}"
+                                    SelectedItem="{Binding ModeloSelected, Mode=TwoWay}"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="20"
+                                    FontFamily="SansLight"/>
                         </StackLayout>
                     </Frame>
 
 
                     <!-- LABEL TIPO -->
-                    <StackLayout
-                             Orientation="Horizontal"
-                             Margin="0,10">
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0,10">
 
-                        <Label 
-                                Text="*"
-                                FontSize="25"
-                                Margin="25,0,15,0"
-                                TextColor="red"
-                                FontFamily="RobotoRegular"/>
+                        <Label Text="*"
+                               FontSize="25"
+                               Margin="25,0,15,0"
+                               TextColor="red"
+                               FontFamily="RobotoRegular"/>
 
-                        <Label 
-                                Text="Tipo:"
-                                TextColor="DimGray"
-                                FontSize="20"                                 
-                                FontFamily="SansBold"/>
+                        <Label Text="Tipo:"
+                               TextColor="DimGray"
+                               FontSize="20"                                 
+                               FontFamily="SansBold"/>
                     </StackLayout>
 
                     <!-- Entry Tipo-->
-                    <Frame
-                            BackgroundColor="Transparent" 
-                            BorderColor="Black"                             
-                            Padding="0"
-                            CornerRadius="10" 
-                            HasShadow="True"
-                            WidthRequest="120"
-                            Margin="15,0">
+                    <Frame BackgroundColor="Transparent" 
+                           BorderColor="Black"                             
+                           Padding="0"
+                           CornerRadius="10" 
+                           HasShadow="True"
+                           WidthRequest="120"
+                           Margin="15,0">
 
-                        <StackLayout 
-                                Orientation="Horizontal"
-                                Margin="25,5">
+                        <StackLayout Orientation="Horizontal"
+                                    Margin="25,5">
 
-                            <Picker
-                                    WidthRequest="145"  
+                            <Picker WidthRequest="145"  
                                     x:Name="pckTipo"
                                     Title="Seleccione Tipo de Vehículo"
                                     ItemsSource="{Binding Type}"
@@ -255,15 +248,15 @@
                                Grid.Row="1"
                                Grid.Column="0">
 
-                            <StackLayout Orientation="Horizontal"
-                                         Margin="25,5">
-                                <DatePicker x:Name="pckAnio"
+
+                            <DatePicker x:Name="pckAnio"
                                        MinimumDate="01/01/1900" 
                                        MaximumDate="12/31/2100" 
                                        x:DataType="DatePicker"                                     
                                        FontSize="20"
+                                       Margin="20,5"
+                                       HorizontalOptions="FillAndExpand"
                                        FontFamily="RobotoLight"/>
-                            </StackLayout>
                         </Frame>
 
                         <!--Numero de Placa-->
@@ -286,14 +279,13 @@
                                Grid.Row="1"
                                Grid.Column="1">
 
-                            <StackLayout Orientation="Horizontal" 
-                                         Margin="25,5">
-                                <Entry x:Name="txtNumeroAutos"
+
+                            <Entry Margin="20,5"
+                                       HorizontalOptions="FillAndExpand"
+                                    x:Name="txtNumeroAutos"
                                        Text="{Binding Plaque, Mode=TwoWay}"
                                        FontSize="20"
-                                       FontFamily="SansLight"
-                                       HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
+                                       FontFamily="SansLight"/>
                         </Frame>
                     </Grid>
 
@@ -323,7 +315,7 @@
                                     Text="{Binding Observation, Mode=TwoWay}"
                                     FontSize="20"
                                     FontFamily="SansLight"
-                                   HeightRequest="100"
+                                    HeightRequest="100"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand" />
                         </StackLayout>

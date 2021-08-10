@@ -8,6 +8,8 @@ namespace PRMOVIL2CARWASH.Utils
     {
         public const string NAME_IMAGE = "imageToUpload";
         public const string USER_CACHE = "usuariocache";
+        public const string CAMARA= "Camara";
+        public const string GALERIA = "Galería";
         public const string VERIFY_PHONE_NUMBER = "phoneNumber";
         public const string CURRENT_USER = "currentUser";
         public const string DEFAULT_USER = "defaultUser";

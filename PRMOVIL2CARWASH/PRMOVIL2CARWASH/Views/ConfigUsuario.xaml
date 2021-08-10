@@ -41,39 +41,36 @@
                        
                         
                         <!-- INICIO DEL GRID -->
-                        <Grid>
-                            
-                            <!-- INICIO DEL BOTON DE LA CAMARA -->
+                        <Frame 
+                        BackgroundColor="Transparent"
+                        CornerRadius="55" 
+                        Margin="-95,10,-50,-45" 
+                        HasShadow="false" 
+                        VerticalOptions="End">
+
                             <Button     
-                                BackgroundColor="#01ADBA" 
+                        Margin="0,15,20,30"
+                            BorderColor="#01ADBA"
                                 CornerRadius="40" 
-                                Background="#01ADBA"
+                                Background="#FDFDFD"
                                 BorderWidth="2"
                                 HeightRequest="80" 
                                 WidthRequest="80" 
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
-                                ImageSource="camara.png"                                                               
-                                Command="{Binding OpenGaleryCommand}"
-                                x:Name="btnFotosEditarUsuario"
-                                Grid.Row="0"
-                                Grid.Column="0"/>
-                            
-                            <!-- INICIO DEL BOTON DE LA GALERIA -->
-                            <Button
-                                 BackgroundColor="#01ADBA" 
-                                CornerRadius="40" 
-                                Background="#01ADBA"
-                                BorderWidth="2"
-                                HeightRequest="80" 
-                                WidthRequest="80"  
-                                HorizontalOptions="Center" 
-                                VerticalOptions="Center"
-                                ImageSource="galeria.png"
-                                x:Name="btnGaleriaEditarUsuario"
-                                Command="{Binding ThakePhotoCommand}" 
-                                Grid.Row="1"
-                                Grid.Column="0"/>
+                                ImageSource="new_foto.png"
+                                Command="{Binding SelectMedia}"
+                               x:Name="btnFotosUsuario"
+                               />
+                        </Frame>
+                        </Grid>
+                        </Grid>
+                        </Grid>
+                        </Grid>
+                        </Grid>
+                        </Grid>
+                        </Grid>
+                        </Grid>
                         </Grid>
                     </StackLayout>
 

@@ -17,6 +17,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         public Command ThakePhotoCommand { get; }
         public Command OpenGaleryCommand { get; }
         public Command CancelRegisterCommand { get; }
+        public Command SelectMedia { get; }
 
         Page Page;
 
@@ -96,6 +97,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             OpenGaleryCommand = new Command(OnOpenGalery);
             CancelRegisterCommand = new Command(OnCancelRegister);
             ThakePhotoCommand = new Command(OnTakePhoto);
+            SelectMedia = new Command(OnSelectedMedia);
             LoadCache();
 
            
@@ -301,7 +303,22 @@ namespace PRMOVIL2CARWASH.ViewModels
         }
 
         
+        public async void OnSelectedMedia()
+        {
 
+            string action = await Page.DisplayActionSheet("Abrir", "Cancel", null, Constanst.CAMARA, Constanst.GALERIA);
+            Console.WriteLine("Selecciono " + action);
+
+            if (action == Constanst.CAMARA)
+            {
+                OnOpenGalery();
+
+            }
+            else if (action == Constanst.GALERIA)
+             {
+                OnTakePhoto();
+            }
+        }
 
         public async Task<int> OnSaveUserClicked()
         {

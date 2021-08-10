@@ -6,7 +6,6 @@
              xmlns:converters="clr-namespace:PRMOVIL2CARWASH.Converters"
               xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:converters="clr-namespace:PRMOVIL2CARWASH.Converters" 
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
              BackgroundImage="#FDFDFD"
              Title="Creacion de Usuario">
@@ -55,11 +54,21 @@
                             VerticalOptions="FillAndExpand"
                             Margin="1">
 
-                            <Image
-                            x:Name="imgFotoUsuario" 
-                            Source="{Binding PhotoProfile}"/>
+                        <ff:CachedImage x:Name           = "Logo" 
+                                Source               = "{Binding UrlPhoto}"
+                                LoadingPlaceholder   = "Logo"
+                                ErrorPlaceholder     = "Error"
+                                CacheDuration        = "30"
+                                RetryCount           = "5"
+                                RetryDelay           = "450"
+                                DownsampleToViewSize = "true">
 
-                        </Frame>
+                            <ff:CachedImage.Transformations>
+                                <ffTrans:CircleTransformation />
+                            </ff:CachedImage.Transformations>
+                        </ff:CachedImage>
+
+                    </Frame>
 
                     <Frame 
                         BackgroundColor="Transparent"
@@ -239,7 +248,7 @@
                     <Entry x:Name="EntryCorreo"
                                  Margin="25,5"
                                     FontSize="20"
-                                     Text="{Binding Mail}"
+                                     Text="{Binding Mail, Mode=TwoWay}"
                                     PlaceholderColor="Gray" 
                                     TextColor="black" 
                                     HorizontalOptions="FillAndExpand" >
@@ -267,26 +276,26 @@
                             Text="Ingrese Teléfono: "/>
                     </StackLayout>
                     <!-- ESTILOS DEL ENTRY TELEFONO -->
-                    <!--<StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
 
-                        <Label 
+                    <Label 
                             Text="Teléfono "
                             FontSize="15"    
                             Margin="30,0,10,5"
                             FontFamily="SansBold"/>
 
-                        <Switch 
+                    <Switch 
                             x:Name="SwitchMapa"
                               OnColor="gray"
                               ThumbColor="#01ADBA"
                            IsToggled="{Binding VerifyByMail,Mode=TwoWay}"/>
 
-                        <Label 
+                    <Label 
                             Text="Correo "
                             FontSize="15"    
                             Margin="30,0,10,5"
                             FontFamily="SansBold"/>
-                    </StackLayout>-->
+                </StackLayout>
 
 
                 <Frame BackgroundColor="Transparent" 

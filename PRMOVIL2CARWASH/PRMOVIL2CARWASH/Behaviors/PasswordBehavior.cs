@@ -51,8 +51,8 @@ namespace PRMOVIL2CARWASH.Behaviors
                 }
             entry.Text = text;
 
-            bool valido = (Regex.IsMatch(e.NewTextValue, passwordRegex));
-            ((Entry)sender).TextColor = valido ? Color.Green : Color.Red;
+            //bool valido = (Regex.IsMatch(e.NewTextValue, passwordRegex));
+            //((Entry)sender).TextColor = valido ? Color.Green : Color.Red;
         }
 
         protected override void OnDetachingFrom(Entry entry)

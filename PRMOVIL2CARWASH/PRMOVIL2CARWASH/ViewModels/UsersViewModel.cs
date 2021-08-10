@@ -31,12 +31,10 @@ namespace PRMOVIL2CARWASH.ViewModels
         string user;
         string password;
         bool lastMethodVerify = false;
-        byte[] photoArray;
         bool verifyByMail=true;
         bool takeNewPhoto;
-        MediaFile PhotoMediaFile { get; set; }
-        
-        ImageSource photoProfile;
+        string urlPhoto;
+     
         User UserInCache { get; set; }
       
         public string Name
@@ -72,24 +70,15 @@ namespace PRMOVIL2CARWASH.ViewModels
         public string Password { get => password; set { SetProperty(ref password, value); } }
 
 
-        public byte[] PhotoByteArray { get => photoArray; set{ photoArray = value; } }
-        public ImageSource PhotoProfile
-        {
-            get => photoProfile;
-            set
-            {
-                SetProperty(ref photoProfile, value);
-            }
-        }
-
         public bool VerifyByMail
         {
             get => verifyByMail;
             set { SetProperty(ref verifyByMail, value); }
         }
         public bool TakeNewPhoto { get => takeNewPhoto; set => takeNewPhoto = value; }
-       
-       
+        public string UrlPhoto { get => urlPhoto; set { SetProperty(ref urlPhoto, value); } }
+
+
         #endregion
         public UsersViewModel(Page pag)
         {
@@ -125,7 +114,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                         bool changePhone = !UserInCache.Telefono.Equals(Telephone);
                         bool changeMethod = VerifyByMail != lastMethodVerify;
 
-                        if (changeMethod || changeMail || changeMail) //Se reenviara solo si se cambio el correo, el telefono, o el metodo de verificación
+                        if (changeMethod || changePhone || changeMail) //Se reenviara solo si se cambio el correo, el telefono, o el metodo de verificación
                         {
                             UserInCache.ModoVerificacion = VerifyByMail ? Constanst.VERIFY_MAIL : Constanst.VERIFY_PHONE_NUMBER;
 
@@ -137,9 +126,17 @@ namespace PRMOVIL2CARWASH.ViewModels
                             UserDialogs.Instance.HideLoading();
 
                             if (respuesta == Constanst.REQUEST_OK)
+
                                 await Page.Navigation.PushAsync(new Validacion());
+                            else if(respuesta == Constanst.USER_EXIST)
+                                await Page.DisplayAlert("Adevertencia", "Ya existe un usuario registrado con este " + (VerifyByMail ? "correo " + Mail : "Numero de télefono " + Telephone), "Aceptar");
+
                             else
+                            {
+                                takeNewPhoto = false;
                                 UserDialogs.Instance.Toast("Error al reenviar codigo de verificación.");
+                            }
+                                
                         }
                         else//Sino se realizaron cambios entonces guardamos los cambios en cache
                         {
@@ -171,11 +168,11 @@ namespace PRMOVIL2CARWASH.ViewModels
                         }
                         else if (respuesta == Constanst.USER_EXIST)
                         {
-                            await Page.DisplayAlert("Usuario existnte", "Ya existe un usuario registrado con este " + (VerifyByMail ? "correo " + Mail : "Numero de télefono " + Telephone), "Aceptar");
+                            await Page.DisplayAlert("Adevertencia", "Ya existe un usuario registrado con este " + (VerifyByMail ? "correo " + Mail : "Numero de télefono " + Telephone), "Aceptar");
                         }
 
                         else
-                            UserDialogs.Instance.Toast("Lo sentimos no hemos podido enviar código de verificación.");
+                            UserDialogs.Instance.Toast("Lo sentimos no hemos podido enviarun código de verificación.");
 
                         UserDialogs.Instance.HideLoading();
                     }
@@ -218,9 +215,8 @@ namespace PRMOVIL2CARWASH.ViewModels
         {
             if (isSucces)
             {
-                PhotoProfile = media.Image;
-                PhotoByteArray = media.ByteImage;
-                PhotoMediaFile = media.MediaFile;
+               
+                UrlPhoto = media.Path;
                 TakeNewPhoto = true;
             }
         }
@@ -257,14 +253,9 @@ namespace PRMOVIL2CARWASH.ViewModels
                     Telephone = UserInCache.Telefono;
                     User = UserInCache.Usuario;
                     Password = UserInCache.Contrasena;
-                    PhotoByteArray = UserInCache.FotoByteArray;
-                    if (UserInCache.FotoByteArray == null)
-                        PhotoProfile = ImageSource.FromFile(Constanst.USER_IMAGE_DEFAULT);
-                    else
-                    {
-                        PhotoProfile = new MediaManager().ConvertByteArrayToImage(UserInCache.FotoByteArray);
+                    UrlPhoto = UserInCache.UrlFoto;
                         TakeNewPhoto = true;
-                    }
+                    
                       
                    //Establce nuevamente el metodo de verificacion
                     if (UserInCache.ModoVerificacion.Equals(Constanst.VERIFY_MAIL))
@@ -277,14 +268,14 @@ namespace PRMOVIL2CARWASH.ViewModels
                 else
                 {
                     UserInCache = new User();
-                    PhotoProfile = ImageSource.FromFile(Constanst.USER_IMAGE_DEFAULT);
+                    UrlPhoto = Constanst.USER_IMAGE_DEFAULT;
                 }
                     
             }
           
             else
             {
-                PhotoProfile = ImageSource.FromFile(Constanst.USER_IMAGE_DEFAULT);
+                UrlPhoto = Constanst.USER_IMAGE_DEFAULT;
                 UserInCache = new User();
             }
 
@@ -314,8 +305,14 @@ namespace PRMOVIL2CARWASH.ViewModels
             if (string.IsNullOrEmpty(Telephone))
             {
                 respuesta = false;
-                string.Concat(message, "\n Teléfono vacío");
+                string.Concat(message, "\n Teléno incompleto");
             }
+            else if (!Validations.IsCorrectPhone(Telephone))
+            {
+                respuesta = false;
+                message += "\n Teléfono vacío ";
+            }
+
             if (string.IsNullOrEmpty(Password))
             {
                 respuesta = false;
@@ -326,16 +323,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                 respuesta = false;
                 message += "\n Correo incorrecto ";
             }
-            else if (!Validations.IsCorrectPhone(Telephone))
-            {
-                respuesta = false;
-                message += "\n Teléfono vacío ";
-            }
-
-            //if (!string.IsNullOrEmpty(User) && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(LastName)
-            //    && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Address) && !string.IsNullOrEmpty(Mail))
-            //    return true;
-            //else 
+           
                 return respuesta;
         }
 
@@ -371,16 +359,14 @@ namespace PRMOVIL2CARWASH.ViewModels
             user.Telefono = Telephone;
             user.Usuario = User;
             user.Contrasena = Password;
-            if (TakeNewPhoto)
-                user.FotoByteArray = PhotoByteArray;
-            else
-                user.FotoByteArray = null;
+            user.UrlFoto = UrlPhoto;
         }
 
         private bool IsChange()
         {
-             if (UserInCache.Nombre.Equals(Name)  && UserInCache.Telefono.Equals(Telephone) && UserInCache.Usuario.Equals(User) && UserInCache.Contrasena.Equals(Password) &&
-                 UserInCache.Correo.Equals(Mail) && UserInCache.FotoByteArray == PhotoByteArray && lastMethodVerify == VerifyByMail)
+             if (UserInCache.Nombre.Equals(Name)  && UserInCache.Telefono.Equals(Telephone) && UserInCache.Usuario.Equals(User) 
+                 && UserInCache.Contrasena.Equals(Password) &&   UserInCache.Correo.Equals(Mail) &&  lastMethodVerify == VerifyByMail&&
+                 UserInCache.UrlFoto.Equals(UrlPhoto))
                 return false;
             else
                 return true;

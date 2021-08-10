@@ -288,7 +288,7 @@
     <AndroidResource Include="Resources\drawable\reservaciones.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\perfil.png" />
+    <AndroidResource Include="Resources\drawable\user_default.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\editar.png" />

@@ -127,12 +127,11 @@ namespace PRMOVIL2CARWASH.ViewModels
                 int respuesta = await auxUser.UpdateUser();
                 if (respuesta == Constanst.REQUEST_OK)
                 {
-
                     await Page.DisplayAlert("Realizado", "Información actualizada", "Aceptar");
                     await Shell.Current.GoToAsync("..");
-
                 }
-
+                else if (respuesta == Constanst.ALL_UPDATE)
+                    UserDialogs.Instance.Toast("Tu información esta actualizada.");
                 else if (respuesta == Constanst.USER_NO_EXIST)
                     UserDialogs.Instance.Toast("El usuario no existe.");
                 else

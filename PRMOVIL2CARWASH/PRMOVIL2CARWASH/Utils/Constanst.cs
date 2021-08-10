@@ -24,13 +24,14 @@ namespace PRMOVIL2CARWASH.Utils
         public const int  REQUEST_OK= 201;
         public const int REQUEST_ERROR= 400;
         public const int SESSION_CLOSED = 3;
+        public const int ALL_UPDATE = 13;
+
         public const int EXPIRE_DAYS = 7;
         public const int EXPIRE_CURREN_USER = 365;
         public const int FAIL_AUTH = 35;
         public const int NO_MATCH_PASS = 21;
-
         public const int EXPIRE_IMG = 15;
-        public const string USER_IMAGE_DEFAULT = "perfil.png";
+        public const string USER_IMAGE_DEFAULT = "user_default.png";
         public static string TOKEN { get; set; }
         public const int USER_EXIST = 350;
 

@@ -103,8 +103,13 @@ namespace PRMOVIL2CARWASH.ViewModels
 
        public async void OnModifyDataClicked()
         {
+            UserDialogs.Instance.ShowLoading("Cargando");
+
             Page.Navigation.InsertPageBefore(new CrearUsuario(), Page);
             await  Page.Navigation.PopAsync();
+
+            UserDialogs.Instance.HideLoading();
+
         }
     }
 }

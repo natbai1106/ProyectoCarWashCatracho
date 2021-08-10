@@ -63,15 +63,8 @@
                                x:Name="btnFotosUsuario"
                                />
                         </Frame>
-                        </Grid>
-                        </Grid>
-                        </Grid>
-                        </Grid>
-                        </Grid>
-                        </Grid>
-                        </Grid>
-                        </Grid>
-                        </Grid>
+                        
+                    
                     </StackLayout>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MonkeyCache.FileStore;
 using Newtonsoft.Json;
+using Plugin.Media.Abstractions;
 using PRMOVIL2CARWASH.Utils;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -39,24 +40,27 @@ namespace PRMOVIL2CARWASH.Models
 
         [JsonProperty("token")]
         public string Token { get; set; }
+
         [JsonProperty("playerId")]
         public Response PlayerId;
-
 
         [JsonProperty("respuesta")]
         public  Response Respuesta;
 
         [JsonProperty("metodoVerificacion")]
         public string ModoVerificacion { get; set; }
-
+        
+        
         [JsonProperty("foto")]
         public byte[] FotoByteArray { get; set; }
         public ImageSource FotoPerfil { get; set; }
 
+        public MediaFile MediaFile;
+
         private HttpClient cliente;
         private HttpResponseMessage requestMessage;
         string url = Constanst.GetUrl("/users");
-
+        
         //Se crea un constructor con el fin de mantener una solo instacia de la clase 
         public User()
         {
@@ -339,9 +343,36 @@ namespace PRMOVIL2CARWASH.Models
         public async  Task<int> UpdateUser()
         {
             MultipartFormDataContent form = new MultipartFormDataContent();
+
+            var objeto = new {
+
+                nombre = Nombre,
+                correo = Correo,
+                telefono = Telefono,
+                usuario= Usuario,
+                contrasena=Contrasena
+            };
+         
+            var content = new StringContent(JsonConvert.SerializeObject(objeto), Encoding.UTF8, "application/json");
+            form.Add(content);
             
-            return 0;
-                    
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/update"), form);
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var contents = await requestMessage.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    /*Se recupera el token y se almacena en la variable TOKEN*/
+
+                    Respuesta = respuesta;
+                    return Constanst.REQUEST_OK;
+                }
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
         }
     }
 

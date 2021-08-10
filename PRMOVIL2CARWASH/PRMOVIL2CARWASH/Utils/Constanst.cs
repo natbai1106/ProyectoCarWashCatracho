@@ -27,8 +27,8 @@ namespace PRMOVIL2CARWASH.Utils
         public const int FAIL_AUTH = 35;
         public const int NO_MATCH_PASS = 21;
 
-
-        public const string USER_IMAGE_DEFAULT = "camara.png";
+        public const int EXPIRE_IMG = 15;
+        public const string USER_IMAGE_DEFAULT = "perfil.png";
         public static string TOKEN { get; set; }
         public const int USER_EXIST = 350;
 

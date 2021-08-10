@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.PerfilUsuario"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              Title="Perfil">
 
     <!--<StackLayout>-->
@@ -17,12 +19,19 @@
             Padding="0"
             VerticalOptions="FillAndExpand"
             Margin="1">
-            
-            <Image 
-                
-                Source="perfilusuario.png" 
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill" />
+
+            <ff:CachedImage x:Name = "Perfil" 
+                                LoadingPlaceholder   = "Perfil"
+                                ErrorPlaceholder     = "Error"
+                                CacheDuration        = "30"
+                                RetryCount           = "5"
+                                RetryDelay           = "450"
+                                DownsampleToViewSize = "true">
+                <ff:CachedImage.Transformations>
+                    <ffTrans:CircleTransformation />
+                </ff:CachedImage.Transformations>
+            </ff:CachedImage>
+           
         </Frame>
 
         <Frame 

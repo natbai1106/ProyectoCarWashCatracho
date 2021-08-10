@@ -4,26 +4,13 @@
              x:Class="PRMOVIL2CARWASH.Views.CrearUsuario"
              xmlns:triggers ="clr-namespace:PRMOVIL2CARWASH.Triggers"
              xmlns:converters="clr-namespace:PRMOVIL2CARWASH.Converters"
+              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              BackgroundImage="#FDFDFD"
              Title="Creacion de Usuario">
+    
     <ContentPage.Resources>
         <converters:IntToBoolConverter x:Key="intToBoolConverter"/>
-        <!--<Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Purple" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="WidthRequest" Value="150" />
-            <Setter Property="CornerRadius" Value="20" />
-        </Style>
-        <Style TargetType="Entry">
-            <Setter Property="BackgroundColor" Value="LightSkyBlue" />
-            <Style.Triggers>
-                --><!-- Propiedades del Trigger --><!--
-                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                    <Setter Property="BackgroundColor" Value="BlanchedAlmond" />
-                    <Setter Property="FontSize" Value="Large" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>-->
     </ContentPage.Resources>
 
     <!-- MARGENES DE LA TARJETA BLANCA -->
@@ -53,7 +40,7 @@
 
                             <Image
                             x:Name="imgFotoUsuario" 
-                            Source="perfil.png"/>
+                            Source="{Binding PhotoProfile}"/>
 
                         </Frame>
 

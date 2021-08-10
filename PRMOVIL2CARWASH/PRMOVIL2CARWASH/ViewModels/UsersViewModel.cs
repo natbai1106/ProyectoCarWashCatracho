@@ -14,10 +14,10 @@ namespace PRMOVIL2CARWASH.ViewModels
     public class UsersViewModel : BaseViewModel
     {
         public Command SendVerifyCommand { get; }
-        public Command ThakePhotoCommand { get; }
-        public Command OpenGaleryCommand { get; }
         public Command CancelRegisterCommand { get; }
         public Command SelectMedia { get; }
+        
+
 
         Page Page;
 
@@ -33,7 +33,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         byte[] photoArray;
         bool verifyByMail=true;
         bool takeNewPhoto;
-        MediaFile mediaFile;
+        MediaFile PhotoMediaFile { get; set; }
         
         ImageSource photoProfile;
         User UserInCache { get; set; }
@@ -94,10 +94,9 @@ namespace PRMOVIL2CARWASH.ViewModels
         {
             Page = pag;
             SendVerifyCommand = new Command(OnRequestVerify);
-            OpenGaleryCommand = new Command(OnOpenGalery);
             CancelRegisterCommand = new Command(OnCancelRegister);
-            ThakePhotoCommand = new Command(OnTakePhoto);
             SelectMedia = new Command(OnSelectedMedia);
+            
             LoadCache();
 
            
@@ -221,7 +220,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             {
                 PhotoProfile = media.Image;
                 PhotoByteArray = media.ByteImage;
-                mediaFile = media.MediaFile;
+                PhotoMediaFile = media.MediaFile;
                 TakeNewPhoto = true;
             }
         }
@@ -342,16 +341,12 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         private bool IsChange()
         {
-             if (UserInCache.Nombre.Equals(Name) && UserInCache.Apellido.Equals(LastName) && UserInCache.Direccion.Equals(Address) &&
-                 UserInCache.Telefono.Equals(Telephone) && UserInCache.Usuario.Equals(User) && UserInCache.Contrasena.Equals(Password) &&
+             if (UserInCache.Nombre.Equals(Name)  && UserInCache.Telefono.Equals(Telephone) && UserInCache.Usuario.Equals(User) && UserInCache.Contrasena.Equals(Password) &&
                  UserInCache.Correo.Equals(Mail) && UserInCache.FotoByteArray == PhotoByteArray && lastMethodVerify == VerifyByMail)
                 return false;
             else
                 return true;
         }
-        public void Verify()
-        {
-
-        }
+  
     }
 }

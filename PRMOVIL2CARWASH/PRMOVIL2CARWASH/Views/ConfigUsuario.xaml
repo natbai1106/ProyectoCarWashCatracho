@@ -4,7 +4,12 @@
              x:Class="PRMOVIL2CARWASH.Views.ConfigUsuario"
              BackgroundImage="#FDFDFD"
              Title="Editar Usuario"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors">
+    
+   
+
 
     <!-- INICIO DEL CONTENTPAGE -->
     <ContentPage.Content>
@@ -31,10 +36,22 @@
                             Padding="0"
                             VerticalOptions="FillAndExpand"
                             Margin="1">
+                            <ff:CachedImage x:Name           = "Logo" 
+                                Source               = "{Binding UrlPhoto}"
+                                LoadingPlaceholder   = "Logo"
+                                ErrorPlaceholder     = "Error"
+                                CacheDuration        = "30"
+                                RetryCount           = "5"
+                                RetryDelay           = "450"
+                                DownsampleToViewSize = "true">
 
-                            <Image
+                                <ff:CachedImage.Transformations>
+                                    <ffTrans:CircleTransformation />
+                                </ff:CachedImage.Transformations>
+                            </ff:CachedImage>
+                            <!--Image
                             x:Name="imgFotoUsuario" 
-                            Source="perfil.png"/>
+                            Source="{Binding PhotoProfile}"/-->
 
                         </Frame>
                         <!-- INICIO DE LA IMAGEN DE USUARIO -->
@@ -97,6 +114,7 @@
                                 Margin="25,5"
                                 x:Name="txtNombre"
                                 Keyboard="Plain"
+                                Text="{Binding Name}"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
@@ -107,49 +125,8 @@
                         </Entry>
                     </Frame>
 
-                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
-                    <StackLayout
-                        Orientation="Horizontal"
-                        Margin="0,15,0,0">
+                 
 
-                        <!-- INICIO DEL LABEL ASTERISCO -->
-                        <Label 
-                            Text="*"
-                            FontSize="25"
-                            TextColor="red"
-                            FontFamily="SansBold"/>
-
-                        <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
-                        <Label 
-                            Text="Apellido: "
-                            FontSize="20"
-                            FontFamily="SansBold"/>
-                    </StackLayout>
-
-                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT NOMBRE COMPLETO -->
-                    <Frame
-                        BackgroundColor="Transparent" 
-                        BorderColor="Black"                             
-                        Padding="0"
-                        CornerRadius="10" 
-                        WidthRequest="340">
-
-
-
-                        <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
-                        <Entry 
-                                Margin="25,5"
-                                x:Name="txtApellido"
-                                Keyboard="Plain"
-                                PlaceholderColor="Gray"
-                                FontSize="20"
-                                FontFamily="SansLight"
-                                HorizontalOptions="FillAndExpand">
-                            <Entry.Behaviors>
-                                <behavior:TextValidationBehavior/>
-                            </Entry.Behaviors>
-                        </Entry>
-                    </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
@@ -184,6 +161,7 @@
                         <Entry 
                                 Margin="25,5"
                                 x:Name="txtCorreo"
+                                Text="{Binding Mail}"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
@@ -196,44 +174,7 @@
 
                     </Frame>
 
-                    <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
-                    <StackLayout
-                        Orientation="Horizontal"
-                        Margin="0,15,0,0">
-
-                        <!-- INICIO DEL LABEL ASTERISCO -->
-                        <Label 
-                             Text="*"
-                             FontSize="25"
-                             TextColor="red"
-                             FontFamily="SansBold"/>
-
-                        <!-- INICIO DEL LABEL DIRECCION -->
-                        <Label 
-                             Text="Direccion: "
-                             FontSize="20"
-                             FontFamily="SansBold"/>
-                    </StackLayout>
-
-                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT DIRECCION -->
-                    <Frame
-                        BackgroundColor="Transparent" 
-                        BorderColor="Black"                             
-                        Padding="0"
-                        CornerRadius="10" 
-                        WidthRequest="340">
-
-                        <!-- INICIO DEL ENTRY DE DIRECCION -->
-                        <Entry 
-                                Margin="25,5"
-                                x:Name="txtDireccion"
-                                Keyboard="Plain"
-                                PlaceholderColor="Gray"
-                                FontSize="20"
-                                FontFamily="SansLight"
-                                HorizontalOptions="FillAndExpand"/>
-                    </Frame>
-
+                   
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
                         Orientation="Horizontal"
@@ -266,6 +207,7 @@
                         <Entry 
                                 Margin="25,5"
                                 x:Name="txtTelefono"
+                               Text="{Binding Telephone}"
                                 Keyboard="Numeric"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
@@ -288,6 +230,7 @@
                 <Button
                     Text="Guardar Cambios" 
                     x:Name="btnGuardarCambios"
+                    Command="{Binding UpdateUserCommand}"
                     BackgroundColor="#01ADBA"
                     TextColor="White"
                     FontAttributes="Bold"
@@ -297,14 +240,14 @@
 
                 <!-- INICIO DEL BOTON DE LIMPIAR CAMPOS -->
                 <Button
-                    Text="Limpiar" 
-                    x:Name="btnLimpiarPerfilUsuario"
+                    Text="Cancelar" 
+                    Command="{Binding CancelUpdateCommand}"
                     BackgroundColor="#E3E4E5"
                     TextColor="Black"
                     FontAttributes="Bold"
                     Grid.Row="0"
                     Grid.Column="1"
-                    Clicked="btnLimpiarPerfilUsuario_Clicked"/>
+                    />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

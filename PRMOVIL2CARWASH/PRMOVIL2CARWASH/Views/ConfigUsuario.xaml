@@ -5,16 +5,16 @@
              BackgroundImage="#FDFDFD"
              Title="Editar Usuario"
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors">
-    
+
     <!-- INICIO DEL CONTENTPAGE -->
     <ContentPage.Content>
-        
+
         <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA PANTALLA -->
         <StackLayout>
-            
+
             <!-- INICIO SCROLL VIEW -->
             <ScrollView  Margin="9,10">
-                
+
                 <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA IMAGEN -->
                 <StackLayout >
 
@@ -34,12 +34,12 @@
 
                             <Image
                             x:Name="imgFotoUsuario" 
-                            Source="{Binding PhotoProfile}"/>
+                            Source="perfil.png"/>
 
                         </Frame>
                         <!-- INICIO DE LA IMAGEN DE USUARIO -->
-                       
-                        
+
+
                         <!-- INICIO DEL GRID -->
                         <Frame 
                         BackgroundColor="Transparent" 
@@ -62,8 +62,6 @@
                                x:Name="btnFotosUsuario"
                                />
                         </Frame>
-                        
-                    
                     </StackLayout>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
@@ -93,7 +91,7 @@
                         WidthRequest="340">
 
 
-                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                        <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                         <Entry 
                                 
                                 Margin="25,5"
@@ -110,23 +108,25 @@
                     </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
-                    <!--StackLayout
+                    <StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
+                        <!-- INICIO DEL LABEL ASTERISCO -->
                         <Label 
                             Text="*"
                             FontSize="25"
                             TextColor="red"
                             FontFamily="SansBold"/>
 
-                        
+                        <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
                         <Label 
                             Text="Apellido: "
                             FontSize="20"
                             FontFamily="SansBold"/>
                     </StackLayout>
 
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT NOMBRE COMPLETO -->
                     <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
@@ -134,9 +134,9 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                     
 
-                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+
+                        <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                         <Entry 
                                 Margin="25,5"
                                 x:Name="txtApellido"
@@ -178,10 +178,10 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                    
 
-                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
-                            <Entry 
+
+                        <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                        <Entry 
                                 Margin="25,5"
                                 x:Name="txtCorreo"
                                 PlaceholderColor="Gray"
@@ -189,31 +189,33 @@
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand">
 
-                                <Entry.Behaviors>
-                                    <behavior:EmailValidationBehavior/>
-                                </Entry.Behaviors>           
-                            </Entry>
+                            <Entry.Behaviors>
+                                <behavior:EmailValidationBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
 
                     </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
-                    <!--StackLayout
+                    <StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
+                        <!-- INICIO DEL LABEL ASTERISCO -->
                         <Label 
                              Text="*"
                              FontSize="25"
                              TextColor="red"
                              FontFamily="SansBold"/>
 
-                     
+                        <!-- INICIO DEL LABEL DIRECCION -->
                         <Label 
                              Text="Direccion: "
                              FontSize="20"
                              FontFamily="SansBold"/>
                     </StackLayout>
 
+                    <!-- INICIO DEL FRAME PARA EL ESTILO EN EL ENTRY INPUT DIRECCION -->
                     <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
@@ -260,7 +262,7 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                            <!-- INICIO DEL ENTRY DE TELEFONO -->
+                        <!-- INICIO DEL ENTRY DE TELEFONO -->
                         <Entry 
                                 Margin="25,5"
                                 x:Name="txtTelefono"
@@ -281,7 +283,7 @@
             <!-- INICIO DEL GRID -->
             <Grid 
                 HeightRequest="100">
-                
+
                 <!-- INICIO DEL BOTON DE GUARDAR CAMBIOS -->
                 <Button
                     Text="Guardar Cambios" 
@@ -306,5 +308,5 @@
             </Grid>
         </StackLayout>
     </ContentPage.Content>
-    
+
 </ContentPage>

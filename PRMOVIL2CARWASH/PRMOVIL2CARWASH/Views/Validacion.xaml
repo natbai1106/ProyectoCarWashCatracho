@@ -1,37 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PRMOVIL2CARWASH.Views.Validacion">
+             x:Class="PRMOVIL2CARWASH.Views.Validacion"
+             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors">
     
     <ContentPage.Content>
-        <StackLayout Margin="20,60,20,0">
+        <StackLayout VerticalOptions="Center"
+                    Margin="15" >
             <Label Text="Tú Código de Confirmación"
                    TextColor="Black"
+                   FontSize="20"
                    HorizontalOptions="FillAndExpand"
                    HorizontalTextAlignment="Center"
-                   FontSize="Large"
-                   FontFamily="Racing"/>
+                   FontFamily="SansBold"/>
 
             <Label Text="Hemos enviado un SMS con un código de activación a su número de celular...." 
                    TextColor="Black" 
+                   FontFamily="SansRegular"
                    HorizontalOptions="FillAndExpand" 
                    HorizontalTextAlignment="Center" 
-                   FontSize="20" 
+                   FontSize="18" 
                    />
 
             <Entry x:Name="entCodigo"
+                   FontFamily="SansLight"
+                   Keyboard="Numeric"
                    Text="{Binding Code,Mode=TwoWay}"
                    Placeholder="Código"
-                   HorizontalTextAlignment="Center"/>
+                   HorizontalTextAlignment="Center">
+
+                            <Entry.Behaviors>
+                                <behavior:MaskedBehavior Mask="XXXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+            
             <Button Text="Verificar"
+                    CornerRadius="5"
+                    BackgroundColor="#01ADBA"
                     Command="{Binding SaveUserCommand}"
                     IsEnabled="{Binding CodeIsCorrect}" />
 
             <Button Text="Modificar mi información"
+                    CornerRadius="5"
+                    BackgroundColor="#E3E4E5"
+                    TextColor="Black"
                     Command="{Binding ModifyDataCommand}"/>
 
             <Label HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand">
+                VerticalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="No recibido ningun código. "/>

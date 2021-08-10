@@ -127,7 +127,12 @@
                 Icon="historial_facturas.png">
         <ShellContent Route="Reservaciones" 
                       ContentTemplate="{DataTemplate local:Reservaciones}" />
-    </FlyoutItem>
+    </FlyoutItem> 
+    <!--<FlyoutItem Title="Validacion" 
+                Icon="historial_facturas.png">
+        <ShellContent Route="Validacion" 
+                      ContentTemplate="{DataTemplate local:Validacion}" />
+    </FlyoutItem>-->
 
    
     <FlyoutItem >

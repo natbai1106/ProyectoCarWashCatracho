@@ -384,7 +384,7 @@
                                     TextColor="Black" 
                                     HorizontalOptions="FillAndExpand" >
                         <Entry.Behaviors>
-                            <behavior:PasswordValidatorBehavior/>
+                            <behavior:PasswordBehavior/>
                         </Entry.Behaviors>
                     </Entry>
                 </Frame>

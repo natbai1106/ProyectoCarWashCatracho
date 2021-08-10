@@ -300,37 +300,37 @@ namespace PRMOVIL2CARWASH.ViewModels
             if (string.IsNullOrEmpty(User))
             {
                 respuesta = false;
-                string.Concat(message, " Nombre vacío ");
+                message += "\n Nombre vacío ";
             }
             if (string.IsNullOrEmpty(Mail))
             {
                 respuesta = false;
-                string.Concat(message, " Correo vacío ");
+                message += "\n Correo vacío ";
             }
             //if (string.IsNullOrEmpty(Address))
             //{
             //    respuesta = false;
             //    string.Concat(message, "Dirección vacío");
             //}
-            //if (string.IsNullOrEmpty(Telephone))
-            //{
-            //    respuesta = false;
-            //    string.Concat(message, "\n Teléfono vacío");
-            //}
+            if (string.IsNullOrEmpty(Telephone))
+            {
+                respuesta = false;
+                string.Concat(message, "\n Teléfono vacío");
+            }
             if (string.IsNullOrEmpty(Password))
             {
                 respuesta = false;
-                string.Concat(message, " Contraseña vacía ");
+                message += "\n Contraseña vacía ";
             }
             else if (!Validations.IsCorrectMail(Mail))
             {
                 respuesta = false;
-                string.Concat(message, " Correo incorrecto ");
+                message += "\n Correo incorrecto ";
             }
             else if (!Validations.IsCorrectPhone(Telephone))
             {
                 respuesta = false;
-                string.Concat(message, " Teléfono vacío ");
+                message += "\n Teléfono vacío ";
             }
 
             //if (!string.IsNullOrEmpty(User) && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(LastName)

@@ -42,8 +42,7 @@
                         
                         <!-- INICIO DEL GRID -->
                         <Frame 
-                        BackgroundColor="Transparent"
-                        CornerRadius="55" 
+                        BackgroundColor="Transparent" 
                         Margin="-95,10,-50,-45" 
                         HasShadow="false" 
                         VerticalOptions="End">
@@ -54,8 +53,8 @@
                                 CornerRadius="40" 
                                 Background="#FDFDFD"
                                 BorderWidth="2"
-                                HeightRequest="80" 
-                                WidthRequest="80" 
+                                HeightRequest="60" 
+                                WidthRequest="60" 
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
                                 ImageSource="new_foto.png"
@@ -93,24 +92,21 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY NOMBRE COMPLETO -->
-                        <StackLayout
-                            Orientation="Horizontal"
-                            Margin="25,5">
 
                             <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
-                            <Entry 
+                        <Entry 
+                                
+                                Margin="25,5"
                                 x:Name="txtNombre"
                                 Keyboard="Plain"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand">
-                                <Entry.Behaviors>
-                                    <behavior:TextValidationBehavior/>
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
+                            <Entry.Behaviors>
+                                <behavior:TextValidationBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
                     </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
@@ -139,22 +135,21 @@
                         WidthRequest="340">
 
                      
-                        <StackLayout
-                            Orientation="Horizontal"
-                            Margin="25,5">
-                            <Entry 
+
+                            <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
+                        <Entry 
+                                Margin="25,5"
                                 x:Name="txtApellido"
                                 Keyboard="Plain"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand">
-                                <Entry.Behaviors>
-                                    <behavior:TextValidationBehavior/>
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
-                    </Frame-->
+                            <Entry.Behaviors>
+                                <behavior:TextValidationBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
@@ -183,13 +178,11 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY CORREO ELECTRONICO -->
-                        <StackLayout
-                            Orientation="Horizontal"
-                            Margin="25,5">
+                    
 
                             <!-- INICIO DEL ENTRY DE NOMBRE COMPLETO -->
                             <Entry 
+                                Margin="25,5"
                                 x:Name="txtCorreo"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
@@ -201,7 +194,6 @@
                                 </Entry.Behaviors>           
                             </Entry>
 
-                        </StackLayout>
                     </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
@@ -229,21 +221,16 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <StackLayout
-                            Orientation="Horizontal"
-                            Margin="25,5">
-
-                            <Entry 
+                        <!-- INICIO DEL ENTRY DE DIRECCION -->
+                        <Entry 
+                                Margin="25,5"
                                 x:Name="txtDireccion"
                                 Keyboard="Plain"
                                 PlaceholderColor="Gray"
                                 FontSize="20"
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand"/>
-
-
-                        </StackLayout>
-                    </Frame-->
+                    </Frame>
 
                     <!-- INICIO DEL STACKLAYOUT DE LOS LABELS -->
                     <StackLayout
@@ -273,13 +260,9 @@
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <!-- INICIO DEL STACKLAYOUT DEL ENTRY TELEFONO -->
-                        <StackLayout
-                            Orientation="Horizontal"
-                            Margin="25,5">
-
                             <!-- INICIO DEL ENTRY DE TELEFONO -->
-                            <Entry 
+                        <Entry 
+                                Margin="25,5"
                                 x:Name="txtTelefono"
                                 Keyboard="Numeric"
                                 PlaceholderColor="Gray"
@@ -287,11 +270,10 @@
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand">
 
-                                <Entry.Behaviors>
-                                    <behavior:MaskedBehavior Mask="(+504) XXXX-XXXX"/>
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
+                            <Entry.Behaviors>
+                                <behavior:MaskedBehavior Mask="XXXXXXXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
                     </Frame>
                 </StackLayout>
             </ScrollView>

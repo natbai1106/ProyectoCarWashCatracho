@@ -14,7 +14,7 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         Page Page;
         ObservableCollection<NameService> _service;
-        ObservableCollection<RegisterVehicles> _vehicles;
+        ObservableCollection<ResponseVehicles> _vehicles;
 
         int idDetalleCotizacion;
         int cantidad;
@@ -44,7 +44,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             set => SetProperty(ref vehicleSelected, value);
         }
 
-        public ObservableCollection<RegisterVehicles> Vehicle
+        public ObservableCollection<ResponseVehicles> Vehicle
         {
             get => _vehicles;
             set => _vehicles = value;

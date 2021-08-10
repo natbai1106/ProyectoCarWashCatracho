@@ -102,7 +102,7 @@
                                 x:Name="btnCambiarContraseña"
                                 ImageSource="candado.png"
                                 Text="Cambiar Contraseña"
-                                FontFamily="Questrial"
+                                FontFamily="SansRegular"
                                 FontSize="18"
                                 FontAttributes="Bold"
                                 Background="#E3E4E5"

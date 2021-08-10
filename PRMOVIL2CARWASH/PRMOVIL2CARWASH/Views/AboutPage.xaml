@@ -7,22 +7,122 @@
     <!--ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext-->
-    
+  
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#96d1ff</Color>
-        </ResourceDictionary>
+            <Style x:Key="DsBotones" TargetType="Button">
+                <Setter Property="Background" Value="#01ADBA"/>
+                <Setter Property="FontFamily" Value="SansBlod"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Margin" Value="3,0"/>
+                <Setter Property="HeightRequest" Value="100"/>
+                <Setter Property="WidthRequest" Value="100"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="DsFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#E3E4E5"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+
+            </Style>
+
+            <Style x:Key="DsBoxview" TargetType="BoxView">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="15,0"/>
+                <Setter Property="HeightRequest" Value="0.5"/>
+                <Setter Property="Color" Value="Black"/>
+            </Style>
+
+            <Style x:Key="DsImagen" TargetType="Image">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="HeightRequest" Value="200"/>
+                <Setter Property="WidthRequest" Value="200"/>
+
+            </Style>
+
+            <Style x:Key="DsGrid" TargetType="Grid">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,-90,0,0"/>
+            </Style>
+
+            <Style x:Key="Dslabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontFamily" Value="SansLight"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="10,0,10,5"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+        </ResourceDictionary> 
     </ContentPage.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+
+        <StackLayout VerticalOptions="Center">
+            <Image
+                Source="car_wash.png"
+                Style="{StaticResource DsImagen}"/>
+            
+            <Label 
+              FontFamily="SansRegular"
+              HorizontalTextAlignment="Center" 
+              Padding="5"
+             Style="{StaticResource Dslabel}" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Hola " />
+                        <Span x:Name="spNombre"/>
+                        <Span Text="!, Bienvenid@ a CarWash Catracho acceso rápido: "/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        <Grid Style="{StaticResource DsGrid}">
+
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                x:Name="btnReservar"
+                    Text="Reservar"
+                    Style="{StaticResource DsBotones}"
+                    />
+               
+            <!--<BoxView Style="{StaticResource DsBoxview}" />-->
+
+
+
+            <Button Grid.Row="1"
+                    Grid.Column="1"
+                    x:Name="btnListaReservar"
+                    Text="Historial Reserva"
+                    Style="{StaticResource DsBotones}"
+                    />
+            <Button Grid.Row="1"
+                    Grid.Column="2"
+                x:Name="btnCambioAceite"
+                    Text="Historial Cambio Aceite"
+                    Style="{StaticResource DsBotones}"
+                    />
+                
+          
+        </Grid>
+
+
+    </StackLayout>
+      
+        <!--<StackLayout BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                    <Label
+                        Text="Bienvenido"
+                        Style="{StaticResource Dslabel}" 
+                        Margin="0,20"
+                        />
                 </ContentView>
             </StackLayout>
         </StackLayout>
@@ -45,7 +145,7 @@
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
             </StackLayout>
-        </ScrollView>
-    </Grid>
+        </ScrollView>-->
+ 
 
 </ContentPage>

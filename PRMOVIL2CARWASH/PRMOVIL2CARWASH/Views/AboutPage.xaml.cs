@@ -13,5 +13,12 @@ namespace PRMOVIL2CARWASH.Views
             InitializeComponent();
             BindingContext = new HomeViewModel(this);
         }
+
+        protected override void OnAppearing()
+        {
+            spNombre.Text = App.CurrentUser().Nombre;
+
+            base.OnAppearing();
+        }
     }
 }

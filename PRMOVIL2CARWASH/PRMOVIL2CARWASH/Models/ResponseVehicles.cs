@@ -10,38 +10,17 @@ using System.Threading.Tasks;
 
 namespace PRMOVIL2CARWASH.Models
 {
-    public class RegisterVehicles
+    public class ResponseVehicles
     {
         HttpClient APIVehiculo;
 
-        [JsonProperty("idVehiculos")]
-        public int IdVehiculos { get; set; }
+        [JsonProperty("vehiculos")]
+        public IList<Vehiculo> Vehiculos { get; set; }
 
-        [JsonProperty("numeroPlaca")]
-        public string NumeroPlaca { get; set; }
+        [JsonProperty("respuesta")]
+        public Response Respuesta { get; set; }
 
-        [JsonProperty("anio")]
-        public int Anio { get; set; }
-
-        [JsonProperty("fotoRuta")]
-        public string RutaFoto { get; set; }
-
-        [JsonProperty("observacion")]
-        public string Observacion { get; set; }
-
-        [JsonProperty("marca")]
-        public string MarcaVehiculos { get; set; }
-
-        //[JsonProperty("idUsuario")]
-        //public int IdUsuario { get; set; }
-
-        [JsonProperty("modelo")]
-        public string ModeloVehiculos { get; set; }
-
-        [JsonProperty("tipoCombustible")]
-        public string TipoCombustible { get; set; }
-
-        public RegisterVehicles()
+        public ResponseVehicles()
         {
             APIVehiculo = new HttpClient();
         }
@@ -62,5 +41,33 @@ namespace PRMOVIL2CARWASH.Models
         //        throw;
         //    }
         //}
+    }
+
+    public class Vehiculo
+    {
+
+        [JsonProperty("idVehiculos")]
+        public int IdVehiculos { get; set; }
+
+        [JsonProperty("numeroPlaca")]
+        public string NumeroPlaca { get; set; }
+
+        [JsonProperty("anio")]
+        public int Anio { get; set; }
+
+        [JsonProperty("fotoRuta")]
+        public string FotoRuta { get; set; }
+
+        [JsonProperty("observacion")]
+        public string Observacion { get; set; }
+
+        [JsonProperty("marca")]
+        public string Marca { get; set; }
+
+        [JsonProperty("modelo")]
+        public string Modelo { get; set; }
+
+        [JsonProperty("tipoCombustible")]
+        public string TipoCombustible { get; set; }
     }
 }

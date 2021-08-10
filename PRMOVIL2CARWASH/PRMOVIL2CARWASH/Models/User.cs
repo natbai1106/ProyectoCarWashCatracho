@@ -75,10 +75,9 @@ namespace PRMOVIL2CARWASH.Models
             var content = new StringContent(data, Encoding.UTF8, "application/json");
 
             requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), content);
-            var contents = await requestMessage.Content.ReadAsStringAsync();
             if (requestMessage.IsSuccessStatusCode)
             {
-                
+                var contents = await requestMessage.Content.ReadAsStringAsync();
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
                 {
@@ -354,7 +353,6 @@ namespace PRMOVIL2CARWASH.Models
             form.Add(new StringContent(App.CurrentUser().UrlFoto), "urlFoto");
             if(MediaFile!=null)
             form.Add(new StreamContent( MediaFile.GetStream()), Constanst.NAME_IMAGE, "imgUserUpdadate.jgp");
-            
             requestMessage = await cliente.PostAsync(string.Concat(url, "/update"), form);
             var contents = await requestMessage.Content.ReadAsStringAsync();
             if (requestMessage.IsSuccessStatusCode)

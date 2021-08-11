@@ -2,14 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.Reservacion"
-             xmlns:local="clr-namespace:PRMOVIL2CARWASH.Models" 
+             
              Title="Reservación de Servicio"
              BackgroundImage="#FDFDFD">
-    <ContentPage.Content>
+   
 
         <StackLayout Margin="7,0">
-
-          
             <ScrollView>
 
                 <!-- Contenedor principal para la tarjeta-->
@@ -28,11 +26,10 @@
                             FontFamily="SansBold"/>
 
                         <Switch 
-                            x:Name="SwitchMapa"
+                               x:Name="SwitchMapa"
                               OnColor="gray"
                               ThumbColor="#01ADBA"
-                            Toggled="SwitchMapa_Toggled"
-                                    />
+                              IsToggled="{Binding IsDelivery}"/>
 
                     </StackLayout>
 
@@ -60,17 +57,15 @@
                             BorderColor="Black"                             
                             Padding="0"
                             CornerRadius="10" 
-                            WidthRequest="340">
+                            WidthRequest="0">
 
                         <!--Contenedor del Input Modelo-->
-                       
-
                             <Picker
                                 x:Name="PiAutoCotizacion"
                                 Title="Seleccione el  Automóvil"
-                                ItemsSource="{Binding Vehicle}"
-                                ItemDisplayBinding="{Binding NumeroPlaca}"
-                                SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
+                                ItemsSource="{Binding ListVehicles}"
+                                ItemDisplayBinding="{Binding NombreVehiculo}"
+                                SelectedItem="{Binding VehicleSelected, Mode=TwoWay}"
                                 FontSize="20"
                                 FontFamily="SansLight"
                                 Margin="25,5"
@@ -183,90 +178,100 @@
                     </StackLayout>
                     
                            <!--Contenedor del Input Servicio-->
-                           <Frame
+                    <Frame
                                 BackgroundColor="Transparent" 
                                 BorderColor="Black"                             
                                 Padding="0"
                                 CornerRadius="10" 
                                 WidthRequest="340">
 
-                                <Picker
-                                        x:Name="PiSeleccionarCotizacion"
-                                        Title="Seleccione Servicio"
-                                        FontSize="20"
-                                        ItemsSource="{Binding Service}"
-                                        ItemDisplayBinding="{Binding NombreServicio}"
-                                        SelectedItem="{Binding ServiceSelected, Mode=TwoWay}"
-                                        FontFamily="SansLight"
-                                        Margin="20,5"
-                                        HorizontalOptions="FillAndExpand"
-                                            />
-                            <!--<SearchBar x:Name="ServicieSearchBar"  
-                                             TextChanged="Handle_SearchButtonPressed" 
-                                             FontSize="20"
-                                            />-->
+                        <Picker
+                            x:Name="PiSeleccionarCotizacion"
+                            Title="Seleccione Servicio"
+                            FontSize="20"
+                            ItemsSource="{Binding ListServices}"
+                            ItemDisplayBinding="{Binding NombreServicio}"
+                            SelectedItem="{Binding ServiceSelected, Mode=TwoWay}"
+                            FontFamily="SansLight"
+                            Margin="20,5"
+                            HorizontalOptions="FillAndExpand" />
 
-                            </Frame>
-                            <StackLayout>
-
-                        <!--<CollectionView   
-                            
-                                VerticalOptions="StartAndExpand"
-                                ItemsLayout="HorizontalList" 
-                                HeightRequest="100" 
-                                Background="aqua"
-                                Margin="25,5">
-
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextCell Text="{Binding NombreServicio}"
-                                                    Detail="{Binding descripcion}" />
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>-->
-                        <ListView 
-                            x:Name="ListServices"
-                            Background="gray"
-                            ItemTapped="ListServices_ItemTapped"
-                            ItemsSource="{Binding Service}">
-
-                            <ListView.ItemTemplate>
-                                
-                                <DataTemplate>
-                                    <TextCell Text="{Binding IdServicios}"
-                                                    Detail="{Binding NombreServicio}" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-
-                        </ListView>
-                    </StackLayout>
-
-                    <!--Texto Automovil-->
-                   
-
+                    </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Subtotal en Lps. " FontSize="17" TextColor="Black"/>
+                    <Label Text="{Binding Subtotal}" FontSize="17" TextColor="Black"/>
                 </StackLayout>
+                <Label Text="El total puede estar sujeto a cambios." FontSize="10" TextColor="Orange"/>
+                <ListView x:Name="listViewServices"
+                          ItemsSource="{Binding ListServiceSelected}"
+                          SelectionMode="None"
+                          Margin="10"
+                          HeightRequest="200"
+                            >
+              
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Margin="20,0,0,0"
+                                                Orientation="Horizontal"
+                                                HorizontalOptions="FillAndExpand"
+                                                 x:Name="Item">
+                         <Label Text="{Binding NombreServicio}"
+                                        VerticalTextAlignment="Center"/>
+
+                        <Label HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                      <FormattedString>
+                                                <Span Text="Lps. "
+                                  FontAttributes="Bold"
+                                  FontSize="15" 
+							      FontFamily="SansRegular"/>
+
+                                 <Span Text="{Binding Precio}" FontAttributes="Bold" FontSize="15"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                        
+                        <Button ImageSource="delete.png"
+                                HorizontalOptions="End"
+                                BackgroundColor="WhiteSmoke"
+                                BindingContext="{Binding Source={x:Reference listViewServices}, Path=BindingContext}" 
+                                Command="{Binding DeleteServiceCommand}" 
+                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" 
+                                       />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                    
+                </StackLayout>
+                
             </ScrollView>
-            <Grid 
-                HeightRequest="100">
-                <Button
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="-1">
+            <Button
                         Text="Realizar" 
                         x:Name="btnRealizar"
+                        Command="{Binding SaveCommand}"
                         BackgroundColor="#01ADBA"
                         TextColor="White"
                         FontAttributes="Bold"
-                       
-                        Grid.Row="0"
-                        Grid.Column="0"/>
+                         HorizontalOptions="FillAndExpand"
+                        />
 
-                <Button
+            <Button
                         Text="Limpiar" 
                         x:Name="btnLimpiarAutos"
+                       Command="{Binding CancelCommand}"
                         BackgroundColor="#E3E4E5"
                         TextColor="Black"
                         FontAttributes="Bold"
-                        Grid.Row="0"
-                        Grid.Column="1"/>
-            </Grid>
+                         HorizontalOptions="FillAndExpand"/>
         </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
+      
+           
+       
+   
 </ContentPage>

@@ -109,17 +109,18 @@ namespace PRMOVIL2CARWASH.ViewModels
             OpenGalleryCommand = new Command(OnOpenGallery);
             TakePhotoCommand = new Command(OnTakePhoto);
         }
-        private async void Cargar()
+        private async Task Cargar() 
         {
             Modelos Models = new Modelos();
             Brand Marcas = new Brand();
             TypeVehicle TipoVehiculo = new TypeVehicle();
             MotorType MotorTipo = new MotorType();
-
-            Modelo = await Models.ObtenerModelos();
-            Brand = await Marcas.ObtenerMarcas();
-            Motor = await MotorTipo.ObtenerTipoMotor();
-            Type = await TipoVehiculo.ObtenerTipoVehiculo();
+            if(IsNotConnect)
+                await Shell.Current.GoToAsync("..");
+            //Modelo = await Models.ObtenerModelos();
+            //Brand = await Marcas.ObtenerMarcas();
+            //Motor = await MotorTipo.ObtenerTipoMotor();
+            //Type = await TipoVehiculo.ObtenerTipoVehiculo();
         }
 
         private async void OnRequestSave(object obj)

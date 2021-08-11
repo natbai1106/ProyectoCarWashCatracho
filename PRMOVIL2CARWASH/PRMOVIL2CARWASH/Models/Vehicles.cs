@@ -12,32 +12,11 @@ namespace PRMOVIL2CARWASH.Models
 {
     public class Vehicles
     {
-        [JsonProperty("idVehiculos")]
-        public int IdVehiculos { get; set; }
+        [JsonProperty("vehiculos")]
+        public IList<Vehiculo> Vehiculos { get; set; }
 
-        [JsonProperty("numeroPlaca")]
-        public string NumeroPlaca { get; set; }
-
-        [JsonProperty("anio")]
-        public int Anio { get; set; }
-
-        [JsonProperty("fotoRuta")]
-        public string RutaFoto { get; set; }
-
-        [JsonProperty("observacion")]
-        public string Observacion { get; set; }
-
-        [JsonProperty("idMarcaVehiculos")]
-        public int IdMarcaVehiculos { get; set; }
-
-        //[JsonProperty("idUsuario")]
-        //public int IdUsuario { get; set; }
-
-        [JsonProperty("idModeloVehiculos")]
-        public int IdModeloVehiculos { get; set; }
-
-        [JsonProperty("idtipoCombustible")]
-        public int IdTipoCombustible { get; set; }
+        [JsonProperty("respuesta")]
+        public Response Response { get; set; }
 
         HttpClient cliente;
         HttpResponseMessage requestMessage;
@@ -66,4 +45,5 @@ namespace PRMOVIL2CARWASH.Models
                 return Constanst.REQUEST_ERROR;
         }
     }
+    
 }

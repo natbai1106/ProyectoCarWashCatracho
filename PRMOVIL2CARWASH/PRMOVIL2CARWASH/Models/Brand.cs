@@ -14,17 +14,11 @@ namespace PRMOVIL2CARWASH.Models
     {
         HttpClient clientMarca;
 
-        [JsonProperty("idMarcaVehiculos")]
-        public int IdMarca
-        {
-            get; set;
-        }
+        [JsonProperty("marca_vehiculo")]
+        public IList<MarcaVehiculo> MarcaVehiculo { get; set; }
 
-        [JsonProperty("marca")]
-        public string NombreMarca
-        {
-            get; set;
-        }
+        [JsonProperty("respuesta")]
+        public Response Respuesta { get; set; }
 
         public Brand()
         {
@@ -35,7 +29,7 @@ namespace PRMOVIL2CARWASH.Models
         {
             try
             {
-                var responseMarca =  await clientMarca.GetStringAsync(Constanst.GetUrl("/vehicle/brand"));
+                var responseMarca = await clientMarca.GetStringAsync(Constanst.GetUrl("/vehicle/brand"));
                 ObservableCollection<Brand> taskMarca = JsonConvert.DeserializeObject<ObservableCollection<Brand>>(responseMarca);
                 return taskMarca;
             }
@@ -44,5 +38,14 @@ namespace PRMOVIL2CARWASH.Models
                 throw;
             }
         }
+    }
+    public class MarcaVehiculo
+    {
+
+        [JsonProperty("idMarcaVehiculos")]
+        public int IdMarcaVehiculos { get; set; }
+
+        [JsonProperty("marca")]
+        public string Marca { get; set; }
     }
 }

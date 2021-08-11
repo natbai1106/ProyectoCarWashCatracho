@@ -20,5 +20,22 @@ namespace PRMOVIL2CARWASH.Views
 
             base.OnAppearing();
         }
+
+        private async void btnCambioAceite_Clicked(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new CambioAceite());
+        }
+
+        private async void btnReservar_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Reservacion());
+
+        }
+
+        private async void btnListaReservar_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Reservaciones());
+        }
     }
 }

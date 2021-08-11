@@ -7,18 +7,32 @@
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors">
-    
-   
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DsScrollView" TargetType="ScrollView">
+                <Setter Property="Margin" Value="32,3"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="Dslabel*" TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="FontFamily" Value="SansBold"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Text" Value="*"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
 
     <!-- INICIO DEL CONTENTPAGE -->
     <ContentPage.Content>
 
         <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA PANTALLA -->
-        <StackLayout>
+        <StackLayout >
 
             <!-- INICIO SCROLL VIEW -->
-            <ScrollView  Margin="9,10">
+            <ScrollView  Style="{StaticResource DsScrollView}">
 
                 <!-- INICIO DEL STACKLAYOUT CONTENEDOR PRINCIPAL DE LA IMAGEN -->
                 <StackLayout >
@@ -86,11 +100,7 @@
                         Orientation="Horizontal">
 
                         <!-- INICIO DEL LABEL ASTERISCO -->
-                        <Label 
-                            Text="*"
-                            FontSize="25"
-                            TextColor="red"
-                            FontFamily="SansBold"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
 
                         <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
                         <Label 
@@ -134,11 +144,7 @@
                         Margin="0,15,0,0">
 
                         <!-- INICIO DEL LABEL ASTERISCO -->
-                        <Label 
-                             Text="*"
-                             FontSize="25"
-                             TextColor="red"
-                             FontFamily="SansBold"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
 
                         <!-- INICIO DEL LABEL CORREO ELECTRONICO -->
                         <Label 
@@ -181,11 +187,7 @@
                         Margin="0,15,0,0">
 
                         <!-- INICIO DEL LABEL ASTERISCO -->
-                        <Label 
-                             Text="*"
-                             FontSize="25"
-                             TextColor="red"
-                             FontFamily="SansBold"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
 
                         <!-- INICIO DEL LABEL TELEFONO -->
                         <Label 
@@ -224,7 +226,8 @@
 
             <!-- INICIO DEL GRID -->
             <Grid 
-                HeightRequest="100">
+                HeightRequest="70"
+                Margin="0">
 
                 <!-- INICIO DEL BOTON DE GUARDAR CAMBIOS -->
                 <Button

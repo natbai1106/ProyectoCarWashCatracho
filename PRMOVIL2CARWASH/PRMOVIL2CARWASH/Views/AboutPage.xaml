@@ -12,14 +12,18 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#96d1ff</Color>
+            <Style x:Key="DsStackLayout" TargetType="StackLayout">
+                <Setter Property="Margin" Value="20,0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
             <Style x:Key="DsBotones" TargetType="Button">
-                <Setter Property="Background" Value="#01ADBA"/>
+                <Setter Property="Background" Value="transparent"/>
                 <Setter Property="FontFamily" Value="SansBlod"/>
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="Margin" Value="3,0"/>
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="Margin" Value="0"/>
                 <Setter Property="HeightRequest" Value="100"/>
                 <Setter Property="WidthRequest" Value="100"/>
-                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="CornerRadius" Value="50"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
             </Style>
@@ -55,7 +59,7 @@
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="FontFamily" Value="SansLight"/>
                 <Setter Property="FontSize" Value="18"/>
-                <Setter Property="Margin" Value="10,0,10,5"/>
+                <Setter Property="Margin" Value="0"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
@@ -64,9 +68,9 @@
     </ContentPage.Resources>
 
 
-        <StackLayout VerticalOptions="Center">
+    <StackLayout Style="{StaticResource DsStackLayout}">
             <Image
-                Source="car_wash.png"
+                Source="catracho.png"
                 Style="{StaticResource DsImagen}"/>
             
             <Label 
@@ -76,9 +80,9 @@
              Style="{StaticResource Dslabel}" >
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="Hola " />
+                    <Span Text="¡Hola " />
                         <Span x:Name="spNombre"/>
-                        <Span Text="!, Bienvenid@ a CarWash Catracho acceso rápido: "/>
+                        <Span Text="! a continuación tienes los acceso rápido: "/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -87,8 +91,9 @@
 
             <Button Grid.Row="1"
                     Grid.Column="0"
-                x:Name="btnReservar"
-                    Text="Reservar"
+                    x:Name="btnReservar"
+                    ImageSource="cotizacion.png"
+                    Clicked="btnReservar_Clicked"
                     Style="{StaticResource DsBotones}"
                     />
                
@@ -99,13 +104,16 @@
             <Button Grid.Row="1"
                     Grid.Column="1"
                     x:Name="btnListaReservar"
-                    Text="Historial Reserva"
+                    ImageSource="calendario.png"
+                    Clicked="btnListaReservar_Clicked"
                     Style="{StaticResource DsBotones}"
                     />
+            
             <Button Grid.Row="1"
                     Grid.Column="2"
-                x:Name="btnCambioAceite"
-                    Text="Historial Cambio Aceite"
+                    ImageSource="embudo.png"
+                    x:Name="btnCambioAceite"
+                    Clicked="btnCambioAceite_Clicked"
                     Style="{StaticResource DsBotones}"
                     />
                 

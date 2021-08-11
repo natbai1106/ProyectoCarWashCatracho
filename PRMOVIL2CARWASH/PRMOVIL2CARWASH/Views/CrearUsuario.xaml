@@ -8,7 +8,7 @@
              xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
              BackgroundImage="#FDFDFD"
-             Title="Creacion de Usuario">
+             Title="Creación de Usuario">
 
     <ContentPage.Resources>
         <ResourceDictionary>

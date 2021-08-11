@@ -102,7 +102,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         public VehiclesViewModel(Page pag)
         {
             Page = pag;
-            
+
             Cargar();
 
             SaveInformation = new Command(OnRequestSave);
@@ -110,6 +110,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             TakePhotoCommand = new Command(OnTakePhoto);
         }
         private async Task Cargar() 
+        private async void Cargar()
         {
             Modelos Models = new Modelos();
             Brand Marcas = new Brand();
@@ -128,7 +129,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             DateTime fechaActual = DateTime.Now;
             int anio = int.Parse(fechaActual.ToString("yyyy"));
             await Page.DisplayAlert("Mensaje", "" + anio, "Ok");
- 
+
             if (MotorSelected == null || TypeSelected == null || BrandSelected == null || ModeloSelected == null || Year == 0 || Plaque == null)
             {
                 await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");

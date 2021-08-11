@@ -9,46 +9,62 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#FDFDFD"
              Title="Cambiar Contraseña">
-    <ContentPage.Content>
-        <StackLayout>
-            <ScrollView   
-                Margin="9,10" >
-                <StackLayout>
-                    <Image
-                        Source="seguridad.png"
-                        WidthRequest="150"
-                        HeightRequest="150"/>
 
-                    <!--Texto Nombre-->
-                    <StackLayout
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style x:Key="DsStackLayout" TargetType="StackLayout">
+                    <Setter Property="Margin" Value="32,3"/>
+                    <Setter Property="VerticalOptions" Value="Center"/>
+                </Style>
+                <Style x:Key="Dslabel*" TargetType="Label">
+                    <Setter Property="TextColor" Value="Red"/>
+                    <Setter Property="FontFamily" Value="SansBold"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Text" Value="*"/>
+                </Style>
+
+            </ResourceDictionary>
+        </ContentPage.Resources>
+<ContentPage.Content>
+        
+    
+    <StackLayout  Style="{StaticResource DsStackLayout}">
+        <ScrollView   
+                 >
+            <StackLayout>
+                <Image
+                        Source="seguridad.png"
+                        WidthRequest="200"
+                        HeightRequest="200"/>
+
+                <!--Texto Nombre-->
+                <StackLayout
                         Orientation="Horizontal">
 
-                        <Label 
-                            Text="*"
-                            FontSize="25"
-                            TextColor="red"
-                            FontFamily="SansBold"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
+
 
                         <Label 
                            Text="Contraseña Anterior: "
                            FontSize="20"
                            FontFamily="SansBold"/>
-                    </StackLayout>
+                </StackLayout>
 
-                   
-                    <!-- Estilo para el Entry Input Nombre-->
-                    <Frame
+
+                <!-- Estilo para el Entry Input Nombre-->
+                <Frame
                        BackgroundColor="Transparent" 
                        BorderColor="Black"                             
                        Padding="0"
                        CornerRadius="10" 
                        WidthRequest="340">
 
-                        <StackLayout
+                    <StackLayout
                             Orientation="Horizontal"
                             Margin="25,5">
 
-                            <Entry 
+                        <Entry 
                                x:Name="txtContraseñaAnterior"
                                IsPassword="true" 
                                Text="{Binding OldPassword}"
@@ -56,44 +72,41 @@
                                FontSize="20"
                                FontFamily="SansLight"
                                HorizontalOptions="FillAndExpand" >
-                                <Entry.Behaviors>
-                                    <behavior:PasswordBehavior Mask="XXXXXXXX"/>
-                                </Entry.Behaviors>
-                            </Entry>
+                            <Entry.Behaviors>
+                                <behavior:PasswordBehavior Mask="XXXXXXXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
 
-                        </StackLayout>
-                    </Frame>
+                    </StackLayout>
+                </Frame>
 
-                    <!--Texto Nombre-->
-                    <StackLayout
+                <!--Texto Nombre-->
+                <StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
-                        <Label 
-                             Text="*"
-                             FontSize="25"
-                             TextColor="red"
-                             FontFamily="SansBold"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
+
 
                         <Label 
                              Text="Nueva Contraseña: "
                              FontSize="20"
                              FontFamily="SansBold"/>
-                    </StackLayout>
+                </StackLayout>
 
-                    <!-- Estilo para el Entry Input Nombre-->
-                    <Frame
+                <!-- Estilo para el Entry Input Nombre-->
+                <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
                         Padding="0"
                         CornerRadius="10" 
                         WidthRequest="340">
 
-                        <StackLayout
+                    <StackLayout
                             Orientation="Horizontal"
                             Margin="25,5">
 
-                            <Entry 
+                        <Entry 
                                 IsPassword="true" 
                                 x:Name="txtNuevaContraseña"
                                 Text="{Binding NewPassword}"
@@ -101,28 +114,25 @@
                                 FontSize="20"
                                 FontFamily="SansLight"
                                 HorizontalOptions="FillAndExpand"/>
-                        </StackLayout>
-                    </Frame>
+                    </StackLayout>
+                </Frame>
 
-                    <!--Texto Nombre-->
-                    <StackLayout
+                <!--Texto Nombre-->
+                <StackLayout
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
 
-                        <Label 
-                             Text="*"
-                             FontSize="25"
-                             TextColor="red"
-                             FontFamily="SansBold"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
+
 
                         <Label 
                              Text="Confirmar Contraseña: "
                              FontSize="20"
                              FontFamily="SansBold"/>
-                    </StackLayout>
+                </StackLayout>
 
-                    <!-- Estilo para el Entry Input Nombre-->
-                    <Frame
+                <!-- Estilo para el Entry Input Nombre-->
+                <Frame
                         BackgroundColor="Transparent" 
                         BorderColor="Black"                             
                         Padding="0"
@@ -130,7 +140,7 @@
                         WidthRequest="340">
 
 
-                            <Entry 
+                    <Entry 
                                IsPassword="true" 
                                x:Name="txtConfirmarContraseña"
                                Text="{Binding ConfirmPassword}"
@@ -139,10 +149,10 @@
                                 Margin="25,5"
                                FontFamily="SansLight"
                                HorizontalOptions="FillAndExpand"/>
-                        
-                    </Frame>
 
-                    <Button 
+                </Frame>
+
+                <Button 
                         Text="Guardar Cambios" 
                         x:Name="btnCambiarContra"
                         Command="{Binding ChangePasswordCommand}"
@@ -152,12 +162,13 @@
                         CornerRadius="10"
                         BorderWidth="2"
                         Margin="65,5"/>
-                </StackLayout>
-                
+            </StackLayout>
 
-            </ScrollView>
 
-            
-        </StackLayout>
+        </ScrollView>
+
+
+    </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>

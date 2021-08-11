@@ -15,7 +15,7 @@ using Xamarin.Forms.Xaml;
 namespace PRMOVIL2CARWASH.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    
+
     public partial class ListaCarros : ContentPage
     {
         ItemsViewModel _viewModel;

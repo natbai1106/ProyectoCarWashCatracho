@@ -8,17 +8,17 @@
     <ContentPage.Content>
         <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
 
-                <CollectionView ItemsSource="{Binding Items}"
+            <CollectionView ItemsSource="{Binding Items}"
                                  Grid.Row="3" Grid.Column="0" 
                                 Grid.ColumnSpan="3"
                                  VerticalScrollBarVisibility="Never"
                                  VerticalOptions="Start">
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
 
                         <StackLayout >
-                            
+
                             <Frame 
                                 CornerRadius="25"
                                 HasShadow="False"
@@ -38,7 +38,7 @@
                                         <Image 
                                            Source="imgcarro.png"/>
                                     </Frame>
-                                    
+
 
                                     <!-- Place description-->
                                     <StackLayout>
@@ -47,7 +47,7 @@
                                                TextColor="#535257" 
                                                FontFamily="SansBold"
                                                FontSize="18" />
-                                        
+
                                         <Label Text="{Binding Description}" 
                                                FontFamily="SansRegular"
                                                FontSize="18"
@@ -65,50 +65,56 @@
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
-                            
-                                
+
+
                         <!-- Schedule time-->
-                              
-                                
-                                <!--<Label Grid.Row="0" 
+
+
+                        <!--<Label Grid.Row="0" 
                                        Grid.Column="0"
                                        Text="17/Julio/20"  
                                        FontFamily="SansBold"
                                        TextColor="#bfc0c0" 
                                        FontAttributes="Bold" 
                                        VerticalOptions="Start"/>-->
-                                <!-- Vertical Line-->
-                                <!--<BoxView Grid.Row="1" 
+                        <!-- Vertical Line-->
+                        <!--<BoxView Grid.Row="1" 
                                          Grid.Column="0" 
                                          WidthRequest="4" 
                                          Color="Silver" 
                                          HeightRequest="120" 
                                          Margin="25,0,50,0" />-->
-                                <!-- Here add the code that is being explained in the "Market bar" block-->
+                        <!-- Here add the code that is being explained in the "Market bar" block-->
 
-                                <!-- Card -->
-                                <!--<Frame 
+                        <!-- Card -->
+                        <!--<Frame 
                                        CornerRadius="25"
                                        HasShadow="False"
                                        Margin="5,10">
                                     <StackLayout Padding="10"
                                                  x:DataType="model:Item">
 
-                                        --><!--Picture option--><!--
+                                        -->
+                        <!--Picture option-->
+                        <!--
                                         <Image Grid.Row="2"
                                                Grid.Column="0" 
                                                Grid.RowSpan="2" 
                                                Source="imgcarro.png" 
                                                WidthRequest="100"
                                                HeightRequest="150"/>
-                                        --><!--Description--><!--
+                                        -->
+                        <!--Description-->
+                        <!--
                                         <Label Grid.Row="2" 
                                                Grid.Column="1" 
                                                HorizontalOptions="StartAndExpand" 
                                                Padding="0,0,20,0"
                                                TextColor="#adadad"
                                                Text="With an amacing cinematic career of more than five decades, Dennis Hopper was a multi-talent and unconventional actor/director, regarded by many as one of the..."/>
-                                        --><!--Born information--><!--
+                                        -->
+                        <!--Born information-->
+                        <!--
                                         <Button Grid.Row="3" 
                                                 Grid.Column="1" 
                                                 BackgroundColor="#263032" 
@@ -117,11 +123,11 @@
                                                 FontAttributes="Bold" 
                                                 CornerRadius="10" 
                                                 Text="Born: May 17, 1936"/>-->
-                                        <!-- Dividing line-->
-                                       
-                                        <!-- Here add the code that is being explained in the next block-->
-                                        
-                                        <!--<Image Grid.Row="0" 
+                        <!-- Dividing line-->
+
+                        <!-- Here add the code that is being explained in the next block-->
+
+                        <!--<Image Grid.Row="0" 
                                            Grid.Column="0" 
                                            Source="imgcarro.png"
                                            HeightRequest="80" 
@@ -142,16 +148,16 @@
                                                TextColor="Silver"                                                
                                                FontFamily="SansRegular"
                                                FontSize="18"/>-->
-                                        <!-- Here add the code that is being explained in the "Market bar" block-->
-                                    <!--</StackLayout>
+                        <!-- Here add the code that is being explained in the "Market bar" block-->
+                        <!--</StackLayout>
                                 </Frame>-->
-                                
 
-                        </DataTemplate>
 
-                    </CollectionView.ItemTemplate>
+                    </DataTemplate>
 
-                </CollectionView>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
 
         </RefreshView>
     </ContentPage.Content>

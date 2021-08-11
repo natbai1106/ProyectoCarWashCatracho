@@ -12,13 +12,14 @@
 
         <Frame 
             BackgroundColor="Transparent"
-            CornerRadius="150" 
-            HeightRequest="300"
-            WidthRequest="300"
+            CornerRadius="100" 
+            HeightRequest="200"
+            WidthRequest="200"
             HorizontalOptions="FillAndExpand"
             Padding="0"
+            Margin="10,10"
             VerticalOptions="FillAndExpand"
-            Margin="1">
+            >
 
             <ff:CachedImage x:Name = "Perfil" 
                                 LoadingPlaceholder   = "Perfil"
@@ -36,7 +37,7 @@
 
         <Frame 
                 CornerRadius="55" 
-                Margin="0,0,0,-20" 
+                Margin="30,-80,30,-20" 
                 BackgroundColor="#E3E4E5" 
                 HasShadow="True" 
                 VerticalOptions="EndAndExpand"/>
@@ -49,7 +50,7 @@
                  CornerRadius="40" 
                  Background="#01ADBA"
                  BorderWidth="2"
-                 Margin="0,-75,30,65" 
+                 Margin="0,-80,60,55" 
                  HeightRequest="65" 
                  WidthRequest="65" 
                  HorizontalOptions="End" 
@@ -59,10 +60,10 @@
                 <StackLayout 
                     BackgroundColor="#E3E4E5" 
                     VerticalOptions="FillAndExpand"
-                    Margin="0,-70,0,0">
+                    Margin="30,-50,30,0">
 
                     <StackLayout Orientation="Vertical"
-                                 Margin="30,5"
+                                 Margin="40,5"
                                   >
                          <Label 
                              x:Name="lblNombreCompleto"
@@ -87,7 +88,7 @@
                      </StackLayout>
            
                     <BoxView HorizontalOptions="FillAndExpand"
-                               Margin="20,0,20,0"
+                               Margin="40,20,40,0"
                              HeightRequest="2" 
                              Color="black"/>
 
@@ -102,7 +103,7 @@
                         <StackLayout
                             Orientation="Horizontal"
                             Background="#E3E4E5"
-                            Margin="20,-5,10,0">
+                            Margin="40,-5,40,0">
 
                          
 
@@ -123,13 +124,15 @@
                             <!-- IMAGEN DE NOMBRE -->
                             <Image 
                                 Source="derecha.png" 
-                                Margin="10"/>
+                                Margin="0"
+                                
+                                />
 
                         </StackLayout>
                     </Frame>
 
                     <BoxView HorizontalOptions="FillAndExpand"
-                             Margin="20,-5,20,20"
+                             Margin="40,-5,40,20"
                              HeightRequest="2" 
                              Color="black"/>
 

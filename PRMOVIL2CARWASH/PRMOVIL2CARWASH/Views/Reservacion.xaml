@@ -2,13 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.Reservacion"
-             
              Title="Reservación de Servicio"
-             BackgroundImage="#FDFDFD">
-   
+             Background="#FDFDFD">
 
-        <StackLayout Margin="7,0">
-            <ScrollView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DsScrollView" TargetType="ScrollView">
+                <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+                <Setter Property="Margin" Value="20,3"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="Dslabel*" TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="FontFamily" Value="SansBold"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Text" Value="*"/>
+            </Style>
+            <Style x:Key="DsButtonFlotante" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="BorderColor" Value="#01ADBA"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="40"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="WidthRequest" Value="60"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout >
+        <ScrollView Style="{StaticResource DsScrollView}">
 
                 <!-- Contenedor principal para la tarjeta-->
                 <StackLayout 
@@ -22,7 +47,6 @@
                             TextColor="Black"
                             Text="Servicio a Domicilio: "
                             FontSize="20"    
-                            Margin="30,0,2,5"
                             FontFamily="SansBold"/>
 
                         <Switch 
@@ -35,15 +59,11 @@
 
                     <StackLayout
                                 Orientation="Horizontal"
-                                Margin="0,10">
+                                Margin="0,15">
 
-                        <Label 
-                            Text="*"
-                            FontSize="25"
-                            TextColor="red"
-                            FontFamily="RobotoRegular"/>
+                    <Label Style="{StaticResource Dslabel*}"/>
 
-                        <Label 
+                    <Label 
                             Text="Automóvil: "
                             TextColor="Black"
                                 FontSize="20"                                 
@@ -73,7 +93,7 @@
                    
                     </Frame>
 
-                    <Grid  >
+                    <Grid  Margin="0,15">
 
                         <!--Texto FECHA-->
                         <StackLayout
@@ -82,13 +102,9 @@
                                 Grid.Row="0"
                                 Grid.Column="0">
 
-                            <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="RobotoRegular"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
 
-                            <Label 
+                        <Label 
                                 Text="Fecha:  "
                                 FontSize="20" 
                                 TextColor="Black"
@@ -124,13 +140,9 @@
                                 Grid.Row="0"
                                 Grid.Column="1">
 
-                            <Label 
-                                Text="*"
-                                FontSize="25"
-                                TextColor="red"
-                                FontFamily="RobotoRegular"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
 
-                            <Label 
+                        <Label 
                                 Text="Hora:  "
                                 TextColor="black"
                                 FontSize="20"                                 
@@ -161,15 +173,12 @@
 
                     <!--Texto Servicio-->
                     <StackLayout
+                        Margin="0,10"
                                 Orientation="Horizontal">
+                        
+                    <Label Style="{StaticResource Dslabel*}"/>
 
-                        <Label 
-                            Text="*"
-                            FontSize="25"
-                            TextColor="red"   
-                            FontFamily="RobotoRegular"/>
-
-                        <Label 
+                    <Label 
                             TextColor="Black"
                                 Text="Servicio Auto: "
                                 FontSize="20"                                 
@@ -201,12 +210,12 @@
                     <Label Text="Subtotal en Lps. " FontSize="17" TextColor="Black"/>
                     <Label Text="{Binding Subtotal}" FontSize="17" TextColor="Black"/>
                 </StackLayout>
-                <Label Text="El total puede estar sujeto a cambios." FontSize="10" TextColor="Orange"/>
+                <Label Text="El total puede estar sujeto a cambios." FontSize="13" TextColor="Orange"/>
                 <ListView x:Name="listViewServices"
                           ItemsSource="{Binding ListServiceSelected}"
                           SelectionMode="None"
-                          Margin="10"
-                          HeightRequest="200"
+                          Margin="5"
+                          HeightRequest="150"
                             >
               
                         <ListView.ItemTemplate>
@@ -219,20 +228,23 @@
                          <Label Text="{Binding NombreServicio}"
                                         VerticalTextAlignment="Center"/>
 
-                        <Label HorizontalOptions="Center">
+                        <Label HorizontalOptions="Center" 
+                                Margin="20,10">
                             <Label.FormattedText>
                                       <FormattedString>
-                                                <Span Text="Lps. "
-                                  FontAttributes="Bold"
-                                  FontSize="15" 
-							      FontFamily="SansRegular"/>
+                                                <Span
+                                                    Text="Lps. " 
+                                                      FontAttributes="Bold"
+                                                      FontSize="15" 
+							                          FontFamily="SansRegular"/>
 
-                                 <Span Text="{Binding Precio}" FontAttributes="Bold" FontSize="15"/>
+                                            <Span Text="{Binding Precio}" FontAttributes="Bold" FontSize="15"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                        
-                        <Button ImageSource="delete.png"
+
+                            <Button Margin="12,0"
+                                ImageSource="delete.png"
                                 HorizontalOptions="End"
                                 BackgroundColor="WhiteSmoke"
                                 BindingContext="{Binding Source={x:Reference listViewServices}, Path=BindingContext}" 

@@ -6,9 +6,36 @@
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              Title="Registrar Automovil">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DsScrollView" TargetType="ScrollView">
+                <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+                <Setter Property="Margin" Value="20,3"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="Dslabel*" TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="FontFamily" Value="SansBold"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Text" Value="*"/>
+            </Style>
+            <Style x:Key="DsButtonFlotante" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="BorderColor" Value="#01ADBA"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="40"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="WidthRequest" Value="60"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Margin="2,0">
-            <ScrollView>
+        <StackLayout>
+            <ScrollView Style="{StaticResource DsScrollView}">
                 <StackLayout>
 
                     <!-- Imagenes -->
@@ -48,9 +75,8 @@
 
                             <Button     
                         Margin="0,15,20,30"
-                            BorderColor="#01ADBA"
+                            Background="#01ADBA"
                                 CornerRadius="40" 
-                                Background="#FDFDFD"
                                 BorderWidth="2"
                                 HeightRequest="80" 
                                 WidthRequest="80" 
@@ -63,20 +89,14 @@
                         </Frame>
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal"
-                              Margin=" 0,10">
+                    <StackLayout Orientation="Horizontal">
 
-                        <Label Text="*"
-                               FontSize="25"
-                               Margin="25,0,15,0"
-                               TextColor="red"
-                               FontFamily="RobotoRegular"/>
-
+                        <Label Style="{StaticResource Dslabel*}"/>
+                        
                         <Label Text="Marca:"
-                               TextColor="DimGray"
-                               Margin="0,0,15,0"
-                               FontSize="20"                                 
-                               FontFamily="SansBold"/>
+                                FontSize="20"
+                               TextColor="Black"
+                            FontFamily="SansBold"/>
                     </StackLayout>
 
                     <!--INPUT MARCA-->
@@ -85,14 +105,13 @@
                            Padding="0"
                            CornerRadius="10" 
                            HasShadow="True"
-                           WidthRequest="120"
-                           Margin="15,0">
+                           WidthRequest="120">
 
-                        <StackLayout Orientation="Horizontal"
-                                         Margin="25,5">
 
-                            <Picker WidthRequest="145"  
+
+                        <Picker 
                                     x:Name="pckMarca"
+                                    Margin="25,5"
                                     Title="Seleccione Marca"
                                     ItemsSource="{Binding Brand}"
                                     ItemDisplayBinding="{Binding Marca}"
@@ -100,22 +119,18 @@
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="20"
                                     FontFamily="SansLight"/>
-                        </StackLayout>
                     </Frame>
 
                     <!--Modelo Modelo-->
 
                     <StackLayout Orientation="Horizontal"
-                                 Margin="0,10">
+                                  Margin="0,15,0,0">
 
-                        <Label Text="*"
-                               FontSize="25"
-                               Margin="25,0,15,0"
-                               TextColor="red"
-                               FontFamily="RobotoRegular"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
+
 
                         <Label Text="Modelo:"
-                               TextColor="DimGray"
+                               TextColor="Black"
                                FontSize="20"                                 
                                FontFamily="SansBold"/>
                     </StackLayout>
@@ -126,8 +141,7 @@
                            Padding="0"
                            CornerRadius="10" 
                            HasShadow="True"
-                           WidthRequest="120"
-                           Margin="15,0">
+                           WidthRequest="120">
 
                         <StackLayout Orientation="Horizontal"
                                      Margin="25,5">
@@ -149,14 +163,11 @@
                     <StackLayout Orientation="Horizontal"
                                  Margin="0,10">
 
-                        <Label Text="*"
-                               FontSize="25"
-                               Margin="25,0,15,0"
-                               TextColor="red"
-                               FontFamily="RobotoRegular"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
+
 
                         <Label Text="Tipo:"
-                               TextColor="DimGray"
+                               TextColor="Black"
                                FontSize="20"                                 
                                FontFamily="SansBold"/>
                     </StackLayout>
@@ -167,8 +178,7 @@
                            Padding="0"
                            CornerRadius="10" 
                            HasShadow="True"
-                           WidthRequest="120"
-                           Margin="15,0">
+                           WidthRequest="120">
 
                         <StackLayout Orientation="Horizontal"
                                     Margin="25,5">
@@ -190,14 +200,11 @@
                              Orientation="Horizontal"
                              Margin="0,10" >
 
-                        <Label Text="*"
-                               FontSize="25"
-                               Margin="25,0,15,0"
-                               TextColor="red"
-                               FontFamily="RobotoRegular"/>
+                        <Label Style="{StaticResource Dslabel*}"/>
+
 
                         <Label Text="Motor:"
-                               TextColor="DimGray"
+                               TextColor="Black"
                                FontSize="20"                                 
                                FontFamily="SansBold"/>
                     </StackLayout>
@@ -208,8 +215,7 @@
                            Padding="0"
                            CornerRadius="10" 
                            HasShadow="True"
-                           WidthRequest="120"
-                           Margin="15,0">
+                           WidthRequest="120">
 
                         <StackLayout 
                                 Orientation="Horizontal"
@@ -230,21 +236,18 @@
 
                     <!--GRID DE ANIO Y NO DE PLACA-->
                     <Grid
-                         Margin="15, 10">
+                         Margin="0, 15">
                         <!--Texto Año-->
 
                         <StackLayout Orientation="Horizontal"
                                      Grid.Row="0"
                                      Grid.Column="0">
 
-                            <Label Text="*"
-                                   FontSize="25"
-                                   TextColor="red"
-                                   FontFamily="RobotoRegular"/>
+                            <Label Style="{StaticResource Dslabel*}"/>
+
 
                             <Label Text="Año:"
-                                   Margin="25,0,15,0"
-                                   TextColor="DimGray"
+                                   TextColor="Black"
                                    FontSize="20"                                 
                                    FontFamily="SansBold"/>
                         </StackLayout>
@@ -275,7 +278,7 @@
                                      Grid.Column="1">
 
                             <Label Text="N° Placa: "
-                                   TextColor="DimGray"
+                                   TextColor="Black"
                                    FontSize="20"                                 
                                    FontFamily="SansBold"/>
                         </StackLayout>
@@ -300,11 +303,11 @@
                     </Grid>
 
                     <StackLayout Orientation="Horizontal"
-                                 Margin="0,15,0,0">
+                                >
                         <!--Texto Observacion-->
 
                         <Label Text="Observaciones:"
-                               TextColor="DimGray"
+                               TextColor="Black"
                                Margin="30,0,15,0"
                                FontSize="20"                                 
                                FontFamily="SansBold"/>
@@ -315,8 +318,7 @@
                            BorderColor="Black"                
                            Padding="0"
                            CornerRadius="10" 
-                           HasShadow="True"
-                           Margin="20,0,15,5">
+                           HasShadow="True">
 
                         <StackLayout Orientation="Horizontal"
                                      Margin="25,5">

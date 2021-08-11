@@ -12,7 +12,7 @@ using System.Text;
 
 namespace PRMOVIL2CARWASH.Droid
 {
-    [Activity(Label = "SplashActivity", Theme = "@style/SplashTheme", MainLauncher = true, NoHistory = true, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "Car Wash Catracho", Theme = "@style/SplashTheme", MainLauncher = true, NoHistory = true, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

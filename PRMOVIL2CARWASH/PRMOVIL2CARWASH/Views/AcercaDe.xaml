@@ -4,9 +4,180 @@
              x:Class="PRMOVIL2CARWASH.Views.AcercaDe">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!-- INICIO DEL SCROLL VIEW -->
+            <!--<ScrollView 
+        VerticalScrollBarVisibility="Always">-->
+                <!-- INICIO DEL COLOR DE FONDO DE PANTALLA -->
+                <StackLayout
+            BackgroundColor="White" VerticalOptions="Center">
+
+                    <!-- INICIO DEL GRID EN LA IMAGEN -->
+                    <Grid>
+                        <!-- INICIO DEL FRAME DE IMAGEN -->
+                    <StackLayout                 Margin="10"                HorizontalOptions="Center">                        <!--<Image Source="CARWASH.png"                      WidthRequest="200"                      HeightRequest="200"                     HorizontalOptions="Center"                     VerticalOptions="Center"/>-->                    </StackLayout>
+
+                </Grid>
+
+                    <Label
+                Text="CAR WASH CATRACHO APP"
+                TextColor="Black"
+                FontSize="30"
+                Margin="0,-10"
+                FontFamily="Racing"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold">
+                    </Label>
+
+                    <Label
+                Text="Desarrollada por: "
+                TextColor="Black"
+                FontSize="20"
+                FontFamily="BoldItalic"
+                Margin="0,10"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold">
+                    </Label>
+
+                    <Frame
+                Background="transparent"
+                Margin="-50,-30,200,100"
+                CornerRadius="70">
+                        <StackLayout>
+                            <Image
+                        Source="alfredo.png"
+                        HeightRequest="100"
+                        Aspect="AspectFit" 
+                        HorizontalOptions="CenterAndExpand" >
+                            </Image>
+
+                            <Label
+                        Text="Alfredo"
+                        Margin="80,-5,10,20"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        FontFamily="BoldItalic">
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                Background="transparent"
+                Margin="200,-280,-50,100"
+                CornerRadius="70">
+                        <StackLayout>
+                            <Image
+                        Source="dany.png"
+                        HeightRequest="100"
+                        Aspect="AspectFit" 
+                        HorizontalOptions="CenterAndExpand" >
+                            </Image>
+
+                            <Label
+                        Text="Dany"
+                        Margin="90,-5,10,20"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        FontFamily="BoldItalic">
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                Background="transparent"
+                Margin="127,-215,127,100"
+                CornerRadius="70">
+                        <StackLayout>
+                            <Image
+                        Source="sarah.png"
+                        HeightRequest="100"
+                        Aspect="AspectFit" 
+                        HorizontalOptions="CenterAndExpand" >
+                            </Image>
+
+                            <Label
+                        Text="Sarah"
+                        Margin="38,-5,10,20"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        FontFamily="BoldItalic">
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                Background="transparent"
+                Margin="-50,-215,200,245"
+                CornerRadius="70">
+                        <StackLayout>
+                            <Image
+                        Source="eduardo.png"
+                        HeightRequest="100"
+                        Aspect="AspectFit" 
+                        HorizontalOptions="CenterAndExpand" >
+                            </Image>
+
+                            <Label
+                        Text="Eduardo"
+                        Margin="80,-5,10,20"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        FontFamily="BoldItalic">
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                Background="transparent"
+                Margin="200,-430,-50,100"
+                CornerRadius="70">
+                        <StackLayout>
+                            <Image
+                        Source="carlos.png"
+                        HeightRequest="100"
+                        Aspect="AspectFit" 
+                        HorizontalOptions="CenterAndExpand" >
+                            </Image>
+
+                            <Label
+                        Text="Carlos"
+                        Margin="90,-5,10,20"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        FontFamily="BoldItalic">
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+                  
+                </StackLayout>
+            <!--</ScrollView>-->
+            <StackLayout Margin="10">
+                <Label
+                                Text="carwash.catracho@yahoo.com"
+                                TextColor="Black"
+                                FontFamily="BoldItalic"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold">
+                </Label>
+
+                <Label
+                                Text="Versión 1.0.0"
+                                TextColor="Black"
+                                FontFamily="BoldItalic"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold">
+                </Label>
+
+                <Label
+                                Text="Universidad Tecnológica de Honduras © 2021"
+                                TextColor="Black"
+                                FontFamily="BoldItalic"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold">
+                </Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

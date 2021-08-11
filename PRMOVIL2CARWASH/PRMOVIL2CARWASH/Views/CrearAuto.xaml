@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.CrearAuto"
              BackgroundColor="#FDFDFD"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              Title="Registrar Automovil">
     <ContentPage.Content>
         <StackLayout Margin="2,0">
@@ -23,11 +25,19 @@
                             VerticalOptions="FillAndExpand"
                             Margin="1">
 
-                            <Image BackgroundColor="AliceBlue"
-                            x:Name="imgFotoAuto" 
-                              Source="{Binding PhotoProfile}"
-                               WidthRequest="190"
-                               HeightRequest="190"/>
+                            <ff:CachedImage x:Name           = "Logo" 
+                                Source               = "{Binding UrlPhoto}"
+                                LoadingPlaceholder   = "Logo"
+                                ErrorPlaceholder     = "Error"
+                                CacheDuration        = "30"
+                                RetryCount           = "5"
+                                RetryDelay           = "450"
+                                DownsampleToViewSize = "true">
+
+                                <ff:CachedImage.Transformations>
+                                    <ffTrans:CircleTransformation />
+                                </ff:CachedImage.Transformations>
+                            </ff:CachedImage>
                         </Frame>
                         <Frame 
                         BackgroundColor="Transparent"
@@ -85,7 +95,7 @@
                                     x:Name="pckMarca"
                                     Title="Seleccione Marca"
                                     ItemsSource="{Binding Brand}"
-                                    ItemDisplayBinding="{Binding NombreMarca}"
+                                    ItemDisplayBinding="{Binding Marca}"
                                     SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="20"
@@ -125,8 +135,8 @@
                             <Picker WidthRequest="145"
                                     x:Name="PiModeloAutos"
                                     Title="Seleccione Modelo"
-                                    ItemsSource="{Binding Modelo}"
-                                    ItemDisplayBinding="{Binding NombreModelo}"
+                                    ItemsSource="{Binding ModeloV}"
+                                    ItemDisplayBinding="{Binding Modelo}"
                                     SelectedItem="{Binding ModeloSelected, Mode=TwoWay}"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="20"
@@ -167,7 +177,7 @@
                                     x:Name="pckTipo"
                                     Title="Seleccione Tipo de Vehículo"
                                     ItemsSource="{Binding Type}"
-                                    ItemDisplayBinding="{Binding NombreTipoVehicle}"
+                                    ItemDisplayBinding="{Binding Tipo_Vehiculo}"
                                     SelectedItem="{Binding TypeSelected, Mode=TwoWay}"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="20"
@@ -210,7 +220,7 @@
                                 x:Name="pckMotor"
                                 Title="Seleccione Motor"
                                 ItemsSource="{Binding Motor}"
-                                ItemDisplayBinding="{Binding NombreMotor}"
+                                ItemDisplayBinding="{Binding TipoCombustible}"
                                 SelectedItem="{Binding MotorSelected, Mode=TwoWay}"
                                 HorizontalOptions="FillAndExpand"
                                 FontSize="20"
@@ -248,7 +258,7 @@
                                Grid.Row="1"
                                Grid.Column="0">
 
-
+                            
                             <DatePicker x:Name="pckAnio"
                                        MinimumDate="01/01/1900" 
                                        MaximumDate="12/31/2100" 

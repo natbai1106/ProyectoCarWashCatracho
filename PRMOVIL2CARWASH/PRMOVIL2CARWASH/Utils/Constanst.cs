@@ -32,6 +32,7 @@ namespace PRMOVIL2CARWASH.Utils
         public const int NO_MATCH_PASS = 21;
         public const int EXPIRE_IMG = 15;
         public const string USER_IMAGE_DEFAULT = "user_default.png";
+        public const string CAR_IMAGE_DEFAULT = "car_default.png";
         public static string TOKEN { get; set; }
         public const int USER_EXIST = 350;
 

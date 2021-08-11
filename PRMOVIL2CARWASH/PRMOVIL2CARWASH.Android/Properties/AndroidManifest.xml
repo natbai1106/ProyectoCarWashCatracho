@@ -1,30 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.prmovil2carwash">
-    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
-    <application android:label="PRMOVIL2CARWASH.Android" android:theme="@style/MainTheme"
-				  android:usesCleartextTraffic="true">
-
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAzK8eSyIIJQFpMrwUoqBXchC5F71BD0sg"/>
-		<provider android:name="android.support.v4.content.FileProvider"
-				android:authorities="${applicationId}.fileprovider"
-				android:exported="false"
-				android:grantUriPermissions="true">
-			<meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-				android:resource="@xml/file_paths"></meta-data>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.prmovil2carwash" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+	<application android:label="PRMOVIL2CARWASH.Android" android:theme="@style/MainTheme" android:usesCleartextTraffic="true" android:icon="@mipmap/icon">
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAzK8eSyIIJQFpMrwUoqBXchC5F71BD0sg" />
+		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
-	<receiver android:name="com.onesignal.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-    <intent-filter>
-      <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-      <category android:name="${applicationId}" />
-    </intent-filter>
-  </receiver>
-   
+		<receiver android:name="com.onesignal.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<category android:name="${applicationId}" />
+			</intent-filter>
+		</receiver>
 	</application>
-	<permission android:name="${applicationId}.permission.C2D_MESSAGE"
-            android:protectionLevel="signature" />
-     <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+	<permission android:name="${applicationId}.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -37,5 +27,4 @@
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	
 </manifest>

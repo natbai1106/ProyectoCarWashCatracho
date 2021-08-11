@@ -163,7 +163,7 @@ namespace PRMOVIL2CARWASH.ViewModels
 
                     UserDialogs.Instance.HideLoading();
                 }
-                
+                else await Page.DisplayAlert("Advertencia", "Hay errores en algunos campos", "Aceptar");
             }
             else
                 UserDialogs.Instance.Toast("Lo sentimos no tienes acceso a internet");

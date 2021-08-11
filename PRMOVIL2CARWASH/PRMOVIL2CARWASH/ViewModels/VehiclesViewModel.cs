@@ -7,6 +7,7 @@ using PRMOVIL2CARWASH.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using PRMOVIL2CARWASH.Services;
 
 namespace PRMOVIL2CARWASH.ViewModels
 {
@@ -19,14 +20,16 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         Page Page;
 
-        ObservableCollection<Brand> brand;
-        ObservableCollection<Modelos> modelo;
-        ObservableCollection<TypeVehicle> type;
-        ObservableCollection<MotorType> motor;
-        MotorType motorSelected;
-        TypeVehicle typeSelected;
-        Brand brandSelected;
-        Modelos modeloSelected;
+
+
+        ObservableCollection<MarcaVehiculo> brand;
+        ObservableCollection<ModeloVehiculo> modelo;
+        ObservableCollection<TipoVehiculo> type;
+        ObservableCollection<Combustible> motor;
+        Combustible motorSelected;
+        TipoVehiculo typeSelected;
+        MarcaVehiculo brandSelected;
+        ModeloVehiculo modeloSelected;
         int year;
         string plaque;
         string observation;
@@ -34,40 +37,40 @@ namespace PRMOVIL2CARWASH.ViewModels
         bool takeNewPhoto;
         ImageSource photoProfile;
 
-        public ObservableCollection<Modelos> Modelo
+        public ObservableCollection<ModeloVehiculo> ModeloV
         {
             get => modelo; set => SetProperty(ref modelo, value);
         }
 
-        public MotorType MotorSelected
+        public Combustible MotorSelected
         {
             get => motorSelected; set => SetProperty(ref motorSelected, value);
         }
-        public TypeVehicle TypeSelected
+        public TipoVehiculo TypeSelected
         {
-            get => typeSelected; set => SetProperty(ref typeSelected, value);
+            get => typeSelected; set { SetProperty(ref typeSelected, value); }
         }
-        public Brand BrandSelected
+        public MarcaVehiculo BrandSelected
         {
-            get => brandSelected; set => SetProperty(ref brandSelected, value);
-        }
-
-        public Modelos ModeloSelected
-        {
-            get => modeloSelected; set => SetProperty(ref modeloSelected, value);
+            get => brandSelected; set { SetProperty(ref brandSelected, value); getModelos(); }
         }
 
-        public ObservableCollection<Brand> Brand
+        public ModeloVehiculo ModeloSelected
+        {
+            get => modeloSelected; set { SetProperty(ref modeloSelected, value); getTipos(); }
+        }
+
+        public ObservableCollection<MarcaVehiculo> Brand
         {
             get => brand; set => SetProperty(ref brand, value);
         }
 
-        public ObservableCollection<TypeVehicle> Type
+        public ObservableCollection<TipoVehiculo> Type
         {
             get => type; set => SetProperty(ref type, value);
         }
 
-        public ObservableCollection<MotorType> Motor
+        public ObservableCollection<Combustible> Motor
         {
             get => motor; set => SetProperty(ref motor, value);
         }
@@ -111,16 +114,24 @@ namespace PRMOVIL2CARWASH.ViewModels
         }
         private async Task Cargar() 
         {
-            Modelos Models = new Modelos();
-            Brand Marcas = new Brand();
-            TypeVehicle TipoVehiculo = new TypeVehicle();
-            MotorType MotorTipo = new MotorType();
-            if(IsNotConnect)
+            BrandService Marcas = new BrandService();
+            MotorService MotorServ = new MotorService();
+
+            if (IsNotConnect)
                 await Shell.Current.GoToAsync("..");
-            //Modelo = await Models.ObtenerModelos();
-            //Brand = await Marcas.ObtenerMarcas();
-            //Motor = await MotorTipo.ObtenerTipoMotor();
-            //Type = await TipoVehiculo.ObtenerTipoVehiculo();
+
+            UserDialogs.Instance.ShowLoading("Cargando");
+            var resultMarcas = await Marcas.ObtenerMarcas();
+            if (resultMarcas != null)
+                Brand = new ObservableCollection<MarcaVehiculo>(resultMarcas);
+            UserDialogs.Instance.HideLoading();
+
+            UserDialogs.Instance.ShowLoading("Cargando");
+            var resultMotor = await MotorServ.ObtenerGas();
+            if (resultMotor != null)
+                Motor = new ObservableCollection<Combustible>(resultMotor);
+            UserDialogs.Instance.HideLoading();
+
         }
 
         private async void OnRequestSave(object obj)
@@ -169,5 +180,30 @@ namespace PRMOVIL2CARWASH.ViewModels
             }
         }
         #endregion
+
+        private async Task getModelos()
+        {
+            Type = null;
+            ModelService Modelos = new ModelService();
+            UserDialogs.Instance.ShowLoading("Cargando");
+
+            var resultModelos = await Modelos.ObtenerModelos(brandSelected.IdMarcaVehiculos);
+            if (resultModelos != null)
+                ModeloV = new ObservableCollection<ModeloVehiculo>(resultModelos);
+            UserDialogs.Instance.HideLoading();
+
+        }
+
+        private async Task getTipos()
+        {
+            TypeService Tipo = new TypeService();
+            UserDialogs.Instance.ShowLoading("Cargando");
+            var resultTV = await Tipo.ObtenerTipos(ModeloSelected.IdTipoVehiculos);
+            if (resultTV != null)
+                Type = new ObservableCollection<TipoVehiculo>(resultTV);
+            UserDialogs.Instance.HideLoading();
+
+        }
     }
+
 }

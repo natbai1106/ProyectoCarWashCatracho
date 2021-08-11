@@ -8,7 +8,7 @@
              xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
              BackgroundImage="#FDFDFD"
-             Title="Creacion de Usuario">
+             Title="Creación de Usuario">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -228,8 +228,8 @@
                                 PlaceholderColor="Gray" 
                                 TextColor="black" 
                                 HorizontalOptions="FillAndExpand" >
-                        <Entry.Behaviors>
-                            <behavior:MaskedBehavior Mask="XXXXXXXX"/>
+                        <Entry.Behaviors>                            
+                            <behavior:NumeroValidatorBehavior/>
                         </Entry.Behaviors>
                     </Entry>
                 </Frame>
@@ -299,11 +299,11 @@
                                     FontSize="20"
                                     PlaceholderColor="Gray" 
                                     TextColor="Black" 
-                                    HorizontalOptions="FillAndExpand" >
-                        <Entry.Behaviors>
-                            <behavior:PasswordBehavior/>
+                                    HorizontalOptions="FillAndExpand" />
+                    <!--<Entry.Behaviors>
+                            <behavior:MaxLengthValidatorBehavior/>
                         </Entry.Behaviors>
-                    </Entry>
+                    </Entry>-->
                 </Frame>
                 <!--<StackLayout Orientation="Horizontal" Spacing="6">
                     <CheckBox x:Name="CheckBoxAgree" />

@@ -11,6 +11,7 @@ namespace PRMOVIL2CARWASH.ViewModels
 {
     public class UpdateUserViewModel:BaseViewModel
     {
+        string message;
         string name;
         string mail;
         string telephone;
@@ -59,9 +60,30 @@ namespace PRMOVIL2CARWASH.ViewModels
             LoadData();
 
         }
+        private bool CheckRequires()
+        {
+            //message = "Tienes incorrectos los siguientes campos: ";
+            bool respuesta = true;
+            if (string.IsNullOrEmpty(Name))
+            {
+                respuesta = false;
+                message += "\n El usuario no puede ir vacío ";
+            }
+           
+            else if (string.IsNullOrEmpty(Telephone) || Telephone.Length != 8)
+            {
+                respuesta = false;
+                message += "\n Su número de teléfono debe llevar más de 8 dígitos";
+            }
 
-
-
+            else if (!Validations.IsCorrectMail(Mail) || string.IsNullOrEmpty(Mail))
+            {
+                respuesta = false;
+                message += "\n Correo incorrecto ";
+                //message += "\n El correo no puede ir vacío ";
+            }
+            return respuesta;
+        }
 
         public async void OnSelectedMedia()
         {
@@ -114,34 +136,39 @@ namespace PRMOVIL2CARWASH.ViewModels
         {
             if (!IsNotConnect)
             {
-
-                User auxUser = new User
+                //int resp = Constanst.REQUEST_ERROR;
+                if (CheckRequires())
                 {
-                    MediaFile = PhotoMediaFile,
-                    Nombre = Name,
-                    Correo = Mail,
-                    Telefono = Telephone
-                };
+                    User auxUser = new User
+                    {
+                        MediaFile = PhotoMediaFile,
+                        Nombre = Name,
+                        Correo = Mail,
+                        Telefono = Telephone
+                    };
 
-                UserDialogs.Instance.ShowLoading("Actualizando");
-                int respuesta = await auxUser.UpdateUser();
-                if (respuesta == Constanst.REQUEST_OK)
-                {
-                    await Page.DisplayAlert("Realizado", "Información actualizada", "Aceptar");
-                    await Shell.Current.GoToAsync("..");
+                    UserDialogs.Instance.ShowLoading("Actualizando");
+                    int respuesta = await auxUser.UpdateUser();
+                    if (respuesta == Constanst.REQUEST_OK)
+                    {
+                        await Page.DisplayAlert("Realizado", "Información actualizada", "Aceptar");
+                        await Shell.Current.GoToAsync("..");
+                    }
+                    else if (respuesta == Constanst.ALL_UPDATE)
+                        UserDialogs.Instance.Toast("Tu información esta actualizada.");
+                    else if (respuesta == Constanst.USER_NO_EXIST)
+                        UserDialogs.Instance.Toast("El usuario no existe.");
+                    else
+                        UserDialogs.Instance.Toast("Lo sentimos no se pudo actualizar");
+
+                    UserDialogs.Instance.HideLoading();
                 }
-                else if (respuesta == Constanst.ALL_UPDATE)
-                    UserDialogs.Instance.Toast("Tu información esta actualizada.");
-                else if (respuesta == Constanst.USER_NO_EXIST)
-                    UserDialogs.Instance.Toast("El usuario no existe.");
-                else
-                    UserDialogs.Instance.Toast("Lo sentimos no se pudo actualizar");
-
-                UserDialogs.Instance.HideLoading();
+                
             }
             else
                 UserDialogs.Instance.Toast("Lo sentimos no tienes acceso a internet");
         }
+        
 
 
         private async void LoadData()

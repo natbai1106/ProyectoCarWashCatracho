@@ -5,32 +5,18 @@
     <ContentPage.Content>
         <StackLayout>
             <!-- INICIO DEL SCROLL VIEW -->
-            <ScrollView 
-        VerticalScrollBarVisibility="Always">
+            <!--<ScrollView 
+        VerticalScrollBarVisibility="Always">-->
                 <!-- INICIO DEL COLOR DE FONDO DE PANTALLA -->
                 <StackLayout
-            BackgroundColor="White"
-            Padding="5,5">
+            BackgroundColor="White" VerticalOptions="Center">
 
                     <!-- INICIO DEL GRID EN LA IMAGEN -->
                     <Grid>
                         <!-- INICIO DEL FRAME DE IMAGEN -->
-                        <Frame 
-                        Grid.ColumnSpan="2"
-                        CornerRadius="25"
-                        Padding="10,10,10,15"
-                        BackgroundColor="Transparent">
+                    <StackLayout                 Margin="10"                HorizontalOptions="Center">                        <!--<Image Source="CARWASH.png"                      WidthRequest="200"                      HeightRequest="200"                     HorizontalOptions="Center"                     VerticalOptions="Center"/>-->                    </StackLayout>
 
-                            <!-- INICIO DE LA IMAGEN -->
-                            <Image 
-                            Grid.ColumnSpan="2"
-                            BackgroundColor="Transparent"
-                            Source="carwashcatracho.png" 
-                            HorizontalOptions="CenterAndExpand" 
-                            Aspect="AspectFill" 
-                            HeightRequest="120"/>
-                        </Frame>
-                    </Grid>
+                </Grid>
 
                     <Label
                 Text="CAR WASH CATRACHO APP"
@@ -161,54 +147,37 @@
                             </Label>
                         </StackLayout>
                     </Frame>
-                    
-                    
-                    
-
-                    <Frame>
-                        <StackLayout>
-                            <Label
-                Text="Versión 1.0.0"
-                TextColor="Black"
-                FontFamily="BoldItalic"
-                Margin="0,65"
-                FontSize="16"
-                HorizontalTextAlignment="Center"
-                FontAttributes="Bold">
-                            </Label>
-                            <Label
-                Text="Versión 1.0.0"
-                TextColor="Black"
-                FontFamily="BoldItalic"
-                Margin="0,65"
-                FontSize="16"
-                HorizontalTextAlignment="Center"
-                FontAttributes="Bold">
-                            </Label>
-
-                            <Label
-                Text="Universidad Tecnológica de Honduras © 2021"
-                TextColor="Black"
-                FontFamily="BoldItalic"
-                Margin="0,-72"
-                FontSize="16"
-                HorizontalTextAlignment="Center"
-                FontAttributes="Bold">
-                            </Label>
-
-
-
-                        </StackLayout>
-                    </Frame>
-
-                   
-
-                    
-
-                   
+                  
                 </StackLayout>
-            </ScrollView>
+            <!--</ScrollView>-->
+            <StackLayout Margin="10">
+                <Label
+                                Text="carwash.catracho@yahoo.com"
+                                TextColor="Black"
+                                FontFamily="BoldItalic"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold">
+                </Label>
 
+                <Label
+                                Text="Versión 1.0.0"
+                                TextColor="Black"
+                                FontFamily="BoldItalic"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold">
+                </Label>
+
+                <Label
+                                Text="Universidad Tecnológica de Honduras © 2021"
+                                TextColor="Black"
+                                FontFamily="BoldItalic"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold">
+                </Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

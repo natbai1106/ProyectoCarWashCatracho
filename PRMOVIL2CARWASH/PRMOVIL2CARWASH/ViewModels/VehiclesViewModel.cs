@@ -166,7 +166,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             }
             else
             {
-                await Page.DisplayAlert("Mensaje", "Felicidades, ahora sigue trabajando", "Ok");
+               //await Page.DisplayAlert("Mensaje", "Felicidades, ahora sigue trabajando", "Ok");
 
                 
 

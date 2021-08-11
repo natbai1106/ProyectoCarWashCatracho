@@ -20,6 +20,16 @@
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Text" Value="*"/>
             </Style>
+            <Style x:Key="DsButtonFlotante" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="BorderColor" Value="#01ADBA"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="40"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="WidthRequest" Value="60"/>
+            </Style>
 
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -74,20 +84,12 @@
                         <!-- INICIO DEL GRID -->
                         <Frame 
                         BackgroundColor="Transparent" 
-                        Margin="-95,10,-50,-45" 
+                        Margin="-95,20,-50,-30" 
                         HasShadow="false" 
                         VerticalOptions="End">
 
                             <Button     
-                        Margin="0,15,20,30"
-                            BorderColor="#01ADBA"
-                                CornerRadius="40" 
-                                Background="#FDFDFD"
-                                BorderWidth="2"
-                                HeightRequest="60" 
-                                WidthRequest="60" 
-                                HorizontalOptions="Center" 
-                                VerticalOptions="Center"
+                                Style="{StaticResource DsButtonFlotante}" 
                                 ImageSource="new_foto.png"
                                 Command="{Binding SelectMedia}"
                                x:Name="btnFotosUsuario"

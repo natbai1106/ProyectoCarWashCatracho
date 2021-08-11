@@ -24,9 +24,8 @@
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="CornerRadius" Value="40"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="HeightRequest" Value="80"/>
-                <Setter Property="WidthRequest" Value="80"/>
-                <Setter Property="Margin" Value="0,10,15,40"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="WidthRequest" Value="60"/>
             </Style>
 
             <Style x:Key="Dslabel*" TargetType="Label">
@@ -62,18 +61,19 @@
 
                     <StackLayout 
                         Orientation="Horizontal" 
-                        HorizontalOptions="CenterAndExpand">
+                        HorizontalOptions="Center">
+
 
                         <Frame 
                             CornerRadius="95" 
-                            HeightRequest="200"
-                            WidthRequest="200"
+                            HeightRequest="190"
+                            WidthRequest="190"
                             HorizontalOptions="FillAndExpand"
                             Padding="0"
                             VerticalOptions="FillAndExpand"
                             Margin="1">
 
-                        <ff:CachedImage x:Name           = "Logo" 
+                            <ff:CachedImage x:Name           = "Logo" 
                                 Source               = "{Binding UrlPhoto}"
                                 LoadingPlaceholder   = "Logo"
                                 ErrorPlaceholder     = "Error"
@@ -89,7 +89,10 @@
 
                     </Frame>
 
-                        <Frame Style="{StaticResource DsFrame}">
+                        <Frame  BackgroundColor="Transparent" 
+                        Margin="-95,20,-50,-30" 
+                        HasShadow="false" 
+                        VerticalOptions="End">
 
                             <Button Style="{StaticResource DsButtonFlotante}"   
                               
@@ -176,7 +179,40 @@
                     </Entry>
                 </Frame>
 
-                <StackLayout 
+
+                    <StackLayout  Margin="0,15,0,0"
+                        Orientation="Horizontal">
+
+                        <Label Style="{StaticResource Dslabel*}"/>
+
+                        <!-- INICIO DEL LABEL NOMBRE COMPLETO -->
+                        <Label 
+                            FontSize="18"
+                            TextColor="Black"
+                            FontFamily="SansBold"
+                            Text="Verificar" 
+                            />
+                        <Label 
+                            Text="Teléfono "
+                            FontSize="15"    
+                            Margin="30,0,10,5"
+                            FontFamily="SansBold"/>
+
+                        <Switch 
+                            x:Name="SwitchMapa"
+                              OnColor="gray"
+                              ThumbColor="#01ADBA"
+                           IsToggled="{Binding VerifyByMail,Mode=TwoWay}"/>
+
+                        <Label 
+                            Text="Correo "
+                            FontSize="15"    
+                            Margin="30,0,10,5"
+                            FontFamily="SansBold"/>
+                    </StackLayout>
+                    
+                    
+                    <StackLayout 
                         Orientation="Horizontal"
                         Margin="0,15,0,0">
                     <!-- LABEL DE ASTERISCO - APELLIDO -->
@@ -189,26 +225,7 @@
                             Text="Ingrese Teléfono: "/>
                     </StackLayout>
                     <!-- ESTILOS DEL ENTRY TELEFONO -->
-                <StackLayout Orientation="Horizontal">
-
-                    <Label 
-                            Text="Teléfono "
-                            FontSize="15"    
-                            Margin="30,0,10,5"
-                            FontFamily="SansBold"/>
-
-                    <Switch 
-                            x:Name="SwitchMapa"
-                              OnColor="gray"
-                              ThumbColor="#01ADBA"
-                           IsToggled="{Binding VerifyByMail,Mode=TwoWay}"/>
-
-                    <Label 
-                            Text="Correo "
-                            FontSize="15"    
-                            Margin="30,0,10,5"
-                            FontFamily="SansBold"/>
-                </StackLayout>
+                
 
 
                 <Frame BackgroundColor="Transparent" 

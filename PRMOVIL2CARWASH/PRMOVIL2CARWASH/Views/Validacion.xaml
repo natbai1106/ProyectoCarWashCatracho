@@ -2,11 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.Validacion"
-             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors">
+             xmlns:behavior="clr-namespace:PRMOVIL2CARWASH.Behaviors"
+             Background="#FDFDFD">
     
+  
+        <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DsStackLayout" TargetType="StackLayout">
+                    <Setter Property="Margin" Value="30,0"/>
+                    <Setter Property="VerticalOptions" Value="Center"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center"
-                    Margin="15" >
+        <StackLayout  Style="{StaticResource DsStackLayout}">
             <Label Text="Tú Código de Confirmación"
                    TextColor="Black"
                    FontSize="20"
@@ -14,7 +23,7 @@
                    HorizontalTextAlignment="Center"
                    FontFamily="SansBold"/>
 
-            <Label Text="Hemos enviado un SMS con un código de activación a su número de celular...." 
+            <Label Text="Hemos enviado un codigo a su correo con el código" 
                    TextColor="Black" 
                    FontFamily="SansRegular"
                    HorizontalOptions="FillAndExpand" 
@@ -23,7 +32,8 @@
                    />
 
             <Entry x:Name="entCodigo"
-                   FontFamily="SansLight"
+                   FontFamily="SansRegular"
+                   FontSize="18"
                    Keyboard="Numeric"
                    Text="{Binding Code,Mode=TwoWay}"
                    Placeholder="Código"

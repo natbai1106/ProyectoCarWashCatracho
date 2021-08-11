@@ -7,20 +7,59 @@
              x:Class="PRMOVIL2CARWASH.Views.LoginPage"
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#FDFDFD"
-             >
+             BackgroundColor="#FDFDFD" >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DsStackLayout" TargetType="StackLayout">
+                <Setter Property="Margin" Value="20,0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="Dslabel" TargetType="Label">
+                <Setter Property="TextColor" Value="blue"/>
+                <Setter Property="FontFamily" Value="SansBold"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="10,0"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="DsSpan" TargetType="Span">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontFamily" Value="SansBold"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style x:Key="DsSpanBlue" TargetType="Span">
+                <Setter Property="TextColor" Value="blue"/>
+                <Setter Property="FontFamily" Value="SansBold"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style x:Key="DsLabelConexion" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontFamily" Value="SansBold"/>
+                <Setter Property="FontSize" Value="18"/>
+                <!--<Setter Property="HorizontalOptions" Value="Center"/>-->
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="BackgroundColor" Value="#FFC300"/>
+                <Setter Property="Margin" Value="-200,30"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <!--BackgroundImageSource="FondoLogin.png"-->
     <ContentPage.Content>
+        
         <!-- MARGENES DE LA TARJETA BLANCA -->
-        <StackLayout Margin="10"
-                     VerticalOptions="Center">
-            
+        <StackLayout Style="{StaticResource DsStackLayout}">
+
+
+
             <Label Text="{Binding NetworkMessage}"
                    IsVisible="{Binding IsNotConnect}"
-                   HorizontalOptions="FillAndExpand"
-                   HorizontalTextAlignment="Center"
-                   FontSize="10"
-                   FontFamily="Racing"/>
+                   Style="{StaticResource DsLabelConexion}"
+                  />
             <!-- TITULOS DE LA TARJETA -->
             <StackLayout 
                 Margin="10"
@@ -106,24 +145,12 @@
                         CornerRadius="7"
                         BorderWidth="1"/>
 
-                <Label HorizontalOptions="Center">
+                <Label Style="{StaticResource Dslabel}">
                     <Label.FormattedText>
                         <FormattedString>
 
-                            <Span Text="Olvide mi contraseña"
-                                  FontAttributes="Bold"
-                                  FontSize="15"
-								  TextColor="Blue"
-							      FontFamily="SansRegular"
-							      TextDecorations="Underline">
-                                <Span.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                    Command="{Binding ResetPasswordCommand}"
-                                    />
-                                </Span.GestureRecognizers>
-                            </Span>
-                            <Span 
-                            Text="" FontAttributes="Bold" FontSize="15"/>
+                            <Span Text="Olvide mi contraseña">                                <Span.GestureRecognizers>                                    <TapGestureRecognizer                                     Command="{Binding ResetPasswordCommand}"                                    />                                </Span.GestureRecognizers>                            </Span>
+
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -135,13 +162,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="¿No tienes cuenta? "
-                                  FontAttributes="Bold" 
-                                  FontSize="15" />
+                                  Style="{StaticResource DsSpan}" />
                             <Span Text="Regístrate aquí!"
-                                  FontAttributes="Bold" 
-                                  FontSize="15"
-                              TextColor="Blue"
-                              TextDecorations="Underline">
+                                  Style="{StaticResource DsSpanBlue}">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer 
                                     Command="{Binding NewUserCommand}"

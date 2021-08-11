@@ -18,17 +18,18 @@ namespace PRMOVIL2CARWASH.Views
 
     public partial class ListaCarros : ContentPage
     {
-        ItemsViewModel _viewModel;
+       
 
         public ListaCarros()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = new ListVehiclesViewModel();
+
         }
-        protected override void OnAppearing()
+
+        private void ListaCarros_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
+           
         }
     }
 }

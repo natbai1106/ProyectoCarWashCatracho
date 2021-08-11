@@ -32,6 +32,9 @@ namespace PRMOVIL2CARWASH.Models
         [JsonProperty("idPrecios")]
         public int IdPrecios { get; set; }
 
+        [JsonProperty("idServicios")]
+        public int IdServicios { get; set; }
+
         [JsonProperty("precio")]
         public int Precio { get; set; }
 

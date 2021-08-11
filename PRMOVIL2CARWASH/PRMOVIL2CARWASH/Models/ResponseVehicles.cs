@@ -46,6 +46,9 @@ namespace PRMOVIL2CARWASH.Models
         [JsonProperty("modelo")]
         public string Modelo { get; set; }
 
+        [JsonProperty("idTipoVehiculos")]
+        public int IdTipoVehiculos { get; set; }
+
         [JsonProperty("nombreVehiculo")]
         public string NombreVehiculo { get; set; }
 

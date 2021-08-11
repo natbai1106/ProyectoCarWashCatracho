@@ -17,7 +17,7 @@ namespace PRMOVIL2CARWASH.Views
         public Reservacion()
         {
             InitializeComponent();
-            BindingContext = new DetailQuoteViewModel(this);
+            BindingContext = new ReservationViewModel(this);
             //BindingContext = new VehiclesViewModel(this);
 
             

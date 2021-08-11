@@ -227,9 +227,16 @@ namespace PRMOVIL2CARWASH.ViewModels
             bool IsCanceled = await Page.DisplayAlert("Cancelar registro", "¿Esta seguro que desea cancelar?, si tiene datos ingresados se perderan.", "Aceptar", "Cancelar");
             if (IsCanceled)
             {
+                UserDialogs.Instance.ShowLoading("Cargando");
+
                 Barrel.Current.EmptyAll();
                 Preferences.Clear();
+                Page.Navigation.InsertPageBefore(new LoginPage(), Page);
                 await Page.Navigation.PopAsync();
+
+                UserDialogs.Instance.HideLoading();
+
+               
 
             }
         }

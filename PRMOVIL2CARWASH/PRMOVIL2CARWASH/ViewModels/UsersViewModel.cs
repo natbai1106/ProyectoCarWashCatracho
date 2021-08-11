@@ -16,7 +16,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         public Command SendVerifyCommand { get; }
         public Command CancelRegisterCommand { get; }
         public Command SelectMedia { get; }
-        
+
 
 
         Page Page;
@@ -31,31 +31,31 @@ namespace PRMOVIL2CARWASH.ViewModels
         string user;
         string password;
         bool lastMethodVerify = false;
-        bool verifyByMail=true;
+        bool verifyByMail = true;
         bool takeNewPhoto;
         string urlPhoto;
-     
+
         User UserInCache { get; set; }
-      
+
         public string Name
         {
             get => name;
-            set { SetProperty(ref name, value);  }
+            set { SetProperty(ref name, value); }
         }
         public string LastName
         {
             get => lastName;
-            set { SetProperty(ref lastName, value);  }
+            set { SetProperty(ref lastName, value); }
         }
         public string Address
         {
             get => address;
-            set { SetProperty(ref address, value);  }
+            set { SetProperty(ref address, value); }
         }
-        public string Mail  
+        public string Mail
         {
             get => mail;
-            set { SetProperty(ref mail, value);  }
+            set { SetProperty(ref mail, value); }
         }
         public string Telephone
         {
@@ -65,7 +65,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         public string User
         {
             get => user;
-            set { SetProperty(ref user, value);}
+            set { SetProperty(ref user, value); }
         }
         public string Password { get => password; set { SetProperty(ref password, value); } }
 
@@ -86,21 +86,21 @@ namespace PRMOVIL2CARWASH.ViewModels
             SendVerifyCommand = new Command(OnRequestVerify);
             CancelRegisterCommand = new Command(OnCancelRegister);
             SelectMedia = new Command(OnSelectedMedia);
-            
+
             LoadCache();
 
-           
+
         }
         private async void OnRequestVerify(object obj)
-            {
-            
-           
+        {
+
+
             if (Barrel.Current.Exists(Constanst.USER_CACHE) && !IsChange())//Valida si existe un usuario existen y no hay cambios lo envia  a la pantalla de validadicion
-            {   
+            {
                 await Page.Navigation.PushAsync(new Validacion());
                 return;
             }
-            if(!IsNotConnect)//valida la conexion a internet
+            if (!IsNotConnect)//valida la conexion a internet
             {
                 int respuesta = Constanst.REQUEST_ERROR;
                 if (CheckRequires())//Valida los campos requeridos
@@ -128,7 +128,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                             if (respuesta == Constanst.REQUEST_OK)
 
                                 await Page.Navigation.PushAsync(new Validacion());
-                            else if(respuesta == Constanst.USER_EXIST)
+                            else if (respuesta == Constanst.USER_EXIST)
                                 await Page.DisplayAlert("Adevertencia", "Ya existe un usuario registrado con este " + (VerifyByMail ? "correo " + Mail : "Numero de télefono " + Telephone), "Aceptar");
 
                             else
@@ -136,7 +136,7 @@ namespace PRMOVIL2CARWASH.ViewModels
                                 takeNewPhoto = false;
                                 UserDialogs.Instance.Toast("Error al reenviar codigo de verificación.");
                             }
-                                
+
                         }
                         else//Sino se realizaron cambios entonces guardamos los cambios en cache
                         {
@@ -177,7 +177,6 @@ namespace PRMOVIL2CARWASH.ViewModels
                         UserDialogs.Instance.HideLoading();
                     }
                 }
-
                 else
                     await Page.DisplayAlert("Advertencia", message, "Aceptar");
             }
@@ -215,7 +214,7 @@ namespace PRMOVIL2CARWASH.ViewModels
         {
             if (isSucces)
             {
-               
+
                 UrlPhoto = media.Path;
                 TakeNewPhoto = true;
             }
@@ -239,8 +238,8 @@ namespace PRMOVIL2CARWASH.ViewModels
         private async void LoadCache()
         {
 
-            string usuario =  Constanst.USER_CACHE;
-            if(Barrel.Current.Exists(key: usuario))
+            string usuario = Constanst.USER_CACHE;
+            if (Barrel.Current.Exists(key: usuario))
             {
                 if (!Barrel.Current.IsExpired(key: usuario))
                 {
@@ -254,10 +253,10 @@ namespace PRMOVIL2CARWASH.ViewModels
                     User = UserInCache.Usuario;
                     Password = UserInCache.Contrasena;
                     UrlPhoto = UserInCache.UrlFoto;
-                        TakeNewPhoto = true;
-                    
-                      
-                   //Establce nuevamente el metodo de verificacion
+                    TakeNewPhoto = true;
+
+
+                    //Establce nuevamente el metodo de verificacion
                     if (UserInCache.ModoVerificacion.Equals(Constanst.VERIFY_MAIL))
                         VerifyByMail = true;
                     else
@@ -270,9 +269,9 @@ namespace PRMOVIL2CARWASH.ViewModels
                     UserInCache = new User();
                     UrlPhoto = Constanst.USER_IMAGE_DEFAULT;
                 }
-                    
+
             }
-          
+
             else
             {
                 UrlPhoto = Constanst.USER_IMAGE_DEFAULT;
@@ -280,51 +279,43 @@ namespace PRMOVIL2CARWASH.ViewModels
             }
 
 
-        }   
-     
+        }
+
 
         private bool CheckRequires()
         {
-            message = "Tienes incorrectos los siguientes campos: ";
+            message = "Oops, verifíca lo siguiente: ";
             bool respuesta = true;
             if (string.IsNullOrEmpty(User))
             {
                 respuesta = false;
-                message += "\n Nombre vacío ";
+                message += "\nEl usuario";
             }
-            if (string.IsNullOrEmpty(Mail))
+            if (string.IsNullOrEmpty(Name))
             {
                 respuesta = false;
-                message += "\n Correo vacío ";
-            }
-            //if (string.IsNullOrEmpty(Address))
-            //{
-            //    respuesta = false;
-            //    string.Concat(message, "Dirección vacío");
-            //}
-            if (string.IsNullOrEmpty(Telephone))
-            {
-                respuesta = false;
-                string.Concat(message, "\n Teléno incompleto");
-            }
-            else if (!Validations.IsCorrectPhone(Telephone))
-            {
-                respuesta = false;
-                message += "\n Teléfono vacío ";
-            }
-
-            if (string.IsNullOrEmpty(Password))
-            {
-                respuesta = false;
-                message += "\n Contraseña vacía ";
-            }
-            else if (!Validations.IsCorrectMail(Mail))
-            {
-                respuesta = false;
-                message += "\n Correo incorrecto ";
+                message += "\nEl nombre";
             }
            
-                return respuesta;
+            if (string.IsNullOrEmpty(Password) || Password.Length != 6)
+            {
+                respuesta = false;
+                //message += "\n Contraseña vacía ";
+                message += "\nLa contraseña debe ser mayor a 6 caracteres ";
+
+            }
+            if (string.IsNullOrEmpty(Mail) || !Validations.IsCorrectMail(Mail))
+            {
+                respuesta = false;
+                message += "\nCorreo incorrecto ";
+                //message += "\n El correo no puede ir vacío ";
+            }
+            else if (string.IsNullOrEmpty(Telephone) || Telephone.Length != 8)
+            {
+                respuesta = false;
+                message += "\nNúmero de teléfono no debe llevar más de 8 dígitos";
+            }
+            return respuesta;
         }
 
         

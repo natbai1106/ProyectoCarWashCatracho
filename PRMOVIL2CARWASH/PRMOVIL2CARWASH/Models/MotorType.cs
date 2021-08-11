@@ -14,18 +14,11 @@ namespace PRMOVIL2CARWASH.Models
     {
         HttpClient clientTipoMotor;
 
-        [JsonProperty("idTipoCombustible")]
-        public int IdMotor
-        {
-            get;
-            set;
-        }
-        [JsonProperty("tipoCombustible")]
-        public string NombreMotor
-        {
-            get; 
-            set;
-        }
+        [JsonProperty("combustible")]
+        public IList<Combustible> Combustible { get; set; }
+
+        [JsonProperty("respuesta")]
+        public Response Respuesta { get; set; }
 
         public MotorType()
         {
@@ -45,5 +38,15 @@ namespace PRMOVIL2CARWASH.Models
                 throw;
             }
         }
+    }
+
+    public class Combustible
+    {
+
+        [JsonProperty("idTipoCombustible")]
+        public int IdTipoCombustible { get; set; }
+
+        [JsonProperty("tipoCombustible")]
+        public string TipoCombustible { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRMOVIL2CARWASH.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace PRMOVIL2CARWASH.Views
         public Reservaciones()
         {
             InitializeComponent();
+            BindingContext = new ReservationViewModel(this);
         }
     }
 }

@@ -15,13 +15,13 @@ namespace PRMOVIL2CARWASH.Models
         HttpClient ApiServicio;
 
         [JsonProperty("idPrecios")]
-        public int IdServicios {  get; set;  }
+        public int IdServicios { get; set; }
 
         [JsonProperty("precio")]
         public double precio { get; set; }
 
         [JsonProperty("nombre_servicio")]
-        public string NombreServicio{  get; set; }
+        public string NombreServicio { get; set; }
 
         [JsonProperty("tipo_vehiculo")]
         public string TipoVehiculo { get; set; }

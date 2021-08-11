@@ -84,6 +84,8 @@ namespace PRMOVIL2CARWASH.Models
             if (!UrlFoto.Equals(Constanst.USER_IMAGE_DEFAULT))
                 form.Add(new StreamContent(MediaManager.GetImageStream(UrlFoto)), Constanst.NAME_IMAGE, "imgUserUpdadate.jgp");
 
+            //--------------------
+
             requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), form);
             var contents = await requestMessage.Content.ReadAsStringAsync();
             if (requestMessage.IsSuccessStatusCode)

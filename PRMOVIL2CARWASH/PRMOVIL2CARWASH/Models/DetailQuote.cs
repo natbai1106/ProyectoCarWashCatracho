@@ -9,30 +9,9 @@ namespace PRMOVIL2CARWASH.Models
 {
     public class DetailQuote
     {
-        //idDetalleCotizacion 
-        //cantidad
-        //idCotizaciones
-        //idServicios
-        //idVehiculo
-        //idProductos
 
-        [JsonProperty("idDetalleCotizacion")]
-        public int IdDetalleCotizacion { get; set; }
-
-        [JsonProperty("cantidad")]
-        public int Cantidad { get; set; }
-
-        [JsonProperty("idCotizaciones")]
-        public int IdCotizaciones { get; set; }
-
-        [JsonProperty("idServicios")]
-        public int IdServicios{ get; set; }
-
-        [JsonProperty("idVehiculo")]
-        public int IdVehiculo { get; set; }
-
-        [JsonProperty("idProductos")]
-        public int IdProductos { get; set; }
+        [JsonProperty("DetallesCotizacion")]
+        public IList<DetallesCotizacion> DetallesCotizacion { get; set; }
 
         HttpClient cliente;
         HttpResponseMessage requestMessage;
@@ -43,6 +22,18 @@ namespace PRMOVIL2CARWASH.Models
             cliente = new HttpClient();
         }
 
+    }
 
+    public class DetallesCotizacion
+    {
+
+        [JsonProperty("idDetalleCotizacionions")]
+        public int IdDetalleCotizacionions { get; set; }
+
+        [JsonProperty("idCotizaciones")]
+        public int IdCotizaciones { get; set; }
+
+        [JsonProperty("idServicios")]
+        public string IdServicios { get; set; }
     }
 }

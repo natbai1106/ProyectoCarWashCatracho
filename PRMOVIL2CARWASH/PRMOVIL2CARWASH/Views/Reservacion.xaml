@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRMOVIL2CARWASH.Views.Reservacion"
-             xmlns:local="clr-namespace:PRMOVIL2CARWASH.Models" 
+             
              Title="Reservación de Servicio"
              BackgroundImage="#FDFDFD">
     <ContentPage.Content>
@@ -68,9 +68,9 @@
                             <Picker
                                 x:Name="PiAutoCotizacion"
                                 Title="Seleccione el  Automóvil"
-                                ItemsSource="{Binding Vehicle}"
-                                ItemDisplayBinding="{Binding NumeroPlaca}"
-                                SelectedItem="{Binding BrandSelected, Mode=TwoWay}"
+                                ItemsSource="{Binding ListVehicles}"
+                                ItemDisplayBinding="{Binding NombreVehiculo}"
+                                SelectedItem="{Binding VehicleSelected, Mode=TwoWay}"
                                 FontSize="20"
                                 FontFamily="SansLight"
                                 Margin="25,5"

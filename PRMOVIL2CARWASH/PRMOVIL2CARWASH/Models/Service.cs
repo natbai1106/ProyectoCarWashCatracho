@@ -10,18 +10,11 @@ namespace PRMOVIL2CARWASH.Models
 {
     public class Service
     {
-        [JsonProperty("idServicios")]
-        //Propiedad de la Clase lo del public
-        public int IdServicios { get; set; }
+        [JsonProperty("servicios")]
+        public IList<Servicio> Servicios { get; set; }
 
-        [JsonProperty("nombre_servicio")]
-        public string NombreServicio { get; set; }
-
-        [JsonProperty("descripcion")]
-        public string Descripcion { get; set; }
-
-        [JsonProperty("disponible_domicilio")]
-        public int DisponibleDomicilio { get; set; }
+        [JsonProperty("respuesta")]
+        public Response Respuesta { get; set; }
 
         HttpClient cliente;
         HttpResponseMessage requestMessage;
@@ -32,4 +25,21 @@ namespace PRMOVIL2CARWASH.Models
             cliente = new HttpClient();
         }
     }
+
+    public class Servicio
+    {
+
+        [JsonProperty("idPrecios")]
+        public int IdPrecios { get; set; }
+
+        [JsonProperty("precio")]
+        public int Precio { get; set; }
+
+        [JsonProperty("nombre_servicio")]
+        public string NombreServicio { get; set; }
+
+        [JsonProperty("tipo_vehiculo")]
+        public string TipoVehiculo { get; set; }
+    }
+
 }

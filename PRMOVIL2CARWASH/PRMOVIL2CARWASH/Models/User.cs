@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,11 +50,7 @@ namespace PRMOVIL2CARWASH.Models
 
         [JsonProperty("metodoVerificacion")]
         public string ModoVerificacion { get; set; }
-        
-        
-        [JsonProperty("foto")]
-        public byte[] FotoByteArray { get; set; }
-        public ImageSource FotoPerfil { get; set; }
+
 
         public MediaFile MediaFile;
 
@@ -70,20 +67,34 @@ namespace PRMOVIL2CARWASH.Models
         public async Task<int> RegisterUser()
         {
 
-            var data = JsonConvert.SerializeObject(this);
-            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            MultipartFormDataContent form = new MultipartFormDataContent();
 
-            requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), content);
+            form.Add(new StringContent(Nombre), "nombre");
+            form.Add(new StringContent(""), "apellido");
+            form.Add(new StringContent(""), "direccion");
+            form.Add(new StringContent(Correo), "correo");
+            form.Add(new StringContent(Telefono), "telefono");
+            form.Add(new StringContent(Usuario), "usuario");
+            form.Add(new StringContent(Contrasena), "contrasena");
+            form.Add(new StringContent(Token), "token");
+            form.Add(new StringContent(Codigo), "codigo"); 
+            form.Add(new StringContent(App.playerId), "playerId");
+            form.Add(new StringContent(ModoVerificacion), "metodoVerificacion");
+
+            if (!UrlFoto.Equals(Constanst.USER_IMAGE_DEFAULT))
+                form.Add(new StreamContent(MediaManager.GetImageStream(UrlFoto)), Constanst.NAME_IMAGE, "imgUserUpdadate.jgp");
+
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), form);
             var contents = await requestMessage.Content.ReadAsStringAsync();
             if (requestMessage.IsSuccessStatusCode)
             {
-                
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
-                {
+                { 
+                    UrlFoto = respuesta.Message;
                     /*Se recupera el token y se almacena en la variable TOKEN*/
-
                     Respuesta = respuesta;
+                    
                     return Constanst.REQUEST_OK;
                 }
                 else
@@ -210,9 +221,10 @@ namespace PRMOVIL2CARWASH.Models
             var data = JsonConvert.SerializeObject(objeto);
             var content = new StringContent(data, Encoding.UTF8, "application/json");
             requestMessage = await cliente.PostAsync(string.Concat(url, "/verify/resend"), content);
+            var contents = await requestMessage.Content.ReadAsStringAsync();
             if (requestMessage.IsSuccessStatusCode)
             {
-                var contents = await requestMessage.Content.ReadAsStringAsync();
+               
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
                 {
@@ -345,30 +357,36 @@ namespace PRMOVIL2CARWASH.Models
         {
             MultipartFormDataContent form = new MultipartFormDataContent();
 
-            var objeto = new {
-
-                nombre = Nombre,
-                correo = Correo,
-                telefono = Telefono,
-                usuario= Usuario,
-                contrasena=Contrasena
-            };
-         
-            var content = new StringContent(JsonConvert.SerializeObject(objeto), Encoding.UTF8, "application/json");
-            form.Add(content);
-            
+            form.Add(new StringContent(Nombre), "nombre");
+            form.Add(new StringContent(Correo), "correo");
+            form.Add(new StringContent(Telefono), "telefono");
+            form.Add(new StringContent(App.CurrentUser().Usuario), "usuario");
+            form.Add(new StringContent(App.CurrentUser().Contrasena), "contrasena");
+            form.Add(new StringContent(App.CurrentUser().UrlFoto), "urlFoto");
+            if(MediaFile!=null)
+               form.Add(new StreamContent( MediaFile.GetStream()), Constanst.NAME_IMAGE, "imgUserUpdadate.jgp");
+           
             requestMessage = await cliente.PostAsync(string.Concat(url, "/update"), form);
+            var contents = await requestMessage.Content.ReadAsStringAsync();
             if (requestMessage.IsSuccessStatusCode)
             {
-                var contents = await requestMessage.Content.ReadAsStringAsync();
+                 contents = await requestMessage.Content.ReadAsStringAsync();
                 var respuesta = JsonConvert.DeserializeObject<Response>(contents);
                 if (respuesta.Status.Equals("ok"))
                 {
-                    /*Se recupera el token y se almacena en la variable TOKEN*/
-
+                    /*Se envia la nueva URL en el mensaje*/
+                    App.CurrentUser().UrlFoto = respuesta.Message;
+                    App.CurrentUser().Nombre = Nombre;
+                    App.CurrentUser().Correo = Correo;
+                    App.CurrentUser().Telefono = Telefono;
+                    Cache.SaveCache(App.CurrentUser().Usuario, App.CurrentUser(), Constanst.EXPIRE_CURREN_USER);
                     Respuesta = respuesta;
                     return Constanst.REQUEST_OK;
                 }
+                else if (respuesta.Status.Equals("allUpdate"))
+                    return Constanst.ALL_UPDATE;
+                else if (respuesta.Status.Equals("noExist"))
+                    return Constanst.USER_NO_EXIST;
                 else
                     return Constanst.REQUEST_ERROR;
             }

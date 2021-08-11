@@ -1,6 +1,8 @@
-﻿using PRMOVIL2CARWASH.Utils;
+﻿using MonkeyCache.FileStore;
+using PRMOVIL2CARWASH.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,7 @@ namespace PRMOVIL2CARWASH.Views
             lblCorreo.Text= App.CurrentUser().Correo;
             lblTelefono.Text= App.CurrentUser().Telefono;
 
+            Perfil.Source = App.CurrentUser().UrlFoto;
             base.OnAppearing();
         }
 

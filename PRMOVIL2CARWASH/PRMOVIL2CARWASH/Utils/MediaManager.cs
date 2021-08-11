@@ -90,6 +90,18 @@ namespace PRMOVIL2CARWASH.Utils
             return ImageSource.FromStream(()=> { return (Stream)new MemoryStream(image); });
         }
         
+        public static FileStream GetImageStream(string path)
+        {
+            try
+            {
+                return new FileStream(path, FileMode.Open, FileAccess.Read);
+            }
+            catch(IOException e)
+            {
+                return new FileStream(Constanst.USER_IMAGE_DEFAULT, FileMode.Open, FileAccess.Read);
+            }
+
+        }
     }
 
     

@@ -8,6 +8,9 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using PRMOVIL2CARWASH.Services;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace PRMOVIL2CARWASH.ViewModels
 {
@@ -17,10 +20,13 @@ namespace PRMOVIL2CARWASH.ViewModels
         public Command SaveInformation { get; }
         public Command TakePhotoCommand { get; }
         public Command OpenGalleryCommand { get; }
+        public Command SelectMedia { get; }
 
         Page Page;
 
-
+        HttpClient cliente;
+        HttpResponseMessage requestMessage;
+        string url = Constanst.GetUrl("/vehicle");
 
         ObservableCollection<MarcaVehiculo> brand;
         ObservableCollection<ModeloVehiculo> modelo;
@@ -30,12 +36,17 @@ namespace PRMOVIL2CARWASH.ViewModels
         TipoVehiculo typeSelected;
         MarcaVehiculo brandSelected;
         ModeloVehiculo modeloSelected;
+        String UrlFoto;
+        String urlphoto;
         int year;
         string plaque;
         string observation;
         byte[] photoArray;
         bool takeNewPhoto;
         ImageSource photoProfile;
+
+        [JsonProperty("respuesta")]
+        public Response Respuesta;
 
         public ObservableCollection<ModeloVehiculo> ModeloV
         {
@@ -80,6 +91,7 @@ namespace PRMOVIL2CARWASH.ViewModels
             get => year; set => year = value;
         }
 
+
         public string Plaque
         {
             get => plaque; set => plaque = value;
@@ -102,15 +114,21 @@ namespace PRMOVIL2CARWASH.ViewModels
         }
         public bool TakeNewPhoto { get => takeNewPhoto; set => takeNewPhoto = value; }
 
+        
+        public string UrlPhoto
+        {
+            get => urlphoto; set { SetProperty(ref urlphoto, value); }
+        }
+
         public VehiclesViewModel(Page pag)
         {
             Page = pag;
-            
+            cliente = new HttpClient();
+            UrlPhoto = Constanst.CAR_IMAGE_DEFAULT;
             Cargar();
 
             SaveInformation = new Command(OnRequestSave);
-            OpenGalleryCommand = new Command(OnOpenGallery);
-            TakePhotoCommand = new Command(OnTakePhoto);
+            SelectMedia = new Command(OnSelectedMedia);
         }
         private async Task Cargar() 
         {
@@ -137,17 +155,76 @@ namespace PRMOVIL2CARWASH.ViewModels
         private async void OnRequestSave(object obj)
         {
             DateTime fechaActual = DateTime.Now;
-            int anio = int.Parse(fechaActual.ToString("yyyy"));
-            await Page.DisplayAlert("Mensaje", "" + anio, "Ok");
- 
-            if (MotorSelected == null || TypeSelected == null || BrandSelected == null || ModeloSelected == null || Year == 0 || Plaque == null)
+            Year = int.Parse(fechaActual.ToString("yyyy"));
+            //await Page.DisplayAlert("Mensaje", "" + anio, "Ok");
+
+            
+
+            if (BrandSelected == null || ModeloSelected == null || TypeSelected == null || MotorSelected == null || Plaque == null)
             {
                 await Page.DisplayAlert("Mensaje", "No deben haber campos vacíos", "Ok");
             }
+            else
+            {
+                await Page.DisplayAlert("Mensaje", "Felicidades, ahora sigue trabajando", "Ok");
+
+                
+
+                UserDialogs.Instance.ShowLoading("Cargando");
+                
+                var Res = await RegisterVehicle();
+                //await Page.DisplayAlert("Mensaje", ""+ Res + "", "Ok");
+                UserDialogs.Instance.HideLoading();
+
+            }
 
         }
-        /*Abre la galeria*/
-        private async void OnOpenGallery()
+
+        public async Task<int> RegisterVehicle()
+        {
+
+            String observacion = string.IsNullOrEmpty(Observation) ? "" : Observation;
+
+            MultipartFormDataContent form = new MultipartFormDataContent();
+
+            form.Add(new StringContent(Plaque), "numeroPlaca");
+            form.Add(new StringContent(Year.ToString()), "anio");
+            form.Add(new StringContent(observacion), "observacion");
+            form.Add(new StringContent(BrandSelected.IdMarcaVehiculos.ToString()), "idMarcaVehiculos");
+            form.Add(new StringContent(ModeloSelected.IdModeloVehiculos.ToString()), "idModeloVehiculos");
+            form.Add(new StringContent(TypeSelected.IdTipoVehiculos.ToString()), "IdTipoVehiculos");
+            form.Add(new StringContent(MotorSelected.IdTipoCombustible.ToString()), "idTipoCombustible");
+            form.Add(new StringContent(App.CurrentUser().IdUsuario.ToString()), "idUsuario");
+            UrlFoto = UrlPhoto;
+
+            if (!UrlFoto.Equals(Constanst.CAR_IMAGE_DEFAULT))
+                form.Add(new StreamContent(MediaManager.GetImageStream(UrlFoto)), Constanst.NAME_IMAGE, "imgUserUpdadate.jgp");
+
+
+            requestMessage = await cliente.PostAsync(string.Concat(url, "/add"), form);
+            var contents = await requestMessage.Content.ReadAsStringAsync();
+            if (requestMessage.IsSuccessStatusCode)
+            {
+                var respuesta = JsonConvert.DeserializeObject<Response>(contents);
+                if (respuesta.Status.Equals("ok"))
+                {
+                    UrlFoto = respuesta.Message;
+                    /*Se recupera el token y se almacena en la variable TOKEN*/
+                    Respuesta = respuesta;
+
+                    return Constanst.REQUEST_OK;
+                }
+                else
+                    return Constanst.REQUEST_ERROR;
+            }
+            else
+                return Constanst.REQUEST_ERROR;
+        }
+
+        
+
+        /*Abre la camarara*/
+        private async void OnOpenGalery()
         {
             var media = new MediaManager();
 
@@ -156,7 +233,6 @@ namespace PRMOVIL2CARWASH.ViewModels
             LoadPhoto(isSuccess, media);
             UserDialogs.Instance.HideLoading();
         }
-        #region Foto
         /*Abre la camarara*/
         private async void OnTakePhoto()
 
@@ -174,12 +250,11 @@ namespace PRMOVIL2CARWASH.ViewModels
         {
             if (isSucces)
             {
-                PhotoProfile = media.Image;
-                PhotoByteArray = media.ByteImage;
+
+                UrlPhoto = media.Path;
                 TakeNewPhoto = true;
             }
         }
-        #endregion
 
         private async Task getModelos()
         {
@@ -194,6 +269,23 @@ namespace PRMOVIL2CARWASH.ViewModels
 
         }
 
+        public async void OnSelectedMedia()
+        {
+
+            string action = await Page.DisplayActionSheet("Abrir", "Cancel", null, Constanst.CAMARA, Constanst.GALERIA);
+            Console.WriteLine("Seleccionó " + action);
+
+            if (action == Constanst.CAMARA)
+            {
+                OnOpenGalery();
+
+            }
+            else if (action == Constanst.GALERIA)
+            {
+                OnTakePhoto();
+            }
+        }
+
         private async Task getTipos()
         {
             TypeService Tipo = new TypeService();
@@ -204,6 +296,9 @@ namespace PRMOVIL2CARWASH.ViewModels
             UserDialogs.Instance.HideLoading();
 
         }
+
+        
+
     }
 
 }
